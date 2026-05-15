@@ -99,7 +99,6 @@
     const fogStart = cx - w * 0.06;
     const fogEnd = w * 0.94;
 
-    ctx.filter = 'blur(0.9px)';
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i], s = p.s;
 
@@ -139,16 +138,13 @@
       const aa = ar < 0.25 ? ar * 4 : ar > 0.75 ? Math.max(0, 1 - (ar - 0.75) * 4) : 1;
 
       ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${(s.alpha * aa).toFixed(3)})`;
-      const radius = post ? 1.8 : 1.3;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-      ctx.fill();
+      const sz = post ? 2.2 : 1.6;
+      ctx.fillRect(p.x, p.y, sz, sz);
 
       if (p.x > w + 4 || p.x < -10 || p.y < -20 || p.y > h + 20 || p.age > p.life) {
         Object.assign(p, spawn(s, false));
       }
     }
-    ctx.filter = 'none';
 
     raf = requestAnimationFrame(frame);
   }

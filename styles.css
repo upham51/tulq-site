@@ -258,6 +258,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   display: block;
+  filter: blur(0.6px);
 }
 .hero::before {
   /* very subtle vignette — keeps copy legible */
