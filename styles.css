@@ -297,9 +297,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Hero photos — ghostly right-side landscape atmosphere
+   Hero photo — foggy coniferous forest, right-side atmosphere
    z-index 1: above canvas, below vignette (::before z-index 2)
-   The vignette's left-side darkening guards the text naturally.
    ───────────────────────────────────────────────────────────── */
 .hero-photos {
   position: absolute;
@@ -310,68 +309,21 @@ a { color: inherit; text-decoration: none; }
 .hero-photo {
   position: absolute;
   object-fit: cover;
+}
+.hero-photo--forest {
+  top: 0; right: 0;
+  width: 65%; height: 100%;
+  opacity: 0.22;
   mix-blend-mode: luminosity;
-}
-
-/* River — wide bottom strip, echoes the converging particle streams */
-.hero-photo--river {
-  bottom: 0; right: 0;
-  width: 58%; height: 46%;
-  opacity: 0.21;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0,0,0,0.35) 12%,
-    black 30%,
-    black 84%,
-    transparent 100%
-  ),
-  linear-gradient(
-    to top,
-    black 52%,
-    transparent 100%
-  );
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
-}
-
-/* Pine trees — tall right-center column, vertical texture */
-.hero-photo--pines {
-  top: 0; right: 4%;
-  width: 22%; height: 70%;
-  opacity: 0.17;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 22%,
-    black 78%,
-    transparent 100%
-  ),
-  linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 14%,
-    black 78%,
-    transparent 100%
-  );
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
-}
-
-/* Totem — upper far-right, portrait detail, cultural anchor */
-.hero-photo--totem {
-  top: 7%; right: 2%;
-  width: 19%; height: 58%;
-  opacity: 0.19;
-  mask-image: radial-gradient(
-    ellipse 76% 78% at 50% 46%,
+    rgba(0,0,0,0.3) 10%,
     black 28%,
-    rgba(0,0,0,0.5) 55%,
-    transparent 76%
+    black 88%,
+    transparent 100%
   );
 }
-
-/* Collapse on narrower viewports — right zone disappears */
 @media (max-width: 900px) {
   .hero-photos { display: none; }
 }
@@ -511,6 +463,105 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 540px) {
   .hero-status, .hero-scroll { font-size: 10px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Scene photos — atmospheric imagery scattered through sections
+   Dark-section photos use luminosity blend to stay in palette.
+   ───────────────────────────────────────────────────────────── */
+.scene-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.scene-photo img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* River photo — Story section: full-bleed bottom-right */
+.scene-photo--river {
+  top: 0; right: 0;
+  width: 55%; height: 100%;
+  opacity: 0;
+  animation: scenePhotoFade 1.2s 0.6s ease forwards;
+}
+.scene-photo--river img {
+  mix-blend-mode: luminosity;
+  opacity: 0.18;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.4) 14%,
+    black 34%,
+    black 82%,
+    transparent 100%
+  ),
+  linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+/* Totem — Why Tulq section: right column, portrait */
+.scene-photo--totem {
+  top: 0; right: 0;
+  width: 36%; height: 100%;
+  opacity: 0;
+  animation: scenePhotoFade 1.2s 0.4s ease forwards;
+}
+.scene-photo--totem img {
+  object-position: center top;
+  mix-blend-mode: luminosity;
+  opacity: 0.14;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.3) 12%,
+    black 30%,
+    black 80%,
+    transparent 100%
+  ),
+  linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+/* Pine trees — Numbers section: left atmospheric column */
+.scene-photo--pines {
+  top: 0; left: 0;
+  width: 32%; height: 100%;
+  opacity: 0;
+  animation: scenePhotoFade 1.2s 0.4s ease forwards;
+}
+.scene-photo--pines img {
+  object-position: center;
+  mix-blend-mode: luminosity;
+  opacity: 0.13;
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(0,0,0,0.3) 12%,
+    black 30%,
+    black 78%,
+    transparent 100%
+  ),
+  linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+@keyframes scenePhotoFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .scene-photo { display: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────

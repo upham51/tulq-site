@@ -14,12 +14,12 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const TOLT = { yF: 0.30, sF: 0.13, color: [168, 200, 196], pull: 0.35, vBase: 1.1, alpha: 0.42 };
-  const SNOQ = { yF: 0.72, sF: 0.16, color: [107, 138, 150], pull: 0.45, vBase: 0.9, alpha: 0.34 };
+  const TOLT = { yF: 0.30, sF: 0.13, color: [168, 200, 196], pull: 0.35, vBase: 1.1, alpha: 0.46 };
+  const SNOQ = { yF: 0.72, sF: 0.16, color: [107, 138, 150], pull: 0.45, vBase: 0.9, alpha: 0.36 };
   const FOG  = [232, 228, 216];
   const BG   = [28, 38, 40];
   const CX = 0.62, CY = 0.50;
-  const TRAIL = 0.045;
+  const TRAIL = 0.026;
 
   let w = canvas.parentElement.clientWidth;
   let h = canvas.parentElement.clientHeight;
@@ -99,21 +99,32 @@
     const fogStart = cx - w * 0.06;
     const fogEnd = w * 0.94;
 
+    ctx.filter = 'blur(0.9px)';
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i], s = p.s;
 
       const distNorm = Math.abs(p.x - cx) / w + Math.abs(p.y - cy) / h;
-      const pull = Math.min(0.8, 0.18 + distNorm * s.pull);
 
       const na = angleAt(p.x, p.y, time);
       const pa = Math.atan2(cy - p.y, cx - p.x);
       const post = p.x > cx;
-      const ep = post ? pull * 0.25 : pull;
-
-      const ax = Math.cos(na) * (1 - ep) + Math.cos(pa) * ep;
-      const ay = Math.sin(na) * (1 - ep) + Math.sin(pa) * ep;
-
-      const fr = post ? 0.94 : 0.92;
+      let ax, ay, fr;
+      if (post) {
+        // Smooth merged river — mostly rightward, gentle vertical centering, minimal noise
+        const noiseAx = Math.cos(na) * 0.14;
+        const noiseAy = Math.sin(na) * 0.14;
+        const centerY = (cy - p.y) / h * 0.55; // pulls toward mid-height
+        ax = noiseAx + 0.86;
+        ay = noiseAy + centerY;
+        fr = 0.965;
+      } else {
+        // Pre-confluence: noise field + pull toward confluence point
+        const pull = Math.min(0.8, 0.18 + distNorm * s.pull);
+        const ep = pull;
+        ax = Math.cos(na) * (1 - ep) + Math.cos(pa) * ep;
+        ay = Math.sin(na) * (1 - ep) + Math.sin(pa) * ep;
+        fr = 0.92;
+      }
       p.vx = p.vx * fr + ax * 0.7 * breath;
       p.vy = p.vy * fr + ay * 0.5 * breath;
 
@@ -128,12 +139,16 @@
       const aa = ar < 0.25 ? ar * 4 : ar > 0.75 ? Math.max(0, 1 - (ar - 0.75) * 4) : 1;
 
       ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${(s.alpha * aa).toFixed(3)})`;
-      ctx.fillRect(p.x, p.y, 1.4, 1.4);
+      const radius = post ? 1.8 : 1.3;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+      ctx.fill();
 
       if (p.x > w + 4 || p.x < -10 || p.y < -20 || p.y > h + 20 || p.age > p.life) {
         Object.assign(p, spawn(s, false));
       }
     }
+    ctx.filter = 'none';
 
     raf = requestAnimationFrame(frame);
   }
