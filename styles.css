@@ -571,9 +571,9 @@ a { color: inherit; text-decoration: none; }
 
 .premise {
   background: var(--cream);
-  min-height: 92vh;
+  min-height: 52vh;
   display: grid; place-items: center;
-  padding: 120px 32px;
+  padding: 88px 32px;
   position: relative;
 }
 .premise-inner {
@@ -601,7 +601,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.12;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin: 0 0 80px;
+  margin: 0 0 60px;
   text-wrap: balance;
 }
 .premise h2 em { font-style: italic; color: var(--teal-deep); }
@@ -618,7 +618,7 @@ a { color: inherit; text-decoration: none; }
    ───────────────────────────────────────────────────────────── */
 
 .section {
-  padding: 140px 0;
+  padding: 108px 0;
   position: relative;
 }
 .section-cream { background: var(--cream); }
@@ -666,6 +666,7 @@ a { color: inherit; text-decoration: none; }
 /* river-line connector */
 .river-line {
   position: relative;
+  z-index: 1;
   margin: 0 auto 56px;
   max-width: var(--max);
   padding: 0 32px;
@@ -1061,7 +1062,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   background: var(--basalt);
   color: var(--fog);
-  padding: 140px 32px;
+  padding: 108px 32px;
   overflow: hidden;
 }
 .story::before {
@@ -1160,7 +1161,7 @@ a { color: inherit; text-decoration: none; }
    Contact / footer
    ───────────────────────────────────────────────────────────── */
 
-.contact { background: var(--cream); padding: 140px 0 60px; }
+.contact { background: var(--cream); padding: 108px 0 60px; }
 .contact-head { text-align: center; margin-bottom: 60px; max-width: 720px; margin-left: auto; margin-right: auto; }
 .contact-head h2 {
   font-family: var(--serif);
@@ -1296,3 +1297,100 @@ a { color: inherit; text-decoration: none; }
 .italic-amber { font-style: italic; color: var(--amber); }
 .italic-teal  { font-style: italic; color: var(--teal-deep); }
 .italic-fog   { font-style: italic; color: var(--fog); }
+
+/* ─────────────────────────────────────────────────────────────
+   Dark-section step cards (How it Works now dark)
+   ───────────────────────────────────────────────────────────── */
+
+.section-dark .step {
+  background: var(--basalt-lift);
+  border-color: var(--rule-dark);
+  color: var(--fog);
+}
+.section-dark .step-num { color: var(--river-tolt); }
+.section-dark .step-num::after { background: var(--rule-dark); }
+.section-dark .step h3 { color: var(--fog); }
+.section-dark .step h3 em { color: var(--amber); }
+.section-dark .step p { color: rgba(232,228,216,.68); }
+.section-dark .step-mark { border-color: var(--rule-dark); color: rgba(168,200,196,0.5); }
+.section-dark .step:hover { border-color: rgba(168,200,196,0.28); box-shadow: 0 4px 28px rgba(0,0,0,0.35); }
+.section-dark .step:hover .step-mark { background: var(--teal-deep); border-color: var(--teal-deep); color: var(--fog); }
+
+/* ─────────────────────────────────────────────────────────────
+   Dark-section serve cards (Who We Serve now dark)
+   ───────────────────────────────────────────────────────────── */
+
+.section-dark .serve-grid {
+  background: var(--rule-dark);
+  border-color: var(--rule-dark);
+}
+.section-dark .serve-card { background: var(--basalt-lift); color: var(--fog); }
+.section-dark .serve-card:hover { background: var(--basalt-soft); }
+.section-dark .serve-num { color: var(--amber); }
+.section-dark .serve-card:hover .serve-num { color: var(--river-tolt); }
+.section-dark .serve-card h4 { color: var(--fog); }
+.section-dark .serve-card p { color: rgba(232,228,216,.68); }
+.section-dark .serve-card-tag { color: rgba(168,200,196,0.65); }
+.section-dark .serve-card-tag::before { background: rgba(168,200,196,0.4); }
+
+/* ─────────────────────────────────────────────────────────────
+   Light-section pillar cards (Why Tulq now cream)
+   ───────────────────────────────────────────────────────────── */
+
+.section-cream .pillars {
+  background: var(--rule);
+  border-color: var(--rule);
+}
+.section-cream .pillar {
+  background: var(--cream-card);
+  color: var(--ink);
+  transition: transform 0.4s var(--ease-out-soft), box-shadow 0.4s, background 0.3s;
+}
+.section-cream .pillar:hover { background: #fff; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.section-cream .pillar-num { color: var(--amber); }
+.section-cream .pillar-num::after { background: var(--amber); }
+.section-cream .pillar h3 { color: var(--ink); }
+.section-cream .pillar h3 em { color: var(--teal-deep); }
+.section-cream .pillar p { color: var(--ink-soft); }
+.section-cream .pillar-source { border-top-color: var(--rule-soft); color: var(--ink-mute); }
+
+/* ─────────────────────────────────────────────────────────────
+   Story: light (fog) variant
+   ───────────────────────────────────────────────────────────── */
+
+.story.story-light {
+  background: var(--fog);
+  color: var(--ink);
+}
+.story.story-light::before {
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 30%, rgba(217,138,74,0.09), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(58,90,74,0.1), transparent 60%);
+}
+.story.story-light::after { opacity: 0.04; }
+.story.story-light .story-glyph { color: var(--cedar); }
+.story.story-light .story-glyph small { color: var(--ink-mute); }
+.story.story-light .story-body h2 { color: var(--ink); }
+.story.story-light .story-body h2 em { color: var(--teal-deep); }
+.story.story-light .story-body p { color: var(--ink-soft); }
+.story.story-light .story-body p em { color: var(--teal-deep); }
+.story.story-light .story-pull { color: var(--teal-deep); border-left-color: var(--cedar); }
+.story.story-light .story-link { color: var(--ink); border-bottom-color: var(--rule); }
+.story.story-light .story-link:hover { color: var(--teal-deep); border-bottom-color: var(--teal-deep); }
+.story.story-light .story-link svg path { stroke: currentColor; }
+
+/* ─────────────────────────────────────────────────────────────
+   Contact: dark variant (inherits section-dark atmosphere)
+   ───────────────────────────────────────────────────────────── */
+
+.contact.contact-dark { position: relative; overflow: hidden; }
+.contact.contact-dark .contact-head h2 { color: var(--fog); }
+.contact.contact-dark .contact-head h2 em { color: var(--amber); }
+.contact.contact-dark .contact-head p { color: rgba(232,228,216,0.72); }
+.contact.contact-dark .cap {
+  background: var(--basalt-soft);
+  border: 1px solid var(--rule-dark);
+}
+.contact.contact-dark .foot { border-top-color: var(--rule-dark); }
+.contact.contact-dark .foot-brand { color: var(--fog); }
+.contact.contact-dark .foot-right { color: rgba(232,228,216,0.45); }
