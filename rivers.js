@@ -1,8 +1,8 @@
 /* ─────────────────────────────────────────────────────────────
    Tulq — Two Rivers Canvas
    Canvas 2D flow-field with two particle populations converging
-   at ~60% width. After convergence both streams interpolate toward
-   fog — a tone neither current contained alone.
+   at ~60% width, then branching into a braided delta of thin
+   tributary channels that fan across the full canvas height.
    Motion paced to a 5-second resting-breath cycle.
    ───────────────────────────────────────────────────────────── */
 
@@ -20,9 +20,13 @@
   const BG   = [28, 38, 40];
   const CX = 0.62, CY = 0.50;
   const TRAIL = 0.045;
-  const BLEND_HALF = 0.12;   // smoothstep window half-width around confluence
-  const MAX_SPEED  = 6;
+  const BLEND_HALF = 0.12;
+  const MAX_SPEED  = 5;
   const TWO_PI     = Math.PI * 2;
+
+  // Braided delta parameters
+  const NUM_CHANNELS    = 11;    // number of distinct tributary channels
+  const CHANNEL_SPREAD  = 0.80;  // channels fan across this fraction of canvas height
 
   let w, h, dpr, cx, cy;
   let t0 = performance.now();
@@ -32,6 +36,15 @@
   function smoothstep(edge0, edge1, x) {
     const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
     return t * t * (3 - 2 * t);
+  }
+
+  // Return the target y for a given channel index at a moment in time
+  function channelTargetY(channel, time, seed) {
+    const frac = (channel / (NUM_CHANNELS - 1)) - 0.5; // -0.5 … +0.5
+    const baseY = cy + frac * h * CHANNEL_SPREAD;
+    // Each channel undulates gently and independently
+    const undulation = h * 0.022 * Math.sin(time * 0.28 + seed * 2.1 + channel * 1.37);
+    return baseY + undulation;
   }
 
   function setup() {
@@ -55,14 +68,35 @@
 
     particles = [];
     const half = Math.floor(count / 2);
-    for (let i = 0; i < half; i++)       particles.push(spawn(TOLT, true));
+    for (let i = 0; i < half; i++)         particles.push(spawn(TOLT, true));
     for (let i = 0; i < count - half; i++) particles.push(spawn(SNOQ, true));
   }
 
   function spawn(stream, randomX) {
+    // Each particle is assigned a permanent channel for post-confluence routing
+    const channel = Math.floor(Math.random() * NUM_CHANNELS);
+
+    let x, y;
+    if (randomX) {
+      // Spread initial particles across the FULL canvas so it looks beautiful from frame 0
+      x = Math.random() * w;
+      if (x < cx) {
+        // Pre-confluence zone: near the stream band
+        y = h * stream.yF + (Math.random() - 0.5) * h * stream.sF;
+      } else {
+        // Post-confluence zone: place particle near its channel's resting position
+        const frac = (channel / (NUM_CHANNELS - 1)) - 0.5;
+        const baseY = cy + frac * h * CHANNEL_SPREAD;
+        y = baseY + (Math.random() - 0.5) * h * 0.03;
+      }
+    } else {
+      x = Math.random() * w * 0.08;
+      y = h * stream.yF + (Math.random() - 0.5) * h * stream.sF;
+    }
+
     return {
-      x:        randomX ? Math.random() * w * 0.5 : Math.random() * w * 0.08,
-      y:        h * stream.yF + (Math.random() - 0.5) * h * stream.sF,
+      x,
+      y,
       vx:       stream.vBase * (0.6 + Math.random() * 0.4),
       vy:       (Math.random() - 0.5) * 0.2,
       age:      Math.random() * 200,
@@ -71,6 +105,7 @@
       alphaMod: 0.7 + Math.random() * 0.6,
       sizeMod:  0.75 + Math.random() * 0.5,
       s:        stream,
+      channel,
     };
   }
 
@@ -78,7 +113,6 @@
     const n1 =
       Math.sin(x * 0.0028 + time * 0.18) * Math.cos(y * 0.0042 + time * 0.13) +
       Math.sin(x * 0.0061 + y * 0.0051 + time * 0.21) * 0.6;
-    // Second octave — braided, slower
     const n2 = Math.sin(x * 0.0014 + y * 0.0022 + time * 0.09) * 0.4;
     return (n1 + n2) * Math.PI * 0.35;
   }
@@ -87,7 +121,6 @@
     ctx.fillStyle = `rgb(${BG.join(',')})`;
     ctx.fillRect(0, 0, w, h);
 
-    // Soft river bands for both streams
     const gt = ctx.createLinearGradient(0, 0, w, 0);
     gt.addColorStop(0,    'rgba(168,200,196,0)');
     gt.addColorStop(0.35, 'rgba(168,200,196,0.35)');
@@ -104,7 +137,6 @@
     ctx.fillStyle = gs;
     ctx.fillRect(0, h * 0.66, w, h * 0.12);
 
-    // Fog bloom at confluence
     const bloom = ctx.createRadialGradient(cx, cy, 0, cx, cy, w * 0.18);
     bloom.addColorStop(0,   'rgba(232,228,216,0.5)');
     bloom.addColorStop(0.5, 'rgba(232,228,216,0.15)');
@@ -121,7 +153,6 @@
     const time   = (performance.now() - t0) / 1000;
     const breath = 1 + 0.18 * Math.sin(time * Math.PI * 2 / 5);
 
-    // Trail fade in source-over so it composites normally over the dark BG
     ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = `rgba(${BG[0]},${BG[1]},${BG[2]},${TRAIL})`;
     ctx.fillRect(0, 0, w, h);
@@ -131,7 +162,6 @@
     const blendLo  = cx - w * BLEND_HALF;
     const blendHi  = cx + w * BLEND_HALF;
 
-    // Additive blending: overlapping particles bloom into volumetric glow
     ctx.globalCompositeOperation = 'lighter';
 
     for (let i = 0; i < particles.length; i++) {
@@ -141,23 +171,24 @@
       const pa       = Math.atan2(cy - p.y, cx - p.x);
       const distNorm = Math.abs(p.x - cx) / w + Math.abs(p.y - cy) / h;
 
-      // Smooth blend 0→1 across the confluence window
       const mix = smoothstep(blendLo, blendHi, p.x);
 
-      // Pre-confluence: noise field blended with pull toward confluence point
+      // Pre-confluence: flow field + pull toward confluence
       const pull  = Math.min(0.8, 0.18 + distNorm * s.pull);
       const preAx = Math.cos(na) * (1 - pull) + Math.cos(pa) * pull;
       const preAy = Math.sin(na) * (1 - pull) + Math.sin(pa) * pull;
       const preFr = 0.92;
 
-      // Post-confluence: rightward drift with band undulation replacing hard centerY
-      const bandOffset = h * 0.08 * Math.sin(time * 0.4 + p.seed);
-      const targetY    = cy + bandOffset;
-      const postAx     = Math.cos(na) * 0.14 + 0.86;
-      const postAy     = Math.sin(na) * 0.14 + (targetY - p.y) / h * 0.55;
-      const postFr     = 0.965;
+      // Post-confluence: branch into assigned tributary channel
+      // Strong pull toward the channel's y, gentle noise keeps strands organic
+      const targetY  = channelTargetY(p.channel, time, p.seed);
+      const dy       = targetY - p.y;
+      // Proportional pull — enough to stay in channel without oscillating
+      const chPull   = Math.sign(dy) * Math.min(0.6, Math.abs(dy) / h * 1.8);
+      const postAx   = Math.cos(na) * 0.06 + 0.94; // strongly rightward
+      const postAy   = Math.sin(na) * 0.06 + chPull;
+      const postFr   = 0.97;
 
-      // Continuously interpolate all parameters
       const ax = preAx * (1 - mix) + postAx * mix;
       const ay = preAy * (1 - mix) + postAy * mix;
       const fr = preFr * (1 - mix) + postFr * mix;
@@ -165,30 +196,29 @@
       p.vx = p.vx * fr + ax * 0.7 * breath;
       p.vy = p.vy * fr + ay * 0.5 * breath;
 
-      // Cap speed so particles don't bunch into wave fronts post-confluence
       const spd = Math.hypot(p.vx, p.vy);
       if (spd > MAX_SPEED) { const sc = MAX_SPEED / spd; p.vx *= sc; p.vy *= sc; }
 
       p.x += p.vx; p.y += p.vy; p.age++;
 
-      // Color: stream hue → FOG as particle moves rightward past fogStart
+      // Color: stream hue → FOG as particle moves past fogStart
       const fT = p.x < fogStart ? 0 : Math.min(1, (p.x - fogStart) / (fogEnd - fogStart));
       const cr  = s.color[0] * (1 - fT) + FOG[0] * fT;
       const cg  = s.color[1] * (1 - fT) + FOG[1] * fT;
       const cb  = s.color[2] * (1 - fT) + FOG[2] * fT;
 
-      // Life alpha: fade in / hold / fade out
       const ar        = p.age / p.life;
       const lifeAlpha = ar < 0.25 ? ar * 4 : ar > 0.75 ? Math.max(0, 1 - (ar - 0.75) * 4) : 1;
-
-      // Taper toward right canvas edge so particles dissolve instead of exiting hard
-      const edgeFade = p.x > w * 0.85 ? Math.max(0, 1 - (p.x - w * 0.85) / (w * 0.15)) : 1;
+      const edgeFade  = p.x > w * 0.85 ? Math.max(0, 1 - (p.x - w * 0.85) / (w * 0.15)) : 1;
 
       const alpha = s.alpha * lifeAlpha * edgeFade * p.alphaMod;
 
-      // Soft circle — radius scales with breath and post-confluence widening
-      const radius    = (1.2 + 1.2 * (mix * 0.5 + 0.5)) * breath * p.sizeMod;
-      // Scale alpha down for 'lighter' blending; overlapping cores will naturally bloom
+      // Post-confluence: shrink particles so channels look like thin thread-like rivers
+      // Pre-confluence: normal breathing size
+      const baseSz      = 1.2 + 1.2 * (mix * 0.5 + 0.5);
+      const channelTaper = mix > 0 ? 1 - mix * 0.55 : 1; // shrink as channels separate
+      const radius      = baseSz * channelTaper * breath * p.sizeMod;
+
       const drawAlpha = Math.min(1, alpha * 0.5);
 
       ctx.fillStyle = `rgba(${cr | 0},${cg | 0},${cb | 0},${drawAlpha.toFixed(3)})`;
@@ -201,9 +231,7 @@
       }
     }
 
-    // Restore so the next frame's trail fillRect composites normally
     ctx.globalCompositeOperation = 'source-over';
-
     raf = requestAnimationFrame(frame);
   }
 
