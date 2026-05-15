@@ -1136,7 +1136,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 80px;
   padding: 40px 0 32px;
   border-top: 1px solid var(--rule-soft);
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: end;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.12em;
@@ -1150,20 +1150,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 17px; letter-spacing: -0.01em;
   text-transform: none;
 }
-.foot-mid { text-align: center; line-height: 1.6; }
-.foot-mid em { font-family: var(--serif); font-style: italic; font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
 .foot-right { text-align: right; }
-.foot-disclaimer {
-  grid-column: 1 / -1;
-  border-top: 1px dashed var(--rule);
-  margin-top: 14px; padding-top: 22px;
-  font-family: var(--serif); font-style: italic;
-  font-size: 13px;
-  text-transform: none; letter-spacing: 0;
-  color: var(--ink-mute);
-  text-align: center;
-  line-height: 1.55;
-}
 @media (max-width: 760px) {
   .foot { grid-template-columns: 1fr; text-align: center; }
   .foot-brand { justify-content: center; }
