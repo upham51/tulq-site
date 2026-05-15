@@ -485,75 +485,51 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 
-/* River photo — Story section: full-bleed bottom-right */
+/* River photo — full-bleed across section */
 .scene-photo--river {
-  top: 0; right: 0;
-  width: 55%; height: 100%;
   opacity: 0;
   animation: scenePhotoFade 1.2s 0.6s ease forwards;
 }
 .scene-photo--river img {
   mix-blend-mode: luminosity;
-  opacity: 0.18;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0,0,0,0.4) 14%,
-    black 34%,
-    black 82%,
-    transparent 100%
-  ),
-  linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
+  opacity: 0.22;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
-/* Totem — Why Tulq section: right column, portrait */
+/* Totem — full-bleed, portrait anchored right */
 .scene-photo--totem {
-  top: 0; right: 0;
-  width: 36%; height: 100%;
   opacity: 0;
   animation: scenePhotoFade 1.2s 0.4s ease forwards;
 }
 .scene-photo--totem img {
-  object-position: center top;
+  object-position: right center;
   mix-blend-mode: luminosity;
-  opacity: 0.14;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0,0,0,0.3) 12%,
-    black 30%,
-    black 80%,
-    transparent 100%
-  ),
-  linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%);
 }
 
-/* Pine trees — Numbers section: left atmospheric column */
+/* Pine trees — full-bleed across section */
 .scene-photo--pines {
-  top: 0; left: 0;
-  width: 32%; height: 100%;
   opacity: 0;
   animation: scenePhotoFade 1.2s 0.4s ease forwards;
 }
 .scene-photo--pines img {
   object-position: center;
   mix-blend-mode: luminosity;
-  opacity: 0.13;
-  mask-image: linear-gradient(
-    to left,
-    transparent 0%,
-    rgba(0,0,0,0.3) 12%,
-    black 30%,
-    black 78%,
-    transparent 100%
-  ),
-  linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
+  opacity: 0.17;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%);
+}
+
+/* Contact / footer moody river — full-bleed */
+.scene-photo--contact {
+  opacity: 0;
+  animation: scenePhotoFade 1.2s 0.4s ease forwards;
+}
+.scene-photo--contact img {
+  object-position: center 40%;
+  mix-blend-mode: luminosity;
+  opacity: 0.2;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
 }
 
 @keyframes scenePhotoFade {
@@ -1161,7 +1137,7 @@ a { color: inherit; text-decoration: none; }
    Contact / footer
    ───────────────────────────────────────────────────────────── */
 
-.contact { background: var(--cream); padding: 108px 0 60px; }
+.contact { background: var(--cream); padding: 108px 0 80px; }
 .contact-head { text-align: center; margin-bottom: 60px; max-width: 720px; margin-left: auto; margin-right: auto; }
 .contact-head h2 {
   font-family: var(--serif);
@@ -1289,6 +1265,152 @@ a { color: inherit; text-decoration: none; }
   .foot-brand { justify-content: center; }
   .foot-right { text-align: center; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Site footer — standalone, stunning
+   ───────────────────────────────────────────────────────────── */
+
+.site-footer {
+  background: var(--ink);
+  color: var(--fog);
+  position: relative;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 0% 100%, rgba(58,90,74,0.5), transparent 55%),
+    radial-gradient(ellipse 40% 60% at 100% 0%, rgba(217,138,74,0.1), transparent 55%);
+  pointer-events: none;
+}
+.site-footer > * { position: relative; z-index: 1; }
+
+.site-footer-river {
+  height: 44px;
+  padding: 0 32px;
+  opacity: 0.35;
+  border-bottom: 1px solid rgba(232,228,216,0.06);
+}
+.site-footer-river svg { width: 100%; height: 100%; display: block; }
+.site-footer-river .path-tolt {
+  fill: none; stroke: var(--river-tolt); stroke-width: 1;
+  stroke-dasharray: 6 8; animation: river-drift-a 22s linear infinite;
+}
+.site-footer-river .path-snoq {
+  fill: none; stroke: var(--river-snoq); stroke-width: 1;
+  stroke-dasharray: 4 6; animation: river-drift-b 28s linear infinite;
+}
+
+.site-footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.site-footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+  padding: 72px 0 64px;
+  border-bottom: 1px solid rgba(232,228,216,0.08);
+}
+
+.site-footer-brand { display: flex; flex-direction: column; gap: 0; }
+.site-footer-brand .brand-mark {
+  width: 52px; height: 52px; font-size: 24px;
+  margin-bottom: 20px;
+}
+.site-footer-brand-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fog);
+  margin: 0 0 12px;
+}
+.site-footer-tagline {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(232,228,216,0.45);
+  margin-bottom: 32px;
+}
+.site-footer-mission {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(232,228,216,0.6);
+  max-width: 300px;
+}
+
+.site-footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding-top: 8px;
+}
+.site-footer-col { display: flex; flex-direction: column; }
+.site-footer-col-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.site-footer-col-head::after { content: ""; flex: 1; height: 1px; background: rgba(217,138,74,0.25); }
+.site-footer-col a {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(232,228,216,0.6);
+  padding: 7px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-footer-col a:hover { color: var(--fog); border-bottom-color: rgba(232,228,216,0.15); }
+
+.site-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 0 36px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232,228,216,0.35);
+}
+.site-footer-legal { display: flex; gap: 32px; align-items: center; }
+.site-footer-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(232,228,216,0.25);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+@media (max-width: 860px) {
+  .site-footer-top { grid-template-columns: 1fr; gap: 48px; padding: 56px 0 48px; }
+  .site-footer-nav { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .site-footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+  .site-footer-legal { flex-direction: column; gap: 8px; }
+}
+@media (max-width: 540px) {
+  .site-footer-nav { grid-template-columns: 1fr; }
+  .site-footer-inner { padding: 0 24px; }
+  .site-footer-river { padding: 0 24px; }
+}
+
+/* Remove old .foot styles used inside contact — now standalone footer handles this */
 
 /* ─────────────────────────────────────────────────────────────
    Misc helpers
