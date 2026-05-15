@@ -1,3 +1,4 @@
 # Cloudflare Pages redirects
-/story  /story.html  200
-/our-story  /story.html  301
+# Pages already auto-serves /story for /story.html and 308-redirects /story.html → /story,
+# so /story → /story.html rewrites cause an infinite loop. Only add non-conflicting aliases here.
+/our-story  /story  301
