@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects
+/story  /story.html  200
+/our-story  /story.html  301
