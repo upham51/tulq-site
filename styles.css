@@ -540,17 +540,17 @@ a { color: inherit; text-decoration: none; }
   mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
-/* Why Tulq — headdress portrait, warm color bloom on cream */
+/* Why Tulq — headdress portrait, very subtle wash on cream */
 .scene-photo--why {
   opacity: 0;
   animation: scenePhotoFade 1.2s 0.4s ease forwards;
 }
 .scene-photo--why img {
   object-position: center top;
-  mix-blend-mode: color;
-  filter: saturate(2.2) contrast(1.15) brightness(1.05);
-  opacity: 0.52;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 84%, transparent 100%);
+  mix-blend-mode: luminosity;
+  filter: grayscale(60%) contrast(0.9) brightness(1.05);
+  opacity: 0.12;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
 }
 
 /* Contact / footer moody river — full-bleed */
