@@ -1501,6 +1501,18 @@ a { color: inherit; text-decoration: none; }
 .story.story-light .story-link:hover { color: var(--teal-deep); border-bottom-color: var(--teal-deep); }
 .story.story-light .story-link svg path { stroke: currentColor; }
 
+/* Story section background photo (light variant) */
+.scene-photo--story {
+  opacity: 0;
+  animation: scenePhotoFade 1.2s 0.5s ease forwards;
+}
+.scene-photo--story img {
+  object-position: center 30%;
+  mix-blend-mode: multiply;
+  opacity: 0.11;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
 /* ─────────────────────────────────────────────────────────────
    Contact: dark variant (inherits section-dark atmosphere)
    ───────────────────────────────────────────────────────────── */
