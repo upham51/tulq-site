@@ -604,9 +604,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-mute);
 }
 
-/* ── Petroglyph variant — full-bleed image, words cut through ── */
+/* ── Petroglyph variant — subtle image behind cream wash ── */
 .premise--petroglyph {
-  background: #1a1410;
+  background: var(--cream);
   min-height: 60vh;
 }
 .premise--petroglyph::before {
@@ -616,10 +616,10 @@ a { color: inherit; text-decoration: none; }
   z-index: 1;
   background:
     linear-gradient(to bottom,
-      rgba(14, 10, 8, 0.78) 0%,
-      rgba(14, 10, 8, 0.42) 40%,
-      rgba(14, 10, 8, 0.42) 60%,
-      rgba(14, 10, 8, 0.78) 100%
+      rgba(245, 241, 234, 0.82) 0%,
+      rgba(245, 241, 234, 0.62) 40%,
+      rgba(245, 241, 234, 0.62) 60%,
+      rgba(245, 241, 234, 0.82) 100%
     );
   pointer-events: none;
 }
@@ -627,34 +627,15 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   z-index: 2;
 }
-.premise--petroglyph .premise-eyebrow-top {
-  color: rgba(200, 185, 165, 0.75);
-}
-.premise--petroglyph .premise-eyebrow-top::before,
-.premise--petroglyph .premise-eyebrow-top::after {
-  background: rgba(200, 185, 165, 0.28);
-}
-.premise--petroglyph h2 {
-  color: #f2ece2;
-  text-shadow:
-    0 2px 32px rgba(0, 0, 0, 0.7),
-    0 1px 6px rgba(0, 0, 0, 0.5);
-}
-.premise--petroglyph h2 em {
-  color: var(--river-tolt);
-  font-style: italic;
-}
-.premise--petroglyph .premise-foot {
-  color: rgba(200, 185, 165, 0.65);
-}
 .scene-photo--petroglyph {
   opacity: 0;
   animation: scenePhotoFade 1s 0.1s var(--ease-out-soft) forwards;
 }
 .scene-photo--petroglyph img {
   object-position: center 35%;
-  opacity: 0.88;
-  mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 /* ─────────────────────────────────────────────────────────────
