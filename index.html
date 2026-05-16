@@ -639,7 +639,7 @@
   if (!reduce && window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('[data-magnetic]').forEach(btn => {
       const strength = 10; // px
-      btn.style.transition = btn.style.transition || 'transform .25s var(--ease-out-soft)';
+      btn.style.transition = btn.style.transition || 'transform .12s var(--ease-out-soft)';
       btn.addEventListener('pointermove', (ev) => {
         const r = btn.getBoundingClientRect();
         const dx = ev.clientX - (r.left + r.width / 2);
