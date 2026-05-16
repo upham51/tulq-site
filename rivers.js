@@ -21,8 +21,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── Stream definitions ── */
-  const TOLT = { yF: 0.04, sF: 0.08, color: [168, 200, 196], pull: 0.54, vBase: 1.2, alpha: 0.52 };
-  const SNOQ = { yF: 0.96, sF: 0.08, color: [107, 138, 150], pull: 0.58, vBase: 1.0, alpha: 0.46 };
+  const TOLT = { yF: 0.07, sF: 0.22, color: [168, 200, 196], pull: 0.50, vBase: 1.2, alpha: 0.48 };
+  const SNOQ = { yF: 0.93, sF: 0.22, color: [107, 138, 150], pull: 0.54, vBase: 1.0, alpha: 0.42 };
   const FOG  = [232, 228, 216];
   const BG   = [28, 38, 40];
 
@@ -35,7 +35,7 @@
 
   /* ── Delta fan: 15 channels, gaussian-weighted toward center ── */
   const NUM_CHANNELS    = 15;
-  const MAX_DELTA_ANGLE = 1.10;      // radians – tighter than before, less rectangular
+  const MAX_DELTA_ANGLE = 0.95;      // tighter fan = softer outer edge
 
   let w, h, dpr, cx, cy;
   let t0 = performance.now();
@@ -112,14 +112,14 @@
     if (initial) {
       /* Pre-confluence zone only – never right of confluence */
       x   = Math.random() * cx * 0.97;
-      y   = h * stream.yF + (Math.random() - 0.5) * h * stream.sF * 1.3;
+      y   = h * stream.yF + (Math.random() - 0.5) * h * stream.sF * 2.2;
       /* Age proportional to x so they look mid-journey, not newborn */
       const life = 350 + Math.random() * 450;
       age = (x / cx) * life * 0.60;
     } else {
       /* Respawn: always enter from left edge in stream's entry band */
       x   = Math.random() * w * 0.06;
-      y   = h * stream.yF + (Math.random() - 0.5) * h * stream.sF * 1.4;
+      y   = h * stream.yF + (Math.random() - 0.5) * h * stream.sF * 2.4;
       age = 0;
     }
 
@@ -224,8 +224,8 @@
       const dConfl    = Math.hypot(p.x - cx, p.y - cy) / w;
       const turbFrac  = dConfl < 0.09 ? (1 - dConfl / 0.09) * 0.38 : 0;
 
-      const postAx = Math.cos(na) * (0.19 + turbFrac) + Math.cos(chAngle) * (0.81 - turbFrac);
-      const postAy = Math.sin(na) * (0.19 + turbFrac) + Math.sin(chAngle) * (0.81 - turbFrac) + chCorr;
+      const postAx = Math.cos(na) * (0.38 + turbFrac) + Math.cos(chAngle) * (0.62 - turbFrac);
+      const postAy = Math.sin(na) * (0.38 + turbFrac) + Math.sin(chAngle) * (0.62 - turbFrac) + chCorr * 0.5;
       const postFr = 0.971;
 
       const ax = preAx * (1 - mix) + postAx * mix;
@@ -258,10 +258,14 @@
       const centerY       = p.x < cx
         ? h * s.yF
         : cy + (p.x - cx) * Math.tan(channelBaseAngle(p.channel));
-      const crossDist     = Math.abs(p.y - centerY) / (h * s.sF * 2.8);
-      const gaussFade     = Math.exp(-crossDist * crossDist * 2.2);
+      const crossDist     = Math.abs(p.y - centerY) / (h * s.sF * 5.5);
+      const gaussFade     = Math.exp(-crossDist * crossDist * 0.9);
 
-      let alpha = s.alpha * lifeAlpha * edgeFade * p.alphaMod * gaussFade;
+      /* Edge channels fade to near-zero so there is no hard outer boundary */
+      const chEdgeFrac = Math.abs(p.channel - (NUM_CHANNELS - 1) / 2) / ((NUM_CHANNELS - 1) / 2);
+      const chEdgeFade = 1 - chEdgeFrac * chEdgeFrac * 0.82;
+
+      let alpha = s.alpha * lifeAlpha * edgeFade * p.alphaMod * gaussFade * chEdgeFade;
 
       /* Shimmer / glint: sunlight catching the surface */
       if (p.shimmer) {
@@ -293,7 +297,7 @@
 
       if (fLen > 0.8 && fLen < 9) {
         ctx.strokeStyle = `rgba(${rStr},${gStr},${bStr},${aStr})`;
-        ctx.lineWidth   = radius * 1.85;
+        ctx.lineWidth   = radius * 0.85;
         ctx.beginPath();
         ctx.moveTo(p.px, p.py);
         ctx.lineTo(p.x,  p.y);
