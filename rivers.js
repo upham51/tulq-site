@@ -251,7 +251,7 @@
       /* ── Alpha compositing ── */
       const ar        = p.age / p.life;
       const lifeAlpha = ar < 0.25 ? ar * 4 : ar > 0.75 ? Math.max(0, 1 - (ar - 0.75) * 4) : 1;
-      const edgeFade  = p.x > w * 0.62 ? Math.max(0, 1 - (p.x - w * 0.62) / (w * 0.26)) : 1;
+      const edgeFade  = p.x > w * 0.92 ? Math.max(0, 1 - (p.x - w * 0.92) / (w * 0.12)) : 1;
 
       /* Gaussian cross-section: bright at stream center, fades at edges
          → organic edges instead of a rectangular slab of particles        */
