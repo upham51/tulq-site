@@ -398,6 +398,41 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost svg { transition: transform 0.2s var(--ease-out-soft); }
 .btn-ghost:hover svg { transform: translateX(3px); }
 
+/* Call soon button */
+.btn-call-soon { position: relative; gap: 6px; border: none; cursor: pointer; }
+.btn-call-phone { display: flex; align-items: center; }
+.btn-call-coming {
+  display: inline-block;
+  font-size: 0.65em;
+  font-style: normal;
+  opacity: 0.7;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+.btn-call-coming em { font-style: italic; }
+
+/* Ring-out animation on click */
+@keyframes call-ring {
+  0%   { transform: scale(1) rotate(0deg); }
+  15%  { transform: scale(1.15) rotate(-12deg); }
+  30%  { transform: scale(1.1) rotate(10deg); }
+  45%  { transform: scale(1.12) rotate(-8deg); }
+  60%  { transform: scale(1.08) rotate(6deg); }
+  75%  { transform: scale(1.04) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes coming-soon-pulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  40%  { opacity: 1;   transform: scale(1.18); color: var(--amber); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+.btn-call-soon.is-ringing .btn-call-phone {
+  animation: call-ring 0.55s var(--ease-out-soft);
+}
+.btn-call-soon.is-ringing .btn-call-coming {
+  animation: coming-soon-pulse 0.6s ease forwards;
+}
+
 /* Light-section variants */
 .btn-dark { background: var(--basalt); color: var(--fog); }
 .btn-dark:hover { transform: translateY(-2px); background: var(--cedar); }
