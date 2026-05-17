@@ -1527,6 +1527,24 @@ a { color: inherit; text-decoration: none; }
 /* Remove old .foot styles used inside contact — now standalone footer handles this */
 
 /* ─────────────────────────────────────────────────────────────
+   Mobile spacing — reduce vertical padding/margins on phones only
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 540px) {
+  .section { padding: 56px 0; }
+  .section-head { margin-bottom: 40px; }
+
+  .premise { padding: 48px 20px; min-height: unset; }
+  .premise-eyebrow-top { margin-bottom: 28px; }
+  .premise h2 { margin: 0 0 28px; }
+
+  .story { padding: 56px 20px; }
+
+  .contact { padding: 56px 0 40px; }
+  .contact-head { margin-bottom: 36px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
    Misc helpers
    ───────────────────────────────────────────────────────────── */
 
