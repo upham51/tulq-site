@@ -452,7 +452,7 @@ a { color: inherit; text-decoration: none; }
     min-height: 100vh;
     min-height: 100svh; /* excludes browser UI chrome on mobile */
   }
-  .hero-inner { padding: 88px 24px 80px; grid-template-columns: 1fr; }
+  .hero-inner { padding: 88px 24px 80px; grid-template-columns: 1fr; align-items: start; }
   .hero-meta { display: none; }
 }
 @media (max-width: 540px) {
