@@ -489,7 +489,7 @@ a { color: inherit; text-decoration: none; }
   }
   /* Split layout: text on the left, person visible on the right */
   .hero-inner {
-    padding: 64px 32px 80px;
+    padding: 110px 32px 80px;
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
@@ -518,7 +518,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 540px) {
   /* Single column on phones: text takes full width, image shows in bg */
   .hero-inner {
-    padding: 80px 20px 64px;
+    padding: 150px 20px 64px;
     grid-template-columns: 1fr;
     align-items: start;
   }
