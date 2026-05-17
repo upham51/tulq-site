@@ -21,8 +21,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── Stream definitions ── */
-  const TOLT = { yF: 0.07, sF: 0.22, color: [168, 200, 196], pull: 0.50, vBase: 1.2, alpha: 0.48 };
-  const SNOQ = { yF: 0.93, sF: 0.22, color: [107, 138, 150], pull: 0.54, vBase: 1.0, alpha: 0.42 };
+  const TOLT = { yF: 0.07, sF: 0.22, color: [168, 200, 196], pull: 0.50, vBase: 1.2, alpha: 0.34 };
+  const SNOQ = { yF: 0.93, sF: 0.22, color: [107, 138, 150], pull: 0.54, vBase: 1.0, alpha: 0.29 };
   const FOG  = [232, 228, 216];
   const BG   = [28, 38, 40];
 
@@ -251,7 +251,7 @@
       /* ── Alpha compositing ── */
       const ar        = p.age / p.life;
       const lifeAlpha = ar < 0.25 ? ar * 4 : ar > 0.75 ? Math.max(0, 1 - (ar - 0.75) * 4) : 1;
-      const edgeFade  = p.x > w * 0.87 ? Math.max(0, 1 - (p.x - w * 0.87) / (w * 0.13)) : 1;
+      const edgeFade  = p.x > w * 0.62 ? Math.max(0, 1 - (p.x - w * 0.62) / (w * 0.26)) : 1;
 
       /* Gaussian cross-section: bright at stream center, fades at edges
          → organic edges instead of a rectangular slab of particles        */
@@ -270,10 +270,10 @@
       /* Shimmer / glint: sunlight catching the surface */
       if (p.shimmer) {
         const pulse = Math.sin(time * 8.6 + p.seed * 5.4);
-        if (pulse > 0.82) alpha = Math.min(1.0, alpha * 3.8);
+        if (pulse > 0.82) alpha = Math.min(1.0, alpha * 2.4);
       }
 
-      const drawAlpha = Math.min(1, alpha * 0.54);
+      const drawAlpha = Math.min(1, alpha * 0.44);
       if (drawAlpha < 0.005) {
         if (p.x > w + 4 || p.x < -10 || p.y < -20 || p.y > h + 20 || p.age > p.life) {
           Object.assign(p, spawn(s, false));
