@@ -626,7 +626,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 900px) {
-  .scene-photo { display: none; }
+  .scene-photo--river img   { opacity: 0.13; }
+  .scene-photo--totem img   { opacity: 0.11; }
+  .scene-photo--pines img   { opacity: 0.10; }
+  .scene-photo--bio img     { opacity: 0.05; }
+  .scene-photo--why img     { opacity: 0.08; }
+  .scene-photo--contact img { opacity: 0.12; }
 }
 
 /* ─────────────────────────────────────────────────────────────
