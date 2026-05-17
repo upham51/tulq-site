@@ -448,10 +448,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 900px) {
-  .hero-inner { padding: 140px 28px 140px; grid-template-columns: 1fr; }
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh; /* excludes browser UI chrome on mobile */
+  }
+  .hero-inner { padding: 88px 24px 80px; grid-template-columns: 1fr; }
   .hero-meta { display: none; }
 }
 @media (max-width: 540px) {
+  .hero-inner { padding: 80px 20px 64px; }
+  .hero h1 { margin: 20px 0 24px; }
+  .hero-lede { font-size: 19px; margin: 0 0 32px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-ctas .btn { justify-content: center; }
   .hero-status, .hero-scroll { font-size: 10px; }
 }
 
