@@ -1343,23 +1343,27 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Contact section two-column split ──────────────────────── */
 .contact-split {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .cap {
   background: var(--basalt);
   color: var(--fog);
   border-radius: 22px;
-  padding: 28px 40px;
+  padding: 32px 44px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 48px;
+  justify-content: center;
+  gap: 36px;
   align-items: center;
   position: relative;
   overflow: hidden;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
 }
-.cap-body { flex: 1; }
+.cap-body { flex: 0 1 auto; max-width: 480px; }
 .cap::before {
   content: ""; position: absolute; inset: 0;
   background:
