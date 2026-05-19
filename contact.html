@@ -260,10 +260,62 @@ body {
     align-items: flex-start;
   }
 }
+
 @media (max-width: 600px) {
-  .cp-left-inner { padding: 100px 24px 40px; }
-  .cp-right { padding: 48px 20px 64px; }
-  .cf-grid { grid-template-columns: 1fr; }
+  /* Compact the left panel so users reach the form sooner */
+  .cp-left canvas { min-height: 260px; }
+  .cp-left-inner { padding: 76px 20px 28px; }
+  .cp-back { margin-bottom: 18px; font-size: 9.5px; }
+  .cp-heading .cap-eye { margin-bottom: 12px; }
+  .cp-heading h1 { font-size: clamp(36px, 11vw, 52px); margin-bottom: 0; }
+  .cp-tagline { display: none; }
+  .cp-people { display: none; }
+  .cp-creds { margin-top: 16px; }
+
+  /* Form panel */
+  .cp-right { padding: 36px 20px 56px; }
+  .cp-form-head { margin-bottom: 28px; }
+  .cp-form-head h2 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
+  .cp-form-head p { font-size: 14px; }
+
+  /* Single-column form grid — override with !important to beat any cascade */
+  .cf-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  /* Stack label above input clearly */
+  .cf-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+  .cf-grid .cf-field { margin-bottom: 18px !important; }
+
+  /* 16px prevents iOS auto-zoom on focus */
+  .cf-input {
+    font-size: 16px !important;
+    min-height: 52px !important;
+    padding: 14px 16px !important;
+  }
+  .cf-textarea { min-height: 130px !important; }
+
+  /* Full-width submit button */
+  .cf-foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .cf-foot .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Checkbox legibility */
+  .cf-check { margin: 4px 0 24px; }
+  .cf-check span { font-size: 14px; }
 }
 </style>
 </head>
