@@ -448,58 +448,61 @@
       <p>For contracting officers, partnership inquiries, and clinical questions: reach out directly. We answer our own phones.</p>
     </div>
 
-    <div class="contact-grid">
+    <!-- Contact form — no backend needed: uses Web3Forms (free).
+         Sign up at web3forms.com, enter your email, get a free access key,
+         then replace REPLACE_WITH_YOUR_WEB3FORMS_KEY below. -->
+    <div class="cf-wrap rise">
+      <div class="cf-header">
+        <div class="cap-eye">Send a message</div>
+        <p class="cf-byline">NAICS &amp; UEI registered · SAM.gov ready · Buy Indian Act qualified · 25 U.S.C. § 47</p>
+      </div>
 
-      <!-- Michael -->
-      <div class="contact-card rise">
-        <div class="leader-eye">Founder · CEO · President</div>
-        <h4>Michael Chavez Ross</h4>
-        <span class="leader-title">Snoqualmie tribal citizen · Government &amp; tribal enterprise leader</span>
-        <div class="contact-list">
-          <div class="leader-row">
-            <span class="leader-row-key">Email</span>
-            <span class="leader-row-val"><a href="mailto:ross1@tulqllc.com">ross1@tulqllc.com</a></span>
+      <form class="cf" id="cf" novalidate>
+        <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_KEY">
+        <input type="hidden" name="redirect" value="false">
+        <input type="hidden" name="subject" id="cf-subject" value="TULQ Contact Form">
+
+        <div class="cf-grid">
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Name <span aria-hidden="true">*</span></label>
+            <input class="cf-input" type="text" id="cf-name" name="name" required autocomplete="name">
           </div>
-          <div class="leader-row">
-            <span class="leader-row-key">LinkedIn</span>
-            <span class="leader-row-val"><a href="https://www.linkedin.com/in/michael-ross-7a019182/" target="_blank" rel="noopener">linkedin.com/in/michael-ross</a></span>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-email">Email <span aria-hidden="true">*</span></label>
+            <input class="cf-input" type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-org">Organization</label>
+            <input class="cf-input" type="text" id="cf-org" name="organization" autocomplete="organization">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-phone">Phone <span class="cf-opt">(optional)</span></label>
+            <input class="cf-input" type="tel" id="cf-phone" name="phone" autocomplete="tel">
           </div>
         </div>
-      </div>
 
-      <!-- Jayson -->
-      <div class="contact-card rise">
-        <div class="leader-eye">Clinical Director · RN, BSN</div>
-        <h4>Jayson Forrest Minagawa</h4>
-        <span class="leader-title">Multi-state ICU veteran · 11+ years acute &amp; critical care</span>
-        <div class="contact-list">
-          <div class="leader-row">
-            <span class="leader-row-key">Email</span>
-            <span class="leader-row-val"><a href="mailto:upham51@gmail.com">upham51@gmail.com</a></span>
-          </div>
-          <div class="leader-row">
-            <span class="leader-row-key">LinkedIn</span>
-            <span class="leader-row-val"><a href="https://www.linkedin.com/in/jayson-m-2054245b/" target="_blank" rel="noopener">linkedin.com/in/jayson-m</a></span>
-          </div>
+        <div class="cf-field">
+          <label class="cf-label" for="cf-msg">Message</label>
+          <textarea class="cf-input cf-textarea" id="cf-msg" name="message" rows="4"></textarea>
         </div>
-      </div>
 
-    </div>
+        <label class="cf-check">
+          <input type="checkbox" name="capability_statement" value="requested" id="cf-cap">
+          <span>I'm a contracting officer — please include the capability statement (NAICS, UEI, Buy Indian Act documentation)</span>
+        </label>
 
-    <div class="cap rise">
-      <div>
-        <div class="cap-eye">Capability statement</div>
-        <h4>Available on request, <em>for contracting officers.</em></h4>
-        <p>NAICS &amp; UEI registered. SAM.gov ready. Buy Indian Act qualification documentation furnished on contracting officer request.</p>
-      </div>
-      <a class="btn btn-amber" href="mailto:upham51@gmail.com?subject=TULQ%20Capability%20Statement%20Request" data-magnetic>
-        Request the statement
-        <span class="orb" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </a>
+        <div class="cf-foot">
+          <button class="btn btn-amber" type="submit" id="cf-btn">
+            Send message
+            <span class="orb" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
 
   </div>
@@ -688,6 +691,50 @@
       void callBtn.offsetWidth; // reflow to restart
       callBtn.classList.add('is-ringing');
       callBtn.addEventListener('animationend', () => callBtn.classList.remove('is-ringing'), { once: true });
+    });
+  }
+
+  /* ── Contact form submission via Web3Forms ─────────────── */
+  const cf = document.getElementById('cf');
+  if (cf) {
+    const cfBtn    = document.getElementById('cf-btn');
+    const cfStatus = document.getElementById('cf-status');
+    const cfCap    = document.getElementById('cf-cap');
+    const cfSubj   = document.getElementById('cf-subject');
+    const btnHTML  = cfBtn.innerHTML;
+
+    cfCap.addEventListener('change', () => {
+      cfSubj.value = cfCap.checked
+        ? 'TULQ Capability Statement Request'
+        : 'TULQ Contact Form';
+    });
+
+    cf.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (!cf.checkValidity()) { cf.reportValidity(); return; }
+      cfBtn.disabled = true;
+      cfBtn.textContent = 'Sending…';
+      cfStatus.textContent = '';
+      cfStatus.className = 'cf-status';
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(cf))),
+        });
+        const data = await res.json();
+        if (data.success) {
+          cfStatus.textContent = "Message sent — we'll be in touch shortly.";
+          cf.reset();
+        } else {
+          throw new Error(data.message || 'Submission error');
+        }
+      } catch {
+        cfStatus.textContent = 'Something went wrong. Email us directly at ross1@tulqllc.com';
+        cfStatus.classList.add('cf-status--error');
+      }
+      cfBtn.disabled = false;
+      cfBtn.innerHTML = btnHTML;
     });
   }
 
