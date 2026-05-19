@@ -206,6 +206,23 @@ body {
 }
 .cp-form-outer .cf-input:focus { border-color: rgba(217,138,74,0.6); }
 
+/* This page's narrow split panel makes 2-column grids cramped at every
+   viewport — single column is always the right call here. */
+.cp-form-outer .cf-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-bottom: 0;
+}
+.cp-form-outer .cf-grid .cf-field { margin-bottom: 16px; }
+/* Ensure labels always stack above inputs (belt-and-suspenders) */
+.cp-form-outer .cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* 16px prevents iOS Safari auto-zoom on focus — applies at all sizes */
+.cp-form-outer .cf-input { font-size: 16px; min-height: 50px; }
+
 /* Submit row */
 .cp-form-outer .cf-foot {
   padding-top: 8px;
