@@ -1698,6 +1698,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--basalt-soft);
   border: 1px solid var(--rule-dark);
 }
+.contact.contact-dark .contact-card { color: var(--ink); }
 .contact.contact-dark .foot { border-top-color: var(--rule-dark); }
 .contact.contact-dark .foot-brand { color: var(--fog); }
 .contact.contact-dark .foot-right { color: rgba(232,228,216,0.45); }
