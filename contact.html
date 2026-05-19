@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact · TULQ Health Services</title>
+<meta name="description" content="Reach the TULQ team directly. For contracting officers, clinical partnerships, and IHS program inquiries. NAICS & UEI registered. Buy Indian Act qualified.">
+<meta name="theme-color" content="#1c2628" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css?v=7" />
+<style>
+/* ═══════════════════════════════════════════════════════════
+   Contact page — full-bleed split layout
+   ═══════════════════════════════════════════════════════════ */
+
+body {
+  background: var(--basalt);
+  color: var(--fog);
+  margin: 0;
+}
+
+/* Nav always dark on this page */
+.nav-wrap { border-bottom-color: var(--rule-dark-soft) !important; }
+.nav-wrap .brand { color: var(--fog) !important; }
+.nav-wrap .nav-links a { color: rgba(232,228,216,0.6) !important; }
+.nav-wrap .nav-links a:hover { color: var(--fog) !important; background: rgba(232,228,216,0.06) !important; }
+
+/* ── Shell: two-column split ─────────────────────────────── */
+.cp-shell {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  min-height: 100vh;
+}
+
+/* ── LEFT PANEL ──────────────────────────────────────────── */
+.cp-left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--basalt);
+  border-right: 1px solid var(--rule-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rivers canvas fills the entire left panel */
+.cp-left canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* Gradient vignette over canvas so text pops */
+.cp-left::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(28,38,40,0.55) 0%, transparent 30%, rgba(28,38,40,0.85) 100%),
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(58,90,74,0.35), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(217,138,74,0.08), transparent 55%);
+}
+
+.cp-left-inner {
+  position: relative;
+  z-index: 2;
+  padding: 108px 48px 52px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Back link */
+.cp-back {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(232,228,216,0.38);
+  text-decoration: none; margin-bottom: 64px;
+  transition: color 0.22s var(--ease-out-soft);
+  width: fit-content;
+}
+.cp-back svg { transition: transform 0.22s var(--ease-out-soft); }
+.cp-back:hover { color: rgba(232,228,216,0.75); }
+.cp-back:hover svg { transform: translateX(-3px); }
+
+/* Main heading */
+.cp-heading {
+  flex: 1;
+}
+.cp-heading .cap-eye { margin-bottom: 20px; font-size: 11px; }
+.cp-heading h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(54px, 5.2vw, 76px);
+  line-height: 0.93;
+  letter-spacing: -0.032em;
+  color: var(--fog);
+  margin: 0 0 28px;
+}
+.cp-heading h1 em { font-style: italic; color: var(--amber); }
+.cp-tagline {
+  font-size: 15.5px;
+  color: rgba(232,228,216,0.48);
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0;
+}
+
+/* People */
+.cp-people {
+  border-top: 1px solid var(--rule-dark);
+  padding-top: 24px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cp-person {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(232,228,216,0.05);
+}
+.cp-person:last-child { border-bottom: none; }
+.cp-person-role {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(168,200,196,0.6);
+  margin-bottom: 5px;
+}
+.cp-person-name {
+  font-family: var(--serif); font-size: 20px; letter-spacing: -0.01em;
+  color: var(--fog); margin-bottom: 5px;
+}
+.cp-person-email {
+  font-family: var(--mono); font-size: 11.5px;
+  color: var(--river-tolt); text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+.cp-person-email:hover { border-bottom-color: rgba(168,200,196,0.5); }
+
+/* Credential tags */
+.cp-creds {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin-top: 28px;
+}
+.cp-cred {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(232,228,216,0.32);
+  padding: 5px 11px;
+  border: 1px solid rgba(232,228,216,0.08);
+  border-radius: 999px;
+}
+
+/* ── RIGHT PANEL ─────────────────────────────────────────── */
+.cp-right {
+  background: var(--basalt-soft);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 108px 72px 80px;
+  box-sizing: border-box;
+}
+
+.cp-form-outer {
+  width: 100%;
+  max-width: 560px;
+}
+
+.cp-form-head {
+  margin-bottom: 44px;
+}
+.cp-form-head .cap-eye { margin-bottom: 14px; font-size: 11px; }
+.cp-form-head h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 3.2vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  color: var(--fog);
+  margin: 0 0 14px;
+}
+.cp-form-head h2 em { font-style: italic; color: var(--river-tolt); }
+.cp-form-head p {
+  font-size: 15px;
+  color: rgba(232,228,216,0.45);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 440px;
+}
+
+/* Form override: no card background since right panel IS the bg */
+.cp-form-outer .cf-input {
+  background: rgba(28,38,40,0.5);
+  border-color: rgba(232,228,216,0.1);
+}
+.cp-form-outer .cf-input:focus { border-color: rgba(217,138,74,0.6); }
+
+/* Submit row */
+.cp-form-outer .cf-foot {
+  padding-top: 8px;
+}
+
+/* Success state */
+.cp-success {
+  display: none;
+  text-align: center;
+  padding: 48px 0;
+}
+.cp-success.is-visible { display: block; }
+.cp-success-glyph {
+  font-family: var(--serif);
+  font-size: 72px;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+.cp-success h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--fog);
+  margin: 0 0 12px;
+}
+.cp-success p {
+  font-size: 15px;
+  color: rgba(232,228,216,0.5);
+  margin: 0 0 32px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .cp-shell { grid-template-columns: 1fr; }
+
+  .cp-left {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--rule-dark);
+    padding: 0;
+  }
+  .cp-left canvas { height: 100%; min-height: 360px; }
+  .cp-left-inner { padding: 108px 32px 48px; }
+  .cp-back { margin-bottom: 36px; }
+  .cp-heading h1 { font-size: clamp(48px, 9vw, 72px); }
+
+  .cp-right {
+    padding: 60px 32px 80px;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 600px) {
+  .cp-left-inner { padding: 100px 24px 40px; }
+  .cp-right { padding: 48px 20px 64px; }
+  .cf-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════════════════════ -->
+<div class="nav-wrap" id="nav" data-mode="dark">
+  <nav class="nav">
+    <a href="/" class="brand" aria-label="TULQ home">
+      <span>TULQ</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/#leadership">Leadership</a>
+      <a href="/#serve">Who we serve</a>
+      <a href="/#why">Why TULQ</a>
+      <a href="/#story">Our story</a>
+    </div>
+    <a class="nav-cta" href="/" data-magnetic>
+      <span class="dot-live" aria-hidden="true"></span>
+      <span>The line</span>
+    </a>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SPLIT LAYOUT
+     ══════════════════════════════════════════════════════════ -->
+<div class="cp-shell">
+
+  <!-- ── LEFT: identity + rivers ──────────────────────────── -->
+  <aside class="cp-left">
+    <canvas id="rivers" aria-hidden="true"></canvas>
+    <div class="cp-left-inner">
+
+      <a class="cp-back" href="/">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to TULQ
+      </a>
+
+      <div class="cp-heading">
+        <div class="cap-eye">Contact &amp; capability</div>
+        <h1>Get in<br><em>touch.</em></h1>
+        <p class="cp-tagline">For contracting officers, clinical partnerships, and IHS program inquiries. We answer our own phones.</p>
+      </div>
+
+      <div class="cp-people">
+        <div class="cp-person">
+          <div class="cp-person-role">Founder · CEO · President</div>
+          <div class="cp-person-name">Michael Chavez Ross</div>
+          <a class="cp-person-email" href="mailto:ross1@tulqllc.com">ross1@tulqllc.com</a>
+        </div>
+        <div class="cp-person">
+          <div class="cp-person-role">Clinical Director · RN, BSN</div>
+          <div class="cp-person-name">Jayson Forrest Minagawa</div>
+          <a class="cp-person-email" href="mailto:upham51@gmail.com">upham51@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="cp-creds">
+        <span class="cp-cred">NAICS Registered</span>
+        <span class="cp-cred">UEI Registered</span>
+        <span class="cp-cred">SAM.gov Active</span>
+        <span class="cp-cred">Buy Indian Act · 25 U.S.C. § 47</span>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ── RIGHT: the form ───────────────────────────────────── -->
+  <main class="cp-right">
+    <div class="cp-form-outer">
+
+      <div class="cp-form-head">
+        <div class="cap-eye">Send a message</div>
+        <h2>We read every<br><em>message ourselves.</em></h2>
+        <p>Fill out the form and we'll respond within one business day. Contracting officers: check the box below and we'll include the full capability statement.</p>
+      </div>
+
+      <form class="cf" id="cf" novalidate>
+        <input type="hidden" name="access_key" value="e35bd9a3-dae5-489d-930c-8ce8971006f3">
+        <input type="hidden" name="redirect" value="false">
+        <input type="hidden" name="subject" id="cf-subject" value="TULQ Contact Form">
+
+        <div class="cf-grid">
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Name <span aria-hidden="true">*</span></label>
+            <input class="cf-input" type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-email">Email <span aria-hidden="true">*</span></label>
+            <input class="cf-input" type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-org">Organization</label>
+            <input class="cf-input" type="text" id="cf-org" name="organization" autocomplete="organization">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-phone">Phone <span class="cf-opt">(optional)</span></label>
+            <input class="cf-input" type="tel" id="cf-phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="cf-field">
+          <label class="cf-label" for="cf-msg">Message</label>
+          <textarea class="cf-input cf-textarea" id="cf-msg" name="message" rows="5"></textarea>
+        </div>
+
+        <label class="cf-check">
+          <input type="checkbox" name="capability_statement" value="requested" id="cf-cap">
+          <span>I'm a contracting officer — please include the capability statement<br><span style="color:rgba(232,228,216,0.35);font-size:12px;">NAICS · UEI · Buy Indian Act documentation · SAM.gov registration</span></span>
+        </label>
+
+        <div class="cf-foot">
+          <button class="btn btn-amber" type="submit" id="cf-btn">
+            Send message
+            <span class="orb" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="cp-success" id="cp-success" aria-live="polite">
+        <div class="cp-success-glyph">tultxʷ</div>
+        <h3>Message received.</h3>
+        <p>We'll be in touch within one business day.<br>You can also reach us directly below.</p>
+        <a href="/" class="btn btn-amber">
+          Back to TULQ
+          <span class="orb" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="rivers.js?v=2"></script>
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Scroll progress ────────────────────────────────────── */
+  const prog = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+    prog.style.setProperty('--p', p.toFixed(2) + '%');
+  }
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+
+  /* ── Staggered reveal ───────────────────────────────────── */
+  if (!reduce && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-reveal');
+    const groups = new Map();
+    document.querySelectorAll('.rise').forEach(el => {
+      const key = el.parentElement;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(el);
+    });
+    groups.forEach(list => list.forEach((el, i) => {
+      el.style.setProperty('--rd', (i * 90) + 'ms');
+    }));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    document.querySelectorAll('.rise').forEach(el => io.observe(el));
+  }
+
+  /* ── Magnetic buttons ───────────────────────────────────── */
+  if (!reduce && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('[data-magnetic]').forEach(btn => {
+      btn.style.transition = 'transform .12s var(--ease-out-soft)';
+      btn.addEventListener('pointermove', (ev) => {
+        const r = btn.getBoundingClientRect();
+        const nx = (ev.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+        const ny = (ev.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+        btn.style.transform = `translate(${(Math.max(-1,Math.min(1,nx))*10).toFixed(2)}px,${(Math.max(-1,Math.min(1,ny))*7).toFixed(2)}px)`;
+      });
+      btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── Contact form ───────────────────────────────────────── */
+  const cf       = document.getElementById('cf');
+  const cfBtn    = document.getElementById('cf-btn');
+  const cfStatus = document.getElementById('cf-status');
+  const cfCap    = document.getElementById('cf-cap');
+  const cfSubj   = document.getElementById('cf-subject');
+  const cpSuccess= document.getElementById('cp-success');
+  const btnHTML  = cfBtn.innerHTML;
+
+  cfCap.addEventListener('change', () => {
+    cfSubj.value = cfCap.checked
+      ? 'TULQ Capability Statement Request'
+      : 'TULQ Contact Form';
+  });
+
+  cf.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (!cf.checkValidity()) { cf.reportValidity(); return; }
+    cfBtn.disabled = true;
+    cfBtn.textContent = 'Sending…';
+    cfStatus.textContent = '';
+    cfStatus.className = 'cf-status';
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(cf))),
+      });
+      const data = await res.json();
+      if (data.success) {
+        cf.style.display = 'none';
+        document.querySelector('.cp-form-head').style.display = 'none';
+        cpSuccess.classList.add('is-visible');
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      } else {
+        throw new Error(data.message || 'Submission error');
+      }
+    } catch {
+      cfStatus.textContent = 'Something went wrong — email us directly at ross1@tulqllc.com';
+      cfStatus.classList.add('cf-status--error');
+      cfBtn.disabled = false;
+      cfBtn.innerHTML = btnHTML;
+    }
+  });
+})();
+</script>
+</body>
+</html>
