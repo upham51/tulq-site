@@ -491,6 +491,14 @@ body {
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── Nav backdrop on scroll ─────────────────────────────── */
+  const nav = document.getElementById('nav');
+  function updateNav() {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+
   /* ── Scroll progress ────────────────────────────────────── */
   const prog = document.getElementById('scroll-progress');
   function updateProgress() {
