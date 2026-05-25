@@ -132,68 +132,789 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
-     HOW IT WORKS — three stages of the call
+     HOW IT WORKS — infographic: stat ribbon, three-stage flow,
+                    swimlane anatomy, closing pull-quote
      ══════════════════════════════════════════════════════════ -->
-<section class="section section-dark" id="how" data-screen-label="03 How it works">
-  <div class="scene-photo scene-photo--river" aria-hidden="true">
-    <img src="https://images.pexels.com/photos/5109343/pexels-photo-5109343.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="" loading="lazy" decoding="async">
-  </div>
+<style>
+/* Scoped to .how-v2 — self-contained, won't collide with styles.css */
+.how-v2{
+  position:relative;
+  padding:120px 0 130px;
+  background:var(--basalt);
+  color:var(--fog);
+  overflow:hidden;
+  isolation:isolate;
+}
+.how-v2::before{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 60% at 10% 18%, rgba(58,90,74,.55), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 92% 82%, rgba(217,138,74,.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217,119,87,.05), transparent 65%);
+}
+.how-v2 .bg-photo{
+  position:absolute;inset:0;z-index:-3;pointer-events:none;
+  background:url("https://images.pexels.com/photos/5109343/pexels-photo-5109343.jpeg?auto=compress&cs=tinysrgb&w=1800") center/cover no-repeat;
+  opacity:.18;
+  mix-blend-mode:luminosity;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+          mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+}
+.how-v2::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity:.10; mix-blend-mode:overlay;
+}
+.how-v2 .container{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative}
+
+/* HEAD */
+.how-v2 .head{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:48px 80px;
+  align-items:end;
+  margin-bottom:72px;
+}
+.how-v2 .eb{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:500;color:var(--river-tolt);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.how-v2 .eb .pip{
+  width:6px;height:6px;border-radius:50%;background:var(--amber);
+  box-shadow:0 0 0 4px rgba(217,138,74,.18);
+  animation:hv2-breath 4s ease-in-out infinite;
+}
+@keyframes hv2-breath{
+  0%,100%{box-shadow:0 0 0 3px rgba(217,138,74,.18)}
+  50%{box-shadow:0 0 0 8px rgba(217,138,74,.02)}
+}
+.how-v2 h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(44px,6vw,78px);
+  line-height:1.02;letter-spacing:-.022em;
+  margin:24px 0 0;color:var(--fog);
+  text-wrap:balance;
+}
+.how-v2 h2 em{font-style:italic;color:var(--amber)}
+.how-v2 .lede{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(19px,1.5vw,22px);line-height:1.45;
+  color:rgba(232,228,216,.78);
+  margin:0;max-width:540px;
+}
+.how-v2 .lede em{color:var(--river-tolt);font-style:italic}
+
+/* STAT RIBBON */
+.how-v2 .ribbon{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px dashed var(--rule-dark);
+  border-bottom:1px dashed var(--rule-dark);
+  margin-bottom:88px;
+}
+.how-v2 .cell{
+  padding:28px 28px;
+  border-right:1px dashed var(--rule-dark);
+  display:flex;flex-direction:column;gap:6px;
+}
+.how-v2 .cell:last-child{border-right:0}
+.how-v2 .tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(168,200,196,.65);
+}
+.how-v2 .val{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(42px,4.2vw,60px);line-height:.98;letter-spacing:-.022em;
+  color:var(--fog);
+}
+.how-v2 .val sup{font-size:.42em;vertical-align:super;font-style:normal;font-family:var(--mono);color:var(--amber);margin-left:4px}
+.how-v2 .val .em{color:var(--amber);font-style:italic}
+.how-v2 .note{
+  font-family:var(--sans);font-size:13px;line-height:1.45;
+  color:rgba(232,228,216,.62);
+  max-width:26ch;
+}
+
+/* FLOW (3 stages) */
+.how-v2 .flow{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:22px;
+  padding:24px 0 56px;
+}
+.how-v2 .river{
+  position:absolute;left:0;right:0;top:170px;
+  height:80px;pointer-events:none;z-index:0;
+}
+.how-v2 .river svg{width:100%;height:100%;display:block}
+.how-v2 .river .p-tolt{fill:none;stroke:var(--river-tolt);stroke-width:1;stroke-dasharray:6 9;opacity:.55;animation:hv2-drift-a 18s linear infinite}
+.how-v2 .river .p-snoq{fill:none;stroke:var(--river-snoq);stroke-width:1;stroke-dasharray:4 8;opacity:.42;animation:hv2-drift-b 22s linear infinite}
+@keyframes hv2-drift-a{to{stroke-dashoffset:-260}}
+@keyframes hv2-drift-b{to{stroke-dashoffset:260}}
+
+.how-v2 .stage{position:relative;z-index:1;display:flex;flex-direction:column}
+.how-v2 .meta{
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--river-tolt);
+  margin-bottom:32px;padding-bottom:14px;
+  border-bottom:1px dashed var(--rule-dark);
+}
+.how-v2 .meta-num{display:inline-flex;align-items:baseline;gap:10px}
+.how-v2 .meta-num strong{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
+}
+.how-v2 .meta-time{color:rgba(168,200,196,.55)}
+.how-v2 .nx{
+  position:absolute;right:-22px;top:140px;
+  width:24px;height:24px;display:grid;place-items:center;
+  color:var(--amber);background:var(--basalt);border-radius:50%;
+  z-index:2;border:1px solid var(--rule-dark);
+}
+@media (max-width:880px){.how-v2 .nx{display:none}}
+
+/* Stage visual canvas */
+.how-v2 .vis{
+  position:relative;height:240px;margin:0 -4px 36px;
+  display:grid;place-items:center;
+  border-radius:14px;overflow:hidden;
+  background:radial-gradient(ellipse 80% 90% at 50% 50%, rgba(28,38,40,.55), rgba(28,38,40,0) 70%);
+}
+
+/* STAGE 01 — phone, instant connect (NO ringing). Single static halo + sonar dot. */
+.how-v2 .halo{
+  position:absolute;left:50%;top:50%;
+  width:170px;height:170px;
+  border:1px dashed rgba(168,200,196,.18);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.how-v2 .halo.h2{width:230px;height:230px;border-color:rgba(168,200,196,.10)}
+.how-v2 .connected{
+  position:absolute;left:50%;top:50%;
+  width:120px;height:120px;
+  border:1px solid var(--amber);border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 0 rgba(217,138,74,.45);
+  animation:hv2-bloom 3.6s ease-out infinite;
+}
+@keyframes hv2-bloom{
+  0%{box-shadow:0 0 0 0 rgba(217,138,74,.35); opacity:.9}
+  60%{box-shadow:0 0 0 14px rgba(217,138,74,0); opacity:.4}
+  100%{box-shadow:0 0 0 14px rgba(217,138,74,0); opacity:.9}
+}
+.how-v2 .phone{
+  position:relative;z-index:2;
+  width:88px;height:88px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--basalt-lift), var(--basalt) 70%);
+  border:1px solid var(--rule-dark);
+  display:grid;place-items:center;color:var(--amber);
+  box-shadow:0 0 0 6px rgba(217,138,74,.08),0 18px 40px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.how-v2 .phone::after{
+  content:"";position:absolute;inset:-12px;border-radius:50%;
+  border:1px dashed rgba(168,200,196,.25);
+}
+.how-v2 .instant-tag{
+  position:absolute;left:50%;top:14px;transform:translateX(-50%);
+  font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);
+  background:rgba(28,38,40,.85);
+  padding:5px 10px;border-radius:999px;
+  border:1px solid rgba(217,138,74,.35);
+  z-index:3;white-space:nowrap;
+}
+.how-v2 .orbit{position:absolute;inset:0;pointer-events:none}
+.how-v2 .orbit span{
+  position:absolute;
+  font-family:var(--serif);font-style:italic;font-size:12px;
+  color:rgba(168,200,196,.78);white-space:nowrap;
+  background:rgba(28,38,40,.75);padding:2px 6px;border-radius:3px;
+}
+.how-v2 .orbit span::before{content:"·";color:var(--amber);margin-right:5px}
+.how-v2 .o-1{top:46px;left:6px}
+.how-v2 .o-2{top:46px;right:6px}
+.how-v2 .o-3{bottom:14px;left:6px}
+.how-v2 .o-4{bottom:14px;right:6px}
+
+/* STAGE 02 — AI node + intake topic chips */
+.how-v2 .ai-node{
+  position:relative;z-index:2;
+  width:118px;height:118px;border-radius:50%;
+  background:linear-gradient(140deg, var(--basalt-lift), var(--basalt-soft));
+  border:1px solid rgba(217,138,74,.35);
+  display:grid;place-items:center;color:var(--fog);
+  box-shadow:0 0 0 8px rgba(217,138,74,.06),0 22px 50px -14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.how-v2 .ai-node::before{
+  content:"";position:absolute;inset:-10px;border-radius:50%;
+  border:1px dashed rgba(217,138,74,.28);
+  animation:hv2-rot 18s linear infinite;
+}
+@keyframes hv2-rot{to{transform:rotate(360deg)}}
+.how-v2 .ai-label{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:38px;line-height:1;color:var(--fog);
+  letter-spacing:-.02em;text-shadow:0 1px 0 rgba(0,0,0,.3);
+}
+.how-v2 .ai-sub{
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);background:rgba(28,38,40,.85);
+  padding:5px 10px;border-radius:999px;
+  border:1px solid rgba(217,138,74,.35);
+  z-index:3;white-space:nowrap;
+}
+.how-v2 .topics{position:absolute;inset:0;pointer-events:none}
+.how-v2 .topic{
+  position:absolute;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(232,228,216,.82);
+  background:rgba(28,38,40,.88);border:1px solid rgba(217,138,74,.28);
+  padding:4px 9px;border-radius:999px;
+  box-shadow:0 6px 16px -8px rgba(0,0,0,.5);
+  animation:hv2-bob 6s ease-in-out infinite;
+}
+.how-v2 .topic .k{color:var(--amber);margin-right:6px;font-style:italic}
+.how-v2 .topic.t-1{top:50px;left:8px;animation-delay:0s}
+.how-v2 .topic.t-2{top:50px;right:8px;animation-delay:.8s}
+.how-v2 .topic.t-3{bottom:14px;left:8px;animation-delay:1.6s}
+.how-v2 .topic.t-4{bottom:14px;right:8px;animation-delay:2.4s}
+@keyframes hv2-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* STAGE 03 — RN node + outcome fork */
+.how-v2 .vis-fork{
+  align-items:stretch;justify-content:stretch;
+  padding:8px 6px 8px 28px;
+  height:auto;min-height:240px;overflow:visible;background:transparent;
+}
+.how-v2 .fork{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;gap:9px}
+.how-v2 .fork-svg{
+  position:absolute;left:-18px;top:50%;transform:translateY(-50%);
+  width:28px;height:80%;pointer-events:none;
+}
+.how-v2 .fork-svg svg{width:100%;height:100%;display:block}
+.how-v2 .fork-svg path{fill:none;stroke:rgba(168,200,196,.6);stroke-width:1.2;stroke-dasharray:3 4}
+.how-v2 .fork-svg .j{fill:var(--amber)}
+.how-v2 .outcome{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:12px 14px;
+  background:rgba(28,38,40,.55);
+  border:1px solid var(--rule-dark);
+  border-radius:14px;
+  transition:transform .2s var(--ease-out-soft), background .2s, border-color .2s;
+}
+.how-v2 .outcome:hover{transform:translateX(3px);background:rgba(28,38,40,.85);border-color:rgba(168,200,196,.28)}
+.how-v2 .bullet{
+  width:10px;height:10px;border-radius:50%;flex:0 0 auto;
+  box-shadow:0 0 0 4px rgba(255,255,255,.04);
+}
+.how-v2 .o-911 .bullet{background:#c0584d;box-shadow:0 0 0 4px rgba(192,88,77,.18)}
+.how-v2 .o-self .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(168,200,196,.18)}
+.how-v2 .o-hand .bullet{background:var(--amber);box-shadow:0 0 0 4px rgba(217,138,74,.18)}
+.how-v2 .ob{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.how-v2 .o-key{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(168,200,196,.65);white-space:nowrap;
+}
+.how-v2 .o-val{
+  font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.15;
+  color:var(--fog);white-space:nowrap;
+}
+.how-v2 .o-val em{font-style:italic;color:var(--amber)}
+.how-v2 .o-when{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(232,228,216,.55);text-align:right;white-space:nowrap;
+}
+
+/* Stage copy */
+.how-v2 .stage h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:30px;line-height:1.15;letter-spacing:-.012em;
+  margin:0 0 18px;color:var(--fog);
+}
+.how-v2 .stage h3 em{font-style:italic;color:var(--amber)}
+.how-v2 .stage > p{
+  font-family:var(--sans);font-size:15px;line-height:1.62;
+  color:rgba(232,228,216,.72);
+  margin:0 0 22px;text-wrap:pretty;max-width:34ch;
+}
+
+/* annotation chips */
+.how-v2 .chips{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding-top:18px;border-top:1px dashed var(--rule-dark);
+}
+.how-v2 .chip{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(232,228,216,.72);
+  padding:5px 9px;
+  border:1px solid var(--rule-dark);
+  border-radius:999px;
+  background:rgba(28,38,40,.4);white-space:nowrap;
+}
+.how-v2 .chip.x{color:rgba(232,228,216,.45);text-decoration:line-through;text-decoration-color:rgba(192,88,77,.55);text-decoration-thickness:1px}
+.how-v2 .chip.amber{color:var(--amber);border-color:rgba(217,138,74,.4)}
+.how-v2 .chip.tolt{color:var(--river-tolt);border-color:rgba(168,200,196,.3)}
+
+/* ANATOMY OF ONE CALL — two-phase swimlane */
+.how-v2 .anat{
+  margin-top:64px;
+  padding:34px 36px 36px;
+  background:rgba(28,38,40,.55);
+  border:1px solid var(--rule-dark);
+  border-radius:22px;
+  position:relative;overflow:hidden;
+}
+.how-v2 .anat::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 100% at 8% 50%, rgba(58,90,74,.25), transparent 60%);
+}
+.how-v2 .anat-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  flex-wrap:wrap;gap:12px;margin-bottom:28px;position:relative;
+}
+.how-v2 .anat-head .eb{color:var(--amber)}
+.how-v2 .anat-head .eb .pip{background:var(--amber)}
+.how-v2 .anat-head em{
+  font-family:var(--serif);font-style:italic;font-size:18px;
+  color:rgba(232,228,216,.7);
+}
+
+.how-v2 .lanes{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:18px;align-items:stretch;
+}
+.how-v2 .lane{
+  position:relative;
+  padding:24px 26px 26px;
+  background:rgba(28,38,40,.45);
+  border:1px solid var(--rule-dark);
+  border-radius:16px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.how-v2 .lane.lane-ai{border-left:2px solid rgba(217,138,74,.55)}
+.how-v2 .lane.lane-rn{border-left:2px solid rgba(168,200,196,.55)}
+
+.how-v2 .lane-head{
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:14px;
+  border-bottom:1px dashed var(--rule-dark);
+}
+.how-v2 .actor{
+  width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:17px;color:var(--fog);line-height:1;
+  background:linear-gradient(140deg, var(--basalt-lift), var(--basalt));
+  border:1px solid var(--rule-dark);flex:0 0 auto;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.how-v2 .lane-ai .actor{border-color:rgba(217,138,74,.45);color:var(--amber)}
+.how-v2 .lane-rn .actor{border-color:rgba(168,200,196,.45);color:var(--river-tolt)}
+.how-v2 .lane-title{display:flex;flex-direction:column;gap:2px}
+.how-v2 .lane-name{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(168,200,196,.6);
+}
+.how-v2 .lane-ai .lane-name{color:rgba(217,138,74,.75)}
+.how-v2 .lane-role{
+  font-family:var(--serif);font-style:italic;font-size:18px;color:var(--fog);line-height:1.2;
+}
+
+.how-v2 .beats{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:12px;
+}
+.how-v2 .beat{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  position:relative;padding-left:4px;
+}
+.how-v2 .beat-time{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(168,200,196,.55);
+  padding-top:3px;min-width:74px;
+}
+.how-v2 .lane-ai .beat-time{color:rgba(217,138,74,.6)}
+.how-v2 .beat-text{
+  font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.35;
+  color:rgba(232,228,216,.92);
+  text-wrap:pretty;
+}
+.how-v2 .beat-text em{color:var(--amber);font-style:italic}
+.how-v2 .lane-rn .beat-text em{color:var(--river-tolt)}
+
+/* Handoff bridge between lanes */
+.how-v2 .bridge{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:0 8px;min-width:88px;
+}
+.how-v2 .bridge-arrow{
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%, var(--basalt-lift), var(--basalt) 70%);
+  border:1px dashed rgba(217,138,74,.55);
+  color:var(--amber);
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
+  position:relative;z-index:2;
+}
+.how-v2 .bridge-arrow::before,
+.how-v2 .bridge-arrow::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:120px;height:120px;border-radius:50%;
+  border:1px dashed rgba(217,138,74,.25);
+  transform:translate(-50%,-50%);pointer-events:none;
+}
+.how-v2 .bridge-arrow::after{width:180px;height:180px;border-color:rgba(217,138,74,.12)}
+.how-v2 .bridge-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);
+  margin-top:12px;white-space:nowrap;
+}
+.how-v2 .bridge-sub{
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  color:rgba(232,228,216,.6);margin-top:4px;text-align:center;
+  max-width:120px;line-height:1.25;
+}
+.how-v2 .ctx-flow{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:200%;height:2px;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(to right, rgba(217,138,74,.55) 0 6px, transparent 6px 12px);
+  opacity:.7;
+}
+
+/* CLOSER */
+.how-v2 .closer{
+  margin-top:80px;
+  display:grid;grid-template-columns:60px 1fr 60px;gap:24px;align-items:center;
+}
+.how-v2 .crule{height:1px;background:repeating-linear-gradient(to right, rgba(168,200,196,.4) 0 8px, transparent 8px 14px)}
+.how-v2 .quote{
+  text-align:center;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(32px,3.8vw,48px);line-height:1.15;letter-spacing:-.018em;
+  color:var(--fog);text-wrap:balance;margin:0;
+}
+.how-v2 .quote em{font-style:italic;color:var(--amber)}
+.how-v2 .sig{
+  margin-top:18px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(168,200,196,.5);text-align:center;
+}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .how-v2 .lanes{grid-template-columns:1fr;gap:14px}
+  .how-v2 .bridge{flex-direction:row;gap:14px;padding:6px 0}
+  .how-v2 .bridge-arrow{transform:rotate(90deg)}
+  .how-v2 .bridge-arrow svg{transform:rotate(-90deg)}
+  .how-v2 .bridge-arrow::before,.how-v2 .bridge-arrow::after{display:none}
+  .how-v2 .bridge-label{margin-top:0}
+}
+@media (max-width:880px){
+  .how-v2 .flow{grid-template-columns:1fr;gap:44px}
+  .how-v2 .river{display:none}
+  .how-v2 .vis{height:210px}
+}
+@media (max-width:760px){
+  .how-v2{padding:80px 0 90px}
+  .how-v2 .head{grid-template-columns:1fr;gap:24px}
+  .how-v2 .ribbon{grid-template-columns:1fr 1fr}
+  .how-v2 .cell{border-right:1px dashed var(--rule-dark);border-bottom:1px dashed var(--rule-dark)}
+  .how-v2 .cell:nth-child(2n){border-right:0}
+  .how-v2 .cell:nth-last-child(-n+2){border-bottom:0}
+  .how-v2 .closer{grid-template-columns:1fr}
+  .how-v2 .crule{display:none}
+  .how-v2 .outcome{grid-template-columns:auto 1fr}
+  .how-v2 .o-when{display:none}
+  .how-v2 .anat{padding:22px 18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .how-v2 .connected,.how-v2 .ai-node::before,.how-v2 .topic,.how-v2 .river .p-tolt,.how-v2 .river .p-snoq,.how-v2 .eb .pip{animation:none}
+}
+</style>
+
+<section class="how-v2" id="how" data-screen-label="03 How it works">
+  <div class="bg-photo" aria-hidden="true"></div>
+
   <div class="container">
-    <div class="section-head rise">
-      <span class="eyebrow eyebrow-dark">
-        <span class="dot" aria-hidden="true"></span>
-        How the line works
-      </span>
-      <h2>Three rings. <em>A clear next step.</em></h2>
-      <p>Whether you're calling from your ancestral lands, from your cousin's house, from the road, or while you wait outside the clinic, a licensed RN answers. They work from the same evidence-based protocols 95% of U.S. medical call centers use, paired with culturally competent judgment that already knows the room.</p>
+
+    <!-- HEAD -->
+    <header class="head">
+      <div>
+        <span class="eb"><span class="pip" aria-hidden="true"></span>How the line works</span>
+        <h2>No ringing. <em>A clear next step.</em></h2>
+      </div>
+      <p class="lede">
+        Whether you're calling from your ancestral lands, your cousin's house, the road, or while you wait outside the clinic, the line answers instantly. AI gathers the basics in seconds. Then a multi state licensed RN picks up <em>with the room already in hand.</em>
+      </p>
+    </header>
+
+    <!-- STAT RIBBON -->
+    <div class="ribbon" role="list">
+      <div class="cell" role="listitem">
+        <span class="tag">The line</span>
+        <span class="val">24<span style="opacity:.55">/</span>7</span>
+        <span class="note">Every hour. Every day. Every year.</span>
+      </div>
+      <div class="cell" role="listitem">
+        <span class="tag">Protocol coverage</span>
+        <span class="val">95<sup>%</sup></span>
+        <span class="note">U.S. medical call centers run on the same Schmitt&#8209;Thompson framework.</span>
+      </div>
+      <div class="cell" role="listitem">
+        <span class="tag">Who you speak to</span>
+        <span class="val"><span class="em">RN</span></span>
+        <span class="note">Multi state licensed registered nurses. Not a bot. Not a tree.</span>
+      </div>
+      <div class="cell" role="listitem">
+        <span class="tag">What you don't get</span>
+        <span class="val">0</span>
+        <span class="note">IVRs. Portals. Hold music. Prerecorded greetings.</span>
+      </div>
     </div>
-  </div>
 
-  <!-- river connector — visual echo of the hero's confluence -->
-  <div class="river-line" aria-hidden="true">
-    <svg viewBox="0 0 1180 60" preserveAspectRatio="none">
-      <path class="path-tolt" d="M 0,18 C 200,18 380,42 590,30 C 800,18 980,42 1180,30"/>
-      <path class="path-snoq" d="M 0,42 C 200,42 380,18 590,30 C 800,42 980,18 1180,30"/>
-    </svg>
-  </div>
+    <!-- THE FLOW -->
+    <div class="flow" aria-label="How the line works in three stages">
 
-  <div class="container">
-    <div class="steps">
+      <div class="river" aria-hidden="true">
+        <svg viewBox="0 0 1180 90" preserveAspectRatio="none">
+          <path class="p-tolt" d="M 40,30 C 240,30 300,68 590,46 C 880,24 940,62 1140,46"/>
+          <path class="p-snoq" d="M 40,60 C 240,60 300,22 590,46 C 880,68 940,28 1140,46"/>
+        </svg>
+      </div>
 
-      <article class="step rise">
-        <div class="step-num">No. 01</div>
-        <div class="step-mark" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
+      <!-- STAGE 01 — You call (NO ring) -->
+      <article class="stage">
+        <div class="meta">
+          <span class="meta-num"><strong>01</strong> &nbsp; You call</span>
+          <span class="meta-time">T + 0:00</span>
         </div>
+
+        <div class="vis" aria-hidden="true">
+          <span class="halo h2"></span>
+          <span class="halo"></span>
+          <span class="connected"></span>
+          <div class="phone">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <span class="instant-tag">Answered instantly</span>
+          <div class="orbit">
+            <span class="o-1">ancestral lands</span>
+            <span class="o-2">the road</span>
+            <span class="o-3">cousin's house</span>
+            <span class="o-4">outside the clinic</span>
+          </div>
+        </div>
+        <span class="nx" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6m0 0L6 3m3 3L6 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+
         <h3>You <em>call.</em></h3>
-        <p>Whether you're calling from your ancestral lands, from your cousin's house, from the road, or waiting outside the clinic. Our Culturally Competent Registered Nurse will pick up the phone quickly, any hour, every day, no judgment, no pre-recorded message, no hold music, no portal. Just people ready to assist you.</p>
+        <p>From anywhere. Any hour. The line answers in the moment you dial. No queue. No menu tree. No ringing.</p>
+
+        <div class="chips">
+          <span class="chip tolt">Instant pickup</span>
+          <span class="chip">From anywhere</span>
+          <span class="chip x">No IVR</span>
+          <span class="chip x">No portal</span>
+          <span class="chip x">No ringing</span>
+        </div>
       </article>
 
-      <article class="step rise">
-        <div class="step-num">No. 02</div>
-        <div class="step-mark" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12h4l3-9 4 18 3-9h4"/>
-          </svg>
+      <!-- STAGE 02 — AI captures the basics -->
+      <article class="stage">
+        <div class="meta">
+          <span class="meta-num"><strong>02</strong> &nbsp; AI captures the basics</span>
+          <span class="meta-time">T + 0:05</span>
         </div>
-        <h3>A licensed RN <em>listens.</em></h3>
-        <p>Multi-state-licensed registered nurses, working from Schmitt-Thompson Clinical Content protocols, the framework 95% of U.S. medical call centers use, paired with culturally competent clinical judgment.</p>
+
+        <div class="vis" aria-hidden="true">
+          <div class="ai-node">
+            <span class="ai-label">AI</span>
+          </div>
+          <div class="ai-sub">Pertinent intake</div>
+          <div class="topics">
+            <span class="topic t-1"><span class="k">Where</span>you are</span>
+            <span class="topic t-2"><span class="k">Who</span>is calling</span>
+            <span class="topic t-3"><span class="k">What</span>is happening</span>
+            <span class="topic t-4"><span class="k">How</span>urgent</span>
+          </div>
+        </div>
+        <span class="nx" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6m0 0L6 3m3 3L6 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+
+        <h3>AI <em>gathers</em> the basics.</h3>
+        <p>In seconds, our AI captures the essentials. Where you are. Who you are. What's happening. Pertinent questions only, so you don't repeat them later.</p>
+
+        <div class="chips">
+          <span class="chip amber">Pertinent only</span>
+          <span class="chip">Location</span>
+          <span class="chip">Symptoms</span>
+          <span class="chip">Urgency check</span>
+          <span class="chip tolt">No repetition</span>
+        </div>
       </article>
 
-      <article class="step rise">
-        <div class="step-num">No. 03</div>
-        <div class="step-mark" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
+      <!-- STAGE 03 — Your RN takes over -->
+      <article class="stage">
+        <div class="meta">
+          <span class="meta-num"><strong>03</strong> &nbsp; Your RN takes over</span>
+          <span class="meta-time">T + resolved</span>
         </div>
-        <h3>A <em>clear</em> next step.</h3>
-        <p>911 if it needs to be. Self-care if it should be. A warm hand-off into your IHS or Tribal Health Program if that's the right door. The call ends with a plan, not a transfer.</p>
+
+        <div class="vis vis-fork" aria-hidden="true">
+          <div class="fork">
+            <div class="fork-svg" aria-hidden="true">
+              <svg viewBox="0 0 28 200" preserveAspectRatio="none">
+                <path d="M 0,100 L 14,100"/>
+                <path d="M 14,100 L 14,28 L 28,28"/>
+                <path d="M 14,100 L 28,100"/>
+                <path d="M 14,100 L 14,172 L 28,172"/>
+                <circle class="j" cx="14" cy="100" r="3"/>
+              </svg>
+            </div>
+
+            <div class="outcome o-911">
+              <span class="bullet" aria-hidden="true"></span>
+              <span class="ob">
+                <span class="o-key">If it has to be</span>
+                <span class="o-val"><em>911.</em></span>
+              </span>
+              <span class="o-when">Emergent</span>
+            </div>
+            <div class="outcome o-self">
+              <span class="bullet" aria-hidden="true"></span>
+              <span class="ob">
+                <span class="o-key">If it should be</span>
+                <span class="o-val"><em>Home care.</em></span>
+              </span>
+              <span class="o-when">At home</span>
+            </div>
+            <div class="outcome o-hand">
+              <span class="bullet" aria-hidden="true"></span>
+              <span class="ob">
+                <span class="o-key">If it's the right door</span>
+                <span class="o-val"><em>Warm handoff.</em></span>
+              </span>
+              <span class="o-when">IHS &middot; THP</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>A licensed RN, <em>already in the room.</em></h3>
+        <p>Multi state licensed registered nurses pick up the live line with context already in hand. Schmitt&#8209;Thompson protocols paired with culturally competent judgment. The call ends with a plan, not a transfer.</p>
+
+        <div class="chips">
+          <span class="chip amber">Schmitt&#8209;Thompson</span>
+          <span class="chip tolt">Multi state RN</span>
+          <span class="chip">Cultural competence</span>
+          <span class="chip">EMS routing</span>
+          <span class="chip">IHS handoff</span>
+        </div>
       </article>
 
     </div>
+
+    <!-- ANATOMY OF ONE CALL — swimlane: AI intake → warm handoff → RN care -->
+    <div class="anat">
+      <div class="anat-head">
+        <span class="eb"><span class="pip" aria-hidden="true"></span>Anatomy of one call</span>
+        <em>What you actually hear, second by second.</em>
+      </div>
+
+      <div class="lanes">
+        <!-- AI lane -->
+        <div class="lane lane-ai">
+          <div class="lane-head">
+            <span class="actor">AI</span>
+            <span class="lane-title">
+              <span class="lane-name">Phase 01 &middot; Intake</span>
+              <span class="lane-role">AI captures the basics</span>
+            </span>
+          </div>
+          <ol class="beats">
+            <li class="beat">
+              <span class="beat-time">T + 0:00</span>
+              <span class="beat-text">Line connects. <em>No ringing.</em></span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + 0:05</span>
+              <span class="beat-text">"Where are you calling from?"</span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + 0:20</span>
+              <span class="beat-text">"What's happening right now?"</span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + 0:40</span>
+              <span class="beat-text">Urgency check. Red flags noted.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Handoff bridge -->
+        <div class="bridge" aria-hidden="true">
+          <span class="ctx-flow"></span>
+          <span class="bridge-arrow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </span>
+          <span class="bridge-label">Warm handoff</span>
+          <span class="bridge-sub">Context passes with the call</span>
+        </div>
+
+        <!-- RN lane -->
+        <div class="lane lane-rn">
+          <div class="lane-head">
+            <span class="actor">RN</span>
+            <span class="lane-title">
+              <span class="lane-name">Phase 02 &middot; Care</span>
+              <span class="lane-role">A licensed RN takes over</span>
+            </span>
+          </div>
+          <ol class="beats">
+            <li class="beat">
+              <span class="beat-time">T + 0:50</span>
+              <span class="beat-text">RN picks up, <em>context in hand.</em></span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + 1:30</span>
+              <span class="beat-text">No repeat questions. Targeted clinical exchange.</span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + 2:30</span>
+              <span class="beat-text">Triage decision. Plan forms.</span>
+            </li>
+            <li class="beat">
+              <span class="beat-time">T + resolved</span>
+              <span class="beat-text"><em>A plan in your hand.</em></span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSER -->
+    <div class="closer">
+      <span class="crule" aria-hidden="true"></span>
+      <div>
+        <p class="quote">The call ends with <em>a plan</em>, not a transfer.</p>
+        <p class="sig">Tultx&#695; &middot; the confluence of two rivers</p>
+      </div>
+      <span class="crule" aria-hidden="true"></span>
+    </div>
+
   </div>
 </section>
 
