@@ -26,7 +26,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css?v=7" />
 </head>
@@ -145,13 +145,24 @@
   color:var(--fog);
   overflow:hidden;
   isolation:isolate;
+  /* Tulq Care palette — override parent tokens for this section */
+  --basalt:#0b1829;
+  --basalt-lift:#0d2040;
+  --cedar:#091320;
+  --amber:#c9a55a;
+  --river-tolt:#2dcbcb;
+  --river-snoq:rgba(45,203,203,0.35);
+  --fog:#e8e4d8;
+  --rule-dark:rgba(255,255,255,0.09);
+  --serif:'Cormorant Garamond','Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',Inter,system-ui,sans-serif;
 }
 .how-v2::before{
   content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(ellipse 55% 60% at 10% 18%, rgba(58,90,74,.55), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 92% 82%, rgba(217,138,74,.10), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217,119,87,.05), transparent 65%);
+    radial-gradient(ellipse 55% 60% at 10% 18%, rgba(45,203,203,.10), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 92% 82%, rgba(201,165,90,.08), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(45,203,203,.04), transparent 65%);
 }
 .how-v2 .bg-photo{
   position:absolute;inset:0;z-index:-3;pointer-events:none;
@@ -223,7 +234,7 @@
 .how-v2 .cell:last-child{border-right:0}
 .how-v2 .tag{
   font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(168,200,196,.65);
+  color:rgba(45,203,203,.65);
 }
 .how-v2 .val{
   font-family:var(--serif);font-style:italic;font-weight:400;
@@ -274,7 +285,7 @@
   font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
 }
-.how-v2 .meta-time{color:rgba(168,200,196,.55)}
+.how-v2 .meta-time{color:rgba(45,203,203,.55)}
 .how-v2 .nx{
   position:absolute;right:-22px;top:140px;
   width:24px;height:24px;display:grid;place-items:center;
@@ -295,13 +306,13 @@
 .how-v2 .rings{position:absolute;inset:0;display:grid;place-items:center}
 .how-v2 .ring-static{
   position:absolute;left:50%;top:50%;
-  border:1px dashed rgba(168,200,196,.28);
+  border:1px dashed rgba(45,203,203,.28);
   border-radius:50%;
   transform:translate(-50%,-50%);pointer-events:none;
 }
 .how-v2 .ring-static.r1{width:120px;height:120px}
-.how-v2 .ring-static.r2{width:170px;height:170px;border-color:rgba(168,200,196,.18)}
-.how-v2 .ring-static.r3{width:220px;height:220px;border-color:rgba(168,200,196,.10)}
+.how-v2 .ring-static.r2{width:170px;height:170px;border-color:rgba(45,203,203,.18)}
+.how-v2 .ring-static.r3{width:220px;height:220px;border-color:rgba(45,203,203,.10)}
 .how-v2 .ring{
   position:absolute;
   border:1px solid var(--amber);
@@ -331,13 +342,13 @@
 }
 .how-v2 .phone-disc::after{
   content:"";position:absolute;inset:-12px;border-radius:50%;
-  border:1px dashed rgba(168,200,196,.25);
+  border:1px dashed rgba(45,203,203,.25);
 }
 .how-v2 .orbit{position:absolute;inset:0;pointer-events:none}
 .how-v2 .orbit span{
   position:absolute;
   font-family:var(--serif);font-style:italic;font-size:12.5px;
-  color:rgba(168,200,196,.78);white-space:nowrap;
+  color:rgba(45,203,203,.78);white-space:nowrap;
   background:rgba(28,38,40,.75);padding:2px 6px;border-radius:3px;
 }
 .how-v2 .orbit span::before{content:"·";color:var(--amber);margin-right:5px}
@@ -351,9 +362,9 @@
   position:relative;z-index:2;
   width:118px;height:118px;border-radius:50%;
   background:linear-gradient(140deg, var(--cedar), var(--basalt-lift));
-  border:1px solid rgba(168,200,196,.25);
+  border:1px solid rgba(45,203,203,.25);
   display:grid;place-items:center;color:var(--fog);
-  box-shadow:0 0 0 8px rgba(168,200,196,.06),0 22px 50px -14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);
+  box-shadow:0 0 0 8px rgba(45,203,203,.06),0 22px 50px -14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);
 }
 .how-v2 .rn-label{
   font-family:var(--serif);font-style:italic;font-weight:400;
@@ -363,7 +374,7 @@
 .how-v2 .rn-sub{
   position:absolute;bottom:14px;left:14px;
   font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(168,200,196,.7);background:rgba(28,38,40,.7);
+  color:rgba(45,203,203,.7);background:rgba(28,38,40,.7);
   padding:4px 8px;border-radius:3px;
 }
 .how-v2 .ecg{
@@ -419,7 +430,7 @@
   width:28px;height:80%;pointer-events:none;
 }
 .how-v2 .fork-svg svg{width:100%;height:100%;display:block}
-.how-v2 .fork-svg path{fill:none;stroke:rgba(168,200,196,.6);stroke-width:1.2;stroke-dasharray:3 4}
+.how-v2 .fork-svg path{fill:none;stroke:rgba(45,203,203,.6);stroke-width:1.2;stroke-dasharray:3 4}
 .how-v2 .fork-svg .j{fill:var(--amber)}
 .how-v2 .vis-fork{
   align-items:stretch;justify-content:stretch;
@@ -429,23 +440,25 @@
 .how-v2 .outcome{
   display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
   padding:12px 14px;
-  background:rgba(28,38,40,.55);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:14px;
   transition:transform .2s var(--ease-out-soft), background .2s, border-color .2s;
 }
-.how-v2 .outcome:hover{transform:translateX(3px);background:rgba(28,38,40,.85);border-color:rgba(168,200,196,.28)}
+.how-v2 .outcome:hover{transform:translateX(3px);background:rgba(255,255,255,.08);border-color:rgba(45,203,203,.35)}
 .how-v2 .bullet{
   width:10px;height:10px;border-radius:50%;flex:0 0 auto;
   box-shadow:0 0 0 4px rgba(255,255,255,.04);
 }
-.how-v2 .o-911 .bullet{background:#c0584d;box-shadow:0 0 0 4px rgba(192,88,77,.18)}
-.how-v2 .o-self .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(168,200,196,.18)}
-.how-v2 .o-hand .bullet{background:var(--amber);box-shadow:0 0 0 4px rgba(217,138,74,.18)}
+.how-v2 .o-911 .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(45,203,203,.18)}
+.how-v2 .o-self .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(45,203,203,.18)}
+.how-v2 .o-hand .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(45,203,203,.18)}
 .how-v2 .ob{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
 .how-v2 .o-key{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(168,200,196,.65);white-space:nowrap;
+  color:rgba(45,203,203,.65);white-space:nowrap;
 }
 .how-v2 .o-val{
   font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.15;
@@ -484,20 +497,22 @@
 }
 .how-v2 .chip.x{color:rgba(232,228,216,.45);text-decoration:line-through;text-decoration-color:rgba(192,88,77,.55);text-decoration-thickness:1px}
 .how-v2 .chip.amber{color:var(--amber);border-color:rgba(217,138,74,.4)}
-.how-v2 .chip.tolt{color:var(--river-tolt);border-color:rgba(168,200,196,.3)}
+.how-v2 .chip.tolt{color:var(--river-tolt);border-color:rgba(45,203,203,.3)}
 
 /* ANATOMY OF ONE CALL — two-phase swimlane */
 .how-v2 .anat{
   margin-top:64px;
   padding:34px 36px 36px;
-  background:rgba(28,38,40,.55);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:22px;
   position:relative;overflow:hidden;
 }
 .how-v2 .anat::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 70% 100% at 8% 50%, rgba(58,90,74,.25), transparent 60%);
+  background:radial-gradient(ellipse 70% 100% at 8% 50%, rgba(45,203,203,.07), transparent 60%);
 }
 .how-v2 .anat-head{
   display:flex;justify-content:space-between;align-items:baseline;
@@ -519,13 +534,15 @@
 .how-v2 .lane{
   position:relative;
   padding:24px 26px 26px;
-  background:rgba(28,38,40,.45);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
   display:flex;flex-direction:column;gap:14px;
 }
 .how-v2 .lane.lane-ai{border-left:2px solid rgba(217,138,74,.55)}
-.how-v2 .lane.lane-rn{border-left:2px solid rgba(168,200,196,.55)}
+.how-v2 .lane.lane-rn{border-left:2px solid rgba(45,203,203,.55)}
 
 .how-v2 .lane-head{
   display:flex;align-items:center;gap:14px;
@@ -542,11 +559,11 @@
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
 .how-v2 .lane-ai .actor{border-color:rgba(217,138,74,.45);color:var(--amber)}
-.how-v2 .lane-rn .actor{border-color:rgba(168,200,196,.45);color:var(--river-tolt)}
+.how-v2 .lane-rn .actor{border-color:rgba(45,203,203,.45);color:var(--river-tolt)}
 .how-v2 .lane-title{display:flex;flex-direction:column;gap:2px}
 .how-v2 .lane-name{
   font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(168,200,196,.6);
+  color:rgba(45,203,203,.6);
 }
 .how-v2 .lane-ai .lane-name{color:rgba(217,138,74,.75)}
 .how-v2 .lane-role{
@@ -562,7 +579,7 @@
 }
 .how-v2 .beat-time{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(168,200,196,.55);
+  color:rgba(45,203,203,.55);
   padding-top:3px;min-width:74px;
 }
 .how-v2 .lane-ai .beat-time{color:rgba(217,138,74,.6)}
@@ -622,7 +639,7 @@
   margin-top:80px;
   display:grid;grid-template-columns:60px 1fr 60px;gap:24px;align-items:center;
 }
-.how-v2 .crule{height:1px;background:repeating-linear-gradient(to right, rgba(168,200,196,.4) 0 8px, transparent 8px 14px)}
+.how-v2 .crule{height:1px;background:repeating-linear-gradient(to right, rgba(45,203,203,.4) 0 8px, transparent 8px 14px)}
 .how-v2 .quote{
   text-align:center;
   font-family:var(--serif);font-weight:400;
@@ -633,7 +650,7 @@
 .how-v2 .sig{
   margin-top:22px;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(168,200,196,.5);text-align:center;
+  color:rgba(45,203,203,.5);text-align:center;
 }
 
 /* RESPONSIVE */
@@ -681,11 +698,11 @@
         <h2>Three rings. <em>A clear next step.</em></h2>
       </div>
       <p class="lede">
-        Whether the call comes after the clinic closes, on a weekend, between visits, or in the middle of the night, <em>a licensed RN picks up.</em> The protocol is the same one 95% of U.S. medical call centers use, paired with seasoned clinical judgment.
+        Whether the call comes after the clinic closes, on a weekend, between visits, or in the middle of the night — a licensed RN picks up. The protocol is the same one 95% of U.S. medical call centers use, paired with seasoned clinical judgment.
       </p>
     </header>
 
-    <div class="ribbon" role="list">
+    <div class="ribbon rise" role="list">
       <div class="cell" role="listitem">
         <span class="tag">The line</span>
         <span class="val">24<span style="opacity:.55">/</span>7</span>
@@ -704,11 +721,11 @@
       <div class="cell" role="listitem">
         <span class="tag">What you don't get</span>
         <span class="val">0</span>
-        <span class="note">IVRs. Portals. Hold music. Prerecorded greetings.</span>
+        <span class="note">IVRs. Voicemail. Hold music. Menu trees.</span>
       </div>
     </div>
 
-    <div class="flow" aria-label="Anatomy of a TULQ call">
+    <div class="flow rise" aria-label="Anatomy of a TULQ call">
 
       <div class="river" aria-hidden="true">
         <svg viewBox="0 0 1180 90" preserveAspectRatio="none">
@@ -749,7 +766,7 @@
         </span>
 
         <h3>A patient <em>calls.</em></h3>
-        <p>From home, the car, work, or a weekend night. A clinician picks up. No menu trees, no callback queue, no portal to register for first.</p>
+        <p>From home, the car, a weekend night. A licensed RN picks up. No menu trees, no callback queue, no portal to register for first.</p>
 
         <div class="chips">
           <span class="chip tolt">Person, not a tree</span>
@@ -789,7 +806,7 @@
         </span>
 
         <h3>A licensed RN <em>listens.</em></h3>
-        <p>Evidence based clinical triage, paired with seasoned clinical judgment and AI assisted intake.</p>
+        <p>Evidence-based clinical triage, paired with seasoned judgment and documented from the first ring. AI captures intake before the handoff — so the nurse opens with context, not questions.</p>
 
         <div class="chips">
           <span class="chip amber">Schmitt&#8209;Thompson</span>
@@ -820,7 +837,6 @@
             <div class="outcome o-911">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it has to be</span>
                 <span class="o-val"><em>911.</em></span>
               </span>
               <span class="o-when">Emergent</span>
@@ -828,16 +844,14 @@
             <div class="outcome o-self">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it should be</span>
-                <span class="o-val"><em>Self care.</em></span>
+                <span class="o-val">Self care.</span>
               </span>
               <span class="o-when">At home</span>
             </div>
             <div class="outcome o-hand">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it's the right door</span>
-                <span class="o-val"><em>Warm handoff.</em></span>
+                <span class="o-val">Warm handoff.</span>
               </span>
               <span class="o-when">Your team</span>
             </div>
@@ -857,7 +871,7 @@
 
     </div>
 
-    <div class="anat">
+    <div class="anat rise">
       <div class="anat-head">
         <span class="eb"><span class="pip" aria-hidden="true"></span>Anatomy of one call</span>
         <em>It doesn't ring. AI captures the basics, your RN takes over.</em>
@@ -933,7 +947,7 @@
       </div>
     </div>
 
-    <div class="closer">
+    <div class="closer rise">
       <span class="crule" aria-hidden="true"></span>
       <div>
         <p class="quote">The call ends with <em>a plan</em>, not a transfer.</p>
