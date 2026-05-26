@@ -26,7 +26,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css?v=8" />
 </head>
@@ -137,11 +137,13 @@
                     two-phase swimlane "Anatomy of one call".
      ══════════════════════════════════════════════════════════ -->
 <style>
-/* Scoped to .how-v2 — self-contained, won't collide with styles.css */
+/* Scoped to .how-v2 — self-contained, won't collide with styles.css.
+   Design tokens: #0b1829 bg · #c9a55a gold · #2dcbcb teal
+   Fonts: Cormorant Garamond (display/italic) · DM Sans (body/tags) */
 .how-v2{
   position:relative;
   padding:120px 0 140px;
-  background:var(--basalt);
+  background:#0b1829;
   color:var(--fog);
   overflow:hidden;
   isolation:isolate;
@@ -149,14 +151,14 @@
 .how-v2::before{
   content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(ellipse 55% 60% at 10% 18%, rgba(58,90,74,.55), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 92% 82%, rgba(217,138,74,.10), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217,119,87,.05), transparent 65%);
+    radial-gradient(ellipse 55% 60% at 10% 18%, rgba(10,53,56,.55), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 92% 82%, rgba(201,165,90,.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,165,90,.05), transparent 65%);
 }
 .how-v2 .bg-photo{
   position:absolute;inset:0;z-index:-3;pointer-events:none;
   background:url("https://images.pexels.com/photos/5109343/pexels-photo-5109343.jpeg?auto=compress&cs=tinysrgb&w=1800") center/cover no-repeat;
-  opacity:.18;
+  opacity:.12;
   mix-blend-mode:luminosity;
   -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
           mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
@@ -171,17 +173,17 @@
 /* HEAD */
 .how-v2 .eb{
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  font-weight:500;color:var(--river-tolt);
+  font-weight:500;color:#2dcbcb;
   display:inline-flex;align-items:center;gap:10px;
 }
 .how-v2 .eb .pip{
-  width:6px;height:6px;border-radius:50%;background:var(--amber);
-  box-shadow:0 0 0 4px rgba(217,138,74,.18);
+  width:6px;height:6px;border-radius:50%;background:#c9a55a;
+  box-shadow:0 0 0 4px rgba(201,165,90,.18);
   animation:hv2-breath 4s ease-in-out infinite;
 }
 @keyframes hv2-breath{
-  0%,100%{box-shadow:0 0 0 3px rgba(217,138,74,.18)}
-  50%{box-shadow:0 0 0 8px rgba(217,138,74,.02)}
+  0%,100%{box-shadow:0 0 0 3px rgba(201,165,90,.18)}
+  50%{box-shadow:0 0 0 8px rgba(201,165,90,.02)}
 }
 
 .how-v2 .head{
@@ -192,53 +194,53 @@
   margin-bottom:72px;
 }
 .how-v2 .head h2{
-  font-family:var(--serif);font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-weight:400;
   font-size:clamp(44px,6vw,82px);
   line-height:1.02;letter-spacing:-.022em;
   margin:24px 0 0;color:var(--fog);
   text-wrap:balance;
 }
-.how-v2 .head h2 em{font-style:italic;color:var(--amber)}
+.how-v2 .head h2 em{font-style:italic;color:#c9a55a}
 .how-v2 .head .lede{
-  font-family:var(--serif);font-style:italic;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;
   font-size:clamp(19px,1.5vw,22px);line-height:1.45;
   color:rgba(232,228,216,.78);
   margin:0;max-width:540px;
 }
-.how-v2 .head .lede em{color:var(--river-tolt);font-style:italic}
+.how-v2 .head .lede em{color:#2dcbcb;font-style:italic}
 
 /* STAT RIBBON */
 .how-v2 .ribbon{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  border-top:1px dashed var(--rule-dark);
-  border-bottom:1px dashed var(--rule-dark);
+  border-top:1px dashed rgba(255,255,255,.08);
+  border-bottom:1px dashed rgba(255,255,255,.08);
   margin-bottom:88px;
 }
 .how-v2 .cell{
   padding:28px 28px;
-  border-right:1px dashed var(--rule-dark);
+  border-right:1px dashed rgba(255,255,255,.08);
   display:flex;flex-direction:column;gap:6px;
 }
 .how-v2 .cell:last-child{border-right:0}
 .how-v2 .tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(168,200,196,.65);
+  font-family:"DM Sans", system-ui, sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(45,203,203,.65);
 }
 .how-v2 .val{
-  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-weight:400;
   font-size:clamp(42px,4.2vw,60px);line-height:.98;letter-spacing:-.022em;
   color:var(--fog);
 }
-.how-v2 .val sup{font-size:.42em;vertical-align:super;font-style:normal;font-family:var(--mono);color:var(--amber);margin-left:4px}
-.how-v2 .val .em{color:var(--amber);font-style:italic}
+.how-v2 .val sup{font-size:.42em;vertical-align:super;font-style:normal;font-family:var(--mono);color:#c9a55a;margin-left:4px}
+.how-v2 .val .em{color:#c9a55a;font-style:italic}
 .how-v2 .note{
-  font-family:var(--sans);font-size:13px;line-height:1.45;
+  font-family:"DM Sans", system-ui, sans-serif;font-size:13px;line-height:1.45;
   color:rgba(232,228,216,.62);
   max-width:26ch;
 }
 
-/* FLOW (3 stages) — equal-height columns, chips pinned to card bottom */
+/* FLOW (3 stages) — glassmorphism cards, equal-height, chips pinned to bottom */
 .how-v2 .flow{
   position:relative;
   display:grid;
@@ -248,11 +250,11 @@
   padding:24px 0 56px;
 }
 .how-v2 .river{
-  position:absolute;left:0;right:0;top:170px;
+  position:absolute;left:0;right:0;top:200px;
   height:80px;pointer-events:none;z-index:0;
 }
 .how-v2 .river svg{width:100%;height:100%;display:block}
-.how-v2 .river .p-tolt{fill:none;stroke:var(--river-tolt);stroke-width:1;stroke-dasharray:6 9;opacity:.55;animation:hv2-drift-a 18s linear infinite}
+.how-v2 .river .p-tolt{fill:none;stroke:#2dcbcb;stroke-width:1;stroke-dasharray:6 9;opacity:.55;animation:hv2-drift-a 18s linear infinite}
 .how-v2 .river .p-snoq{fill:none;stroke:var(--river-snoq);stroke-width:1;stroke-dasharray:4 8;opacity:.42;animation:hv2-drift-b 22s linear infinite}
 @keyframes hv2-drift-a{to{stroke-dashoffset:-260}}
 @keyframes hv2-drift-b{to{stroke-dashoffset:260}}
@@ -261,50 +263,56 @@
   position:relative;z-index:1;
   display:flex;flex-direction:column;
   height:100%;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:28px 26px;
 }
 .how-v2 .meta{
   display:flex;align-items:center;justify-content:space-between;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--river-tolt);
+  color:#2dcbcb;
   margin-bottom:32px;padding-bottom:14px;
-  border-bottom:1px dashed var(--rule-dark);
+  border-bottom:1px dashed rgba(255,255,255,.08);
 }
 .how-v2 .meta-num{display:inline-flex;align-items:baseline;gap:10px}
 .how-v2 .meta-num strong{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-weight:400;
+  font-size:34px;line-height:1;color:#c9a55a;letter-spacing:-.02em;
 }
-.how-v2 .meta-time{color:rgba(168,200,196,.55)}
+.how-v2 .meta-time{color:rgba(45,203,203,.55)}
 .how-v2 .nx{
-  position:absolute;right:-22px;top:140px;
+  position:absolute;right:-22px;top:160px;
   width:24px;height:24px;display:grid;place-items:center;
-  color:var(--amber);background:var(--basalt);border-radius:50%;
-  z-index:2;border:1px solid var(--rule-dark);
+  color:#c9a55a;background:#0b1829;border-radius:50%;
+  z-index:2;border:1px solid rgba(255,255,255,.08);
 }
 @media (max-width:880px){.how-v2 .nx{display:none}}
 
 /* Stage visual canvas */
 .how-v2 .vis{
-  position:relative;height:240px;margin:0 -4px 36px;
+  position:relative;height:240px;margin:0 0 36px;
   display:grid;place-items:center;
-  border-radius:14px;overflow:hidden;
-  background:radial-gradient(ellipse 80% 90% at 50% 50%, rgba(28,38,40,.55), rgba(28,38,40,0) 70%);
+  border-radius:12px;overflow:hidden;
+  background:radial-gradient(ellipse 80% 90% at 50% 50%, rgba(11,24,41,.55), rgba(11,24,41,0) 70%);
 }
 
 /* STAGE 01 — phone with concentric ring pulses */
 .how-v2 .rings{position:absolute;inset:0;display:grid;place-items:center}
 .how-v2 .ring-static{
   position:absolute;left:50%;top:50%;
-  border:1px dashed rgba(168,200,196,.28);
+  border:1px dashed rgba(45,203,203,.28);
   border-radius:50%;
   transform:translate(-50%,-50%);pointer-events:none;
 }
 .how-v2 .ring-static.r1{width:120px;height:120px}
-.how-v2 .ring-static.r2{width:170px;height:170px;border-color:rgba(168,200,196,.18)}
-.how-v2 .ring-static.r3{width:220px;height:220px;border-color:rgba(168,200,196,.10)}
+.how-v2 .ring-static.r2{width:170px;height:170px;border-color:rgba(45,203,203,.18)}
+.how-v2 .ring-static.r3{width:220px;height:220px;border-color:rgba(45,203,203,.10)}
 .how-v2 .ring{
   position:absolute;
-  border:1px solid var(--amber);
+  border:1px solid #c9a55a;
   border-radius:50%;
   opacity:0;
   transform:translate(-50%,-50%) scale(.4);
@@ -316,31 +324,31 @@
 .how-v2 .ring:nth-child(2){animation-delay:.7s}
 .how-v2 .ring:nth-child(3){animation-delay:1.4s}
 @keyframes hv2-ring-pulse{
-  0%  {opacity:0;   transform:translate(-50%,-50%) scale(.7); border-color:var(--amber);}
+  0%  {opacity:0;   transform:translate(-50%,-50%) scale(.7); border-color:#c9a55a;}
   10% {opacity:.85}
-  60% {opacity:.3; border-color:var(--river-tolt);}
-  100%{opacity:0;   transform:translate(-50%,-50%) scale(3.6); border-color:var(--river-tolt);}
+  60% {opacity:.3; border-color:#2dcbcb;}
+  100%{opacity:0;   transform:translate(-50%,-50%) scale(3.6); border-color:#2dcbcb;}
 }
 .how-v2 .phone-disc{
   position:relative;z-index:2;
   width:78px;height:78px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, var(--basalt-lift), var(--basalt) 70%);
-  border:1px solid var(--rule-dark);
-  display:grid;place-items:center;color:var(--amber);
-  box-shadow:0 0 0 6px rgba(217,138,74,.08),0 18px 40px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.08), #0b1829 70%);
+  border:1px solid rgba(255,255,255,.08);
+  display:grid;place-items:center;color:#c9a55a;
+  box-shadow:0 0 0 6px rgba(201,165,90,.08),0 18px 40px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
 }
 .how-v2 .phone-disc::after{
   content:"";position:absolute;inset:-12px;border-radius:50%;
-  border:1px dashed rgba(168,200,196,.25);
+  border:1px dashed rgba(45,203,203,.25);
 }
 .how-v2 .orbit{position:absolute;inset:0;pointer-events:none}
 .how-v2 .orbit span{
   position:absolute;
-  font-family:var(--serif);font-style:italic;font-size:12.5px;
-  color:rgba(168,200,196,.78);white-space:nowrap;
-  background:rgba(28,38,40,.75);padding:2px 6px;border-radius:3px;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:12.5px;
+  color:rgba(45,203,203,.78);white-space:nowrap;
+  background:rgba(11,24,41,.75);padding:2px 6px;border-radius:3px;
 }
-.how-v2 .orbit span::before{content:"·";color:var(--amber);margin-right:5px}
+.how-v2 .orbit span::before{content:"·";color:#c9a55a;margin-right:5px}
 .how-v2 .o-1{top:8px;left:6px}
 .how-v2 .o-2{top:24px;right:6px}
 .how-v2 .o-3{bottom:24px;left:6px}
@@ -350,20 +358,20 @@
 .how-v2 .rn-node{
   position:relative;z-index:2;
   width:118px;height:118px;border-radius:50%;
-  background:linear-gradient(140deg, var(--cedar), var(--basalt-lift));
-  border:1px solid rgba(168,200,196,.25);
+  background:linear-gradient(140deg, #0a3538, rgba(255,255,255,.05));
+  border:1px solid rgba(45,203,203,.25);
   display:grid;place-items:center;color:var(--fog);
-  box-shadow:0 0 0 8px rgba(168,200,196,.06),0 22px 50px -14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);
+  box-shadow:0 0 0 8px rgba(45,203,203,.06),0 22px 50px -14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);
 }
 .how-v2 .rn-label{
-  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-weight:400;
   font-size:36px;line-height:1;color:var(--fog);
   letter-spacing:-.02em;text-shadow:0 1px 0 rgba(0,0,0,.3);
 }
 .how-v2 .rn-sub{
   position:absolute;bottom:14px;left:14px;
   font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(168,200,196,.7);background:rgba(28,38,40,.7);
+  color:rgba(45,203,203,.7);background:rgba(11,24,41,.7);
   padding:4px 8px;border-radius:3px;
 }
 .how-v2 .ecg{
@@ -372,9 +380,9 @@
 }
 .how-v2 .ecg svg{width:100%;height:100%;display:block}
 .how-v2 .ecg .trace{
-  fill:none;stroke:var(--amber);stroke-width:1.4;
+  fill:none;stroke:#c9a55a;stroke-width:1.4;
   stroke-linecap:round;stroke-linejoin:round;
-  filter:drop-shadow(0 0 6px rgba(217,138,74,.5));
+  filter:drop-shadow(0 0 6px rgba(201,165,90,.5));
   stroke-dasharray:1200;
   stroke-dashoffset:1200;
   animation:hv2-ecg-sweep 5s ease-out infinite;
@@ -387,16 +395,16 @@
   100%{stroke-dashoffset:0; opacity:0}
 }
 .how-v2 .ecg .trace-ghost{
-  fill:none;stroke:var(--amber);stroke-width:1;
+  fill:none;stroke:#c9a55a;stroke-width:1;
   stroke-linecap:round;stroke-linejoin:round;
   opacity:.22;
 }
 .how-v2 .badge{
   position:absolute;
   bottom:14px;right:14px;
-  background:rgba(28,38,40,.92);
+  background:rgba(11,24,41,.92);
   backdrop-filter:blur(8px);
-  border:1px solid var(--rule-dark);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:10px;
   padding:8px 10px;
   display:flex;align-items:center;gap:9px;
@@ -404,8 +412,8 @@
   box-shadow:0 12px 30px -12px rgba(0,0,0,.5);
 }
 .how-v2 .badge-num{
-  font-family:var(--serif);font-style:italic;font-size:24px;line-height:1;
-  color:var(--amber);
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:24px;line-height:1;
+  color:#c9a55a;
 }
 .how-v2 .badge-text{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -419,8 +427,8 @@
   width:28px;height:80%;pointer-events:none;
 }
 .how-v2 .fork-svg svg{width:100%;height:100%;display:block}
-.how-v2 .fork-svg path{fill:none;stroke:rgba(168,200,196,.6);stroke-width:1.2;stroke-dasharray:3 4}
-.how-v2 .fork-svg .j{fill:var(--amber)}
+.how-v2 .fork-svg path{fill:none;stroke:rgba(45,203,203,.6);stroke-width:1.2;stroke-dasharray:3 4}
+.how-v2 .fork-svg .j{fill:#c9a55a}
 .how-v2 .vis-fork{
   align-items:stretch;justify-content:stretch;
   padding:8px 6px 8px 28px;
@@ -429,29 +437,30 @@
 .how-v2 .outcome{
   display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
   padding:12px 14px;
-  background:rgba(28,38,40,.55);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:14px;
   transition:transform .2s var(--ease-out-soft), background .2s, border-color .2s;
 }
-.how-v2 .outcome:hover{transform:translateX(3px);background:rgba(28,38,40,.85);border-color:rgba(168,200,196,.28)}
+.how-v2 .outcome:hover{transform:translateX(3px);background:rgba(255,255,255,.09);border-color:rgba(45,203,203,.28)}
 .how-v2 .bullet{
   width:10px;height:10px;border-radius:50%;flex:0 0 auto;
   box-shadow:0 0 0 4px rgba(255,255,255,.04);
 }
 .how-v2 .o-911 .bullet{background:#c0584d;box-shadow:0 0 0 4px rgba(192,88,77,.18)}
-.how-v2 .o-self .bullet{background:var(--river-tolt);box-shadow:0 0 0 4px rgba(168,200,196,.18)}
-.how-v2 .o-hand .bullet{background:var(--amber);box-shadow:0 0 0 4px rgba(217,138,74,.18)}
+.how-v2 .o-self .bullet{background:#2dcbcb;box-shadow:0 0 0 4px rgba(45,203,203,.18)}
+.how-v2 .o-hand .bullet{background:#c9a55a;box-shadow:0 0 0 4px rgba(201,165,90,.18)}
 .how-v2 .ob{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
 .how-v2 .o-key{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(168,200,196,.65);white-space:nowrap;
+  color:rgba(45,203,203,.65);white-space:nowrap;
 }
 .how-v2 .o-val{
-  font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.15;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:19px;line-height:1.15;
   color:var(--fog);white-space:nowrap;
 }
-.how-v2 .o-val em{font-style:italic;color:var(--amber)}
+.how-v2 .o-val em{font-style:italic;color:#c9a55a}
 .how-v2 .o-when{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(232,228,216,.55);text-align:right;white-space:nowrap;
@@ -459,54 +468,56 @@
 
 /* Stage copy + chips (chips pinned to bottom for row alignment) */
 .how-v2 .stage h3{
-  font-family:var(--serif);font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-weight:400;
   font-size:32px;line-height:1.15;letter-spacing:-.012em;
   margin:0 0 18px;color:var(--fog);
 }
-.how-v2 .stage h3 em{font-style:italic;color:var(--amber)}
+.how-v2 .stage h3 em{font-style:italic;color:#c9a55a}
 .how-v2 .stage > p{
-  font-family:var(--sans);font-size:15px;line-height:1.62;
+  font-family:"DM Sans", system-ui, sans-serif;font-size:15px;line-height:1.62;
   color:rgba(232,228,216,.72);
   margin:0 0 22px;text-wrap:pretty;max-width:34ch;
 }
 .how-v2 .chips{
   display:flex;flex-wrap:wrap;gap:6px;
-  padding-top:18px;border-top:1px dashed var(--rule-dark);
+  padding-top:18px;border-top:1px dashed rgba(255,255,255,.08);
   margin-top:auto;
 }
 .how-v2 .chip{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:"DM Sans", system-ui, sans-serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(232,228,216,.72);
   padding:5px 9px;
-  border:1px solid var(--rule-dark);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:999px;
-  background:rgba(28,38,40,.4);white-space:nowrap;
+  background:rgba(255,255,255,.04);white-space:nowrap;
 }
 .how-v2 .chip.x{color:rgba(232,228,216,.45);text-decoration:line-through;text-decoration-color:rgba(192,88,77,.55);text-decoration-thickness:1px}
-.how-v2 .chip.amber{color:var(--amber);border-color:rgba(217,138,74,.4)}
-.how-v2 .chip.tolt{color:var(--river-tolt);border-color:rgba(168,200,196,.3)}
+.how-v2 .chip.amber{color:#c9a55a;border-color:rgba(201,165,90,.4)}
+.how-v2 .chip.tolt{color:#2dcbcb;border-color:rgba(45,203,203,.3)}
 
-/* ANATOMY OF ONE CALL — two-phase swimlane */
+/* ANATOMY OF ONE CALL — two-phase swimlane, glassmorphism */
 .how-v2 .anat{
   margin-top:64px;
   padding:34px 36px 36px;
-  background:rgba(28,38,40,.55);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:22px;
   position:relative;overflow:hidden;
 }
 .how-v2 .anat::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 70% 100% at 8% 50%, rgba(58,90,74,.25), transparent 60%);
+  background:radial-gradient(ellipse 70% 100% at 8% 50%, rgba(10,53,56,.25), transparent 60%);
 }
 .how-v2 .anat-head{
   display:flex;justify-content:space-between;align-items:baseline;
   flex-wrap:wrap;gap:12px;margin-bottom:28px;position:relative;
 }
-.how-v2 .anat-head .eb{color:var(--amber)}
-.how-v2 .anat-head .eb .pip{background:var(--amber)}
+.how-v2 .anat-head .eb{color:#c9a55a}
+.how-v2 .anat-head .eb .pip{background:#c9a55a}
 .how-v2 .anat-head em{
-  font-family:var(--serif);font-style:italic;font-size:18px;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:18px;
   color:rgba(232,228,216,.7);
 }
 
@@ -519,38 +530,40 @@
 .how-v2 .lane{
   position:relative;
   padding:24px 26px 26px;
-  background:rgba(28,38,40,.45);
-  border:1px solid var(--rule-dark);
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
   display:flex;flex-direction:column;gap:14px;
 }
-.how-v2 .lane.lane-ai{border-left:2px solid rgba(217,138,74,.55)}
-.how-v2 .lane.lane-rn{border-left:2px solid rgba(168,200,196,.55)}
+.how-v2 .lane.lane-ai{border-left:2px solid rgba(201,165,90,.55)}
+.how-v2 .lane.lane-rn{border-left:2px solid rgba(45,203,203,.55)}
 
 .how-v2 .lane-head{
   display:flex;align-items:center;gap:14px;
   padding-bottom:14px;
-  border-bottom:1px dashed var(--rule-dark);
+  border-bottom:1px dashed rgba(255,255,255,.08);
 }
 .how-v2 .actor{
   width:38px;height:38px;border-radius:50%;
   display:grid;place-items:center;
-  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-weight:400;
   font-size:17px;color:var(--fog);line-height:1;
-  background:linear-gradient(140deg, var(--basalt-lift), var(--basalt));
-  border:1px solid var(--rule-dark);flex:0 0 auto;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);flex:0 0 auto;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
-.how-v2 .lane-ai .actor{border-color:rgba(217,138,74,.45);color:var(--amber)}
-.how-v2 .lane-rn .actor{border-color:rgba(168,200,196,.45);color:var(--river-tolt)}
+.how-v2 .lane-ai .actor{border-color:rgba(201,165,90,.45);color:#c9a55a}
+.how-v2 .lane-rn .actor{border-color:rgba(45,203,203,.45);color:#2dcbcb}
 .how-v2 .lane-title{display:flex;flex-direction:column;gap:2px}
 .how-v2 .lane-name{
   font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(168,200,196,.6);
+  color:rgba(45,203,203,.6);
 }
-.how-v2 .lane-ai .lane-name{color:rgba(217,138,74,.75)}
+.how-v2 .lane-ai .lane-name{color:rgba(201,165,90,.75)}
 .how-v2 .lane-role{
-  font-family:var(--serif);font-style:italic;font-size:18px;color:var(--fog);line-height:1.2;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:18px;color:var(--fog);line-height:1.2;
 }
 .how-v2 .beats{
   list-style:none;margin:0;padding:0;
@@ -562,16 +575,16 @@
 }
 .how-v2 .beat-time{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(168,200,196,.55);
+  color:rgba(45,203,203,.55);
   padding-top:3px;min-width:74px;
 }
-.how-v2 .lane-ai .beat-time{color:rgba(217,138,74,.6)}
+.how-v2 .lane-ai .beat-time{color:rgba(201,165,90,.6)}
 .how-v2 .beat-text{
-  font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.35;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:16.5px;line-height:1.35;
   color:rgba(232,228,216,.92);text-wrap:pretty;
 }
-.how-v2 .beat-text em{color:var(--amber);font-style:italic}
-.how-v2 .lane-rn .beat-text em{color:var(--river-tolt)}
+.how-v2 .beat-text em{color:#c9a55a;font-style:italic}
+.how-v2 .lane-rn .beat-text em{color:#2dcbcb}
 
 /* Handoff bridge between lanes */
 .how-v2 .bridge{
@@ -582,38 +595,38 @@
 .how-v2 .bridge-arrow{
   width:64px;height:64px;border-radius:50%;
   display:grid;place-items:center;
-  background:radial-gradient(circle at 35% 30%, var(--basalt-lift), var(--basalt) 70%);
-  border:1px dashed rgba(217,138,74,.55);
-  color:var(--amber);
+  background:rgba(255,255,255,.05);
+  border:1px dashed rgba(201,165,90,.55);
+  color:#c9a55a;
   box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
   position:relative;z-index:2;
   animation:hv2-bridge 3.6s ease-in-out infinite;
 }
 @keyframes hv2-bridge{
-  0%,100%{box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04),0 0 0 0 rgba(217,138,74,.35)}
-  50%{box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04),0 0 0 8px rgba(217,138,74,0)}
+  0%,100%{box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04),0 0 0 0 rgba(201,165,90,.35)}
+  50%{box-shadow:0 12px 30px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04),0 0 0 8px rgba(201,165,90,0)}
 }
 .how-v2 .bridge-arrow::before,
 .how-v2 .bridge-arrow::after{
   content:"";position:absolute;left:50%;top:50%;
   width:120px;height:120px;border-radius:50%;
-  border:1px dashed rgba(217,138,74,.25);
+  border:1px dashed rgba(201,165,90,.25);
   transform:translate(-50%,-50%);pointer-events:none;
 }
-.how-v2 .bridge-arrow::after{width:180px;height:180px;border-color:rgba(217,138,74,.12)}
+.how-v2 .bridge-arrow::after{width:180px;height:180px;border-color:rgba(201,165,90,.12)}
 .how-v2 .bridge-label{
   font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--amber);margin-top:12px;white-space:nowrap;
+  color:#c9a55a;margin-top:12px;white-space:nowrap;
 }
 .how-v2 .bridge-sub{
-  font-family:var(--serif);font-style:italic;font-size:13px;
+  font-family:"Cormorant Garamond", Georgia, serif;font-style:italic;font-size:13px;
   color:rgba(232,228,216,.6);margin-top:4px;text-align:center;
   max-width:120px;line-height:1.25;
 }
 .how-v2 .ctx-flow{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:200%;height:2px;pointer-events:none;z-index:1;
-  background:repeating-linear-gradient(to right, rgba(217,138,74,.55) 0 6px, transparent 6px 12px);
+  background:repeating-linear-gradient(to right, rgba(201,165,90,.55) 0 6px, transparent 6px 12px);
   opacity:.7;
 }
 
@@ -622,18 +635,18 @@
   margin-top:80px;
   display:grid;grid-template-columns:60px 1fr 60px;gap:24px;align-items:center;
 }
-.how-v2 .crule{height:1px;background:repeating-linear-gradient(to right, rgba(168,200,196,.4) 0 8px, transparent 8px 14px)}
+.how-v2 .crule{height:1px;background:repeating-linear-gradient(to right, rgba(45,203,203,.4) 0 8px, transparent 8px 14px)}
 .how-v2 .quote{
   text-align:center;
-  font-family:var(--serif);font-weight:400;
+  font-family:"Cormorant Garamond", Georgia, serif;font-weight:400;
   font-size:clamp(34px,4vw,52px);line-height:1.15;letter-spacing:-.018em;
   color:var(--fog);text-wrap:balance;margin:0;
 }
-.how-v2 .quote em{font-style:italic;color:var(--amber)}
+.how-v2 .quote em{font-style:italic;color:#c9a55a}
 .how-v2 .sig{
   margin-top:22px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(168,200,196,.5);text-align:center;
+  font-family:"DM Sans", system-ui, sans-serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(45,203,203,.5);text-align:center;
 }
 
 /* RESPONSIVE */
@@ -654,7 +667,7 @@
   .how-v2{padding:80px 0 90px}
   .how-v2 .head{grid-template-columns:1fr;gap:24px}
   .how-v2 .ribbon{grid-template-columns:1fr 1fr}
-  .how-v2 .cell{border-right:1px dashed var(--rule-dark);border-bottom:1px dashed var(--rule-dark)}
+  .how-v2 .cell{border-right:1px dashed rgba(255,255,255,.08);border-bottom:1px dashed rgba(255,255,255,.08)}
   .how-v2 .cell:nth-child(2n){border-right:0}
   .how-v2 .cell:nth-last-child(-n+2){border-bottom:0}
   .how-v2 .closer{grid-template-columns:1fr}
@@ -681,7 +694,7 @@
         <h2>Three rings. <em>A clear next step.</em></h2>
       </div>
       <p class="lede">
-        Whether you're calling from your ancestral lands, your cousin's house, the road, or while you wait outside the clinic, <em>a licensed RN picks up.</em> The protocol is the same one 95% of U.S. medical call centers use. The judgment already knows the room.
+        Whether you're calling from your ancestral lands, your cousin's house, the road, or while you wait outside the clinic — a licensed RN picks up. The protocol is the same one 95% of U.S. medical call centers use. The judgment already knows the room.
       </p>
     </header>
 
@@ -704,7 +717,7 @@
       <div class="cell" role="listitem">
         <span class="tag">What you don't get</span>
         <span class="val">0</span>
-        <span class="note">IVRs. Portals. Hold music. Prerecorded greetings.</span>
+        <span class="note">IVRs. Voicemail. Hold music. Menu trees.</span>
       </div>
     </div>
 
@@ -719,7 +732,7 @@
 
       <article class="stage">
         <div class="meta">
-          <span class="meta-num"><strong>01</strong> &nbsp; You call</span>
+          <span class="meta-num"><strong>01</strong> &nbsp; You call.</span>
           <span class="meta-time">T + 0:00</span>
         </div>
 
@@ -749,7 +762,7 @@
         </span>
 
         <h3>You <em>call.</em></h3>
-        <p>From anywhere. Any hour. A person picks up. No menu trees, no callback queue, no portal to register for first.</p>
+        <p>From anywhere. Any hour. A licensed RN picks up. No menu trees, no callback queue, no portal to register for first.</p>
 
         <div class="chips">
           <span class="chip tolt">Person, not a tree</span>
@@ -762,7 +775,7 @@
 
       <article class="stage">
         <div class="meta">
-          <span class="meta-num"><strong>02</strong> &nbsp; A licensed RN listens</span>
+          <span class="meta-num"><strong>02</strong> &nbsp; A licensed RN listens.</span>
           <span class="meta-time">T + 0:08</span>
         </div>
 
@@ -789,7 +802,7 @@
         </span>
 
         <h3>A licensed RN <em>listens.</em></h3>
-        <p>Evidence based clinical triage, paired with culturally competent judgment that already knows the room.</p>
+        <p>Clinical triage grounded in evidence, shaped by the communities it serves. AI captures intake before the handoff — so the nurse opens with context, not questions.</p>
 
         <div class="chips">
           <span class="chip amber">Schmitt&#8209;Thompson</span>
@@ -801,7 +814,7 @@
 
       <article class="stage">
         <div class="meta">
-          <span class="meta-num"><strong>03</strong> &nbsp; A clear next step</span>
+          <span class="meta-num"><strong>03</strong> &nbsp; A clear next step.</span>
           <span class="meta-time">T + resolved</span>
         </div>
 
@@ -820,7 +833,7 @@
             <div class="outcome o-911">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it has to be</span>
+                <span class="o-key">Emergent</span>
                 <span class="o-val"><em>911.</em></span>
               </span>
               <span class="o-when">Emergent</span>
@@ -828,7 +841,7 @@
             <div class="outcome o-self">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it should be</span>
+                <span class="o-key">At home</span>
                 <span class="o-val"><em>Self care.</em></span>
               </span>
               <span class="o-when">At home</span>
@@ -836,7 +849,7 @@
             <div class="outcome o-hand">
               <span class="bullet" aria-hidden="true"></span>
               <span class="ob">
-                <span class="o-key">If it's the right door</span>
+                <span class="o-key">IHS &middot; THP</span>
                 <span class="o-val"><em>Warm handoff.</em></span>
               </span>
               <span class="o-when">IHS &middot; THP</span>
@@ -847,12 +860,6 @@
         <h3>A <em>clear</em> next step.</h3>
         <p>The call ends with a plan. Not a transfer. Not a callback. Not a maybe.</p>
 
-        <div class="chips">
-          <span class="chip">EMS routing</span>
-          <span class="chip">Home care plan</span>
-          <span class="chip amber">IHS handoff</span>
-          <span class="chip tolt">Tribal Health Program</span>
-        </div>
       </article>
 
     </div>
@@ -937,7 +944,7 @@
       <span class="crule" aria-hidden="true"></span>
       <div>
         <p class="quote">The call ends with <em>a plan</em>, not a transfer.</p>
-        <p class="sig">Tultx&#695; &middot; the confluence of two rivers</p>
+        <p class="sig">TULTX&#x2122; &middot; THE CONFLUENCE OF TWO RIVERS</p>
       </div>
       <span class="crule" aria-hidden="true"></span>
     </div>
