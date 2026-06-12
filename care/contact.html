@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="styles.css?v=8" />
 <style>
 /* ═══════════════════════════════════════════════════════════
-   Contact page — full-bleed split layout
+   Contact page - full-bleed split layout
    ═══════════════════════════════════════════════════════════ */
 
 body {
@@ -211,7 +211,7 @@ body {
 .cp-form-outer .cf-input:focus { border-color: rgba(217,138,74,0.6); }
 
 /* This page's narrow split panel makes 2-column grids cramped at every
-   viewport — single column is always the right call here. */
+   viewport - single column is always the right call here. */
 .cp-form-outer .cf-grid {
   grid-template-columns: 1fr;
   gap: 0;
@@ -224,7 +224,7 @@ body {
   flex-direction: column;
   gap: 8px;
 }
-/* 16px prevents iOS Safari auto-zoom on focus — applies at all sizes */
+/* 16px prevents iOS Safari auto-zoom on focus - applies at all sizes */
 .cp-form-outer .cf-input { font-size: 16px; min-height: 50px; }
 
 /* Submit row */
@@ -298,7 +298,7 @@ body {
   .cp-form-head h2 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
   .cp-form-head p { font-size: 14px; }
 
-  /* Single-column form grid — override with !important to beat any cascade */
+  /* Single-column form grid - override with !important to beat any cascade */
   .cf-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
@@ -452,7 +452,7 @@ body {
 
         <label class="cf-check">
           <input type="checkbox" name="capability_statement" value="requested" id="cf-cap">
-          <span>I'm evaluating TULQ for my organization — please include the capability overview<br><span style="color:rgba(232,228,216,0.35);font-size:12px;">Schmitt-Thompson scope · coverage model · sample documentation</span></span>
+          <span>I'm evaluating TULQ for my organization, please include the capability overview<br><span style="color:rgba(232,228,216,0.35);font-size:12px;">Schmitt-Thompson scope · coverage model · sample documentation</span></span>
         </label>
 
         <div class="cf-foot">
@@ -583,7 +583,7 @@ body {
         throw new Error(data.message || 'Submission error');
       }
     } catch {
-      cfStatus.textContent = 'Something went wrong — email us directly at hello@tulq.health';
+      cfStatus.textContent = 'Something went wrong. Email us directly at hello@tulq.health';
       cfStatus.classList.add('cf-status--error');
       cfBtn.disabled = false;
       cfBtn.innerHTML = btnHTML;
