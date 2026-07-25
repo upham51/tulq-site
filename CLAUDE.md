@@ -1,5 +1,13 @@
 # TULQ Site
 
+## Domains
+
+- **Root site** (`/`, IHS/tribal-facing): `tulq.health`
+- **B2B / non-tribal site** (`care/` subsite): **`tulqhealth.com`** — this is
+  the live, canonical domain as of 2026-07-25. The README's mention of
+  `care.tulq.health` as the custom domain target predates this and should be
+  treated as superseded wherever the two conflict.
+
 ## Brand / Logo
 
 - **The official TULQ logo is the metallic "T" mark** (gunmetal Coast Salish
