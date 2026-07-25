@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://care.tulq.health/sitemap.xml
+Sitemap: https://tulqhealth.com/sitemap.xml

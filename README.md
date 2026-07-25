@@ -2,11 +2,11 @@
 
 Static landing site for **Tulq**, a Native-led 24/7 nurse advice line for IHS beneficiaries. Built with the Nursing Directory UI Kit aesthetic — warm cream, teal, amber accents, Instrument Serif headers.
 
-## care.tulq.health — universal subdomain
+## tulqhealth.com — universal B2B site
 
 The `care/` directory is a **self-contained mirror of this site with the IHS/tribal targeting removed** and the copy retargeted at the broader regulated B2B market (FQHCs/RHCs, hospice & home health, Critical Access Hospitals, and DPC/pediatric/OB practices). The UI, CSS, JS, and rivers visual are byte-identical to the root site; only the content differs. The TULQ name and its `tultxʷ` origin story are kept as a respectful etymology, but the site no longer targets Indian Country.
 
-It is built to be deployed as its **own Cloudflare Pages project** bound to `care.tulq.health`:
+It is built to be deployed as its **own Cloudflare Pages project** bound to `tulqhealth.com`:
 
 1. **Workers & Pages → Create application → Pages → Connect to Git** → select this repo
 2. Configure build:
@@ -14,7 +14,7 @@ It is built to be deployed as its **own Cloudflare Pages project** bound to `car
    - **Build command:** *(leave empty)*
    - **Build output directory:** `care`
    - **Root directory:** `/`
-3. **Save and Deploy**, then in the project's **Custom domains** tab add `care.tulq.health` (one click if the zone is on Cloudflare DNS).
+3. **Save and Deploy**, then in the project's **Custom domains** tab add `tulqhealth.com` (one click if the zone is on Cloudflare DNS).
 
 The existing root project (the tribal/IHS site) is untouched and keeps serving `tulq.health` / `tulq-site.pages.dev`.
 
