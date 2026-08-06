@@ -58,6 +58,28 @@ finished `.html` that is committed to git and served directly.
 - `pages.css` styles the generated pages; `styles.css` styles the hand-written
   ones. Both exist in the root and mirrored in `care/`.
 
+### Editing CSS — read this before you touch a stylesheet
+
+`_headers` serves `/*.css` with `max-age=31536000, immutable`. A stylesheet
+URL is therefore cached for a **year**, by browsers and by Cloudflare's edge.
+Changing `styles.css` without changing its URL ships nothing — visitors keep
+the old bytes. This has bitten the site once already: the FAQ styles were
+added under an unchanged `styles.css?v=9`, so the markup went live and the
+CSS did not, and the accordion rendered as bare `<details>` triangles in
+production for two days.
+
+Every stylesheet reference now carries a **content hash**, applied by
+`python3 tools/stamp-assets.py`. `build-pages.py` runs it automatically at
+the end of every build. So:
+
+- After editing `styles.css` or `pages.css`, run `tools/stamp-assets.py`
+  (or just `tools/build-pages.py`, which calls it).
+- Never hand-write `?v=` numbers. The tool owns that query string and will
+  overwrite them.
+- The same trap applies to `/assets/*`, which is also immutable. If you
+  change an image's *contents*, give it a new filename rather than relying
+  on the cache to notice.
+
 ### Checks worth running after any change
 
 - `python3 tools/check-links.py` — every site-absolute link and relative asset
