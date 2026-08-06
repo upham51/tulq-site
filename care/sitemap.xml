@@ -16,6 +16,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tulqhealth.com/nurse-triage-for-hospice</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/nurse-triage-for-rural-health-clinics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://tulqhealth.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
