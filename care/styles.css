@@ -1077,6 +1077,18 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; gap: 8px;
 }
 .serve-card-tag::before { content: ""; width: 12px; height: 1px; background: var(--ink-mute); }
+.serve-card-link {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--teal-deep);
+  text-decoration: none;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s, color 0.18s;
+}
+.serve-card-link:hover { border-bottom-color: var(--teal-deep); }
 
 @media (max-width: 1000px) {
   .serve-grid { grid-template-columns: 1fr 1fr; }
@@ -1807,6 +1819,8 @@ a { color: inherit; text-decoration: none; }
 .section-dark .serve-card p { color: rgba(232,228,216,.68); }
 .section-dark .serve-card-tag { color: rgba(168,200,196,0.65); }
 .section-dark .serve-card-tag::before { background: rgba(168,200,196,0.4); }
+.section-dark .serve-card-link { color: var(--river-tolt); }
+.section-dark .serve-card-link:hover { border-bottom-color: var(--river-tolt); }
 
 /* ─────────────────────────────────────────────────────────────
    Light-section pillar cards (Why Tulq now cream)

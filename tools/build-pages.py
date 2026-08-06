@@ -28,12 +28,26 @@ from pagekit import CARE, ROOT, TRIBAL, Page, write  # noqa: E402
 
 TODAY = date.today().isoformat()
 
-# Hand-authored pages that predate the generator but still belong in the
-# sitemaps. privacy is deliberately absent - it is noindex on both sites
-# because the two copies are near-identical across domains.
+# Hand-authored pages that are not generated but still belong in the sitemaps.
+# privacy is deliberately absent - it is noindex on both sites because the two
+# copies are near-identical across domains.
+#
+# The two /nurse-triage-for-* pages came from PR #88 and are hand-written. They
+# overlap in topic with the generated /for/ pillars; see CLAUDE.md for how that
+# overlap is resolved.
 STATIC = {
-    TRIBAL.key: [("/", "1.0", "weekly"), ("/story", "0.6", "monthly"), ("/contact", "0.7", "monthly")],
-    CARE.key: [("/", "1.0", "weekly"), ("/story", "0.6", "monthly"), ("/contact", "0.7", "monthly")],
+    TRIBAL.key: [
+        ("/", "1.0", "weekly"),
+        ("/story", "0.6", "monthly"),
+        ("/contact", "0.7", "monthly"),
+    ],
+    CARE.key: [
+        ("/", "1.0", "weekly"),
+        ("/story", "0.6", "monthly"),
+        ("/contact", "0.7", "monthly"),
+        ("/nurse-triage-for-hospice", "0.9", "monthly"),
+        ("/nurse-triage-for-rural-health-clinics", "0.9", "monthly"),
+    ],
 }
 
 
