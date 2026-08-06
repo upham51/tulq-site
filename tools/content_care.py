@@ -480,3 +480,355 @@ def pillar_health_centers() -> Page:
         faq_node(page, qa),
     ]
     return page
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SEGMENT — Hospice
+#
+# Originally hand-written in PR #88 with the homepage's alternating
+# dark/cream section bands. Ported onto the shared article shell so it
+# reads as part of the same site as every other content page - the copy,
+# the citations and the URL are unchanged.
+# ══════════════════════════════════════════════════════════════════════
+
+def page_hospice() -> Page:
+    qa = [
+        ("Does Medicare require 24/7 nurse availability for hospice?",
+         "<p>Yes. 42 CFR &sect; 418.100(c) requires nursing services to be routinely "
+         "available on a 24-hour basis, 7 days a week, for every Medicare-certified "
+         "hospice.</p>"),
+        ("Can a hospice outsource its after-hours on-call nurse coverage?",
+         "<p>Yes. Hospices routinely contract with an outside nurse triage service to "
+         "satisfy the requirement, provided the service uses licensed RNs, follows a "
+         "validated clinical protocol, and produces documentation the hospice can keep "
+         "on file.</p>"),
+        ("What happens on a death call?",
+         "<p>It goes to your clinician, every time. Pronouncement, family support at the "
+         "bedside, and the coordination that follows are your team's work, not a triage "
+         "line's. What TULQ does is take that call immediately, gather what your "
+         "clinician needs, and reach them without the family sitting in a queue.</p>"),
+        ("How does this affect our CAHPS scores?",
+         "<p>Several CAHPS Hospice measures turn on nights and weekends &mdash; whether "
+         "the family got help as soon as they needed it, and how the team communicated. "
+         "<a href=\"/resources/hospice-cahps-after-hours\">We go through which measures "
+         "after-hours access actually moves, and which it doesn't.</a></p>"),
+    ]
+
+    page = Page(
+        site=SITE,
+        slug="nurse-triage-for-hospice",
+        title="24/7 Nurse Triage for Hospice · Medicare CoP | TULQ",
+        description=(
+            "A 24/7 RN-staffed nurse triage line for hospice agencies meeting the "
+            "Medicare CoP for round-the-clock nurse availability. Flat monthly pricing. "
+            "Talk to us."
+        ),
+        eyebrow="Hospice",
+        h1="24/7 nurse coverage for hospice, <em>without the on-call burnout.</em>",
+        deck=(
+            "Every Medicare-certified hospice has to make nursing services routinely "
+            "available around the clock. Most meet it by rotating field nurses through "
+            "a pager. That works until it costs you the nurse."
+        ),
+        crumbs=[("Who we serve", "/nurse-triage-for-hospice")],
+        reviewed=True,
+        priority="0.9",
+        cta_title="See the line before you commit to it.",
+        cta_body=(
+            "Request a capability statement or start a pilot alongside your current "
+            "on-call rotation. We would rather you saw how it runs than took our word "
+            "for it."
+        ),
+    )
+
+    page.body = f"""    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Nursing services routinely available, 7 days a week</div>
+        <div class="stat-src">42 CFR &sect; 418.100(c)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$61,110</div>
+        <div class="stat-label">Average cost of turnover for a single staff RN</div>
+        <div class="stat-src">NSI 2025 &middot; revised to $60,090 in 2026</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">RN</div>
+        <div class="stat-label">Licensed nurse on the first call, not a call-centre rep</div>
+        <div class="stat-src">Schmitt-Thompson protocols</div>
+      </div>
+    </div>
+
+    <h2>Nurse availability isn't optional. It's a <em>Condition of Participation.</em></h2>
+
+    <p>Every Medicare-certified hospice must make nursing services
+    &ldquo;routinely available on a 24-hour basis, 7 days a week.&rdquo; A surveyor
+    can, and does, ask a hospice to demonstrate that a licensed nurse was reachable
+    for any hour of any day in the survey window &mdash; including the 2 a.m. call
+    from a family member watching a patient's breathing change.</p>
+
+    <div class="callout callout--amber">
+      <div class="callout-head">42 CFR &sect; 418.100(c)</div>
+      <p>Nursing services, physician services, and drugs and biologicals must be
+      &ldquo;routinely available on a 24-hour basis, 7 days a week.&rdquo;</p>
+    </div>
+
+    <p>Most hospices meet this today by rotating field nurses through an on-call
+    pager. It works, until it doesn't: the nurse on call at midnight is the same nurse
+    carrying a full patient load at 8 a.m., and every additional night on the pager is
+    a data point in why hospice RNs burn out and leave.</p>
+
+    <p>Nurse turnover costs the industry real money. The 2025 NSI National Health Care
+    Retention &amp; RN Staffing Report put the average cost of turnover for a single
+    staff RN at <strong>$61,110</strong>, a figure the 2026 edition revised only
+    slightly, to $60,090. Against that, the arithmetic on after-hours coverage stops
+    being about the monthly fee.
+    <a href="/resources/true-cost-of-after-hours-on-call">The full calculation is
+    here.</a></p>
+
+    <h2>The pager stops. The <em>coverage</em> doesn't.</h2>
+
+    <p>TULQ takes the after-hours call so your field nurses can actually sleep between
+    shifts, and hands you a documentation trail a surveyor can review.</p>
+
+    <h3>Licensed RNs, every hour</h3>
+    <p>Every call is triaged by a U.S. state-licensed registered nurse &mdash; never a
+    call-center rep reading a script, never AI making the clinical call.</p>
+
+    <h3>Schmitt-Thompson, not improvised</h3>
+    <p>The same validated protocol framework used across the telephone triage
+    industry, so every triage decision is defensible and repeatable.</p>
+
+    <h3>Documentation, survey-ready</h3>
+    <p>Every encounter is documented and delivered in a format your agency can hand a
+    surveyor as proof of 24-hour nurse availability.</p>
+
+    <div class="callout callout--teal">
+      <div class="callout-head">Running home health as well?</div>
+      <p>The home health side answers to a different set of levers &mdash; OASIS,
+      HHVBP, and acute-care utilization rather than a Condition of Participation.
+      <a href="/for/home-health">Nurse triage for home health is covered here.</a>
+      Same line, same nurses.</p>
+    </div>
+
+    <h2>Where to go next</h2>
+
+    {card_grid([
+        ("Cost", "The true cost of after-hours on-call",
+         "The four line items agencies never total in the same place, with a worked example.",
+         "/resources/true-cost-of-after-hours-on-call"),
+        ("CAHPS", "After-hours access and hospice CAHPS",
+         "Which measures it moves, which it doesn't, and the proxies to track meanwhile.",
+         "/resources/hospice-cahps-after-hours"),
+        ("Basics", "Nurse triage vs answering service",
+         "The distinction that justifies the price difference, in one table.",
+         "/resources/nurse-triage-vs-answering-service"),
+        ("Compare", "Comparing triage vendors",
+         "IntellaTriage, Conduit, AccessNurse — what each is built for, and when to pick them.",
+         "/compare/"),
+    ])}
+
+    {faq_block(qa, heading="What hospice administrators ask us first")}
+
+    {sources_block([
+        "42 CFR &sect; 418.100(c) &mdash; Medicare hospice Conditions of Participation.",
+        "NSI Nursing Solutions, <em>National Health Care Retention &amp; RN Staffing Report</em> (2025, 2026).",
+        "CMS, CAHPS Hospice Survey materials.",
+        "Schmitt-Thompson telephone triage protocols.",
+    ], disclaimer=(
+        "Conditions of Participation and published survey figures change. Verify "
+        "against the current CFR and CMS guidance before relying on them. TULQ is "
+        "launching in 2026; this page describes the service model, not past contract "
+        "performance."
+    ))}"""
+
+    page.schema = [
+        service_node(
+            page,
+            name="24/7 after-hours nurse triage for hospice agencies",
+            service_type="Telephone nurse triage",
+            description=(
+                "A 24/7 telephone nurse triage line for Medicare-certified hospice "
+                "agencies, staffed by U.S. state-licensed registered nurses on "
+                "Schmitt-Thompson protocols, supporting the 42 CFR 418.100(c) "
+                "requirement for routinely available nursing services."
+            ),
+            audience="Medicare-certified hospice agencies",
+        ),
+        faq_node(page, qa),
+    ]
+    return page
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SEGMENT — Rural health clinics & critical access hospitals
+# (also ported from PR #88; URL and copy preserved)
+# ══════════════════════════════════════════════════════════════════════
+
+def page_rhc_cah() -> Page:
+    qa = [
+        ("Does a Rural Health Clinic need 24/7 nurse coverage to meet CMS requirements?",
+         "<p>RHCs and the health centers they operate alongside must demonstrate "
+         "after-hours coverage arrangements under HRSA's Health Center Program "
+         "Compliance Manual, which explicitly names nurse call lines as an acceptable "
+         "means of coverage. Critical Access Hospitals carry a separate 24-hour "
+         "emergency-coverage Condition of Participation under 42 CFR 485, Subpart F.</p>"),
+        ("What is the APCM 24/7 access requirement?",
+         "<p>Advanced Primary Care Management billing codes G0556&ndash;G0558, created "
+         "in the 2025 Medicare Physician Fee Schedule, require practices to meet a set "
+         "of service elements to bill Medicare &mdash; one of which is 24/7 access to "
+         "care, commonly satisfied with a nurse triage line. "
+         "<a href=\"/resources/apcm-billing-fqhc-rhc\">More on APCM here.</a></p>"),
+        ("We're an FQHC rather than an RHC. Is this the right page?",
+         "<p>Close, and there is a page written specifically for health centers. "
+         "<a href=\"/for/health-centers\">FQHC and community health center coverage is "
+         "here.</a> If you are an RHC attached to a critical access hospital, this page "
+         "is the one you want.</p>"),
+        ("Is this affordable on a rural clinic budget?",
+         "<p>It has to be. We price on a flat monthly structure rather than per-call, "
+         "so a bad respiratory season does not produce a budget variance you have to "
+         "explain, and the number you put in a grant application is the number you "
+         "pay.</p>"),
+    ]
+
+    page = Page(
+        site=SITE,
+        slug="nurse-triage-for-rural-health-clinics",
+        title="24/7 Nurse Triage for Rural Health Clinics &amp; CAHs | TULQ",
+        description=(
+            "A 24/7 RN-staffed nurse triage line for rural health clinics and critical "
+            "access hospitals demonstrating after-hours coverage. Flat monthly pricing. "
+            "Talk to us."
+        ),
+        eyebrow="RHC &amp; critical access",
+        h1="After-hours coverage for rural clinics, <em>without the physician's cell phone.</em>",
+        deck=(
+            "Rural health clinics and critical access hospitals both have to "
+            "demonstrate after-hours coverage, and both are short of the clinicians it "
+            "would take to staff it themselves."
+        ),
+        crumbs=[("Who we serve", "/nurse-triage-for-rural-health-clinics")],
+        reviewed=True,
+        priority="0.9",
+        cta_title="See the line before you commit to it.",
+        cta_body=(
+            "Request a capability statement or start a pilot alongside your current "
+            "on-call rotation. Tell us your panel size and we will give you a flat "
+            "monthly number."
+        ),
+    )
+
+    page.body = f"""    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num">Ch. 7</div>
+        <div class="stat-label">HRSA names &ldquo;nurse call&rdquo; lines as a means of after-hours coverage</div>
+        <div class="stat-src">Health Center Program Compliance Manual</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30 min</div>
+        <div class="stat-label">CAH on-call staff availability on site, up to 60 in frontier areas</div>
+        <div class="stat-src">42 CFR 485, Subpart F</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">G0556&ndash;58</div>
+        <div class="stat-label">APCM codes requiring 24/7 access to care as a service element</div>
+        <div class="stat-src">CY2025 Physician Fee Schedule</div>
+      </div>
+    </div>
+
+    <h2>After-hours coverage is a <em>compliance line item</em>, not a nice-to-have</h2>
+
+    <p>Health centers and the rural health clinics operating alongside them must
+    demonstrate after-hours coverage. HRSA's own compliance manual states that the
+    health center &ldquo;determines the means by which after-hours coverage is
+    provided&hellip; Examples include&hellip; &lsquo;nurse call&rsquo; lines&rdquo;
+    &mdash; a direct, citable federal reference to exactly this service.</p>
+
+    <div class="callout callout--amber">
+      <div class="callout-head">42 CFR 485, Subpart F</div>
+      <p>Critical Access Hospitals carry a separate 24-hour emergency-coverage
+      Condition of Participation: staff on site or on call, available on site within
+      30 minutes (up to 60 in frontier areas). A small hospital without a physician in
+      the building overnight still has to answer that requirement.</p>
+    </div>
+
+    <p>And for practices billing Advanced Primary Care Management, the 2025 Medicare
+    Physician Fee Schedule created codes <strong>G0556</strong> ($15.20),
+    <strong>G0557</strong> ($48.84), and <strong>G0558</strong> ($107.07 per patient
+    per month), with 2026 rates rising roughly 10%. All three require 24/7 access to
+    care as one of the service elements, which turns &ldquo;nice to have&rdquo; into a
+    line item tied directly to reimbursement.
+    <a href="/resources/apcm-billing-fqhc-rhc">We walk through APCM here.</a></p>
+
+    <h2>One nurse line. <em>Every regulation it touches.</em></h2>
+
+    <p>TULQ sits alongside your existing on-call physician rotation, taking the
+    after-hours call volume a nurse can resolve so the physician's cell phone stops
+    ringing for things that don't need a physician.</p>
+
+    <h3>RN-staffed, every call</h3>
+    <p>A licensed registered nurse triages every call using Schmitt-Thompson
+    protocols, the framework the telephone triage industry standardizes on.</p>
+
+    <h3>Built for the audit trail</h3>
+    <p>Every encounter is documented in a form your clinic can hand to an HRSA site
+    visit or a CMS surveyor as evidence of after-hours coverage.</p>
+
+    <h3>Flat monthly, not per-call</h3>
+    <p>Predictable pricing that works for a clinic budgeting against thin margins,
+    instead of a per-minute answering-service bill that spikes with flu season.</p>
+
+    <div class="callout callout--teal">
+      <div class="callout-head">Are you a federally qualified health center?</div>
+      <p>FQHCs sit under HRSA program requirements rather than the CMS conditions of
+      participation, and the reimbursement picture differs.
+      <a href="/for/health-centers">Coverage for FQHCs and community health centers is
+      here.</a></p>
+    </div>
+
+    <h2>Where to go next</h2>
+
+    {card_grid([
+        ("Reimbursement", "APCM billing at an FQHC or RHC",
+         "G0556, G0557, G0558 — what the codes cover, who can bill them, and where 24/7 access fits.",
+         "/resources/apcm-billing-fqhc-rhc"),
+        ("Compliance", "After-hours coverage for critical access hospitals",
+         "What the conditions of participation require, and the staffing arithmetic behind them.",
+         "/resources/critical-access-hospital-after-hours"),
+        ("Health centers", "FQHC &amp; community health centers",
+         "The HRSA side of the safety net, and why the usual fixes don't fit.",
+         "/for/health-centers"),
+        ("Basics", "Nurse triage vs answering service",
+         "The distinction that justifies the price difference, in one table.",
+         "/resources/nurse-triage-vs-answering-service"),
+    ])}
+
+    {faq_block(qa, heading="What clinic administrators ask us first")}
+
+    {sources_block([
+        "HRSA, <em>Health Center Program Compliance Manual</em> &mdash; after-hours coverage.",
+        "42 CFR Part 485, Subpart F &mdash; Conditions of Participation for Critical Access Hospitals.",
+        "CMS CY2025 Physician Fee Schedule &mdash; Advanced Primary Care Management.",
+        "Rural Health Information Hub &mdash; rural health clinic and CAH resources.",
+    ], disclaimer=(
+        "Program requirements and payment rates change annually. Nothing here is "
+        "compliance advice &mdash; verify against current HRSA, CMS, and MAC guidance, "
+        "and confirm any coverage arrangement with your own compliance staff."
+    ))}"""
+
+    page.schema = [
+        service_node(
+            page,
+            name="24/7 nurse triage for rural health clinics and critical access hospitals",
+            service_type="Telephone nurse triage",
+            description=(
+                "A 24/7 telephone nurse triage line for rural health clinics and "
+                "critical access hospitals demonstrating after-hours coverage, staffed "
+                "by U.S. state-licensed registered nurses on Schmitt-Thompson protocols "
+                "and priced on a flat monthly structure."
+            ),
+            audience="Rural health clinics and critical access hospitals",
+        ),
+        faq_node(page, qa),
+    ]
+    return page

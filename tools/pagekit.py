@@ -423,7 +423,7 @@ def faq_block(qa: list[tuple[str, str]], heading: str = "Questions people ask") 
     for q, a in qa:
         items.append(f"""      <details class="faq-item">
         <summary>
-          <span>{q}</span>
+          <span class="faq-q">{q}</span>
           <span class="faq-sign" aria-hidden="true"></span>
         </summary>
         <div class="faq-answer">

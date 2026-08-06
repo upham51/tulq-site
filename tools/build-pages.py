@@ -32,9 +32,8 @@ TODAY = date.today().isoformat()
 # privacy is deliberately absent - it is noindex on both sites because the two
 # copies are near-identical across domains.
 #
-# The two /nurse-triage-for-* pages came from PR #88 and are hand-written. They
-# overlap in topic with the generated /for/ pillars; see CLAUDE.md for how that
-# overlap is resolved.
+# The two /nurse-triage-for-* segment pages started life hand-written in PR #88
+# and are now generated too, so they no longer appear here.
 STATIC = {
     TRIBAL.key: [
         ("/", "1.0", "weekly"),
@@ -45,8 +44,6 @@ STATIC = {
         ("/", "1.0", "weekly"),
         ("/story", "0.6", "monthly"),
         ("/contact", "0.7", "monthly"),
-        ("/nurse-triage-for-hospice", "0.9", "monthly"),
-        ("/nurse-triage-for-rural-health-clinics", "0.9", "monthly"),
     ],
 }
 
@@ -65,7 +62,9 @@ def collect() -> list[Page]:
     pages.append(content_tribal_resources.compare_tribal())
 
     # tulqhealth.com — mainstream track
+    pages.append(content_care.page_hospice())
     pages.append(content_care.pillar_home_health())
+    pages.append(content_care.page_rhc_cah())
     pages.append(content_care.pillar_health_centers())
     pages.append(content_care_resources.resources_index())
     pages.extend(content_care_resources.posts())
@@ -140,8 +139,14 @@ def main() -> int:
     src = ROOT / "pages.css"
     dst = ROOT / "care" / "pages.css"
     dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
-    print(f"  mirrored pages.css into care/")
-    return 0
+    print("  mirrored pages.css into care/")
+
+    # Stylesheets are served immutable for a year, so every reference has to
+    # carry a content hash or CSS edits never reach a returning visitor.
+    print()
+    import subprocess
+    rc = subprocess.call([sys.executable, str(Path(__file__).parent / "stamp-assets.py")])
+    return rc
 
 
 if __name__ == "__main__":
