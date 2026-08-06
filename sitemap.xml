@@ -2,22 +2,164 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulq.health/</loc>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tulq.health/story</loc>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tulq.health/contact</loc>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tulq.health/privacy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://tulq.health/for/tribal-health-ihs</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/buy-indian-act</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/for/contracting-officers</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/alaska-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/albuquerque-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/bemidji-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/billings-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/california-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/great-plains-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/nashville-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/navajo-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/oklahoma-city-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/phoenix-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/portland-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/areas/tucson-area</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/nurse-advice-line-prc-budget</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/what-is-purchased-referred-care</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/isbee-vs-iee-set-asides</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/culturally-competent-telephone-triage</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/reducing-avoidable-er-visits-indian-country</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/resources/after-hours-coverage-urban-indian-organizations</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulq.health/compare/nurse-triage-for-tribal-health</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
