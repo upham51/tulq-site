@@ -91,6 +91,26 @@ These came out of the Aug 2026 dual-track keyword research and should be held to
 - **Comparison pages name competitors factually**, describe them from their own
   public materials, and explicitly say when the reader should choose them
   instead. Do not remove those sections.
+
+### One buyer segment, one page (tulqhealth.com)
+
+Two pages on the same domain chasing the same query split the signal and
+usually rank neither. The four mainstream segment pages are deliberately
+scoped so none of them overlap:
+
+| Segment | Page | Authored |
+|---|---|---|
+| Hospice | `/nurse-triage-for-hospice` | Hand-written (PR #88) |
+| Home health | `/for/home-health` | Generated |
+| RHC + critical access hospitals | `/nurse-triage-for-rural-health-clinics` | Hand-written (PR #88) |
+| FQHC / community health centers | `/for/health-centers` | Generated |
+
+Note the RHC page covers **both** RHCs and CAHs, which is why `/for/health-centers`
+stops at FQHCs and links across rather than covering CAHs itself. Each page
+carries a callout pointing readers at the neighbouring segment.
+
+Before broadening any of these, retire the page it would start competing with.
+Adding a fifth page that overlaps an existing one is the failure mode to avoid.
 - **No opacity entrance animations on `pages.css`.** A blank column while CSS
   loads is the wrong trade for the rural/low-bandwidth audience this content
   targets. The homepage keeps its motion; content pages do not.

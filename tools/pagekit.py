@@ -100,16 +100,22 @@ CARE = Site(
         "A 24/7 licensed-RN nurse triage line for the health centers, hospices, "
         "home health agencies, and hospitals required to have one."
     ),
+    # Four buyer segments, four pages, no two competing for the same query.
+    # /nurse-triage-for-hospice and /nurse-triage-for-rural-health-clinics are
+    # hand-written (PR #88); the other two are generated here.
     nav=(
-        ("Hospice &amp; home health", "/for/hospice-home-health"),
-        ("FQHC, RHC &amp; CAH", "/for/rural-fqhc-cah"),
+        ("Hospice", "/nurse-triage-for-hospice"),
+        ("Home health", "/for/home-health"),
+        ("Health centers", "/for/health-centers"),
         ("Compare", "/compare/"),
         ("Resources", "/resources/"),
     ),
     footer_cols=(
         ("Who we serve", (
-            ("Hospice &amp; home health", "/for/hospice-home-health"),
-            ("FQHC, RHC &amp; CAH", "/for/rural-fqhc-cah"),
+            ("Hospice", "/nurse-triage-for-hospice"),
+            ("Home health", "/for/home-health"),
+            ("FQHC &amp; health centers", "/for/health-centers"),
+            ("Rural health clinics", "/nurse-triage-for-rural-health-clinics"),
             ("Compare providers", "/compare/"),
         )),
         ("Company", (

@@ -7,6 +7,18 @@ since 2008. The research is explicit that head terms are a slow climb and
 that the winnable ground is long-tail cost, reimbursement, and comparison
 content. That is what this module weights toward.
 
+Two hand-written pages from PR #88 already own the hospice and rural
+health clinic terms:
+
+    /nurse-triage-for-hospice
+    /nurse-triage-for-rural-health-clinics
+
+Note that the RHC page covers critical access hospitals too. So the pillars
+here deliberately cover only what those two do not - home health, and
+federally qualified / community health centers - and link across rather
+than competing for the same queries. Do not broaden them back into hospice,
+RHC, or CAH territory without retiring the PR #88 pages first.
+
 Reimbursement figures are cited with their program year and source, and
 every page says to check the current fee schedule before modelling on them.
 """
@@ -22,16 +34,23 @@ SITE = CARE
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR — Hospice & home health
+# PILLAR — Home health
+# (hospice is covered by /nurse-triage-for-hospice)
 # ══════════════════════════════════════════════════════════════════════
 
-def pillar_hospice_home_health() -> Page:
+def pillar_home_health() -> Page:
     qa = [
         ("Do you replace our on-call nurse or sit in front of them?",
          "<p>In front of them. TULQ takes first call, resolves what the protocol allows "
          "a nurse to resolve, and escalates to your on-call clinician when the "
          "disposition requires it. Your team stays in the loop on the calls that need "
          "them and stops being woken for the ones that don't.</p>"),
+        ("We're a hospice as well as a home health agency. Which page applies?",
+         "<p>Both, and the service is the same line. The hospice side has its own "
+         "requirements around the Medicare Condition of Participation for 24-hour nurse "
+         "availability &mdash; <a href=\"/nurse-triage-for-hospice\">that is covered "
+         "here</a>. This page is about the home health side: OASIS, HHVBP, and "
+         "acute-care utilization.</p>"),
         ("How fast do calls get answered?",
          "<p>Our model is answer-on-connect rather than queue-and-callback. TULQ is "
          "launching in 2026, so we are not going to quote you an average speed to "
@@ -42,11 +61,6 @@ def pillar_hospice_home_health() -> Page:
          "specific integration path depends on your system; some agencies take a "
          "structured export, others take documentation into a shared workflow. Scope it "
          "explicitly during implementation rather than assuming it.</p>"),
-        ("What happens on a death call?",
-         "<p>It goes to your clinician, every time. Pronouncement, family support at the "
-         "bedside, and the coordination that follows are your team's work, not a triage "
-         "line's. What TULQ does is take that call immediately, gather what your "
-         "clinician needs, and reach them without the family sitting in a queue.</p>"),
         ("Is this cheaper than staffing our own on-call?",
          "<p>Usually, but you should check rather than take our word for it. Add up "
          "on-call differentials and stipends, overtime, the next-day productivity you "
@@ -57,20 +71,20 @@ def pillar_hospice_home_health() -> Page:
 
     page = Page(
         site=SITE,
-        slug="for/hospice-home-health",
-        title="Hospice &amp; Home Health After-Hours Nurse Triage | TULQ",
+        slug="for/home-health",
+        title="Home Health After-Hours Nurse Triage Line | TULQ",
         description=(
-            "Outsourced after-hours nurse triage for hospice and home health agencies. "
-            "Licensed RNs on first call, Schmitt-Thompson protocols. Talk to our team."
+            "Outsourced after-hours nurse triage for home health agencies. Licensed RNs "
+            "on first call, Schmitt-Thompson protocols, HHVBP-aware. Talk to our team."
         ),
-        eyebrow="Hospice &amp; home health",
+        eyebrow="Home health",
         h1="Your clinicians should sleep. <em>Someone should answer.</em>",
         deck=(
-            "After-hours on-call is the single most reliable source of clinician burnout "
-            "in hospice and home health, and the least visible line item in the budget. "
-            "Outsourced nurse triage addresses both, if it is actually nurse triage."
+            "After-hours on-call is the most reliable source of clinician burnout in "
+            "home health, and the least visible line item in the budget. Outsourced "
+            "nurse triage addresses both, if it is actually nurse triage."
         ),
-        crumbs=[("Who we serve", "/for/hospice-home-health")],
+        crumbs=[("Who we serve", "/for/home-health")],
         reviewed=True,
         priority="0.9",
         cta_title="See what coverage would look like.",
@@ -80,15 +94,23 @@ def pillar_hospice_home_health() -> Page:
         ),
     )
 
-    page.body = f"""    <p>Every hospice and home health agency solves after-hours the same way at first:
-    a rotation. Clinicians take call in turn, carry the phone, and answer whatever comes
-    in. It works until it doesn't, and what breaks it is rarely a single dramatic
-    night.</p>
+    page.body = f"""    <p>Every home health agency solves after-hours the same way at first: a rotation.
+    Clinicians take call in turn, carry the phone, and answer whatever comes in. It
+    works until it doesn't, and what breaks it is rarely a single dramatic night.</p>
 
     <p>It is the accumulation. The nurse who took four calls between midnight and
     five and still has a full visit schedule. The one who has started dreading her
     rotation two days out. The one who leaves for a clinic job with no call, and takes
     six years of experience with her.</p>
+
+    <div class="callout callout--teal">
+      <div class="callout-head">Running a hospice too?</div>
+      <p>The hospice side carries its own Medicare Condition of Participation for
+      24-hour nurse availability, and it is worth reading separately.
+      <a href="/nurse-triage-for-hospice">Nurse triage for hospice is covered
+      here.</a> It is the same line and the same nurses &mdash; the compliance framing
+      is what differs.</p>
+    </div>
 
     <h2>What the on-call rotation actually costs</h2>
 
@@ -162,38 +184,38 @@ def pillar_hospice_home_health() -> Page:
     clinician's house by exactly zero. It changes who dials it.
     <a href="/resources/nurse-triage-vs-answering-service">More on the distinction.</a></p>
 
-    <h2>Where after-hours coverage touches your scores</h2>
+    <h2>Where after-hours coverage touches your payment</h2>
 
-    <p>For hospice and home health specifically, after-hours access is not only an
-    operational question. It shows up in publicly reported quality measures:</p>
+    <p>For home health specifically, after-hours access is not only an operational
+    question. It runs into the value-based programs:</p>
 
     <div class="card-grid">
       <div class="card">
-        <div class="card-tag">Hospice</div>
-        <h3>CAHPS Hospice Survey</h3>
-        <p>Several measures turn on nights and weekends &mdash; getting help as soon
-        as it was needed, training and emotional support for the family, team
-        communication. Those answers are formed at 2 a.m.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag">Home health</div>
-        <h3>HHVBP</h3>
+        <div class="card-tag">HHVBP</div>
+        <h3>Acute-care utilization</h3>
         <p>Acute-care utilization is a lever inside the expanded model, with CMS moving
         to a within-stay Potentially Preventable Hospitalization measure beginning with
         CY2025.</p>
       </div>
       <div class="card">
-        <div class="card-tag">Hospice</div>
-        <h3>HQRP and HOPE</h3>
-        <p>The Hospice Outcomes &amp; Patient Evaluation instrument replaced HIS
-        effective October 1, 2025, changing what gets collected and when.</p>
+        <div class="card-tag">Quality</div>
+        <h3>OASIS and HHQRP</h3>
+        <p>Assessment and quality reporting requirements continue to expand. An
+        after-hours encounter your team never learns about is a gap in the record as
+        well as in the care.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Retention</div>
+        <h3>Clinical staffing</h3>
+        <p>The measure nobody reports publicly. Call burden is a documented driver of
+        turnover, and turnover is the most expensive line item on the page.</p>
       </div>
     </div>
 
-    <p>None of these move because you bought a phone line. They move because the family
-    that called at midnight reached a nurse who helped, and because the symptom that
-    would have become an admission got managed at home. The measurement follows the
-    care.</p>
+    <p>None of these move because you bought a phone line. They move because the
+    patient who called at midnight reached a nurse who helped, and because the symptom
+    that would have become an admission got managed at home. The measurement follows
+    the care. <a href="/resources/hhvbp-ed-use">How that pathway actually works.</a></p>
 
     <h2>How the service works</h2>
 
@@ -209,7 +231,7 @@ def pillar_hospice_home_health() -> Page:
       clinical and compliance record.</li>
     </ol>
 
-    <div class="callout callout--teal">
+    <div class="callout">
       <div class="callout-head">The honest caveat</div>
       <p>TULQ is launching in 2026. We do not have a decade of call volume statistics
       to show you, and any vendor comparison we published that pretended otherwise
@@ -222,12 +244,12 @@ def pillar_hospice_home_health() -> Page:
     <h2>Read next</h2>
 
     {card_grid([
+        ("Hospice", "Nurse triage for hospice",
+         "The Medicare Condition of Participation for 24-hour nurse availability, and what satisfying it looks like.",
+         "/nurse-triage-for-hospice"),
         ("Cost", "The true cost of after-hours on-call",
          "The four line items agencies never total in the same place, with a worked example.",
          "/resources/true-cost-of-after-hours-on-call"),
-        ("CAHPS", "Nurse triage and hospice CAHPS scores",
-         "Which survey measures after-hours access actually touches, and which it doesn't.",
-         "/resources/hospice-cahps-after-hours"),
         ("HHVBP", "HHVBP and ED use",
          "How the CY2025 shift to within-stay potentially preventable hospitalization changes the lever.",
          "/resources/hhvbp-ed-use"),
@@ -239,9 +261,8 @@ def pillar_hospice_home_health() -> Page:
     {faq_block(qa)}
 
     {sources_block([
-        "CMS, CAHPS Hospice Survey materials.",
         "CMS, expanded Home Health Value-Based Purchasing (HHVBP) model.",
-        "CMS, Hospice Quality Reporting Program and the HOPE instrument.",
+        "CMS, Home Health Quality Reporting Program and OASIS requirements.",
         "American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
         "Schmitt-Thompson telephone triage protocols.",
     ], disclaimer=(
@@ -254,15 +275,15 @@ def pillar_hospice_home_health() -> Page:
     page.schema = [
         service_node(
             page,
-            name="After-hours nurse triage for hospice and home health agencies",
+            name="After-hours nurse triage for home health agencies",
             service_type="Telephone nurse triage",
             description=(
-                "Outsourced after-hours and on-call nurse triage for hospice and home "
-                "health agencies. U.S. state-licensed registered nurses take first "
-                "call on Schmitt-Thompson protocols, escalate to the agency's on-call "
-                "clinician per the agency's rules, and return encounter documentation."
+                "Outsourced after-hours and on-call nurse triage for home health "
+                "agencies. U.S. state-licensed registered nurses take first call on "
+                "Schmitt-Thompson protocols, escalate to the agency's on-call clinician "
+                "per the agency's rules, and return encounter documentation."
             ),
-            audience="Hospice agencies and home health agencies",
+            audience="Home health agencies",
         ),
         faq_node(page, qa),
     ]
@@ -270,10 +291,12 @@ def pillar_hospice_home_health() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR — FQHC / RHC / CAH
+# PILLAR — FQHC / community health centers
+# (RHCs and critical access hospitals are covered by
+#  /nurse-triage-for-rural-health-clinics)
 # ══════════════════════════════════════════════════════════════════════
 
-def pillar_rural_fqhc_cah() -> Page:
+def pillar_health_centers() -> Page:
     qa = [
         ("Does after-hours coverage satisfy an FQHC access requirement?",
          "<p>Health center program requirements include ensuring patients have access "
@@ -281,46 +304,47 @@ def pillar_rural_fqhc_cah() -> Page:
          "one recognized way to meet it. Whether a specific arrangement satisfies your "
          "obligations is a question for your compliance staff and your operational site "
          "visit &mdash; not something a vendor should tell you it has handled.</p>"),
+        ("We're a rural health clinic or a critical access hospital. Right page?",
+         "<p>No &mdash; we wrote one specifically for you. "
+         "<a href=\"/nurse-triage-for-rural-health-clinics\">Nurse triage for rural "
+         "health clinics and critical access hospitals is here.</a> This page is for "
+         "federally qualified and community health centers, which sit under HRSA "
+         "program requirements rather than the CMS conditions of participation.</p>"),
         ("Can we bill anything for it?",
          "<p>Not for the triage call itself as a rule. Where after-hours access matters "
          "financially is as a component of care-management programs that do have "
          "billable codes &mdash; Advanced Primary Care Management being the current "
          "example. <a href=\"/resources/apcm-billing-fqhc-rhc\">We walk through APCM "
          "here.</a></p>"),
-        ("We're a critical access hospital. Doesn't the ED already cover this?",
-         "<p>Your emergency department covers people who come in. It does not cover the "
-         "patient at home at 11 p.m. deciding whether to drive in &mdash; and for a CAH, "
-         "a share of those who do drive in did not need to. Nurse triage sits in front "
-         "of that decision.</p>"),
+        ("Our providers already carry a phone. What changes?",
+         "<p>They stop carrying it, and they stop being the filter. Today every "
+         "after-hours call is a provider's judgment call about whether it was worth "
+         "being woken for. With triage in front, a licensed RN makes that assessment "
+         "against protocol, and your provider hears about the calls that genuinely "
+         "need them &mdash; with the assessment already done.</p>"),
         ("Is this affordable for a safety-net budget?",
          "<p>It has to be, or it is not a real option for this segment. We price on a "
          "flat monthly structure rather than per-call, so a bad flu season does not "
          "produce a budget surprise, and so the number you put in a grant application "
          "is the number you pay.</p>"),
-        ("Do your nurses hold licensure in our state?",
-         "<p>Telephone triage nurses must hold licensure appropriate to the state where "
-         "the patient is located. We scope licensure coverage to the service area of "
-         "each engagement, and it is worth writing into the contract with any vendor "
-         "you evaluate.</p>"),
     ]
 
     page = Page(
         site=SITE,
-        slug="for/rural-fqhc-cah",
-        title="FQHC, RHC &amp; CAH After-Hours Nurse Triage | TULQ",
+        slug="for/health-centers",
+        title="FQHC &amp; Community Health Center Nurse Triage | TULQ",
         description=(
-            "24/7 nurse triage for federally qualified health centers, rural health "
-            "clinics, and critical access hospitals. Flat monthly pricing built for "
-            "safety-net budgets."
+            "24/7 nurse triage for federally qualified health centers and community "
+            "health centers. Flat monthly pricing built for safety-net budgets. Talk to us."
         ),
-        eyebrow="FQHC, RHC &amp; CAH",
+        eyebrow="Health centers",
         h1="Coverage for the clinics <em>that can't add a shift.</em>",
         deck=(
-            "Rural safety-net facilities have the same after-hours obligation as "
-            "everyone else and the least room to staff it. Outsourced nurse triage is "
-            "the option that does not require hiring."
+            "Federally qualified and community health centers carry the same after-hours "
+            "obligation as everyone else and have the least room to staff it. "
+            "Outsourced nurse triage is the option that does not require hiring."
         ),
-        crumbs=[("Who we serve", "/for/rural-fqhc-cah")],
+        crumbs=[("Who we serve", "/for/health-centers")],
         reviewed=True,
         priority="0.9",
         cta_title="Built for a safety-net budget.",
@@ -330,10 +354,9 @@ def pillar_rural_fqhc_cah() -> Page:
         ),
     )
 
-    page.body = f"""    <p>A federally qualified health center, a rural health clinic, and a critical
-    access hospital have different designations, different payment methodologies, and
-    different regulators. After hours, they have the same problem: the phone rings and
-    there is no one whose job it is to answer it clinically.</p>
+    page.body = f"""    <p>A federally qualified health center's after-hours problem is simple to state
+    and hard to solve: the phone rings and there is no one whose job it is to answer
+    it clinically.</p>
 
     <p>The usual fixes do not fit. Extending clinic hours requires clinicians you
     cannot recruit. Putting providers on call burns the small number you have. An
@@ -341,9 +364,16 @@ def pillar_rural_fqhc_cah() -> Page:
     is outsourced nurse triage, and the reason it is not universal in this segment is
     that most of the market is priced for organizations with more margin.</p>
 
-    <h2>Each designation, specifically</h2>
+    <div class="callout callout--teal">
+      <div class="callout-head">Rural health clinic or critical access hospital?</div>
+      <p>Those designations carry different regulators and different after-hours
+      expectations, and they have their own page.
+      <a href="/nurse-triage-for-rural-health-clinics">Nurse triage for rural health
+      clinics and critical access hospitals is covered here.</a> Same line, same
+      nurses; the compliance framing is what differs.</p>
+    </div>
 
-    <h3>Federally qualified health centers</h3>
+    <h2>What the program requirements actually ask for</h2>
 
     <p>Health center program requirements include ensuring patients can access services
     after regular business hours, with professional coverage arrangements recognized as
@@ -358,23 +388,26 @@ def pillar_rural_fqhc_cah() -> Page:
     <a href="/resources/apcm-billing-fqhc-rhc">We go through what that means for a
     health center here.</a></p>
 
-    <h3>Rural health clinics</h3>
+    <h2>Why the usual fixes don't fit a health center</h2>
 
-    <p>RHCs face the same after-hours access expectations with, typically, an even
-    smaller clinical staff. Many are attached to a critical access hospital, which means
-    the after-hours question is really a question about how the hospital's ED gets
-    used.</p>
+    <p>Every alternative to outsourced triage runs into the same constraint, which is
+    that health centers are short of exactly the people the alternative requires:</p>
 
-    <h3>Critical access hospitals</h3>
+    <ul>
+      <li><strong>Extending clinic hours</strong> needs clinicians you are already
+      struggling to recruit and retain.</li>
+      <li><strong>Provider call rotations</strong> burn the small number you have, and
+      call burden is a documented driver of clinical turnover.</li>
+      <li><strong>An answering service</strong> is affordable and cannot make a
+      clinical decision, so every ambiguous call still reaches a provider.
+      <a href="/resources/nurse-triage-vs-answering-service">The distinction matters
+      more at 2 a.m. than it does on a price sheet.</a></li>
+      <li><strong>Telling patients to use the ED appropriately</strong> assumes there
+      is something else for them to do at eleven at night.</li>
+    </ul>
 
-    <p>CAHs operate under conditions of participation that include maintaining 24-hour
-    emergency care services, within the limits that define the designation &mdash; no
-    more than 25 inpatient beds, and a location standard relative to other hospitals.</p>
-
-    <p>The ED is staffed. The telephone usually is not. A patient at home deciding
-    whether to come in at midnight has no clinical voice to consult, so a share of them
-    come in when they did not need to, and a share stay home when they should have
-    come.</p>
+    <p>Outsourced nurse triage is the only one of the four that does not consume
+    clinical staff you do not have.</p>
 
     <div class="callout callout--amber">
       <div class="callout-head">Why per-call pricing is wrong for this segment</div>
@@ -405,11 +438,11 @@ def pillar_rural_fqhc_cah() -> Page:
         ("Reimbursement", "APCM billing at an FQHC or RHC",
          "G0556, G0557, G0558 — what the codes cover, who can bill them, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
-        ("Compliance", "After-hours coverage for critical access hospitals",
-         "What the conditions of participation require, and what they leave to you.",
-         "/resources/critical-access-hospital-after-hours"),
+        ("RHC &amp; CAH", "Nurse triage for rural clinics and hospitals",
+         "Rural health clinics and critical access hospitals sit under different rules. Their page is here.",
+         "/nurse-triage-for-rural-health-clinics"),
         ("Cost", "The true cost of after-hours on-call",
-         "The four line items that never get totalled in the same place.",
+         "The four line items that never get totalled in the same place, with a worked example.",
          "/resources/true-cost-of-after-hours-on-call"),
         ("Basics", "Nurse triage vs answering service",
          "The distinction that justifies the price difference, in one table.",
@@ -420,9 +453,8 @@ def pillar_rural_fqhc_cah() -> Page:
 
     {sources_block([
         "HRSA Health Center Program requirements &mdash; after-hours coverage.",
-        "CMS conditions of participation for critical access hospitals.",
+        "HRSA Health Center Program Compliance Manual.",
         "CMS CY2025 Physician Fee Schedule &mdash; Advanced Primary Care Management.",
-        "Rural Health Information Hub &mdash; critical access hospital resources.",
         "National Association of Community Health Centers &mdash; APCM guidance.",
     ], disclaimer=(
         "Program requirements and payment rates change annually. Nothing here is "
@@ -433,17 +465,16 @@ def pillar_rural_fqhc_cah() -> Page:
     page.schema = [
         service_node(
             page,
-            name="24/7 nurse triage for FQHCs, rural health clinics, and critical access hospitals",
+            name="24/7 nurse triage for federally qualified and community health centers",
             service_type="Telephone nurse triage",
             description=(
-                "24/7 telephone nurse triage for federally qualified health centers, "
-                "rural health clinics, and critical access hospitals, staffed by U.S. "
-                "state-licensed registered nurses on Schmitt-Thompson protocols and "
-                "priced on a flat monthly structure for safety-net budgets."
+                "24/7 telephone nurse triage for federally qualified health centers and "
+                "community health centers, staffed by U.S. state-licensed registered "
+                "nurses on Schmitt-Thompson protocols and priced on a flat monthly "
+                "structure for safety-net budgets."
             ),
             audience=(
-                "Federally qualified health centers, rural health clinics, and "
-                "critical access hospitals"
+                "Federally qualified health centers and community health centers"
             ),
         ),
         faq_node(page, qa),

@@ -65,8 +65,8 @@ def collect() -> list[Page]:
     pages.append(content_tribal_resources.compare_tribal())
 
     # tulqhealth.com — mainstream track
-    pages.append(content_care.pillar_hospice_home_health())
-    pages.append(content_care.pillar_rural_fqhc_cah())
+    pages.append(content_care.pillar_home_health())
+    pages.append(content_care.pillar_health_centers())
     pages.append(content_care_resources.resources_index())
     pages.extend(content_care_resources.posts())
     pages.append(content_care_resources.compare_index())

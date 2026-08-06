@@ -858,10 +858,10 @@ def resources_index() -> Page:
          "/resources/critical-access-hospital-after-hours"),
         ("Hospice &amp; home health", "After-hours triage for hospice and home health",
          "Why on-call rotations break, and what changes when a nurse takes first call.",
-         "/for/hospice-home-health"),
+         "/for/home-health"),
         ("Safety net", "FQHC, RHC and CAH coverage",
          "The segment with the same obligation as everyone else and the least room to staff it.",
-         "/for/rural-fqhc-cah"),
+         "/for/health-centers"),
     ])}"""
 
     return page
@@ -1100,7 +1100,7 @@ def compare_conduit() -> Page:
          "<p>Both target the segment. Conduit has the operating history; we price flat "
          "for safety-net budgets and have written up the "
          "<a href=\"/resources/apcm-billing-fqhc-rhc\">APCM</a> and "
-         "<a href=\"/for/rural-fqhc-cah\">rural coverage</a> angles specifically. Get "
+         "<a href=\"/for/health-centers\">rural coverage</a> angles specifically. Get "
          "quotes from both and compare the escalation design as closely as the "
          "price.</p>"),
     ]
@@ -1181,7 +1181,7 @@ def compare_accessnurse() -> Page:
          "center vertical. We are betting on flat pricing built for safety-net budgets, "
          "and on writing seriously about the "
          "<a href=\"/resources/apcm-billing-fqhc-rhc\">reimbursement</a> and "
-         "<a href=\"/for/rural-fqhc-cah\">rural coverage</a> questions that segment "
+         "<a href=\"/for/health-centers\">rural coverage</a> questions that segment "
          "actually asks. Get both quotes.</p>"),
         ("Do you serve pediatric or OB practices?",
          "<p>Not as a dedicated vertical today. If you need a triage service built "
