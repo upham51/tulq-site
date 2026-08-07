@@ -58,12 +58,13 @@ TRIBAL = Site(
         "A 24/7 culturally competent nurse advice line for Indian Health Service "
         "beneficiaries. A confluence of cultural care."
     ),
+    # Destinations only. The nav used to carry one entry per homepage
+    # section, which put seven items in the bar and told a reader nothing.
+    # Everything else routes from the homepage cards and the footer.
     nav=(
-        ("Tribal &amp; IHS", "/for/tribal-health-ihs"),
-        ("Buy Indian Act", "/buy-indian-act"),
-        ("Contracting", "/for/contracting-officers"),
         ("IHS Areas", "/areas/"),
         ("Resources", "/resources/"),
+        ("Our story", "/story"),
     ),
     footer_cols=(
         ("Who we serve", (
@@ -103,12 +104,13 @@ CARE = Site(
     # Four buyer segments, four pages, no two competing for the same query.
     # /nurse-triage-for-hospice and /nurse-triage-for-rural-health-clinics are
     # hand-written (PR #88); the other two are generated here.
+    # Destinations only — see the note on TRIBAL.nav. The four segment
+    # pages are reached from the homepage "Who we serve" cards and the
+    # footer rather than from the bar.
     nav=(
-        ("Hospice", "/nurse-triage-for-hospice"),
-        ("Home health", "/for/home-health"),
-        ("Health centers", "/for/health-centers"),
         ("Compare", "/compare/"),
         ("Resources", "/resources/"),
+        ("Our story", "/story"),
     ),
     footer_cols=(
         ("Who we serve", (
@@ -217,7 +219,7 @@ def _nav(page: Page) -> str:
     </div>
     <a class="nav-cta" href="/contact">
       <span class="dot" aria-hidden="true"></span>
-      Contact
+      Contact us
     </a>
   </nav>
 </div>"""
@@ -450,8 +452,26 @@ def card_grid(cards: list[tuple[str, str, str, str]]) -> str:
     return f'<div class="card-grid">\n{chr(10).join(out)}\n    </div>'
 
 
-def sources_block(items: list[str], disclaimer: str = "") -> str:
-    lis = "\n".join(f"    <li>{item}</li>" for item in items)
+def sources_block(items, disclaimer: str = "") -> str:
+    """Render the Sources list.
+
+    An item is either a bare string, or a (label, url) pair. Pairs become
+    real outbound links to the document being cited, which is the whole
+    point of listing a source: a reader who wants to check the claim
+    should be one click from the primary text, not left to search for it.
+    Only cite a URL that has actually been checked to resolve.
+    """
+    rows = []
+    for item in items:
+        if isinstance(item, (tuple, list)):
+            label, url = item
+            rows.append(
+                f'    <li><a class="source-link" href="{url}" '
+                f'target="_blank" rel="noopener">{label}</a></li>'
+            )
+        else:
+            rows.append(f"    <li>{item}</li>")
+    lis = "\n".join(rows)
     extra = f'\n  <p class="disclaimer">{disclaimer}</p>' if disclaimer else ""
     return f"""<section class="sources">
   <h2>Sources</h2>

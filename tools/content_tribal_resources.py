@@ -64,7 +64,7 @@ def post_prc_budget() -> Page:
          "<p>PRC programs require notification within a defined window after emergency "
          "care is received, and the window is short. Missing it is one of the more "
          "common reasons a claim is denied. The exact requirement is set in program "
-         "regulation &mdash; check with your PRC office rather than relying on a "
+         "regulation; check with your PRC office rather than relying on a "
          "general figure.</p>"),
         ("Is nurse triage a PRC-payable service?",
          "<p>That is the wrong frame. A nurse advice line is generally procured as a "
@@ -80,8 +80,7 @@ def post_prc_budget() -> Page:
 
     <h2>How PRC actually works</h2>
 
-    <p>Purchased/Referred Care &mdash; PRC, and before 2014, Contract Health Services
-    &mdash; is how the Indian Health Service pays for care that a patient needs but
+    <p>Purchased/Referred Care (PRC, and before 2014, Contract Health Services) is how the Indian Health Service pays for care that a patient needs but
     that the local IHS or tribal facility cannot provide. Specialty consults, surgery,
     imaging that isn't available on site, and emergency care at an outside hospital all
     run through it.</p>
@@ -99,7 +98,7 @@ def post_prc_budget() -> Page:
       apply.</li>
       <li><strong>Care is prioritized medically.</strong> When funds are constrained,
       programs work down a medical priority framework. Lower-priority referrals get
-      deferred &mdash; which in practice can mean denied.</li>
+      deferred, which in practice can mean denied.</li>
     </ul>
 
     <div class="callout callout--amber">
@@ -116,7 +115,7 @@ def post_prc_budget() -> Page:
     control. Nobody schedules it. It arrives as a bill.</p>
 
     <p>Some of those visits are exactly what an emergency department is for. Chest
-    pain, stroke symptoms, major trauma, an infant with a high fever &mdash; those are
+    pain, stroke symptoms, major trauma, an infant with a high fever: those are
     correct decisions, and a nurse advice line should send them.</p>
 
     <p>But a meaningful share of after-hours emergency department use nationally is for
@@ -134,7 +133,7 @@ def post_prc_budget() -> Page:
     <ul>
       <li>The clinic is closed and will not open until morning.</li>
       <li>Urgent care, where it exists at all, is often the same drive as the ER.</li>
-      <li>The nearest emergency department may be an hour or more away &mdash; which
+      <li>The nearest emergency department may be an hour or more away, which
       means the decision to go is itself costly, and the decision not to go is
       frightening.</li>
       <li>A general nurse line, if the patient has access to one through another
@@ -149,7 +148,7 @@ def post_prc_budget() -> Page:
     <h2>What a nurse advice line changes</h2>
 
     <p>It puts a clinician in the gap. A registered nurse assesses the caller against
-    physician-authored protocols and reaches a defined disposition &mdash; home care,
+    physician-authored protocols and reaches a defined disposition, home care,
     clinic in the morning, urgent care, or emergency department now. Three things
     follow from that:</p>
 
@@ -159,7 +158,7 @@ def post_prc_budget() -> Page:
       is not touched.</li>
       <li><strong>Necessary visits get accelerated.</strong> The caller who was going
       to wait until morning with symptoms that should not wait is told to go now. That
-      one costs PRC money &mdash; and is the reason the service is clinically worth
+      one costs PRC money, and is the reason the service is clinically worth
       having, independent of the budget.</li>
       <li><strong>The clinic starts the day informed.</strong> Encounter documentation
       comes back to the program, so the morning schedule reflects who called
@@ -183,7 +182,7 @@ def post_prc_budget() -> Page:
     somebody is on the other end of it.</p>
 
     <p>For a population that has spent generations being told, in one way or another,
-    to wait &mdash; a nurse who picks up on the first ring and already understands the
+    to wait, a nurse who picks up on the first ring and already understands the
     household she is talking to is not a cost-containment measure. The PRC savings are
     a consequence of doing the right thing, which is a much better order for those two
     to come in.</p>"""
@@ -207,15 +206,19 @@ def post_prc_budget() -> Page:
         reviewed=True,
         qa=qa,
         sources=[
-            "Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
-            "Indian Health Care Improvement Act &mdash; payer of last resort provisions, 25 U.S.C. &sect; 1621e.",
-            "42 CFR Part 136 &mdash; Indian Health, Purchased/Referred Care regulations.",
-            "Peterson-KFF Health System Tracker, emergency department cost analyses.",
+            ("Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+             "https://www.ihs.gov/prc/"),
+            ("Indian Health Care Improvement Act, payer of last resort provisions, 25 U.S.C. &sect; 1621e.",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1621e&num=0&edition=prelim"),
+            ("42 CFR Part 136, Indian Health and Purchased/Referred Care regulations.",
+             "https://www.ecfr.gov/current/title-42/chapter-I/subchapter-M/part-136"),
+            ("Peterson-KFF Health System Tracker, emergency department cost analyses.",
+             "https://www.healthsystemtracker.org/brief/emergency-department-visits-exceed-affordability-thresholds-for-many-consumers-with-private-insurance/"),
         ],
         disclaimer=(
             "This is a general explainer, not program guidance. PRC eligibility, "
             "notification deadlines, and medical priority determinations are set by "
-            "regulation and administered locally &mdash; work from your own PRC office "
+            "regulation and administered locally; work from your own PRC office "
             "and the current CFR."
         ),
         cta_title="Want to run the numbers for your program?",
@@ -237,20 +240,20 @@ def post_what_is_prc() -> Page:
          "coverage.</p>"),
         ("Why was the name changed from Contract Health Services?",
          "<p>The program was renamed Purchased/Referred Care in 2014. The intent was "
-         "descriptive accuracy &mdash; the program purchases care and manages referrals "
-         "&mdash; rather than any change in how it works. Older documents, and plenty "
+         "descriptive accuracy (the program purchases care and manages referrals) "
+         "rather than any change in how it works. Older documents, and plenty "
          "of people who have worked in the system a long time, still say CHS.</p>"),
         ("Do Urban Indian Organizations have PRC?",
          "<p>No. PRC operates through IHS-operated and tribally operated facilities. "
          "Urban Indian Organizations, funded under Title V of the Indian Health Care "
-         "Improvement Act, sit outside it &mdash; which is a distinct and often "
+         "Improvement Act, sit outside it, which is a distinct and often "
          "overlooked gap. <a href=\"/resources/after-hours-coverage-urban-indian-"
          "organizations\">More on the UIO situation.</a></p>"),
     ]
 
     body = """    <p>Purchased/Referred Care is one of those programs that everyone inside the IHS
     system understands intuitively and almost nobody outside it understands at all.
-    That gap causes real problems &mdash; for patients who assume a visit is covered,
+    That gap causes real problems, for patients who assume a visit is covered,
     for outside hospitals billing the wrong party, and for vendors pitching tribal
     health programs on economics they have not bothered to learn.</p>
 
@@ -306,7 +309,7 @@ def post_what_is_prc() -> Page:
 
     <p>The category of PRC spending most sensitive to what happens at night is
     emergency department use at outside hospitals. It is expensive, unscheduled, and
-    partly discretionary &mdash; not in the sense that patients are being frivolous,
+    partly discretionary, not in the sense that patients are being frivolous,
     but in the sense that a portion of after-hours ED volume nationally is for
     conditions treatable in primary care the next day.</p>
 
@@ -318,9 +321,9 @@ def post_what_is_prc() -> Page:
     <h2>A note for vendors and outside providers</h2>
 
     <p>If you are selling into tribal health and you have not internalized how PRC
-    works, it will show. Pitches built on commercial-payer economics &mdash; per-member
+    works, it will show. Pitches built on commercial-payer economics (per-member
     per-month savings, shared-risk arrangements, utilization curves drawn from
-    commercially insured populations &mdash; land badly on a program whose actual
+    commercially insured populations) land badly on a program whose actual
     constraint is an appropriation that runs out.</p>"""
 
     return _post(
@@ -335,16 +338,19 @@ def post_what_is_prc() -> Page:
         h1="Purchased/Referred Care, <em>explained.</em>",
         deck=(
             "The program that pays when an IHS or tribal facility cannot provide the "
-            "care itself &mdash; and the four conditions that make it far more "
+            "care itself, and the four conditions that make it far more "
             "constrained than outsiders assume."
         ),
         body=body,
         reviewed=True,
         qa=qa,
         sources=[
-            "Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
-            "42 CFR Part 136 &mdash; Indian Health regulations.",
-            "Indian Health Care Improvement Act, 25 U.S.C. &sect; 1621e (payer of last resort).",
+            ("Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+             "https://www.ihs.gov/prc/"),
+            ("42 CFR Part 136, Indian Health regulations.",
+             "https://www.ecfr.gov/current/title-42/chapter-I/subchapter-M/part-136"),
+            ("Indian Health Care Improvement Act, 25 U.S.C. &sect; 1621e (payer of last resort).",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1621e&num=0&edition=prelim"),
         ],
         disclaimer=(
             "General explainer only. Eligibility, deadlines, and priority "
@@ -380,7 +386,7 @@ def post_isbee_vs_iee() -> Page:
     <h2>IEE: Indian Economic Enterprise</h2>
 
     <p>An Indian Economic Enterprise is a business that meets the Buy Indian Act's
-    ownership and control requirements &mdash; broadly, that it is owned by one or more
+    ownership and control requirements: broadly, that it is owned by one or more
     Indians or Indian Tribes, and that the Indian ownership controls both management
     and daily operations.</p>
 
@@ -414,13 +420,13 @@ def post_isbee_vs_iee() -> Page:
           </tr>
           <tr>
             <td>Answer can change between solicitations?</td>
-            <td>Rarely &mdash; only if ownership changes</td>
-            <td>Yes &mdash; the NAICS code sets the size standard</td>
+            <td>Rarely: only if ownership changes</td>
+            <td>Yes: the NAICS code sets the size standard</td>
           </tr>
           <tr>
             <td>Certified by a third party?</td>
-            <td class="cross">No &mdash; self-certified</td>
-            <td class="cross">No &mdash; self-certified</td>
+            <td class="cross">No: self-certified</td>
+            <td class="cross">No: self-certified</td>
           </tr>
         </tbody>
       </table>
@@ -446,7 +452,7 @@ def post_isbee_vs_iee() -> Page:
 
     <div class="callout callout--amber">
       <div class="callout-head">The failure mode nobody warns you about</div>
-      <p>The most common problem is not a bad-faith representation &mdash; it is a
+      <p>The most common problem is not a bad-faith representation; it is a
       SAM.gov record that does not match the offer. A legal entity name that differs by
       a word, a CAGE code tied to a prior entity, business-type checkboxes that were set
       once and never revisited. Contracting officers reconcile those records, and a
@@ -457,8 +463,7 @@ def post_isbee_vs_iee() -> Page:
     <h2>Why any of this matters for nurse triage</h2>
 
     <p>Nurse advice line requirements at IHS facilities are frequently set aside under
-    the Buy Indian Act, and just as frequently end up with non-Native firms &mdash;
-    not because the preference is weak, but because when market research surfaces no
+    the Buy Indian Act, and just as frequently end up with non-Native firms, not because the preference is weak, but because when market research surfaces no
     capable Indian enterprise, the contracting officer is right to proceed another way.</p>
 
     <p>The remedy is unglamorous: eligible enterprises that watch SAM.gov, keep their
@@ -482,10 +487,14 @@ def post_isbee_vs_iee() -> Page:
         body=body,
         qa=qa,
         sources=[
-            "Buy Indian Act, 25 U.S.C. &sect; 47.",
-            "Indian Health Service, Buy Indian Act Acquisition Regulation final rule (2022).",
-            "HHS Acquisition Regulation (HHSAR), Part 326.",
-            "U.S. Small Business Administration size standards by NAICS code.",
+            ("Buy Indian Act, 25 U.S.C. &sect; 47.",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section47&num=0&edition=prelim"),
+            ("Indian Health Service, Buy Indian Act Acquisition Regulation final rule (2022).",
+             "https://www.federalregister.gov/documents/2022/01/13/2021-28156/acquisition-regulations-buy-indian-act-procedures-for-contracting"),
+            ("HHS Acquisition Regulation (HHSAR), 48 CFR Part 326.",
+             "https://www.ecfr.gov/current/title-48/chapter-3/subchapter-D/part-326"),
+            ("U.S. Small Business Administration size standards by NAICS code.",
+             "https://www.sba.gov/document/support-table-size-standards"),
         ],
         disclaimer=(
             "Plain-language explainer, not legal or acquisition advice. Verify against "
@@ -518,8 +527,7 @@ def post_culturally_competent() -> Page:
     <h3>1. Who is allowed to be on the phone</h3>
 
     <p>A protocol assumes a patient, or a parent of a patient. In many AI/AN households
-    the person who manages health is a grandmother, an auntie, or an adult grandchild
-    &mdash; someone who knows the patient's medications, history, and baseline better
+    the person who manages health is a grandmother, an auntie, or an adult grandchild, someone who knows the patient's medications, history, and baseline better
     than the patient will recite it at 2 a.m.</p>
 
     <p>A nurse who insists on speaking only to the patient is not being rigorous. She
@@ -531,8 +539,8 @@ def post_culturally_competent() -> Page:
     <p>Stoicism about pain is common enough across Indian Country that a triage nurse
     who takes a self-reported pain score at face value will systematically
     under-triage. The correction is not to inflate every score; it is to ask
-    differently &mdash; about function, about sleep, about what the person has stopped
-    being able to do &mdash; and to weigh the answers against what the caller is not
+    differently (about function, about sleep, about what the person has stopped
+    being able to do) and to weigh the answers against what the caller is not
     saying.</p>
 
     <h3>3. Distance as a clinical variable</h3>
@@ -555,14 +563,14 @@ def post_culturally_competent() -> Page:
     plenty of individual experiences that would make anyone cautious.</p>
 
     <p>Charting that as refusal or non-compliance is both clinically useless and
-    corrosive. Treating it as a problem to solve &mdash; a different facility, a
-    different timing, a call ahead &mdash; is the job.</p>
+    corrosive. Treating it as a problem to solve (a different facility, a
+    different timing, a call ahead) is the job.</p>
 
     <div class="callout callout--teal">
       <div class="callout-head">The through-line</div>
       <p>None of these four are about beliefs, ceremony, or traditional medicine, which
       is where cultural competency training usually goes. They are about household
-      structure, communication norms, geography, and history &mdash; things that change
+      structure, communication norms, geography, and history, things that change
       what a symptom description means and what a disposition costs.</p>
     </div>
 
@@ -615,9 +623,12 @@ def post_culturally_competent() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "Schmitt-Thompson telephone triage protocols.",
-            "American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
-            "Indian Health Service, cultural competency and patient experience materials.",
+            ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
+            ("American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
+             "https://www.aaacn.org/telehealth-nursing-practice"),
+            ("Indian Health Service, quality and patient experience materials.",
+             "https://www.ihs.gov/quality/"),
         ],
         disclaimer=(
             "Written from clinical and operational experience, not as a research "
@@ -655,8 +666,8 @@ def post_er_diversion() -> Page:
 
     <h2>What we should not claim</h2>
 
-    <p>Vendors in this category routinely publish diversion percentages &mdash; "we
-    reduce ED utilization by X%" &mdash; drawn from a single client, a single year, and
+    <p>Vendors in this category routinely publish diversion percentages ("we
+    reduce ED utilization by X%") drawn from a single client, a single year, and
     a population that looks nothing like a tribal service population.</p>
 
     <p>Those numbers are not transferable, and presenting them to a tribal health
@@ -670,7 +681,7 @@ def post_er_diversion() -> Page:
       <p>Start from your own PRC spend on outside emergency department visits. Apply a
       deliberately conservative assumption about what share was primary-care treatable.
       Apply a second conservative assumption about what share of those would have called
-      a nurse line instead. The result is a floor, not a projection &mdash; and a floor
+      a nurse line instead. The result is a floor rather than a projection, and a floor
       you can defend in a budget conversation is worth more than a vendor's ceiling.</p>
     </div>
 
@@ -727,10 +738,14 @@ def post_er_diversion() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "KFF survey research on American Indian and Alaska Native health care access and experiences.",
-            "Peterson-KFF Health System Tracker &mdash; emergency department cost analyses.",
-            "Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
-            "Federal oversight reporting on IHS clinical workforce vacancies.",
+            ("KFF research on racial equity and health policy, including AI/AN access and experience.",
+             "https://www.kff.org/racial-equity-and-health-policy/"),
+            ("Peterson-KFF Health System Tracker, emergency department cost analyses.",
+             "https://www.healthsystemtracker.org/brief/emergency-department-visits-exceed-affordability-thresholds-for-many-consumers-with-private-insurance/"),
+            ("Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+             "https://www.ihs.gov/prc/"),
+            ("GAO-18-580, <em>Indian Health Service: Agency Faces Ongoing Challenges Filling Provider Vacancies</em>.",
+             "https://www.gao.gov/products/gao-18-580"),
         ],
         disclaimer=(
             "Figures are drawn from published third-party research and are "
@@ -747,8 +762,8 @@ def post_uio() -> Page:
     Indian Organizations, funded under Title V of the Indian Health Care Improvement
     Act, ranging from full-service clinics to referral and outreach programs.</p>
 
-    <p>UIOs are part of the IHS system &mdash; the &ldquo;I&rdquo; in the I/T/U
-    shorthand for IHS, Tribal, and Urban programs &mdash; and they are also, in several
+    <p>UIOs are part of the IHS system (the &ldquo;I&rdquo; in the I/T/U
+    shorthand for IHS, Tribal, and Urban programs) and they are also, in several
     concrete ways, the part of it with the least margin.</p>
 
     <h2>The structural gap</h2>
@@ -765,7 +780,7 @@ def post_uio() -> Page:
       <div class="callout-head">What that changes about the business case</div>
       <p>For an IHS service unit or a 638 program, nurse triage has a budget argument:
       divert avoidable visits, protect the PRC allocation. For a UIO, that argument does
-      not exist &mdash; there is no allocation to protect. The case has to be made on
+      not exist, so there is no allocation to protect. The case has to be made on
       access, continuity, and patient experience instead, which means it competes for a
       different pot of money and a different kind of justification.</p>
     </div>
@@ -808,7 +823,7 @@ def post_uio() -> Page:
     <h2>The part that is worth saying plainly</h2>
 
     <p>Urban Indian Organizations serve the largest share of the AI/AN population and
-    receive the smallest share of the attention &mdash; from federal funding
+    receive the smallest share of the attention, from federal funding
     conversations, from researchers, and from vendors. Nurse triage vendors marketing
     into Indian Country, to the extent any do, aim at IHS Area contracts because that is
     where the visible procurement is.</p>
@@ -835,9 +850,12 @@ def post_uio() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "Indian Health Care Improvement Act, Title V &mdash; Urban Indian Health Program.",
-            "Indian Health Service, Urban Indian Health Program directory and materials.",
-            "Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+            ("Indian Health Care Improvement Act, Title V, Urban Indian Health Program.",
+             "https://www.ihs.gov/urban/"),
+            ("Indian Health Service, Urban Indian Organizations directory.",
+             "https://www.ihs.gov/urban/urban-indian-organizations/"),
+            ("Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+             "https://www.ihs.gov/prc/"),
         ],
         disclaimer=(
             "The count of Urban Indian Organizations and the urban share of the AI/AN "
@@ -891,7 +909,7 @@ def resources_index() -> Page:
          "PRC is appropriated annually and it runs out. What avoidable ER visits actually cost you, and how to size diversion honestly.",
          "/resources/nurse-advice-line-prc-budget"),
         ("PRC explained", "What is Purchased/Referred Care?",
-         "Eligibility, payer of last resort, notification deadlines, and medical priority — the four conditions outsiders miss.",
+         "Eligibility, payer of last resort, notification deadlines, and medical priority: the four conditions outsiders miss.",
          "/resources/what-is-purchased-referred-care"),
         ("Data &amp; access", "Reducing avoidable ER visits in Indian Country",
          "What the evidence supports, what vendor marketing overstates, and how to model it defensibly.",
@@ -902,7 +920,7 @@ def resources_index() -> Page:
 
     {card_grid([
         ("Set-asides", "ISBEE vs IEE: which applies?",
-         "One test apart — whether you also meet the SBA size standard for the solicitation's NAICS code.",
+         "One test apart: whether you also meet the SBA size standard for the solicitation's NAICS code.",
          "/resources/isbee-vs-iee-set-asides"),
         ("Buy Indian Act", "The Buy Indian Act in plain language",
          "25 U.S.C. § 47, the 2022 IHS final rule, and how a requirement actually reaches the market.",
@@ -916,7 +934,7 @@ def resources_index() -> Page:
 
     {card_grid([
         ("Clinical practice", "What culturally competent means on a triage call",
-         "Household structure, understated pain, distance as a clinical variable — and how to evaluate a vendor's claim.",
+         "Household structure, understated pain, distance as a clinical variable, and how to evaluate a vendor's claim.",
          "/resources/culturally-competent-telephone-triage"),
         ("Urban Indian health", "After-hours coverage for UIOs",
          "Urban Indian Organizations serve most of the AI/AN population and have no PRC backstop. What that changes.",
@@ -969,18 +987,18 @@ def compare_tribal() -> Page:
     fifteen to twenty-five years old:</p>
 
     <ul>
-      <li><strong>IntellaTriage</strong> &mdash; the category leader, founded in 2008,
+      <li><strong>IntellaTriage</strong>: the category leader, founded in 2008,
       built primarily around hospice and home health after-hours triage. Publishes
       substantial content on nurse-first triage, clinician burnout, and CAHPS.</li>
-      <li><strong>Conduit Health Partners</strong> &mdash; nurse-first triage plus
+      <li><strong>Conduit Health Partners</strong>: nurse-first triage plus
       patient transfer, segmented by buyer: health systems, medical groups, health
       plans, and FQHCs. Publishes case studies with hard utilization numbers.</li>
-      <li><strong>AccessNurse</strong> &mdash; in business since 1996, serving a large
+      <li><strong>AccessNurse</strong>: in business since 1996, serving a large
       provider base with vertical landing pages by specialty, including community
       health centers.</li>
-      <li><strong>TelemedRN</strong> &mdash; smaller, hospice and home-health focused,
+      <li><strong>TelemedRN</strong>: smaller, hospice and home-health focused,
       positioned on affordability.</li>
-      <li><strong>Generic medical answering services</strong> &mdash; cheaper, and not
+      <li><strong>Generic medical answering services</strong>: cheaper, and not
       clinical. A message taker is not a triage nurse, and the distinction matters more
       at 2 a.m. than it does on a price sheet.</li>
     </ul>
@@ -994,7 +1012,7 @@ def compare_tribal() -> Page:
 
     <p>None of them publishes content for tribal health programs, IHS beneficiaries,
     Purchased/Referred Care, Buy Indian Act contracting, or sovereignty-respecting
-    care. Not because they are hostile to it &mdash; because it is not their
+    care. Not because they are hostile to it, because it is not their
     market.</p>
 
     <div class="callout">
@@ -1021,7 +1039,7 @@ def compare_tribal() -> Page:
           <tr>
             <td>Operating history</td>
             <td class="tick">15&ndash;25+ years, large call volumes, references at scale</td>
-            <td class="cross">Launching 2026 &mdash; no operating history</td>
+            <td class="cross">Launching 2026: no operating history</td>
           </tr>
           <tr>
             <td>Licensed RNs on first call</td>
@@ -1056,7 +1074,7 @@ def compare_tribal() -> Page:
           <tr>
             <td>Scale for a very large multi-site contract</td>
             <td class="tick">Yes</td>
-            <td class="cross">Not yet &mdash; teaming would be the honest answer</td>
+            <td class="cross">Not yet: teaming would be the honest answer</td>
           </tr>
         </tbody>
       </table>
@@ -1086,8 +1104,7 @@ def compare_tribal() -> Page:
 
     <p>It is worth noting what has actually been happening in IHS nurse advice line
     procurement. Several recent requirements were set aside under the Buy Indian Act,
-    and awards have gone to firms that are not Indian Economic Enterprises &mdash;
-    FONEMED LLC, a US/Canadian firm founded in 1996, among them.</p>
+    and awards have gone to firms that are not Indian Economic Enterprises, FONEMED LLC, a US/Canadian firm founded in 1996, among them.</p>
 
     <p>That is not a scandal and it is not anyone's fault. It is the documented,
     correct outcome when market research does not surface a capable Indian enterprise
@@ -1107,7 +1124,7 @@ def compare_tribal() -> Page:
         h1="Choosing a nurse triage vendor <em>for tribal health.</em>",
         deck=(
             "A comparison written by an interested party, which you should weigh "
-            "accordingly &mdash; including the part where we tell you when to pick "
+            "accordingly, including the part where we tell you when to pick "
             "somebody else."
         ),
         crumbs=[("Comparison", "/compare/nurse-triage-for-tribal-health")],
@@ -1125,8 +1142,10 @@ def compare_tribal() -> Page:
 
     {sources_block([
         "Competitor descriptions summarized from each company's own public website.",
-        "SAM.gov contract opportunities &mdash; Indian Health Service notices and awards.",
-        "Buy Indian Act, 25 U.S.C. &sect; 47; IHS Buy Indian Act final rule (2022).",
+        ("SAM.gov contract opportunities, Indian Health Service notices and awards.",
+             "https://sam.gov/search/?index=opp"),
+        ("Buy Indian Act, 25 U.S.C. &sect; 47, and the IHS Buy Indian Act final rule (2022).",
+             "https://www.federalregister.gov/documents/2022/01/13/2021-28156/acquisition-regulations-buy-indian-act-procedures-for-contracting"),
     ], disclaimer=(
         "Competitor information is summarized from publicly available company "
         "materials and was accurate as reviewed; services and positioning change. "

@@ -51,7 +51,7 @@ STATIC = {
 def collect() -> list[Page]:
     pages: list[Page] = []
 
-    # tulq.health — tribal / IHS track
+    # tulq.health - tribal / IHS track
     pages.append(content_tribal.pillar_tribal_ihs())
     pages.append(content_tribal.pillar_buy_indian_act())
     pages.append(content_tribal.pillar_contracting_officers())
@@ -61,7 +61,7 @@ def collect() -> list[Page]:
     pages.extend(content_tribal_resources.posts())
     pages.append(content_tribal_resources.compare_tribal())
 
-    # tulqhealth.com — mainstream track
+    # tulqhealth.com - mainstream track
     pages.append(content_care.page_hospice())
     pages.append(content_care.pillar_home_health())
     pages.append(content_care.page_rhc_cah())

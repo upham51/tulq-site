@@ -23,7 +23,7 @@ SITE = TRIBAL
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR 1 — Tribal health & IHS
+# PILLAR 1 - Tribal health & IHS
 # ══════════════════════════════════════════════════════════════════════
 
 def pillar_tribal_ihs() -> Page:
@@ -61,13 +61,13 @@ def pillar_tribal_ihs() -> Page:
          "Indian Self-Determination and Education Assistance Act make their own "
          "procurement decisions, including after-hours coverage. IHS-operated service "
          "units generally do procure through their Area office, and those requirements "
-         "surface on SAM.gov &mdash; see our "
+         "surface on SAM.gov, see our "
          "<a href=\"/for/contracting-officers\">page for contracting officers</a>.</p>"),
         ("How does a nurse line protect our PRC budget?",
          "<p>Purchased/Referred Care pays for care delivered outside your facility, and "
          "an outside emergency department visit is one of the more expensive things PRC "
          "buys. When a caller who needs a next-morning appointment goes to the ER "
-         "instead &mdash; because there was nowhere else to call at 11 p.m. &mdash; that "
+         "instead, because there was nowhere else to call at 11 p.m., that "
          "is a PRC expense that did not have to happen. Nurse triage puts a clinical "
          "decision between the symptom and the emergency department. "
          "<a href=\"/resources/nurse-advice-line-prc-budget\">We walk through the "
@@ -77,7 +77,7 @@ def pillar_tribal_ihs() -> Page:
          "TULQ is wholly owned by an enrolled citizen of the Snoqualmie Indian Tribe, "
          "which makes it eligible to compete as an Indian Economic Enterprise under the "
          "Buy Indian Act. Second, design: cultural competency sits at the protocol "
-         "level rather than in a training module &mdash; how the nurse asks about pain, "
+         "level rather than in a training module: how the nurse asks about pain, "
          "how she reads a multigenerational household, what she assumes about the "
          "distance to definitive care.</p>"),
         ("Are your nurses licensed in our state?",
@@ -103,7 +103,7 @@ def pillar_tribal_ihs() -> Page:
 
     <p>When the clinic closes, the options narrow to two: wait until morning, or go
     to the emergency department. One of those is bad for the patient. The other is
-    expensive for the program &mdash; and in a Purchased/Referred Care system, it is
+    expensive for the program, and in a Purchased/Referred Care system, it is
     expensive in a way that has a hard ceiling.</p>
 
     <h2>The problem nobody built for</h2>
@@ -135,7 +135,7 @@ def pillar_tribal_ihs() -> Page:
     <h2>What TULQ actually does</h2>
 
     <p>A patient calls one number, any hour. A U.S. state-licensed registered nurse
-    picks up &mdash; not a call center agent, not a queue, not a voicemail box. The
+    picks up, not a call center agent, not a queue, not a voicemail box. The
     nurse assesses the caller against Schmitt-Thompson telephone triage protocols,
     the physician-authored standard used across the industry, and reaches one of a
     defined set of dispositions: care for it at home, be seen in the clinic tomorrow,
@@ -169,7 +169,7 @@ def pillar_tribal_ihs() -> Page:
             <td>IHS-operated service units</td>
             <td>Round-the-clock access for the service population without adding
             overnight clinical staff; ER diversion against the PRC allocation.</td>
-            <td>Area office contracting, posted on SAM.gov &mdash; frequently as a
+            <td>Area office contracting, posted on SAM.gov, frequently as a
             Buy Indian Act set-aside.</td>
           </tr>
           <tr>
@@ -262,11 +262,16 @@ def pillar_tribal_ihs() -> Page:
     {faq_block(qa)}
 
     {sources_block([
-        "Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
-        "Buy Indian Act, 25 U.S.C. &sect; 47; IHS Buy Indian Act final rule (2022).",
-        "Indian Self-Determination and Education Assistance Act of 1975, P.L. 93-638.",
-        "Indian Health Care Improvement Act, Title V (Urban Indian Health Program).",
-        "Schmitt-Thompson telephone triage protocols.",
+        ("Indian Health Service, <em>Purchased/Referred Care</em> program documentation.",
+             "https://www.ihs.gov/prc/"),
+        ("Buy Indian Act, 25 U.S.C. &sect; 47, and the IHS Buy Indian Act final rule (2022).",
+             "https://www.federalregister.gov/documents/2022/01/13/2021-28156/acquisition-regulations-buy-indian-act-procedures-for-contracting"),
+        ("Indian Self-Determination and Education Assistance Act of 1975, P.L. 93-638 (25 U.S.C. &sect; 5301).",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section5301&num=0&edition=prelim"),
+        ("Indian Health Care Improvement Act, Title V (Urban Indian Health Program).",
+             "https://www.ihs.gov/urban/"),
+        ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
     ], disclaimer=(
         "TULQ is launching in 2026. Nothing on this page describes contract "
         "performance or call volumes we have not yet delivered. Service-population "
@@ -295,7 +300,7 @@ def pillar_tribal_ihs() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR 2 — Buy Indian Act
+# PILLAR 2 - Buy Indian Act
 # ══════════════════════════════════════════════════════════════════════
 
 def pillar_buy_indian_act() -> Page:
@@ -312,8 +317,8 @@ def pillar_buy_indian_act() -> Page:
         deck=(
             "A 1910 statute, a 2022 final rule, and one of the least well-documented "
             "corners of federal procurement. If you are a contracting officer scoping a "
-            "nurse advice line requirement &mdash; or a Native-owned firm trying to "
-            "compete for one &mdash; this is what actually governs it."
+            "nurse advice line requirement (or a Native-owned firm trying to "
+            "compete for one), this is what actually governs it."
         ),
         crumbs=[("Buy Indian Act", "/buy-indian-act")],
         priority="0.8",
@@ -328,7 +333,7 @@ def pillar_buy_indian_act() -> Page:
     qa = [
         ("What is the difference between an IEE and an ISBEE?",
          "<p>An Indian Economic Enterprise (IEE) meets the Buy Indian Act's ownership, "
-         "control, and management tests &mdash; broadly, majority ownership and control "
+         "control, and management tests: broadly, majority ownership and control "
          "by one or more Indians or Indian Tribes. An Indian Small Business Economic "
          "Enterprise (ISBEE) is an IEE that <em>also</em> qualifies as a small business "
          "under the SBA size standard for the NAICS code on the solicitation. Every "
@@ -336,7 +341,7 @@ def pillar_buy_indian_act() -> Page:
         ("Is the status certified by anyone?",
          "<p>No. Unlike 8(a) or HUBZone, Buy Indian status is self-certified. The "
          "enterprise represents its eligibility in its offer. That does not make it "
-         "informal &mdash; the representation must be accurate at the time of offer, at "
+         "informal; the representation must be accurate at the time of offer, at "
          "the time of award, and throughout performance, and a contracting officer can "
          "challenge it. A false representation carries the consequences any false "
          "certification to the government carries.</p>"),
@@ -351,7 +356,7 @@ def pillar_buy_indian_act() -> Page:
          "identify a capable Indian enterprise at a fair and reasonable price, the "
          "contracting officer may proceed under another authority or through open "
          "competition. That is the mechanism by which non-Native firms end up holding "
-         "IHS nurse advice line contracts &mdash; not because the preference failed, "
+         "IHS nurse advice line contracts, not because the preference failed, "
          "but because nobody eligible answered the Sources Sought notice.</p>"),
         ("Which NAICS codes show up on these requirements?",
          "<p>Nurse advice line and telephone triage requirements at IHS facilities have "
@@ -364,8 +369,8 @@ def pillar_buy_indian_act() -> Page:
 
     page.body = f"""    <p>The Buy Indian Act is short, old, and consequential. Enacted in 1910 and
     codified at <strong>25 U.S.C. &sect; 47</strong>, it authorizes the Secretary of
-    the Interior &mdash; and, through subsequent transfers of authority, the Indian
-    Health Service &mdash; to purchase products and services from Indian-owned
+    the Interior (and, through subsequent transfers of authority, the Indian
+    Health Service) to purchase products and services from Indian-owned
     economic enterprises, using Indian labor, "so far as may be practicable."</p>
 
     <p>For most of its history the statute was applied unevenly. That changed with
@@ -430,7 +435,7 @@ def pillar_buy_indian_act() -> Page:
       and it is frequently cited by number in the solicitation itself.</li>
       <li><strong>A Sources Sought notice.</strong> Posted publicly on SAM.gov, this
       asks interested enterprises to describe their capability and represent their
-      status. It is market research, not a solicitation &mdash; responding does not
+      status. It is market research, not a solicitation; responding does not
       obligate anyone, and publishing one does not guarantee an award will
       follow.</li>
       <li><strong>The set-aside decision.</strong> If capable Indian enterprises
@@ -445,8 +450,7 @@ def pillar_buy_indian_act() -> Page:
       <p>Step two is where most of these requirements are actually won or lost. A
       Sources Sought notice with no qualified Indian responses is the documented
       justification for going elsewhere. An Indian enterprise that watches SAM.gov
-      and answers those notices &mdash; even when the notice is not yet a contract
-      &mdash; is doing the single highest-leverage thing available to it.</p>
+      and answers those notices, even when the notice is not yet a contract, is doing the single highest-leverage thing available to it.</p>
     </div>
 
     <h2>What contracting officers verify</h2>
@@ -461,7 +465,7 @@ def pillar_buy_indian_act() -> Page:
       a common and entirely avoidable disqualifier.</li>
       <li><strong>Evidence of tribal citizenship or tribal ownership</strong> for the
       owners on whom the representation rests.</li>
-      <li><strong>Actual control</strong> &mdash; whether the Indian owner runs the
+      <li><strong>Actual control</strong>: whether the Indian owner runs the
       company, or whether management and daily operations sit somewhere else.</li>
       <li><strong>Capability for this requirement</strong>, which for clinical
       services means licensure, protocols, staffing model, and documentation, not
@@ -477,18 +481,22 @@ def pillar_buy_indian_act() -> Page:
 
     <p>The clinical side is led by Jayson Forrest Minagawa, RN, BSN, whose background
     runs across ICU, telehealth, corrections triage, and skilled-nursing leadership.
-    That combination &mdash; Native ownership plus a credentialed clinical operator
-    &mdash; is the thing a Buy Indian set-aside for a nurse advice line is actually
+    That combination (Native ownership plus a credentialed clinical operator) is the thing a Buy Indian set-aside for a nurse advice line is actually
     looking for, and it is rarer in the market than it should be.</p>
 
     {faq_block(qa)}
 
     {sources_block([
-        "Buy Indian Act, 25 U.S.C. &sect; 47.",
-        "Indian Health Service, Buy Indian Act Acquisition Regulation final rule (2022).",
-        "HHS Acquisition Regulation (HHSAR), Part 326 &mdash; Buy Indian Act coverage.",
-        "U.S. Small Business Administration size standards by NAICS code.",
-        "SAM.gov contract opportunities, Indian Health Service.",
+        ("Buy Indian Act, 25 U.S.C. &sect; 47.",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section47&num=0&edition=prelim"),
+        ("Indian Health Service, Buy Indian Act Acquisition Regulation final rule (2022).",
+             "https://www.federalregister.gov/documents/2022/01/13/2021-28156/acquisition-regulations-buy-indian-act-procedures-for-contracting"),
+        ("HHS Acquisition Regulation (HHSAR), 48 CFR Part 326, Buy Indian Act coverage.",
+             "https://www.ecfr.gov/current/title-48/chapter-3/subchapter-D/part-326"),
+        ("U.S. Small Business Administration size standards by NAICS code.",
+             "https://www.sba.gov/document/support-table-size-standards"),
+        ("SAM.gov contract opportunities, Indian Health Service.",
+             "https://sam.gov/search/?index=opp"),
     ], disclaimer=(
         "This page is a plain-language explainer, not legal or acquisition advice. "
         "Regulations are amended; verify current requirements against the CFR, the "
@@ -500,7 +508,7 @@ def pillar_buy_indian_act() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR 3 — For contracting officers
+# PILLAR 3 - For contracting officers
 # ══════════════════════════════════════════════════════════════════════
 
 def pillar_contracting_officers() -> Page:
@@ -540,7 +548,7 @@ def pillar_contracting_officers() -> Page:
          "<p>TULQ is wholly owned and controlled by an enrolled citizen of the "
          "Snoqualmie Indian Tribe and is eligible to compete as an Indian Economic "
          "Enterprise under 25 U.S.C. &sect; 47. Whether the ISBEE tier applies depends "
-         "on the SBA size standard for the NAICS code on your solicitation &mdash; at "
+         "on the SBA size standard for the NAICS code on your solicitation; at "
          "our size, it generally does. "
          "<a href=\"/buy-indian-act\">Background on the distinction.</a></p>"),
         ("Will you respond to a Sources Sought notice even if an award is uncertain?",
@@ -583,12 +591,12 @@ def pillar_contracting_officers() -> Page:
           </tr>
           <tr>
             <td>Buy Indian status</td>
-            <td>Indian Economic Enterprise &mdash; wholly owned and controlled by an
+            <td>Indian Economic Enterprise: wholly owned and controlled by an
             enrolled citizen of the Snoqualmie Indian Tribe (25 U.S.C. &sect; 47)</td>
           </tr>
           <tr>
             <td>Typical NAICS</td>
-            <td>621111 &middot; 621399 &middot; 541990 &mdash; we can represent under
+            <td>621111 &middot; 621399 &middot; 541990: we can represent under
             the code on your solicitation</td>
           </tr>
           <tr>
@@ -601,7 +609,7 @@ def pillar_contracting_officers() -> Page:
           </tr>
           <tr>
             <td>Clinical leadership</td>
-            <td>Jayson Forrest Minagawa, RN, BSN &mdash; Clinical Director</td>
+            <td>Jayson Forrest Minagawa, RN, BSN (Clinical Director)</td>
           </tr>
           <tr>
             <td>Capability statement</td>
@@ -616,7 +624,7 @@ def pillar_contracting_officers() -> Page:
     <p>Nurse advice line and telephone triage requirements surface across the IHS
     system irregularly, but recent public activity has concentrated in a handful of
     Areas. The notices below are matters of public record on SAM.gov, listed here as
-    context for the shape of this market &mdash; not as live opportunities.</p>
+    context for the shape of this market, not as live opportunities.</p>
 
     <div class="table-scroll">
       <table class="data">
@@ -678,8 +686,7 @@ def pillar_contracting_officers() -> Page:
 
     <p>Several of the requirements above were set aside under the Buy Indian Act, and
     at least one recent award went to a firm that is not an Indian Economic
-    Enterprise. That is not a criticism of the contracting officers involved &mdash;
-    it is the documented, correct outcome when market research does not surface a
+    Enterprise. That is not a criticism of the contracting officers involved; it is the documented, correct outcome when market research does not surface a
     capable Indian enterprise at a fair and reasonable price.</p>
 
     <p>It is also the gap TULQ was built to close. A credentialed, RN-led, Native-owned
@@ -689,10 +696,14 @@ def pillar_contracting_officers() -> Page:
     {faq_block(qa)}
 
     {sources_block([
-        "SAM.gov contract opportunities &mdash; Indian Health Service notices cited above.",
-        "Buy Indian Act, 25 U.S.C. &sect; 47; IHS Buy Indian Act final rule (2022).",
-        "HHS Acquisition Regulation (HHSAR), Part 326.",
-        "U.S. Small Business Administration size standards by NAICS code.",
+        ("SAM.gov contract opportunities, the Indian Health Service notices cited above.",
+             "https://sam.gov/search/?index=opp"),
+        ("Buy Indian Act, 25 U.S.C. &sect; 47, and the IHS Buy Indian Act final rule (2022).",
+             "https://www.federalregister.gov/documents/2022/01/13/2021-28156/acquisition-regulations-buy-indian-act-procedures-for-contracting"),
+        ("HHS Acquisition Regulation (HHSAR), 48 CFR Part 326.",
+             "https://www.ecfr.gov/current/title-48/chapter-3/subchapter-D/part-326"),
+        ("U.S. Small Business Administration size standards by NAICS code.",
+             "https://www.sba.gov/document/support-table-size-standards"),
     ], disclaimer=(
         "Solicitation details are summarized from public SAM.gov postings and were "
         "accurate as posted; notices are amended, cancelled, and superseded. Always "

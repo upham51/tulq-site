@@ -34,7 +34,7 @@ SITE = CARE
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR — Home health
+# PILLAR - Home health
 # (hospice is covered by /nurse-triage-for-hospice)
 # ══════════════════════════════════════════════════════════════════════
 
@@ -48,13 +48,13 @@ def pillar_home_health() -> Page:
         ("We're a hospice as well as a home health agency. Which page applies?",
          "<p>Both, and the service is the same line. The hospice side has its own "
          "requirements around the Medicare Condition of Participation for 24-hour nurse "
-         "availability &mdash; <a href=\"/nurse-triage-for-hospice\">that is covered "
+         "availability. <a href=\"/nurse-triage-for-hospice\">That is covered "
          "here</a>. This page is about the home health side: OASIS, HHVBP, and "
          "acute-care utilization.</p>"),
         ("How fast do calls get answered?",
          "<p>Our model is answer-on-connect rather than queue-and-callback. TULQ is "
          "launching in 2026, so we are not going to quote you an average speed to "
-         "answer we have not yet measured &mdash; but it is a fair thing to write into "
+         "answer we have not yet measured, but it is a fair thing to write into "
          "a contract as a service level, and we are happy to have it there.</p>"),
         ("Can you document into our EMR?",
          "<p>Encounter documentation is captured on every call and returned to you. The "
@@ -108,7 +108,7 @@ def pillar_home_health() -> Page:
       <p>The hospice side carries its own Medicare Condition of Participation for
       24-hour nurse availability, and it is worth reading separately.
       <a href="/nurse-triage-for-hospice">Nurse triage for hospice is covered
-      here.</a> It is the same line and the same nurses &mdash; the compliance framing
+      here.</a> It is the same line and the same nurses, the compliance framing
       is what differs.</p>
     </div>
 
@@ -174,7 +174,7 @@ def pillar_home_health() -> Page:
           <tr>
             <td>Cost</td>
             <td>Lower</td>
-            <td>Higher &mdash; and the difference is the clinical work</td>
+            <td>Higher, and the difference is the clinical work</td>
           </tr>
         </tbody>
       </table>
@@ -237,7 +237,7 @@ def pillar_home_health() -> Page:
       to show you, and any vendor comparison we published that pretended otherwise
       would be worthless. What we can be evaluated on today is the clinical model, our
       director's credentials, licensure, protocol standard, escalation design, and
-      pricing structure &mdash; and we would rather be judged on those than on a number
+      pricing structure, and we would rather be judged on those than on a number
       we cannot yet substantiate.</p>
     </div>
 
@@ -254,17 +254,21 @@ def pillar_home_health() -> Page:
          "How the CY2025 shift to within-stay potentially preventable hospitalization changes the lever.",
          "/resources/hhvbp-ed-use"),
         ("Compare", "Comparing triage vendors",
-         "IntellaTriage, Conduit, AccessNurse — what each is built for, and how to evaluate them.",
+         "IntellaTriage, Conduit, AccessNurse: what each is built for, and how to evaluate them.",
          "/compare/"),
     ])}
 
     {faq_block(qa)}
 
     {sources_block([
-        "CMS, expanded Home Health Value-Based Purchasing (HHVBP) model.",
-        "CMS, Home Health Quality Reporting Program and OASIS requirements.",
-        "American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
-        "Schmitt-Thompson telephone triage protocols.",
+        ("CMS, expanded Home Health Value-Based Purchasing (HHVBP) model.",
+             "https://www.cms.gov/priorities/innovation/innovation-models/expanded-home-health-value-based-purchasing-model"),
+        ("CMS, Home Health Quality Reporting Program and OASIS requirements.",
+             "https://www.cms.gov/medicare/quality/home-health"),
+        ("American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
+             "https://www.aaacn.org/telehealth-nursing-practice"),
+        ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
     ], disclaimer=(
         "Quality program requirements change annually. Verify current measure "
         "specifications and effective dates against CMS guidance before relying on "
@@ -291,7 +295,7 @@ def pillar_home_health() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# PILLAR — FQHC / community health centers
+# PILLAR - FQHC / community health centers
 # (RHCs and critical access hospitals are covered by
 #  /nurse-triage-for-rural-health-clinics)
 # ══════════════════════════════════════════════════════════════════════
@@ -303,9 +307,9 @@ def pillar_health_centers() -> Page:
          "to services after regular hours, and a professional coverage arrangement is "
          "one recognized way to meet it. Whether a specific arrangement satisfies your "
          "obligations is a question for your compliance staff and your operational site "
-         "visit &mdash; not something a vendor should tell you it has handled.</p>"),
+         "visit, not something a vendor should tell you it has handled.</p>"),
         ("We're a rural health clinic or a critical access hospital. Right page?",
-         "<p>No &mdash; we wrote one specifically for you. "
+         "<p>No, we wrote one specifically for you. "
          "<a href=\"/nurse-triage-for-rural-health-clinics\">Nurse triage for rural "
          "health clinics and critical access hospitals is here.</a> This page is for "
          "federally qualified and community health centers, which sit under HRSA "
@@ -313,7 +317,7 @@ def pillar_health_centers() -> Page:
         ("Can we bill anything for it?",
          "<p>Not for the triage call itself as a rule. Where after-hours access matters "
          "financially is as a component of care-management programs that do have "
-         "billable codes &mdash; Advanced Primary Care Management being the current "
+         "billable codes, Advanced Primary Care Management being the current "
          "example. <a href=\"/resources/apcm-billing-fqhc-rhc\">We walk through APCM "
          "here.</a></p>"),
         ("Our providers already carry a phone. What changes?",
@@ -321,7 +325,7 @@ def pillar_health_centers() -> Page:
          "after-hours call is a provider's judgment call about whether it was worth "
          "being woken for. With triage in front, a licensed RN makes that assessment "
          "against protocol, and your provider hears about the calls that genuinely "
-         "need them &mdash; with the assessment already done.</p>"),
+         "need them, with the assessment already done.</p>"),
         ("Is this affordable for a safety-net budget?",
          "<p>It has to be, or it is not a real option for this segment. We price on a "
          "flat monthly structure rather than per-call, so a bad flu season does not "
@@ -383,8 +387,7 @@ def pillar_health_centers() -> Page:
     <p>FQHCs also sit inside the care-management economics that have changed most
     recently. Advanced Primary Care Management, launched by CMS on January 1, 2025
     under the CY2025 Physician Fee Schedule, bundles a set of care-management
-    expectations &mdash; including 24/7 access to care and continuity with the care team
-    &mdash; into billable codes G0556, G0557, and G0558.
+    expectations (including 24/7 access to care and continuity with the care team) into billable codes G0556, G0557, and G0558.
     <a href="/resources/apcm-billing-fqhc-rhc">We go through what that means for a
     health center here.</a></p>
 
@@ -436,7 +439,7 @@ def pillar_health_centers() -> Page:
 
     {card_grid([
         ("Reimbursement", "APCM billing at an FQHC or RHC",
-         "G0556, G0557, G0558 — what the codes cover, who can bill them, and where 24/7 access fits.",
+         "G0556, G0557, G0558: what the codes cover, who can bill them, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
         ("RHC &amp; CAH", "Nurse triage for rural clinics and hospitals",
          "Rural health clinics and critical access hospitals sit under different rules. Their page is here.",
@@ -452,13 +455,17 @@ def pillar_health_centers() -> Page:
     {faq_block(qa)}
 
     {sources_block([
-        "HRSA Health Center Program requirements &mdash; after-hours coverage.",
-        "HRSA Health Center Program Compliance Manual.",
-        "CMS CY2025 Physician Fee Schedule &mdash; Advanced Primary Care Management.",
-        "National Association of Community Health Centers &mdash; APCM guidance.",
+        ("HRSA Health Center Program Compliance Manual, Chapter 7: after-hours coverage.",
+             "https://bphc.hrsa.gov/compliance/compliance-manual/chapter7"),
+        ("HRSA Health Center Program Compliance Manual, Chapter 7.",
+             "https://bphc.hrsa.gov/compliance/compliance-manual/chapter7"),
+        ("CMS Physician Fee Schedule, Advanced Primary Care Management (CY2025).",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician"),
+        ("National Association of Community Health Centers, APCM reimbursement tip sheet.",
+             "https://www.nachc.org/wp-content/uploads/2025/03/APCM-Reimbursement-Tip-Sheet.pdf"),
     ], disclaimer=(
         "Program requirements and payment rates change annually. Nothing here is "
-        "compliance advice &mdash; verify against current HRSA, CMS, and MAC guidance, "
+        "compliance advice. Verify against current HRSA, CMS, and MAC guidance, "
         "and confirm any coverage arrangement with your own compliance staff."
     ))}"""
 
@@ -483,7 +490,7 @@ def pillar_health_centers() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# SEGMENT — Hospice
+# SEGMENT - Hospice
 #
 # Originally hand-written in PR #88 with the homepage's alternating
 # dark/cream section bands. Ported onto the shared article shell so it
@@ -508,7 +515,7 @@ def page_hospice() -> Page:
          "line's. What TULQ does is take that call immediately, gather what your "
          "clinician needs, and reach them without the family sitting in a queue.</p>"),
         ("How does this affect our CAHPS scores?",
-         "<p>Several CAHPS Hospice measures turn on nights and weekends &mdash; whether "
+         "<p>Several CAHPS Hospice measures turn on nights and weekends: whether "
          "the family got help as soon as they needed it, and how the team communicated. "
          "<a href=\"/resources/hospice-cahps-after-hours\">We go through which measures "
          "after-hours access actually moves, and which it doesn't.</a></p>"),
@@ -564,7 +571,7 @@ def page_hospice() -> Page:
     <p>Every Medicare-certified hospice must make nursing services
     &ldquo;routinely available on a 24-hour basis, 7 days a week.&rdquo; A surveyor
     can, and does, ask a hospice to demonstrate that a licensed nurse was reachable
-    for any hour of any day in the survey window &mdash; including the 2 a.m. call
+    for any hour of any day in the survey window, including the 2 a.m. call
     from a family member watching a patient's breathing change.</p>
 
     <div class="callout callout--amber">
@@ -592,7 +599,7 @@ def page_hospice() -> Page:
     shifts, and hands you a documentation trail a surveyor can review.</p>
 
     <h3>Licensed RNs, every hour</h3>
-    <p>Every call is triaged by a U.S. state-licensed registered nurse &mdash; never a
+    <p>Every call is triaged by a U.S. state-licensed registered nurse, never a
     call-center rep reading a script, never AI making the clinical call.</p>
 
     <h3>Schmitt-Thompson, not improvised</h3>
@@ -605,7 +612,7 @@ def page_hospice() -> Page:
 
     <div class="callout callout--teal">
       <div class="callout-head">Running home health as well?</div>
-      <p>The home health side answers to a different set of levers &mdash; OASIS,
+      <p>The home health side answers to a different set of levers: OASIS,
       HHVBP, and acute-care utilization rather than a Condition of Participation.
       <a href="/for/home-health">Nurse triage for home health is covered here.</a>
       Same line, same nurses.</p>
@@ -624,17 +631,21 @@ def page_hospice() -> Page:
          "The distinction that justifies the price difference, in one table.",
          "/resources/nurse-triage-vs-answering-service"),
         ("Compare", "Comparing triage vendors",
-         "IntellaTriage, Conduit, AccessNurse — what each is built for, and when to pick them.",
+         "IntellaTriage, Conduit, AccessNurse: what each is built for, and when to pick them.",
          "/compare/"),
     ])}
 
     {faq_block(qa, heading="What hospice administrators ask us first")}
 
     {sources_block([
-        "42 CFR &sect; 418.100(c) &mdash; Medicare hospice Conditions of Participation.",
-        "NSI Nursing Solutions, <em>National Health Care Retention &amp; RN Staffing Report</em> (2025, 2026).",
-        "CMS, CAHPS Hospice Survey materials.",
-        "Schmitt-Thompson telephone triage protocols.",
+        ("42 CFR &sect; 418.100(c), Medicare hospice Conditions of Participation.",
+             "https://www.ecfr.gov/current/title-42/section-418.100"),
+        ("NSI Nursing Solutions, <em>National Health Care Retention &amp; RN Staffing Report</em>.",
+             "https://www.nsinursingsolutions.com/"),
+        ("CMS, CAHPS Hospice Survey materials.",
+             "https://www.cms.gov/medicare/quality/hospice/cahpsr-hospice-survey"),
+        ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
     ], disclaimer=(
         "Conditions of Participation and published survey figures change. Verify "
         "against the current CFR and CMS guidance before relying on them. TULQ is "
@@ -661,7 +672,7 @@ def page_hospice() -> Page:
 
 
 # ══════════════════════════════════════════════════════════════════════
-# SEGMENT — Rural health clinics & critical access hospitals
+# SEGMENT - Rural health clinics & critical access hospitals
 # (also ported from PR #88; URL and copy preserved)
 # ══════════════════════════════════════════════════════════════════════
 
@@ -676,7 +687,7 @@ def page_rhc_cah() -> Page:
         ("What is the APCM 24/7 access requirement?",
          "<p>Advanced Primary Care Management billing codes G0556&ndash;G0558, created "
          "in the 2025 Medicare Physician Fee Schedule, require practices to meet a set "
-         "of service elements to bill Medicare &mdash; one of which is 24/7 access to "
+         "of service elements to bill Medicare, one of which is 24/7 access to "
          "care, commonly satisfied with a nurse triage line. "
          "<a href=\"/resources/apcm-billing-fqhc-rhc\">More on APCM here.</a></p>"),
         ("We're an FQHC rather than an RHC. Is this the right page?",
@@ -741,8 +752,7 @@ def page_rhc_cah() -> Page:
     <p>Health centers and the rural health clinics operating alongside them must
     demonstrate after-hours coverage. HRSA's own compliance manual states that the
     health center &ldquo;determines the means by which after-hours coverage is
-    provided&hellip; Examples include&hellip; &lsquo;nurse call&rsquo; lines&rdquo;
-    &mdash; a direct, citable federal reference to exactly this service.</p>
+    provided&hellip; Examples include&hellip; &lsquo;nurse call&rsquo; lines&rdquo;, a direct, citable federal reference to exactly this service.</p>
 
     <div class="callout callout--amber">
       <div class="callout-head">42 CFR 485, Subpart F</div>
@@ -790,7 +800,7 @@ def page_rhc_cah() -> Page:
 
     {card_grid([
         ("Reimbursement", "APCM billing at an FQHC or RHC",
-         "G0556, G0557, G0558 — what the codes cover, who can bill them, and where 24/7 access fits.",
+         "G0556, G0557, G0558: what the codes cover, who can bill them, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
         ("Compliance", "After-hours coverage for critical access hospitals",
          "What the conditions of participation require, and the staffing arithmetic behind them.",
@@ -806,13 +816,17 @@ def page_rhc_cah() -> Page:
     {faq_block(qa, heading="What clinic administrators ask us first")}
 
     {sources_block([
-        "HRSA, <em>Health Center Program Compliance Manual</em> &mdash; after-hours coverage.",
-        "42 CFR Part 485, Subpart F &mdash; Conditions of Participation for Critical Access Hospitals.",
-        "CMS CY2025 Physician Fee Schedule &mdash; Advanced Primary Care Management.",
-        "Rural Health Information Hub &mdash; rural health clinic and CAH resources.",
+        ("HRSA, <em>Health Center Program Compliance Manual</em>, Chapter 7: after-hours coverage.",
+             "https://bphc.hrsa.gov/compliance/compliance-manual/chapter7"),
+        ("42 CFR Part 485 Subpart F, Conditions of Participation for critical access hospitals.",
+             "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-485/subpart-F"),
+        ("CMS Physician Fee Schedule, Advanced Primary Care Management (CY2025).",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician"),
+        ("Rural Health Information Hub, rural health clinics topic guide.",
+             "https://www.ruralhealthinfo.org/topics/rural-health-clinics"),
     ], disclaimer=(
         "Program requirements and payment rates change annually. Nothing here is "
-        "compliance advice &mdash; verify against current HRSA, CMS, and MAC guidance, "
+        "compliance advice. Verify against current HRSA, CMS, and MAC guidance, "
         "and confirm any coverage arrangement with your own compliance staff."
     ))}"""
 

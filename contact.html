@@ -14,7 +14,7 @@
 <meta property="og:title" content="Contact TULQ | IHS &amp; Tribal Nurse Line Inquiries" />
 <meta property="og:description" content="Reach the TULQ team directly about IHS nurse advice line solicitations, tribal health program coverage, and clinical partnerships. NAICS &amp; UEI registered." />
 <meta property="og:image" content="https://tulq.health/assets/og-cover.jpg" />
-<meta property="og:image:alt" content="Contact TULQ — reach the people who built the line." />
+<meta property="og:image:alt" content="Contact TULQ, reach the people who built the line." />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:domain" content="tulq.health" />
@@ -57,10 +57,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css?v=4fbe54fb25" />
+<link rel="stylesheet" href="styles.css?v=3bc22a4670" />
 <style>
 /* ═══════════════════════════════════════════════════════════
-   Contact page - full-bleed split layout
+   Contact, one panel, one screen.
+
+   Everything the page has to say fits inside a single card on a
+   single dark stage: heading, the two people, the credentials, and
+   the form. No sticky rail, no second background, nothing to scroll
+   past. The stage is sized off the viewport so the panel lands whole
+   on any laptop.
    ═══════════════════════════════════════════════════════════ */
 
 body {
@@ -75,319 +81,244 @@ body {
 .nav-wrap .nav-links a { color: rgba(232,228,216,0.6) !important; }
 .nav-wrap .nav-links a:hover { color: var(--fog) !important; background: rgba(232,228,216,0.06) !important; }
 
-/* ── Shell: two-column split ─────────────────────────────── */
-.cp-shell {
-  display: grid;
-  grid-template-columns: 360px 1fr;
+/* ── Stage ───────────────────────────────────────────────── */
+.cp-stage {
+  position: relative;
   min-height: 100vh;
-}
-
-/* ── LEFT PANEL ──────────────────────────────────────────── */
-.cp-left {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  background: var(--basalt);
-  border-right: 1px solid var(--rule-dark);
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 104px 32px 44px;
   overflow: hidden;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
 }
-.cp-left::-webkit-scrollbar { display: none; }
-
-/* Rivers canvas fills the entire left panel */
-.cp-left canvas {
+.cp-stage canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.28;
+  opacity: 0.3;
   pointer-events: none;
 }
-
-/* Gradient vignette over canvas so text pops */
-.cp-left::before {
+.cp-stage::before {
   content: "";
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(28,38,40,0.55) 0%, transparent 30%, rgba(28,38,40,0.85) 100%),
-    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(58,90,74,0.35), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(217,138,74,0.08), transparent 55%);
+    radial-gradient(ellipse 70% 60% at 12% 85%, rgba(58,90,74,0.42), transparent 62%),
+    radial-gradient(ellipse 55% 50% at 90% 8%, rgba(217,138,74,0.11), transparent 60%),
+    linear-gradient(180deg, rgba(28,38,40,0.72) 0%, rgba(28,38,40,0.25) 42%, rgba(28,38,40,0.86) 100%);
 }
 
-.cp-left-inner {
+/* ── The single panel ────────────────────────────────────── */
+.cp-panel {
   position: relative;
-  z-index: 2;
-  padding: 88px 36px 40px;
-  height: 100%;
+  z-index: 1;
+  width: 100%;
+  max-width: 1040px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  background: rgba(35,47,49,0.6);
+  border: 1px solid rgba(232,228,216,0.11);
+  border-radius: 28px;
+  box-shadow: 0 50px 110px -50px rgba(0,0,0,0.75);
+  backdrop-filter: saturate(1.25) blur(18px);
+  -webkit-backdrop-filter: saturate(1.25) blur(18px);
+  overflow: hidden;
+}
+
+/* ── Left: identity ──────────────────────────────────────── */
+.cp-aside {
+  padding: 40px 38px 36px;
+  border-right: 1px solid rgba(232,228,216,0.09);
+  background: linear-gradient(160deg, rgba(28,38,40,0.5), rgba(28,38,40,0.12));
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  gap: 26px;
 }
 
-/* Back link */
 .cp-back {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
   text-transform: uppercase; color: rgba(232,228,216,0.38);
-  text-decoration: none; margin-bottom: 28px;
+  text-decoration: none;
   transition: color 0.22s var(--ease-out-soft);
   width: fit-content;
 }
 .cp-back svg { transition: transform 0.22s var(--ease-out-soft); }
-.cp-back:hover { color: rgba(232,228,216,0.75); }
+.cp-back:hover { color: rgba(232,228,216,0.8); }
 .cp-back:hover svg { transform: translateX(-3px); }
 
-/* Main heading */
-.cp-heading {
-  flex: 1;
-}
-.cp-heading .cap-eye { margin-bottom: 20px; font-size: 11px; }
+.cp-heading .cap-eye { margin-bottom: 14px; font-size: 10.5px; }
 .cp-heading h1 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(48px, 4.8vw, 68px);
-  line-height: 0.93;
-  letter-spacing: -0.032em;
+  font-size: clamp(40px, 4vw, 54px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
   color: var(--fog);
   margin: 0 0 14px;
 }
 .cp-heading h1 em { font-style: italic; color: var(--amber); }
 .cp-tagline {
-  font-size: 15.5px;
-  color: rgba(232,228,216,0.48);
+  font-size: 14.5px;
+  color: rgba(232,228,216,0.5);
   line-height: 1.6;
-  max-width: 300px;
   margin: 0;
+  max-width: 300px;
 }
 
-/* People */
+/* People, pushed to the bottom of the rail */
 .cp-people {
-  border-top: 1px solid var(--rule-dark);
-  padding-top: 16px;
-  margin-top: 20px;
+  margin-top: auto;
+  border-top: 1px solid rgba(232,228,216,0.1);
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 16px;
 }
-.cp-person {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(232,228,216,0.05);
-}
-.cp-person:last-child { border-bottom: none; }
 .cp-person-role {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: rgba(168,200,196,0.6);
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(168,200,196,0.58);
   margin-bottom: 5px;
 }
 .cp-person-name {
-  font-family: var(--serif); font-size: 20px; letter-spacing: -0.01em;
-  color: var(--fog); margin-bottom: 5px;
+  font-family: var(--serif); font-size: 19px; letter-spacing: -0.01em;
+  color: var(--fog); margin-bottom: 4px;
 }
 .cp-person-email {
-  font-family: var(--mono); font-size: 11.5px;
+  font-family: var(--mono); font-size: 11px;
   color: var(--river-tolt); text-decoration: none;
   border-bottom: 1px solid transparent;
   padding-bottom: 1px;
   transition: border-color 0.2s;
 }
-.cp-person-email:hover { border-bottom-color: rgba(168,200,196,0.5); }
+.cp-person-email:hover { border-bottom-color: rgba(168,200,196,0.55); }
 
-/* Credential tags */
 .cp-creds {
-  display: flex; flex-wrap: wrap; gap: 7px;
-  margin-top: 14px;
+  display: flex; flex-wrap: wrap; gap: 6px;
 }
 .cp-cred {
-  font-family: var(--mono); font-size: 9px;
+  font-family: var(--mono); font-size: 8.5px;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(232,228,216,0.32);
-  padding: 5px 11px;
-  border: 1px solid rgba(232,228,216,0.08);
+  color: rgba(232,228,216,0.34);
+  padding: 5px 10px;
+  border: 1px solid rgba(232,228,216,0.09);
   border-radius: 999px;
 }
 
-/* ── RIGHT PANEL ─────────────────────────────────────────── */
-.cp-right {
-  background: var(--basalt-soft);
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 108px 72px 80px;
-  box-sizing: border-box;
-}
-
-.cp-form-outer {
-  width: 100%;
-  max-width: 560px;
-}
-
-.cp-form-head {
-  margin-bottom: 44px;
-}
-.cp-form-head .cap-eye { margin-bottom: 14px; font-size: 11px; }
-.cp-form-head h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(36px, 3.2vw, 48px);
-  line-height: 1.02;
-  letter-spacing: -0.022em;
-  color: var(--fog);
-  margin: 0 0 14px;
-}
-.cp-form-head h2 em { font-style: italic; color: var(--river-tolt); }
-.cp-form-head p {
-  font-size: 15px;
-  color: rgba(232,228,216,0.45);
-  line-height: 1.55;
-  margin: 0;
-  max-width: 440px;
-}
-
-/* Form override: no card background since right panel IS the bg */
-.cp-form-outer .cf-input {
-  background: rgba(28,38,40,0.5);
-  border-color: rgba(232,228,216,0.1);
-}
-.cp-form-outer .cf-input:focus { border-color: rgba(217,138,74,0.6); }
-
-/* This page's narrow split panel makes 2-column grids cramped at every
-   viewport - single column is always the right call here. */
-.cp-form-outer .cf-grid {
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin-bottom: 0;
-}
-.cp-form-outer .cf-grid .cf-field { margin-bottom: 16px; }
-/* Ensure labels always stack above inputs (belt-and-suspenders) */
-.cp-form-outer .cf-field {
+/* ── Right: the form ─────────────────────────────────────── */
+.cp-main {
+  padding: 40px 40px 38px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  min-width: 0;
 }
-/* 16px prevents iOS Safari auto-zoom on focus - applies at all sizes */
-.cp-form-outer .cf-input { font-size: 16px; min-height: 50px; }
-
-/* Submit row */
-.cp-form-outer .cf-foot {
-  padding-top: 8px;
+.cp-main-head { margin-bottom: 22px; }
+.cp-main-head .cap-eye { margin-bottom: 8px; font-size: 10.5px; }
+.cp-main-head p {
+  font-size: 14px;
+  color: rgba(232,228,216,0.5);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 430px;
 }
 
-/* Success state */
+/* Tighter form so the whole panel clears a laptop viewport. */
+.cp-main .cf-grid { gap: 14px 18px; margin-bottom: 14px; }
+.cp-main .cf-field { gap: 6px; margin-bottom: 14px; }
+.cp-main .cf-grid .cf-field { margin-bottom: 0; }
+.cp-main .cf-label { font-size: 10px; }
+.cp-main .cf-input {
+  background: rgba(20,28,30,0.55);
+  border-color: rgba(232,228,216,0.11);
+  border-radius: 11px;
+  padding: 12px 14px;
+  /* 16px prevents iOS Safari auto-zoom on focus */
+  font-size: 16px;
+}
+.cp-main .cf-input:focus { border-color: rgba(217,138,74,0.65); }
+.cp-main .cf-textarea { min-height: 96px; }
+.cp-main .cf-check { margin: 4px 0 20px; align-items: flex-start; }
+.cp-main .cf-check span { font-size: 13.5px; line-height: 1.45; }
+.cp-main .cf-check .cf-check-note {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: rgba(232,228,216,0.33);
+  margin-top: 4px;
+}
+.cp-main .cf-foot { margin-top: auto; }
+
+/* ── Success state, replaces the form in place ──────────── */
 .cp-success {
   display: none;
-  text-align: center;
-  padding: 48px 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
-.cp-success.is-visible { display: block; }
+.cp-success.is-visible { display: flex; }
 .cp-success-glyph {
   font-family: var(--serif);
-  font-size: 72px;
+  font-size: 54px;
   color: var(--amber);
   line-height: 1;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   opacity: 0.9;
 }
-.cp-success h3 {
+.cp-success h2 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 32px;
+  font-size: 34px;
   color: var(--fog);
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 .cp-success p {
   font-size: 15px;
-  color: rgba(232,228,216,0.5);
-  margin: 0 0 32px;
+  color: rgba(232,228,216,0.55);
+  margin: 0 0 28px;
+  line-height: 1.6;
 }
+.cp-success .btn { width: fit-content; }
 
 /* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 960px) {
-  .cp-shell { grid-template-columns: 1fr; }
-
-  .cp-left {
-    position: relative;
-    height: auto;
+@media (max-width: 900px) {
+  .cp-stage { padding: 92px 20px 36px; min-height: 0; display: block; }
+  .cp-panel {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .cp-aside {
     border-right: none;
-    border-bottom: 1px solid var(--rule-dark);
-    padding: 0;
+    border-bottom: 1px solid rgba(232,228,216,0.09);
+    padding: 32px 28px 28px;
+    gap: 22px;
   }
-  .cp-left canvas { height: 100%; min-height: 360px; }
-  .cp-left-inner { padding: 108px 32px 48px; }
-  .cp-back { margin-bottom: 36px; }
-  .cp-heading h1 { font-size: clamp(48px, 9vw, 72px); }
-
-  .cp-right {
-    padding: 60px 32px 80px;
-    align-items: flex-start;
-  }
+  .cp-people { margin-top: 4px; }
+  .cp-main { padding: 30px 28px 32px; }
 }
 
-@media (max-width: 600px) {
-  /* Compact the left panel so users reach the form sooner */
-  .cp-left canvas { min-height: 260px; }
-  .cp-left-inner { padding: 76px 20px 28px; }
-  .cp-back { margin-bottom: 18px; font-size: 9.5px; }
-  .cp-heading .cap-eye { margin-bottom: 12px; }
-  .cp-heading h1 { font-size: clamp(36px, 11vw, 52px); margin-bottom: 0; }
-  .cp-tagline { display: none; }
-  .cp-people { display: none; }
-  .cp-creds { margin-top: 16px; }
-
-  /* Form panel */
-  .cp-right { padding: 36px 20px 56px; }
-  .cp-form-head { margin-bottom: 28px; }
-  .cp-form-head h2 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
-  .cp-form-head p { font-size: 14px; }
-
-  /* Single-column form grid - override with !important to beat any cascade */
-  .cf-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-  }
-
-  /* Stack label above input clearly */
-  .cf-field {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-  }
-  .cf-grid .cf-field { margin-bottom: 18px !important; }
-
-  /* 16px prevents iOS auto-zoom on focus */
-  .cf-input {
-    font-size: 16px !important;
-    min-height: 52px !important;
-    padding: 14px 16px !important;
-  }
-  .cf-textarea { min-height: 130px !important; }
-
-  /* Full-width submit button */
-  .cf-foot {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-  }
-  .cf-foot .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Checkbox legibility */
-  .cf-check { margin: 4px 0 24px; }
-  .cf-check span { font-size: 14px; }
+@media (max-width: 560px) {
+  .cp-stage { padding: 84px 14px 28px; }
+  .cp-panel { border-radius: 20px; }
+  .cp-aside { padding: 26px 22px 24px; }
+  .cp-main { padding: 26px 22px 28px; }
+  .cp-heading h1 { font-size: clamp(34px, 11vw, 46px); }
+  .cp-tagline { font-size: 14px; max-width: none; }
+  .cp-main .cf-grid { grid-template-columns: 1fr; gap: 0; }
+  .cp-main .cf-grid .cf-field { margin-bottom: 14px; }
+  .cp-main .cf-input { min-height: 48px; }
+  .cf-foot { flex-direction: column; align-items: stretch; gap: 12px; }
+  .cf-foot .btn { width: 100%; justify-content: center; }
 }
 </style>
 </head>
 <body>
-
-<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-
 <!-- ══════════════════════════════════════════════════════════
      NAV
      ══════════════════════════════════════════════════════════ -->
@@ -398,31 +329,30 @@ body {
       <span>TULQ</span>
     </a>
     <div class="nav-links">
-      <a href="/#how">How it works</a>
-      <a href="/#leadership">Leadership</a>
-      <a href="/#serve">Who we serve</a>
-      <a href="/#why">Why TULQ</a>
-      <a href="/#story">Our story</a>
+      <a href="/areas/">IHS Areas</a>
+      <a href="/resources/">Resources</a>
+      <a href="/story">Our story</a>
     </div>
-    <a class="nav-cta" href="/" data-magnetic>
+    <a class="nav-cta" href="/contact" data-magnetic>
       <span class="dot-live" aria-hidden="true"></span>
-      <span>The line</span>
+      <span>Contact us</span>
     </a>
   </nav>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════
-     SPLIT LAYOUT
+     ONE PANEL, ONE SCREEN
      ══════════════════════════════════════════════════════════ -->
-<div class="cp-shell">
+<main class="cp-stage">
+  <canvas id="rivers" aria-hidden="true"></canvas>
 
-  <!-- ── LEFT: identity + rivers ──────────────────────────── -->
-  <aside class="cp-left">
-    <canvas id="rivers" aria-hidden="true"></canvas>
-    <div class="cp-left-inner">
+  <div class="cp-panel">
+
+    <!-- ── Identity rail ──────────────────────────────────── -->
+    <aside class="cp-aside">
 
       <a class="cp-back" href="/">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         Back to TULQ
@@ -430,7 +360,7 @@ body {
 
       <div class="cp-heading">
         <div class="cap-eye">Contact &amp; capability</div>
-        <h1>Get in<br><em>touch.</em></h1>
+        <h1>Get in <em>touch.</em></h1>
         <p class="cp-tagline">For contracting officers, clinical partnerships, and IHS program inquiries. We answer our own phones.</p>
       </div>
 
@@ -454,17 +384,14 @@ body {
         <span class="cp-cred">Buy Indian Act · 25 U.S.C. § 47</span>
       </div>
 
-    </div>
-  </aside>
+    </aside>
 
-  <!-- ── RIGHT: the form ───────────────────────────────────── -->
-  <main class="cp-right">
-    <div class="cp-form-outer">
+    <!-- ── Form ───────────────────────────────────────────── -->
+    <div class="cp-main">
 
-      <div class="cp-form-head">
+      <div class="cp-main-head" id="cp-main-head">
         <div class="cap-eye">Send a message</div>
-        <h2>We read every<br><em>message ourselves.</em></h2>
-        <p>Fill out the form and we'll respond within one business day. Contracting officers: check the box below and we'll include the full capability statement.</p>
+        <p>We reply within one business day. Contracting officers: tick the box below and we will attach the full capability statement.</p>
       </div>
 
       <form class="cf" id="cf" novalidate>
@@ -493,12 +420,12 @@ body {
 
         <div class="cf-field">
           <label class="cf-label" for="cf-msg">Message</label>
-          <textarea class="cf-input cf-textarea" id="cf-msg" name="message" rows="5"></textarea>
+          <textarea class="cf-input cf-textarea" id="cf-msg" name="message" rows="4"></textarea>
         </div>
 
         <label class="cf-check">
           <input type="checkbox" name="capability_statement" value="requested" id="cf-cap">
-          <span>I'm a contracting officer, please include the capability statement<br><span style="color:rgba(232,228,216,0.35);font-size:12px;">NAICS · UEI · Buy Indian Act documentation · SAM.gov registration</span></span>
+          <span>I am a contracting officer, please include the capability statement<span class="cf-check-note">NAICS · UEI · Buy Indian Act documentation · SAM.gov registration</span></span>
         </label>
 
         <div class="cf-foot">
@@ -515,9 +442,9 @@ body {
       </form>
 
       <div class="cp-success" id="cp-success" aria-live="polite">
-        <div class="cp-success-glyph">tultxʷ</div>
-        <h3>Message received.</h3>
-        <p>We'll be in touch within one business day.<br>You can also reach us directly below.</p>
+        <div class="cp-success-glyph">tultx&#695;</div>
+        <h2>Message received.</h2>
+        <p>We will be in touch within one business day.<br>You can also reach either of us directly.</p>
         <a href="/" class="btn btn-amber">
           Back to TULQ
           <span class="orb" aria-hidden="true">
@@ -529,45 +456,14 @@ body {
       </div>
 
     </div>
-  </main>
 
-</div>
+  </div>
+</main>
 
 <script src="rivers.js?v=2"></script>
 <script>
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── Scroll progress ────────────────────────────────────── */
-  const prog = document.getElementById('scroll-progress');
-  function updateProgress() {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const p = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
-    prog.style.setProperty('--p', p.toFixed(2) + '%');
-  }
-  updateProgress();
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  window.addEventListener('resize', updateProgress);
-
-  /* ── Staggered reveal ───────────────────────────────────── */
-  if (!reduce && 'IntersectionObserver' in window) {
-    document.documentElement.classList.add('js-reveal');
-    const groups = new Map();
-    document.querySelectorAll('.rise').forEach(el => {
-      const key = el.parentElement;
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(el);
-    });
-    groups.forEach(list => list.forEach((el, i) => {
-      el.style.setProperty('--rd', (i * 90) + 'ms');
-    }));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    document.querySelectorAll('.rise').forEach(el => io.observe(el));
-  }
 
   /* ── Magnetic buttons ───────────────────────────────────── */
   if (!reduce && window.matchMedia('(hover: hover)').matches) {
@@ -584,13 +480,14 @@ body {
   }
 
   /* ── Contact form ───────────────────────────────────────── */
-  const cf       = document.getElementById('cf');
-  const cfBtn    = document.getElementById('cf-btn');
-  const cfStatus = document.getElementById('cf-status');
-  const cfCap    = document.getElementById('cf-cap');
-  const cfSubj   = document.getElementById('cf-subject');
-  const cpSuccess= document.getElementById('cp-success');
-  const btnHTML  = cfBtn.innerHTML;
+  const cf        = document.getElementById('cf');
+  const cfBtn     = document.getElementById('cf-btn');
+  const cfStatus  = document.getElementById('cf-status');
+  const cfCap     = document.getElementById('cf-cap');
+  const cfSubj    = document.getElementById('cf-subject');
+  const cpSuccess = document.getElementById('cp-success');
+  const cpHead    = document.getElementById('cp-main-head');
+  const btnHTML   = cfBtn.innerHTML;
 
   cfCap.addEventListener('change', () => {
     cfSubj.value = cfCap.checked
@@ -614,9 +511,8 @@ body {
       const data = await res.json();
       if (data.success) {
         cf.style.display = 'none';
-        document.querySelector('.cp-form-head').style.display = 'none';
+        cpHead.style.display = 'none';
         cpSuccess.classList.add('is-visible');
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
       } else {
         throw new Error(data.message || 'Submission error');
       }
