@@ -23,6 +23,9 @@
   --rule-dark:     rgba(232, 228, 216, 0.14);
   --rule-dark-soft:rgba(232, 228, 216, 0.08);
   --teal-deep:     #0f5f53;
+  --teal:          #1c7a6a;
+  --teal-tint:     rgba(15, 95, 83, 0.09);
+  --teal-wash:     rgba(15, 95, 83, 0.30);
   --amber:         #d98a4a;
   --amber-soft:    rgba(217, 138, 74, 0.16);
 
@@ -2116,4 +2119,368 @@ a { color: inherit; text-decoration: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .section-links a:hover { transform: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   FAQ — cave-wall backdrop.
+
+   The rock-art photograph sits behind the accordion at very low
+   opacity in multiply, with a cream wash on top of it. Every answer
+   still renders on an opaque card, so the imagery never costs the
+   reader a single point of contrast.
+   ══════════════════════════════════════════════════════════ */
+.faq-section {
+  position: relative;
+  overflow: hidden;
+}
+.faq-section > .container {
+  position: relative;
+  z-index: 2;
+}
+.scene-photo--cave {
+  opacity: 0;
+  animation: scenePhotoFade 1s 0.1s var(--ease-out-soft) forwards;
+}
+.scene-photo--cave img {
+  object-position: center 42%;
+  mix-blend-mode: multiply;
+  filter: saturate(0.7) contrast(0.82);
+  opacity: 0.2;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 84%, transparent 100%);
+}
+/* Cream wash — keeps the section reading as cream, not as a photo. */
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(245, 241, 234, 0.92) 0%,
+    rgba(245, 241, 234, 0.60) 26%,
+    rgba(245, 241, 234, 0.58) 68%,
+    rgba(245, 241, 234, 0.96) 100%);
+}
+@media (max-width: 900px) {
+  .scene-photo--cave img { opacity: 0.12; }
+}
+
+/* Clickable, verifiable sources under each answer. */
+.faq-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--teal-tint);
+  border: 1px solid rgba(15, 95, 83, 0.16);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+a.faq-source { text-decoration: none; }
+a.faq-source::after {
+  content: "↗";
+  font-size: 10px;
+  opacity: 0.65;
+  transition: transform .18s ease;
+}
+a.faq-source:hover {
+  background: rgba(15, 95, 83, 0.15);
+  border-color: rgba(15, 95, 83, 0.4);
+  transform: translateY(-1px);
+}
+a.faq-source:hover::after { transform: translate(2px, -2px); }
+.faq-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.faq-sources .faq-source { margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  a.faq-source:hover { transform: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Section seams.
+
+   The closing run of the page is cream → basalt → ink. Left alone
+   those are three hard horizontal edges. These two overlays ramp the
+   colour across ~200px at each boundary so the page reads as one
+   continuous fall into the footer.
+   ══════════════════════════════════════════════════════════ */
+.sec-seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.sec-seam--from-cream {
+  top: 0;
+  height: 230px;
+  background: linear-gradient(180deg,
+    rgba(245, 241, 234, 1) 0%,
+    rgba(245, 241, 234, 0.88) 20%,
+    rgba(245, 241, 234, 0.52) 48%,
+    rgba(245, 241, 234, 0.18) 74%,
+    rgba(245, 241, 234, 0) 100%);
+}
+.sec-seam--to-ink {
+  bottom: 0;
+  height: 220px;
+  background: linear-gradient(180deg,
+    rgba(31, 42, 42, 0) 0%,
+    rgba(31, 42, 42, 0.35) 38%,
+    rgba(31, 42, 42, 0.8) 72%,
+    rgba(31, 42, 42, 1) 100%);
+}
+
+/* Contact band: taller, so both seams have room to breathe. */
+.contact.contact-dark {
+  padding: 196px 0 168px;
+}
+.contact.contact-dark > .container {
+  position: relative;
+  z-index: 3;
+}
+/* The scene photo now fades in and out inside the seams rather than
+   being cut off by its own mask. */
+.contact.contact-dark .scene-photo--contact img {
+  opacity: 0.26;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 66%, transparent 96%);
+}
+@media (max-width: 900px) {
+  .contact.contact-dark { padding: 132px 0 120px; }
+  .sec-seam--from-cream { height: 150px; }
+  .sec-seam--to-ink { height: 140px; }
+  .contact.contact-dark .scene-photo--contact img { opacity: 0.16; }
+}
+
+/* Footer picks up exactly where the seam left off. */
+.site-footer {
+  background: var(--ink);
+}
+.site-footer-river {
+  border-bottom: 1px solid rgba(232, 228, 216, 0.035);
+  opacity: 0.26;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Serve routes — replaces the bare pill row under "Who we serve".
+
+   Each route is a real card: the rule or population it answers to,
+   the segment name, and one line on what the page actually covers.
+   ══════════════════════════════════════════════════════════ */
+.serve-routes {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px dashed var(--rule-dark);
+}
+.serve-routes-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 32px;
+  margin-bottom: 28px;
+}
+.serve-routes-head h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.14;
+  letter-spacing: -0.014em;
+  color: var(--fog);
+  margin: 0;
+}
+.serve-routes-head h3 em { font-style: italic; color: var(--amber); }
+.serve-routes-head p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(232, 228, 216, 0.6);
+  max-width: 420px;
+}
+.serve-routes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.serve-route {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 24px 22px;
+  border: 1px solid rgba(232, 228, 216, 0.14);
+  border-radius: 18px;
+  background: rgba(232, 228, 216, 0.035);
+  overflow: hidden;
+  transition: border-color .22s var(--ease-out-soft),
+              background .22s var(--ease-out-soft),
+              transform .22s var(--ease-out-soft);
+}
+.serve-route::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--river-tolt), var(--amber));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .3s var(--ease-out-soft);
+}
+.serve-route:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232, 228, 216, 0.34);
+  background: rgba(232, 228, 216, 0.07);
+}
+.serve-route:hover::before { transform: scaleY(1); }
+.serve-route:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+.serve-route-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(168, 200, 196, 0.72);
+}
+.serve-route-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  color: var(--fog);
+}
+.serve-route-title::after {
+  content: "→";
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--amber);
+  opacity: 0.55;
+  transition: transform .22s var(--ease-out-soft), opacity .22s ease;
+}
+.serve-route:hover .serve-route-title::after {
+  transform: translateX(4px);
+  opacity: 1;
+}
+.serve-route-desc {
+  font-size: 14px;
+  line-height: 1.58;
+  color: rgba(232, 228, 216, 0.66);
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .serve-routes { margin-top: 40px; padding-top: 30px; }
+  .serve-routes-grid { grid-template-columns: 1fr; }
+  .serve-route { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .serve-route:hover { transform: none; }
+  .serve-route:hover .serve-route-title::after { transform: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Closing contact band — unified across both sites.
+
+   Two named people on the left, the capability statement on the
+   right, all inside the dark band that the seams fade into.
+   ══════════════════════════════════════════════════════════ */
+.contact-head { margin-bottom: 48px; }
+
+.contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 18px;
+  align-items: stretch;
+  justify-content: initial;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-reach {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-reach-person {
+  flex: 1;
+  background: rgba(232, 228, 216, 0.04);
+  border: 1px solid var(--rule-dark);
+  border-radius: 18px;
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color 0.22s, background 0.22s;
+}
+.contact-reach-person:hover {
+  border-color: rgba(168, 200, 196, 0.25);
+  background: rgba(232, 228, 216, 0.06);
+}
+.contact-reach-role {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(168, 200, 196, 0.65);
+  margin-bottom: 8px;
+}
+.contact-reach-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--fog);
+  margin-bottom: 8px;
+}
+.contact-reach-email {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--river-tolt);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: border-color 0.2s;
+}
+.contact-reach-email:hover { border-bottom-color: rgba(168, 200, 196, 0.45); }
+
+.contact.contact-dark .cap {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  gap: 30px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 34px 38px 32px;
+  background: rgba(232, 228, 216, 0.055);
+  border: 1px solid rgba(232, 228, 216, 0.13);
+}
+.contact.contact-dark .cap-body { max-width: 100%; flex: 1 1 auto; }
+.contact.contact-dark .cap h4 { font-size: 28px; margin-bottom: 14px; }
+.contact.contact-dark .cap p { font-size: 14.5px; max-width: 460px; }
+
+@media (max-width: 860px) {
+  .contact-split { grid-template-columns: 1fr; }
+  .contact-reach { flex-direction: row; }
+  .contact-reach-person { flex: 1; }
+}
+@media (max-width: 560px) {
+  .contact-reach { flex-direction: column; }
+  .contact.contact-dark .cap { padding: 28px 24px; gap: 24px; }
+  .contact.contact-dark .cap h4 { font-size: 24px; }
 }

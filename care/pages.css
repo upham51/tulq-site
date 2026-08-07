@@ -508,6 +508,18 @@ a.card:hover {
 .sources li { margin-bottom: 7px; }
 .sources a { color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
 .sources a:hover { color: var(--teal-deep); }
+/* Outbound citation: a reader who wants to check the claim should be one
+   click from the primary document, and should be able to see that it
+   leaves the site before they click. */
+.sources a.source-link { border-bottom-color: rgba(15, 95, 83, .28); }
+.sources a.source-link::after {
+  content: "↗";
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: .6;
+  border-bottom: none;
+}
+.sources a.source-link:hover { border-bottom-color: var(--teal-deep); }
 
 .disclaimer {
   margin-top: 26px; padding: 16px 18px;

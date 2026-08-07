@@ -96,7 +96,7 @@ def post_true_cost() -> Page:
 
     <p>The one nobody puts a number on. A clinician who took calls at one and three is
     not delivering a full schedule the following day, and the visits still have to
-    happen &mdash; which means either they slip, or someone else absorbs them, or the
+    happen, which means either they slip, or someone else absorbs them, or the
     clinician works longer to catch up. All three have a cost.</p>
 
     <h3>4. Turnover</h3>
@@ -112,7 +112,7 @@ def post_true_cost() -> Page:
       <p>If outsourcing after-hours triage retains <em>one</em> experienced clinician
       per year who would otherwise have left over call burden, the retention saving
       alone will typically exceed the annual cost of the service. That is the argument
-      worth making to a board &mdash; not a diversion percentage.</p>
+      worth making to a board, not a diversion percentage.</p>
     </div>
 
     <h2>A worked example</h2>
@@ -148,7 +148,7 @@ def post_true_cost() -> Page:
           </tr>
           <tr>
             <td>Avoided ED visits</td>
-            <td>Diverted visits &times; $2,453 average &mdash; count this only if you
+            <td>Diverted visits &times; $2,453 average. Count this only if you
             carry the financial risk for it</td>
           </tr>
         </tbody>
@@ -165,8 +165,8 @@ def post_true_cost() -> Page:
 
     <p>Every vendor in this category, ourselves included, has an incentive to hand you
     a favourable calculation. Treat all of them as a starting structure rather than a
-    result. The inputs that matter &mdash; your call volume, your turnover, your
-    differential, your payment model &mdash; are yours, and substituting a vendor's
+    result. The inputs that matter (your call volume, your turnover, your
+    differential, your payment model) are yours, and substituting a vendor's
     assumptions for them produces a number you cannot defend in a budget meeting.</p>
 
     <p>The single most useful thing you can do before evaluating any vendor is spend
@@ -192,13 +192,15 @@ def post_true_cost() -> Page:
         body=body,
         qa=qa,
         sources=[
-            "Peterson-KFF Health System Tracker &mdash; average emergency department visit cost.",
+            ("Peterson-KFF Health System Tracker, average emergency department visit cost.",
+             "https://www.healthsystemtracker.org/brief/emergency-department-visits-exceed-affordability-thresholds-for-many-consumers-with-private-insurance/"),
             "Published research on clinical turnover and replacement cost in home health and hospice.",
-            "CMS payment methodologies for home health and hospice.",
+            ("CMS Home Health Prospective Payment System, payment methodology.",
+             "https://www.cms.gov/medicare/payment/prospective-payment-systems/home-health"),
         ],
         disclaimer=(
             "Cost figures are illustrative structure, not benchmarks. The ED cost "
-            "figure is point-in-time from a third-party tracker &mdash; verify the "
+            "figure is point-in-time from a third-party tracker; verify the "
             "current value before citing it externally. Run the calculation on your own "
             "payroll, HR, and utilization data."
         ),
@@ -222,8 +224,7 @@ def post_triage_vs_answering() -> Page:
     the phone politely, take an accurate message, follow your routing rules, and reach
     your on-call clinician according to your escalation instructions.</p>
 
-    <p>They are good at this. What they cannot do &mdash; legally and by training
-    &mdash; is assess a symptom or make a care decision. So the operator's decision tree
+    <p>They are good at this. What they cannot do (legally and by training) is assess a symptom or make a care decision. So the operator's decision tree
     has two branches: is this obviously routine, or should I reach someone? Anything
     ambiguous goes to your clinician, because that is the safe choice when you are not
     qualified to judge.</p>
@@ -281,7 +282,7 @@ def post_triage_vs_answering() -> Page:
     <p>Some vendors market a middle option: non-clinical first pick-up with a nurse
     available for escalation. Look closely at what triggers the escalation. If it is the
     operator's judgment about whether a call sounds clinical, you have an answering
-    service with a nurse on standby &mdash; and the filtering decision, the one that
+    service with a nurse on standby, and the filtering decision, the one that
     determines whether your clinician's phone rings, is still being made by someone not
     qualified to make it.</p>
 
@@ -293,7 +294,7 @@ def post_triage_vs_answering() -> Page:
       <li>What share of calls resolve without reaching our clinician?</li>
       <li>What does the documentation look like when it reaches us, and in what
       format?</li>
-      <li>How does escalation work, and who defines the rules &mdash; you or us?</li>
+      <li>How does escalation work, and who defines the rules, you or us?</li>
       <li>Is pricing per-call or flat, and what happens in a bad respiratory
       season?</li>
     </ul>"""
@@ -316,9 +317,12 @@ def post_triage_vs_answering() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
-            "Schmitt-Thompson telephone triage protocols.",
-            "State nurse practice acts governing telephone triage and nursing assessment.",
+            ("American Academy of Ambulatory Care Nursing, <em>Scope and Standards of Practice for Professional Telehealth Nursing</em>.",
+             "https://www.aaacn.org/telehealth-nursing-practice"),
+            ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
+            ("NCSBN, state nurse practice acts governing nursing assessment and telephone triage.",
+             "https://www.ncsbn.org/npa.htm"),
         ],
         disclaimer=(
             "Scope of practice for telephone triage is governed by state nurse practice "
@@ -382,7 +386,7 @@ def post_cahps() -> Page:
       message is a delay with a friendly voice attached. A nurse who can talk a
       caregiver through a symptom is help.</li>
       <li><strong>The escalation is real.</strong> When the call needs the agency's own
-      clinician, it has to reach them &mdash; quickly, with the assessment done.</li>
+      clinician, it has to reach them, quickly, with the assessment done.</li>
     </ol>
 
     <h2>Measuring it without fooling yourself</h2>
@@ -406,8 +410,8 @@ def post_cahps() -> Page:
 
     <p>The Hospice Outcomes &amp; Patient Evaluation instrument replaced the Hospice
     Item Set effective October 1, 2025, changing what is collected and at what points in
-    the episode. It is a separate instrument from CAHPS &mdash; HOPE is completed by the
-    hospice, CAHPS is completed by the family &mdash; but both sit inside the Hospice
+    the episode. It is a separate instrument from CAHPS (HOPE is completed by the
+    hospice, CAHPS is completed by the family) but both sit inside the Hospice
     Quality Reporting Program, and both are worth understanding before assuming an
     operational change will show up somewhere specific.</p>"""
 
@@ -429,10 +433,14 @@ def post_cahps() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "CMS, CAHPS Hospice Survey materials and quality measures.",
-            "CMS, Hospice Quality Reporting Program.",
-            "CMS, Hospice Outcomes &amp; Patient Evaluation (HOPE) instrument guidance.",
-            "Medicare Care Compare hospice star ratings methodology.",
+            ("CMS, CAHPS Hospice Survey materials and quality measures.",
+             "https://www.cms.gov/medicare/quality/hospice/cahpsr-hospice-survey"),
+            ("CMS, Hospice Quality Reporting Program current measures.",
+             "https://www.cms.gov/medicare/quality/hospice/current-measures"),
+            ("CMS, Hospice Outcomes &amp; Patient Evaluation (HOPE) instrument guidance.",
+             "https://www.cms.gov/medicare/quality/hospice/hope"),
+            ("Medicare Care Compare, hospice ratings.",
+             "https://www.medicare.gov/care-compare/"),
         ],
         disclaimer=(
             "Measure specifications, star rating methodology, and instrument effective "
@@ -470,7 +478,7 @@ def post_hhvbp() -> Page:
     It starts like this:</p>
 
     <ol>
-      <li>A symptom changes in the evening &mdash; breathing, a wound, confusion, pain,
+      <li>A symptom changes in the evening: breathing, a wound, confusion, pain,
       a blood sugar.</li>
       <li>The patient or caregiver is uncertain and has no clinical person to ask.</li>
       <li>They wait, because calling feels like an overreaction.</li>
@@ -541,14 +549,17 @@ def post_hhvbp() -> Page:
         deck=(
             "The CY2025 shift to a within-stay potentially preventable hospitalization "
             "measure sharpened the target. Here is the pathway a nurse line actually "
-            "interrupts &mdash; and where it doesn't."
+            "interrupts, and where it doesn't."
         ),
         body=body,
         reviewed=True,
         sources=[
-            "CMS, expanded Home Health Value-Based Purchasing model.",
-            "CMS, Home Health Quality Reporting Program measure specifications.",
-            "CMS Home Health Prospective Payment System final rules.",
+            ("CMS, expanded Home Health Value-Based Purchasing model.",
+             "https://www.cms.gov/priorities/innovation/innovation-models/expanded-home-health-value-based-purchasing-model"),
+            ("CMS, Home Health Quality Reporting Program measure specifications.",
+             "https://www.cms.gov/medicare/quality/home-health"),
+            ("CMS Home Health Prospective Payment System final rules.",
+             "https://www.cms.gov/medicare/payment/prospective-payment-systems/home-health"),
         ],
         disclaimer=(
             "Measure specifications, performance years, and payment adjustment "
@@ -561,7 +572,7 @@ def post_hhvbp() -> Page:
 def post_apcm() -> Page:
     body = """    <p>Advanced Primary Care Management is the most consequential recent change to
     how primary care gets paid for care-management work, and it is directly relevant to
-    any health center thinking about after-hours access &mdash; because 24/7 access is
+    any health center thinking about after-hours access, because 24/7 access is
     one of the service elements bundled into it.</p>
 
     <h2>What APCM is</h2>
@@ -576,15 +587,15 @@ def post_apcm() -> Page:
           <tr><th>Code</th><th>Tier</th><th>2025 national allowable (approx.)</th></tr>
         </thead>
         <tbody>
-          <tr><td>G0556</td><td>Level 1 &mdash; lower complexity</td><td>$15.20</td></tr>
-          <tr><td>G0557</td><td>Level 2 &mdash; two or more chronic conditions</td><td>$48.84</td></tr>
-          <tr><td>G0558</td><td>Level 3 &mdash; qualified Medicare beneficiary, higher complexity</td><td>$107.07</td></tr>
+          <tr><td>G0556</td><td>Level 1: lower complexity</td><td>$15.20</td></tr>
+          <tr><td>G0557</td><td>Level 2: two or more chronic conditions</td><td>$48.84</td></tr>
+          <tr><td>G0558</td><td>Level 3: qualified Medicare beneficiary, higher complexity</td><td>$107.07</td></tr>
         </tbody>
       </table>
     </div>
 
     <p>NACHC's APCM guidance has listed distinct FQHC Medicare rates for the lower two
-    tiers &mdash; roughly $16.37 for G0556 and $53.77 for G0557 &mdash; and rates were
+    tiers (roughly $16.37 for G0556 and $53.77 for G0557) and rates were
     adjusted upward across all three codes for 2026.</p>
 
     <div class="callout callout--amber">
@@ -609,7 +620,7 @@ def post_apcm() -> Page:
     <h2>Where after-hours access fits</h2>
 
     <p>Among those service elements is an expectation of 24/7 access to care and
-    continuity with the care team &mdash; patients able to reach someone who can
+    continuity with the care team, patients able to reach someone who can
     address urgent needs, at any hour.</p>
 
     <p>For a health center, there are three ways to satisfy that: put your own
@@ -617,7 +628,7 @@ def post_apcm() -> Page:
     the staff you struggle to keep. The second requires hiring. The third is a service
     contract.</p>
 
-    <p>Nurse triage is not the whole of an APCM program &mdash; there is care planning,
+    <p>Nurse triage is not the whole of an APCM program; there is care planning,
     care coordination, population health management, and performance measurement
     alongside it. But it is a concrete way to hold up the access element without adding
     a shift.</p>
@@ -637,8 +648,8 @@ def post_apcm() -> Page:
     capabilities you have to build are ones you wanted anyway.</p>
 
     <p>After-hours access is a good example of that overlap. If you were going to
-    address it regardless &mdash; for patient safety, for ED diversion, for your own
-    clinicians' sanity &mdash; then APCM changes the financial framing from pure cost
+    address it regardless (for patient safety, for ED diversion, for your own
+    clinicians' sanity) then APCM changes the financial framing from pure cost
     to a supported capability. That is a different conversation to have with a
     board.</p>"""
 
@@ -659,15 +670,19 @@ def post_apcm() -> Page:
         ),
         body=body,
         sources=[
-            "CMS CY2025 Physician Fee Schedule &mdash; Advanced Primary Care Management.",
-            "National Association of Community Health Centers &mdash; APCM reimbursement guidance.",
-            "American Academy of Family Physicians &mdash; APCM code summaries.",
-            "HRSA Health Center Program requirements.",
+            ("CMS Physician Fee Schedule, Advanced Primary Care Management (CY2025).",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician"),
+            ("National Association of Community Health Centers, APCM reimbursement tip sheet.",
+             "https://www.nachc.org/wp-content/uploads/2025/03/APCM-Reimbursement-Tip-Sheet.pdf"),
+            ("American Academy of Family Physicians, Advanced Primary Care Management coding.",
+             "https://www.aafp.org/family-physician/practice-and-career/getting-paid/coding/advanced-primary-care-management.html"),
+            ("HRSA Health Center Program Compliance Manual, Chapter 7: coverage for medical emergencies during and after hours.",
+             "https://bphc.hrsa.gov/compliance/compliance-manual/chapter7"),
         ],
         disclaimer=(
             "Payment rates are published figures for the program year noted and are "
             "subject to annual, geographic, and MAC-specific adjustment. This is not "
-            "billing or compliance advice &mdash; confirm current rates and "
+            "billing or compliance advice. Confirm current rates and "
             "documentation requirements with your MAC before billing."
         ),
     )
@@ -696,7 +711,7 @@ def post_cah() -> Page:
 
     <h2>What the requirement does not cover</h2>
 
-    <p>Emergency care availability is about the emergency department &mdash; that it is
+    <p>Emergency care availability is about the emergency department: that it is
     open, that it is staffed, that a patient who arrives is seen. It says nothing about
     the patient at home at 11 p.m. who has not decided whether to come in.</p>
 
@@ -716,7 +731,7 @@ def post_cah() -> Page:
     <h2>Why the ED is the wrong first stop for some of this volume</h2>
 
     <p>For a small rural hospital, unnecessary ED volume is not primarily a revenue
-    problem &mdash; it is a staffing one. A CAH emergency department may be covered by a
+    problem; it is a staffing one. A CAH emergency department may be covered by a
     single provider. Every low-acuity presentation consumes attention that is not
     infinitely divisible, and the cost lands on the next patient who walks in with
     something serious.</p>
@@ -743,14 +758,13 @@ def post_cah() -> Page:
     <ul>
       <li><strong>Licensure in your state</strong> for the nurses handling your calls,
       written into the agreement.</li>
-      <li><strong>Escalation rules you define</strong> &mdash; which calls reach your
+      <li><strong>Escalation rules you define</strong>: which calls reach your
       ED, which reach the clinic provider, which reach nobody until morning.</li>
       <li><strong>Documentation format</strong> that your team can actually use at
       07:00 without re-keying it.</li>
       <li><strong>Flat pricing</strong> so that a bad respiratory season does not become
       a budget variance you have to explain to a board.</li>
-      <li><strong>Swing-bed and attached-RHC call handling</strong>, if you run them
-      &mdash; those calls have different escalation paths and are easy to leave out of
+      <li><strong>Swing-bed and attached-RHC call handling</strong>. If you run them, those calls have different escalation paths and are easy to leave out of
       a scope of work.</li>
     </ul>"""
 
@@ -771,13 +785,16 @@ def post_cah() -> Page:
         body=body,
         reviewed=True,
         sources=[
-            "CMS conditions of participation for critical access hospitals, 42 CFR Part 485.",
-            "Rural Health Information Hub &mdash; critical access hospital topic guide.",
-            "Flex Monitoring Team &mdash; critical access hospital data and reporting.",
+            ("Conditions of participation for critical access hospitals, 42 CFR Part 485 Subpart F.",
+             "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-485/subpart-F"),
+            ("Rural Health Information Hub, critical access hospitals topic guide.",
+             "https://www.ruralhealthinfo.org/topics/critical-access-hospitals"),
+            ("Flex Monitoring Team, critical access hospital data and reporting.",
+             "https://www.flexmonitoring.org/"),
         ],
         disclaimer=(
             "Conditions of participation and facility counts change. Nothing here is "
-            "compliance advice &mdash; verify against the current CFR and your state "
+            "compliance advice. Verify against the current CFR and your state "
             "survey agency, and confirm any coverage arrangement with your compliance "
             "staff."
         ),
@@ -832,7 +849,7 @@ def resources_index() -> Page:
          "They fill the same slot and do different work. The one question that exposes which you're being sold.",
          "/resources/nurse-triage-vs-answering-service"),
         ("Compare", "Comparing triage vendors",
-         "IntellaTriage, Conduit, and AccessNurse — what each is built for, and when to pick them over us.",
+         "IntellaTriage, Conduit, and AccessNurse: what each is built for, and when to pick them over us.",
          "/compare/"),
     ])}
 
@@ -846,7 +863,7 @@ def resources_index() -> Page:
          "The CY2025 within-stay potentially preventable hospitalization measure, and the pathway triage interrupts.",
          "/resources/hhvbp-ed-use"),
         ("Reimbursement", "APCM billing at an FQHC or RHC",
-         "G0556, G0557, G0558 — what changed, who can bill, and where 24/7 access fits.",
+         "G0556, G0557, G0558: what changed, who can bill, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
     ])}
 
@@ -956,7 +973,7 @@ def _compare(slug: str, competitor: str, title: str, description: str,
       <li>What share of calls resolve without reaching our clinician?</li>
       <li>What does encounter documentation look like when it reaches us, in what
       format, and how quickly?</li>
-      <li>Who defines the escalation rules &mdash; us or you?</li>
+      <li>Who defines the escalation rules: us or you?</li>
       <li>Is pricing per-call or flat, and what happens in a bad respiratory
       season?</li>
     </ol>
@@ -1003,12 +1020,12 @@ def compare_intellatriage() -> Page:
          "<p>IntellaTriage does not publish pricing; you get a quote scoped to your "
          "census and call volume. That is normal for the category. Our own approach is "
          "a flat monthly structure rather than per-call, so volume risk sits with us "
-         "rather than with your budget &mdash; but you should get numbers from both and "
+         "rather than with your budget, but you should get numbers from both and "
          "compare like for like.</p>"),
         ("Does IntellaTriage serve tribal health programs?",
          "<p>Not as a published specialization. We found no tribal, IHS, or "
          "Purchased/Referred Care content in its public materials. That is not a "
-         "criticism &mdash; it is simply not the market it was built for. If you are a "
+         "criticism; it is simply not the market it was built for. If you are a "
          "tribal health program, our tribal practice lives at "
          "<a href=\"https://tulq.health/for/tribal-health-ihs\">tulq.health</a>.</p>"),
         ("Is a newer vendor a risk?",
@@ -1024,7 +1041,7 @@ def compare_intellatriage() -> Page:
         title="IntellaTriage Alternative: An Honest Comparison | TULQ",
         description=(
             "How TULQ compares with IntellaTriage on protocols, segment focus, pricing "
-            "structure, and operating history — including when to choose the incumbent."
+            "structure, and operating history, including when to choose the incumbent."
         ),
         h1="Looking for an <em>IntellaTriage alternative.</em>",
         deck=(
@@ -1043,7 +1060,7 @@ def compare_intellatriage() -> Page:
         ],
         when_us=[
             "You are a tribal health program, IHS facility, or Urban Indian "
-            "Organization &mdash; a segment with no incumbent specialization.",
+            "Organization: a segment with no incumbent specialization.",
             "You are a smaller agency or safety-net facility and want flat pricing that "
             "does not move with a bad respiratory season.",
             "The Buy Indian Act applies to your acquisition.",
@@ -1052,8 +1069,10 @@ def compare_intellatriage() -> Page:
         ],
         qa=qa,
         sources=[
-            "IntellaTriage public website and published materials.",
-            "Schmitt-Thompson telephone triage protocols.",
+            ("IntellaTriage public website and published materials.",
+             "https://www.intellatriage.com/"),
+            ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
         ],
     )
 
@@ -1066,9 +1085,9 @@ def compare_conduit() -> Page:
     <h2>What Conduit is</h2>
 
     <p>Conduit's public materials lean heavily on measured outcomes. It publishes case
-    studies with specific utilization numbers &mdash; including a client reaching
+    studies with specific utilization numbers (including a client reaching
     roughly 90% ED avoidance, and specific groups seeing up to a 15% reduction in ED
-    readmissions &mdash; and a data-driven news section covering call demand patterns,
+    readmissions) and a data-driven news section covering call demand patterns,
     such as peak volume at 5 p.m. and on Saturdays, with overnight calls concentrating
     around pregnancy, fever, and vomiting.</p>
 
@@ -1079,7 +1098,7 @@ def compare_conduit() -> Page:
     rows = """          <tr><td>Core offering</td><td>Nurse-first triage plus patient transfer coordination</td><td>Nurse-first triage</td></tr>
           <tr><td>Licensed RNs on first call</td><td class="tick">Yes</td><td class="tick">Yes</td></tr>
           <tr><td>Buyer segmentation</td><td class="tick">Health systems, medical groups, health plans, FQHCs</td><td>Hospice, home health, FQHC/RHC/CAH; tribal on a separate site</td></tr>
-          <tr><td>Published outcome data</td><td class="tick">Case studies with specific utilization figures</td><td class="cross">Pre-launch — none to publish</td></tr>
+          <tr><td>Published outcome data</td><td class="tick">Case studies with specific utilization figures</td><td class="cross">Pre-launch: none to publish</td></tr>
           <tr><td>Patient transfer coordination</td><td class="tick">Yes</td><td class="cross">No</td></tr>
           <tr><td>Tribal / IHS specialization</td><td class="cross">None published</td><td class="tick">A dedicated site and practice</td></tr>
           <tr><td>Pricing structure</td><td>Quoted on scope</td><td>Flat monthly, quoted on scope</td></tr>"""
@@ -1087,8 +1106,8 @@ def compare_conduit() -> Page:
     qa = [
         ("Should we take Conduit's ED avoidance figures at face value?",
          "<p>Take them as real results for the clients described, not as a forecast for "
-         "you. A figure like 90% ED avoidance depends entirely on the denominator "
-         "&mdash; which calls were counted, over what period, for what population. Ask "
+         "you. A figure like 90% ED avoidance depends entirely on the denominator: "
+         "which calls were counted, over what period, for what population. Ask "
          "any vendor, us included, to define the denominator before you carry a "
          "percentage into your own model.</p>"),
         ("Do we need patient transfer coordination?",
@@ -1111,7 +1130,7 @@ def compare_conduit() -> Page:
         title="Conduit Health Partners Alternative | TULQ",
         description=(
             "How TULQ compares with Conduit Health Partners on triage model, buyer "
-            "focus, transfer services, and published outcome data — and when to choose "
+            "focus, transfer services, and published outcome data, and when to choose "
             "Conduit."
         ),
         h1="A <em>Conduit Health Partners</em> alternative.",
@@ -1122,7 +1141,7 @@ def compare_conduit() -> Page:
         profile=profile,
         table_rows=rows,
         when_them=[
-            "You need patient transfer coordination alongside triage &mdash; we do not "
+            "You need patient transfer coordination alongside triage; we do not "
             "offer it.",
             "You are a health system or health plan, which is where their buyer "
             "segmentation is strongest.",
@@ -1137,15 +1156,17 @@ def compare_conduit() -> Page:
         ],
         qa=qa,
         sources=[
-            "Conduit Health Partners public website, case studies, and news materials.",
-            "Schmitt-Thompson telephone triage protocols.",
+            ("Conduit Health Partners public website, case studies, and news materials.",
+             "https://conduithp.com/"),
+            ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
         ],
     )
 
 
 def compare_accessnurse() -> Page:
     profile = """    <p>AccessNurse has been in business since 1996 and serves a large provider base
-    &mdash; more than 20,000 providers by its own account &mdash; including health
+    (more than 20,000 providers by its own account), including health
     systems, universities, and community health centers.</p>
 
     <h2>What AccessNurse is</h2>
@@ -1195,13 +1216,13 @@ def compare_accessnurse() -> Page:
         title="AccessNurse Alternative for Health Centers | TULQ",
         description=(
             "How TULQ compares with AccessNurse on licensure coverage, specialty "
-            "verticals, community health center focus, and pricing — and when to choose "
+            "verticals, community health center focus, and pricing, and when to choose "
             "AccessNurse."
         ),
         h1="An <em>AccessNurse</em> alternative.",
         deck=(
             "AccessNurse has served providers since 1996 and markets directly to "
-            "community health centers &mdash; the closest analog to our safety-net "
+            "community health centers, the closest analog to our safety-net "
             "positioning. Here is the honest difference."
         ),
         profile=profile,
@@ -1223,8 +1244,10 @@ def compare_accessnurse() -> Page:
         ],
         qa=qa,
         sources=[
-            "AccessNurse public website and published materials.",
-            "Schmitt-Thompson telephone triage protocols.",
+            ("AccessNurse public website and published materials.",
+             "https://www.accessnurse.com/"),
+            ("Schmitt-Thompson telephone triage protocols.",
+             "https://www.stcc-triage.com/"),
         ],
     )
 
@@ -1239,8 +1262,8 @@ def compare_index() -> Page:
         slug="compare/index",
         title="Compare Nurse Triage Companies | TULQ",
         description=(
-            "Honest comparisons of the established nurse triage vendors — "
-            "IntellaTriage, Conduit Health Partners, AccessNurse — including when to "
+            "Honest comparisons of the established nurse triage vendors ("
+            "IntellaTriage, Conduit Health Partners, AccessNurse), including when to "
             "choose them over us."
         ),
         eyebrow="Compare",
@@ -1266,7 +1289,7 @@ def compare_index() -> Page:
 
     <p>We are new. That is a real disadvantage on any comparison that weights operating
     history, and we have said so on every page below rather than burying it. What
-    follows is our attempt at comparisons that are actually useful &mdash; which means
+    follows is our attempt at comparisons that are actually useful, which means
     telling you when to pick somebody else.</p>
 
     {card_grid([
@@ -1285,7 +1308,7 @@ def compare_index() -> Page:
 
     <p>Two distinctions do more work than any vendor comparison. First, whether you are
     buying <a href="/resources/nurse-triage-vs-answering-service">nurse triage or an
-    answering service</a> &mdash; they occupy the same slot and do different work.
+    answering service</a>, they occupy the same slot and do different work.
     Second, what your current arrangement
     <a href="/resources/true-cost-of-after-hours-on-call">actually costs</a>, which
     most organizations have never totalled in one place.</p>
@@ -1300,7 +1323,7 @@ def compare_index() -> Page:
       <li>What share of calls resolve without reaching our clinician?</li>
       <li>What does encounter documentation look like when it reaches us, in what
       format, and how quickly?</li>
-      <li>Who defines the escalation rules &mdash; us or you?</li>
+      <li>Who defines the escalation rules: us or you?</li>
       <li>Is pricing per-call or flat, and what happens in a bad respiratory
       season?</li>
     </ol>

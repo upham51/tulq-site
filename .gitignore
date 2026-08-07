@@ -10,3 +10,5 @@ node_modules/
 *.tmp
 screenshots/
 assets/jayson_raw
+__pycache__/
+*.pyc

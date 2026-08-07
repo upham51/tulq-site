@@ -34,6 +34,34 @@
 - `assets/favicon.svg` is the retired placeholder mark (kept in the repo but no
   longer linked).
 
+## House style
+
+These are held to across both sites. A change that reintroduces any of them
+is a regression, not a preference.
+
+- **No em dashes in visible copy.** Use a comma, a colon, a semicolon, a
+  period, or parentheses, whichever the sentence actually calls for. This is a
+  hard rule: `grep -r '—\|&mdash;' --include=*.html .` must come back empty.
+- **Nav is destinations only, never one link per homepage section.** Three
+  links plus a Contact us CTA, on every page of a site:
+  - tulq.health: IHS Areas, Resources, Our story
+  - tulqhealth.com: Compare, Resources, Our story
+
+  Generated pages get this from the `nav=` tuple on each `Site` in
+  `tools/pagekit.py`; the eight hand-written pages carry the same markup
+  inline. Change one, change both.
+- **Every cited source is a link, and every link has been checked.** FAQ
+  sources on the homepages are `<a class="faq-source">`; resource-page Sources
+  lists take `(label, url)` pairs in `sources_block()`. Never write a URL you
+  have not actually requested, and prefer the primary document (eCFR,
+  uscode.house.gov, the CMS or IHS program page) over a summary of it. Note
+  that `bphc.hrsa.gov` and `gao.gov` return 403 to a plain `curl`; both are
+  live, so verify those in a real browser rather than assuming they are dead.
+- **The closing run of each homepage is one continuous fall into the footer.**
+  `.sec-seam--from-cream` and `.sec-seam--to-ink` inside the contact section
+  ramp cream to basalt to ink across ~200px each. Do not give the contact band
+  a hard top or bottom edge.
+
 ## Content pages & the generator
 
 Most pages on both sites are **generated**, not hand-written. The repo is still
@@ -55,6 +83,10 @@ finished `.html` that is committed to git and served directly.
   for generated pages live in the `Site` definitions there.
 - **Hand-written pages** (not generated, edit directly): `index.html`,
   `story.html`, `contact.html`, `privacy.html` on both sites.
+  - `contact.html` is **one panel on one screen** by design: a single card on a
+    dark stage, sized off the viewport so it lands whole on a laptop without
+    scrolling. It has one `<h1>` and no second heading. If you add a field,
+    take the height back somewhere else rather than letting the page scroll.
 - `pages.css` styles the generated pages; `styles.css` styles the hand-written
   ones. Both exist in the root and mirrored in `care/`.
 

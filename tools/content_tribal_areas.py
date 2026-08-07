@@ -147,7 +147,7 @@ AREAS = [
             "2025. Both were ISBEE/IEE set-asides under NAICS 621111.</p>"
             "<p>The stated purpose was a toll-free nurse advice and medical library "
             "line intended to reduce emergency room use near the Lake Traverse "
-            "Reservation &mdash; which is, precisely, the case for nurse triage in a "
+            "Reservation, which is, precisely, the case for nurse triage in a "
             "Purchased/Referred Care environment.</p>"
         ),
     },
@@ -234,7 +234,7 @@ AREAS = [
         "active": (
             "<p>Phoenix has run recent market research on both ends of the volume "
             "range. RFQ <strong>RFQ-26-PHX-046</strong> covered the Colorado River, "
-            "Uintah &amp; Ouray, and Southern Bands service units together &mdash; "
+            "Uintah &amp; Ouray, and Southern Bands service units together, "
             "facilities whose published call estimates ranged from roughly ten to a "
             "couple hundred calls a month. Separately, Sources Sought "
             "<strong>SS-25-PHX-002</strong> addressed the Phoenix Indian Medical Center "
@@ -252,7 +252,7 @@ AREAS = [
             "The Portland Area serves more than forty federally recognized tribes "
             "across the Pacific Northwest, most of them operating their own health "
             "programs under 638 contracts or compacts. It is also where TULQ's own name "
-            "comes from &mdash; <span class=\"lush\">tultx&#695;</span>, the Lushootseed "
+            "comes from, <span class=\"lush\">tultx&#695;</span>, the Lushootseed "
             "word for the confluence of the Tolt and Snoqualmie rivers, in western "
             "Washington."
         ),
@@ -268,7 +268,7 @@ AREAS = [
             "<strong>75H71325Q00030</strong>, structured as a base year plus four "
             "option years.</p>"
             "<p>Notably, that requirement was set aside for Women-Owned Small Business "
-            "rather than under the Buy Indian Act, under NAICS 621111 &mdash; a useful "
+            "rather than under the Buy Indian Act, under NAICS 621111: a useful "
             "reminder that the Buy Indian preference is applied acquisition by "
             "acquisition, not automatically across an Area.</p>"
         ),
@@ -359,7 +359,7 @@ def _area_page(area: dict) -> Page:
     <p>The service is the same everywhere: one number, answered any hour by a U.S.
     state-licensed registered nurse working Schmitt-Thompson telephone triage
     protocols, with the encounter documented and returned to the facility. What
-    changes by Area is the context around it &mdash; how far the nearest emergency
+    changes by Area is the context around it, how far the nearest emergency
     department is, what the winter looks like, whether the caller has reliable
     cellular service, and how the program is funded.</p>
 
@@ -384,9 +384,12 @@ def _area_page(area: dict) -> Page:
     ])}
 
     {sources_block([
-        "Indian Health Service Area office and facility directories.",
-        "SAM.gov contract opportunities &mdash; Indian Health Service notices.",
-        "Indian Self-Determination and Education Assistance Act of 1975, P.L. 93-638.",
+        ("Indian Health Service Area office and facility directories.",
+             "https://www.ihs.gov/locations/"),
+        ("SAM.gov contract opportunities, Indian Health Service notices.",
+             "https://sam.gov/search/?index=opp"),
+        ("Indian Self-Determination and Education Assistance Act of 1975, P.L. 93-638 (25 U.S.C. &sect; 5301).",
+             "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section5301&num=0&edition=prelim"),
     ], disclaimer=(
         "Facility lists are illustrative, drawn from public IHS materials, and change "
         "over time as programs move between IHS and tribal operation. TULQ is launching "
@@ -426,7 +429,7 @@ def areas_index() -> Page:
         h1="Twelve Areas. <em>One line.</em>",
         deck=(
             "The Indian Health Service organizes its system into twelve Areas. They "
-            "differ enormously &mdash; in geography, in how much care is tribally "
+            "differ enormously, in geography, in how much care is tribally "
             "operated, and in how after-hours coverage gets bought. Here is the map."
         ),
         crumbs=[("IHS Areas", "/areas/")],
@@ -482,7 +485,7 @@ def areas_index() -> Page:
       <div class="callout-head">Reading that last column</div>
       <p>&ldquo;None surfaced&rdquo; means we found no public SAM.gov nurse-advice-line
       notice for that Area in the recent record. It does not mean those facilities have
-      coverage, and it does not mean they are not buying it &mdash; tribally operated
+      coverage, and it does not mean they are not buying it, tribally operated
       programs procure directly and never appear on SAM.gov at all.</p>
     </div>
 
@@ -497,8 +500,10 @@ def areas_index() -> Page:
     {card_grid(cards)}
 
     {sources_block([
-        "Indian Health Service Area office directories.",
-        "SAM.gov contract opportunities &mdash; Indian Health Service.",
+        ("Indian Health Service Area office directories.",
+             "https://www.ihs.gov/locations/"),
+        ("SAM.gov contract opportunities, Indian Health Service.",
+             "https://sam.gov/search/?index=opp"),
     ], disclaimer=(
         "Area descriptions are drawn from public IHS materials. Procurement summaries "
         "reflect public SAM.gov postings as recorded; notices are amended and "
