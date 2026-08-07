@@ -57,6 +57,13 @@ is a regression, not a preference.
   uscode.house.gov, the CMS or IHS program page) over a summary of it. Note
   that `bphc.hrsa.gov` and `gao.gov` return 403 to a plain `curl`; both are
   live, so verify those in a real browser rather than assuming they are dead.
+- **The homepage hero is one typeface in two styles, and nothing else.**
+  Everything in `.hero` is `var(--serif)` roman; the single `<em>` inside the
+  H1 is the only italic. No mono, no sans, no second italic, no eyebrow. The
+  hero is four elements deep at most (H1, `.hero-sub`, `.hero-facts`,
+  `.hero-ctas`) and must land whole above the fold at 1280x720 and 360x640.
+  Facts go in `.hero-facts` as short `<span>`s, not in a prose paragraph.
+  Adding a font, a paragraph, or a fifth element back is a regression.
 - **The closing run of each homepage is one continuous fall into the footer.**
   `.sec-seam--from-cream` and `.sec-seam--to-ink` inside the contact section
   ramp cream to basalt to ink across ~200px each. Do not give the contact band
