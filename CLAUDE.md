@@ -67,7 +67,19 @@ is a regression, not a preference.
 - **The closing run of each homepage is one continuous fall into the footer.**
   `.sec-seam--from-cream` and `.sec-seam--to-ink` inside the contact section
   ramp cream to basalt to ink across ~200px each. Do not give the contact band
-  a hard top or bottom edge.
+  a hard top or bottom edge. Two rules govern the cream seam, and it took three
+  attempts to get both right at once:
+  - It must reach **alpha 0** at its bottom. An opaque ramp ending on a flat
+    colour cannot match a section whose real background is basalt plus two
+    radial gradients plus a photograph, so it leaves a visible line.
+  - Its alpha must be **front-loaded**. A linear ramp spends half its height
+    near 50% cream, and a full-width band of that over a dark section is the
+    grey fog bank the seam is meant to avoid.
+- **Card footers sit on the card floor.** `.pillar-source` and
+  `.serve-card-tag` are footers: `margin-top: auto`, with `min-height` on
+  `.pillar-source` reserving the two lines its longest citation needs so the
+  dashed rules stay level. If you add a `.serve-card-link` to one card in a
+  row, add one to all of them, or the tags fall out of line.
 
 ## Content pages & the generator
 

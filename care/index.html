@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css?v=a70cf29aa1" />
+<link rel="stylesheet" href="styles.css?v=99486aa5db" />
 
 <script type="application/ld+json">
 {
@@ -389,14 +389,17 @@
   display:grid;
   grid-template-columns:1.25fr 1fr;
   gap:48px 80px;
-  align-items:end;
+  /* Top-aligned. Bottom-aligning a one-line 82px headline against an
+     eight-line standfirst strands the headline at the foot of an empty
+     column; the two should start together. */
+  align-items:start;
   margin-bottom:72px;
 }
 .how-v2 .head h2{
   font-family:var(--serif);font-weight:400;
   font-size:clamp(44px,6vw,82px);
   line-height:1.02;letter-spacing:-.022em;
-  margin:24px 0 0;color:var(--fog);
+  margin:22px 0 0;color:var(--fog);
   text-wrap:balance;
 }
 .how-v2 .head h2 em{font-style:italic;color:var(--amber)}
@@ -1118,7 +1121,7 @@
         <h4>Health centers &amp; rural clinics.</h4>
         <p>FQHCs, Look-Alikes, and Rural Health Clinics that must demonstrate after-hours coverage. A nurse line that triages, with EHR-ready documentation.</p>
         <div class="serve-card-tag">HRSA Chapter 7</div>
-        <a class="serve-card-link" href="/nurse-triage-for-rural-health-clinics">Learn more &rarr;</a>
+        <a class="serve-card-link" href="/for/health-centers">Learn more &rarr;</a>
       </div>
 
       <div class="serve-card rise">
@@ -1134,6 +1137,7 @@
         <h4>Critical access &amp; rural hospitals.</h4>
         <p>Small hospitals carrying a 24/7 emergency-coverage obligation without a physician on-site overnight. Nurse triage is the practical answer.</p>
         <div class="serve-card-tag">42 CFR 485 Subpart F</div>
+        <a class="serve-card-link" href="/nurse-triage-for-rural-health-clinics">Learn more &rarr;</a>
       </div>
 
       <div class="serve-card rise">
@@ -1141,6 +1145,7 @@
         <h4>Physician practices: DPC, pediatric, OB.</h4>
         <p>Direct primary care, pediatric, and OB/GYN practices that promised after-hours access and can't sustain it on a physician's cell phone.</p>
         <div class="serve-card-tag">After-hours coverage</div>
+        <a class="serve-card-link" href="/resources/true-cost-of-after-hours-on-call">Learn more &rarr;</a>
       </div>
 
     </div>

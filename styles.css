@@ -2182,15 +2182,45 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
   z-index: 2;
   pointer-events: none;
 }
+/* Cream to basalt, stepped through the palette's own warm stone and
+   sage rather than through neutral grey. Fading cream over the dark
+   band with a plain alpha ramp is what produced the fog bank: the
+   midpoint of that interpolation is a flat, desaturated #8d938c that
+   reads as haze across the full width of the page. These stops take a
+   warm route instead, and the ramp is short enough, and lands on
+   enough of the photograph, that the eye reads depth rather than a
+   band of grey. */
 .sec-seam--from-cream {
   top: 0;
-  height: 230px;
-  background: linear-gradient(180deg,
-    rgba(245, 241, 234, 1) 0%,
-    rgba(245, 241, 234, 0.88) 20%,
-    rgba(245, 241, 234, 0.52) 48%,
-    rgba(245, 241, 234, 0.18) 74%,
-    rgba(245, 241, 234, 0) 100%);
+  height: 190px;
+  /* Two things had to be true at once, and the earlier versions each
+     got one of them:
+
+       1. The overlay has to reach alpha 0 at its bottom edge. An
+          opaque ramp that ends on a flat colour cannot match a section
+          whose real background is basalt plus two radial gradients
+          plus a photograph, so it leaves a visible line where it stops.
+       2. The cream has to leave fast. A linear alpha ramp spends half
+          its height around 50% opacity, and a full-width band of cream
+          at 50% over a dark section is the fog.
+
+     So: cream, front-loaded to nothing by the bottom, with a breath of
+     the palette's amber and cedar through the middle to keep the
+     mid-tones off neutral grey. */
+  background:
+    linear-gradient(180deg,
+      rgba(217, 138, 74, 0) 0%,
+      rgba(217, 138, 74, 0.09) 32%,
+      rgba(58, 90, 74, 0.12) 62%,
+      rgba(58, 90, 74, 0) 100%),
+    linear-gradient(180deg,
+      rgba(245, 241, 234, 1) 0%,
+      rgba(245, 241, 234, 0.97) 8%,
+      rgba(245, 241, 234, 0.80) 20%,
+      rgba(245, 241, 234, 0.50) 35%,
+      rgba(245, 241, 234, 0.24) 53%,
+      rgba(245, 241, 234, 0.08) 74%,
+      rgba(245, 241, 234, 0) 100%);
 }
 .sec-seam--to-ink {
   bottom: 0;
@@ -2204,7 +2234,7 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
 
 /* Contact band: taller, so both seams have room to breathe. */
 .contact.contact-dark {
-  padding: 196px 0 168px;
+  padding: 182px 0 168px;
 }
 .contact.contact-dark > .container {
   position: relative;
@@ -2213,12 +2243,12 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
 /* The scene photo now fades in and out inside the seams rather than
    being cut off by its own mask. */
 .contact.contact-dark .scene-photo--contact img {
-  opacity: 0.26;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 66%, transparent 96%);
+  opacity: 0.3;
+  mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 94%);
 }
 @media (max-width: 900px) {
-  .contact.contact-dark { padding: 132px 0 120px; }
-  .sec-seam--from-cream { height: 150px; }
+  .contact.contact-dark { padding: 108px 0 120px; }
+  .sec-seam--from-cream { height: 120px; }
   .sec-seam--to-ink { height: 140px; }
   .contact.contact-dark .scene-photo--contact img { opacity: 0.16; }
 }
@@ -2445,3 +2475,45 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
   .contact.contact-dark .cap { padding: 28px 24px; gap: 24px; }
   .contact.contact-dark .cap h4 { font-size: 24px; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   Card footers sit on the card floor.
+
+   The meta line under a pillar or a serve card is a footer, so it
+   belongs at the bottom of its card and level with its neighbours.
+   Left to flow, it lands wherever that card's copy happened to stop,
+   which is what put three dashed rules at three different heights.
+   ══════════════════════════════════════════════════════════ */
+.pillar {
+  display: flex;
+  flex-direction: column;
+}
+.pillar p { margin-bottom: 0; }
+.pillar-source {
+  margin-top: auto;
+  padding-top: 22px;
+  /* Two lines' worth, reserved. One pillar's citation wraps and the
+     others do not; without this the rule above a one-line citation
+     rides a line-height lower than its neighbours'. */
+  min-height: 57px;
+  box-sizing: border-box;
+}
+
+/* The paragraph absorbs the slack, so the tag and the link below it
+   ride the floor of every card in the row. */
+.serve-card p { flex: 1 1 auto; }
+.serve-card-tag { margin-top: 0; padding-top: 22px; }
+
+/* ══════════════════════════════════════════════════════════
+   Serve routes heading — stacked, like every other section head.
+
+   It was a two-column row with the heading left and the standfirst
+   right, baseline-aligned, which reads as two unrelated fragments
+   because the type sizes are so far apart.
+   ══════════════════════════════════════════════════════════ */
+.serve-routes-head {
+  display: block;
+  margin-bottom: 30px;
+}
+.serve-routes-head h3 { margin-bottom: 14px; }
+.serve-routes-head p { max-width: 620px; }
