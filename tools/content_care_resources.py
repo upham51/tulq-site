@@ -909,6 +909,508 @@ def post_g0511_sunset() -> Page:
     )
 
 
+# ══════════════════════════════════════════════════════════════════════
+# Quick-win cluster, from the Aug 2026 research.
+#
+# Four informational posts that feed the money pages. None of them tries
+# to outrank CMS or AAFP on a head term; each targets the long-tail
+# question and the AI-answer citation, which is the winnable ground for a
+# domain with no authority.
+# ══════════════════════════════════════════════════════════════════════
+
+def post_compact_states() -> Page:
+    body = """    <p>Nursing licensure follows the patient, not the nurse. A nurse sitting in
+    Washington who telephones a patient in Montana is practising nursing in Montana, and
+    needs to hold a licence that is valid there. That single rule decides whether a
+    remote nursing model is lawful in your state, and it is the first thing you should
+    ask any vendor.</p>
+
+    <h2>What the compact does</h2>
+
+    <p>The Nurse Licensure Compact lets a nurse hold one multistate licence, issued by
+    their primary state of residence, and practise in every other member jurisdiction
+    without applying for a separate licence in each. The official NLC site currently
+    states that 43 jurisdictions are part of the compact.</p>
+
+    <p>Read that number carefully, because it is the detail most summaries get wrong.
+    Jurisdictions move through stages: legislation enacted, then a partial or full
+    implementation date, and a state that has passed a law is not necessarily issuing or
+    honouring multistate licences yet. The count that matters for your practice is
+    whether your state is <em>implemented</em>, not whether it has been counted. Check
+    the current map before relying on any figure, including this one.</p>
+
+    <h2>Why it decides a remote nursing contract</h2>
+
+    <p>Every service TULQ runs is delivered by telephone to a patient who is somewhere
+    else, so licensure is not an administrative footnote:</p>
+
+    <p><strong>After-hours triage.</strong> The nurse assessing a symptom at 2 a.m. is
+    practising in the caller's state. Compact coverage is what makes national
+    availability practical rather than a fifty-application project.</p>
+
+    <p><strong>Care management.</strong> Monthly clinical outreach to an enrolled patient
+    is nursing practice in that patient's state, every month, for as long as they are
+    enrolled.</p>
+
+    <p><strong>Annual wellness visits.</strong> Same rule, and the visit is a scheduled
+    clinical encounter rather than an incidental call, so it deserves the same scrutiny.</p>
+
+    <h2>What compact membership does not do</h2>
+
+    <p>It does not override scope of practice. A nurse working under a multistate licence
+    practises under the laws and scope rules of the state where the patient is, which can
+    differ from their home state. It does not cover non-compact states, where a
+    single-state licence is still required. And it does not answer the separate question
+    of physician supervision, which for the annual wellness visit is a Medicare rule
+    rather than a licensure one.</p>
+
+    <h2>The question to ask a vendor</h2>
+
+    <p>Not "are your nurses compact licensed," which every vendor will answer yes to.
+    Ask: <strong>which of our patients' states are you licensed to practise in today, and
+    what do you do about the ones you are not?</strong> An honest answer names the gaps
+    and says how they are covered, usually with single-state licences held by named
+    nurses. We will confirm coverage for your state before quoting, and tell you if we
+    cannot cover it yet.</p>
+"""
+    qa = [
+        ("How many states are in the nurse licensure compact?",
+         "<p>The official NLC site currently states that 43 jurisdictions are part of the "
+         "compact. That figure includes jurisdictions at different stages, some enacted "
+         "but not yet implemented, so check the current map rather than relying on a "
+         "count quoted anywhere, including here. Membership changes most years as "
+         "legislatures act.</p>"),
+        ("Which state's rules apply, the nurse's or the patient's?",
+         "<p>The patient's. A nurse practising under a multistate licence works under the "
+         "laws and scope of practice of the state where the patient is located. This is "
+         "why licensure is the first compliance question in any remote nursing "
+         "arrangement, and why a vendor that cannot name your state is a problem.</p>"),
+        ("What happens if our state is not in the compact?",
+         "<p>The nurse needs a single-state licence for your state. That is normal and "
+         "workable; it just takes time and costs money, which is why some vendors quietly "
+         "decline non-compact states. Ask directly rather than assuming national coverage "
+         "means national licensure.</p>"),
+        ("Does compact licensure cover the supervision rules too?",
+         "<p>No, they are separate questions. Licensure decides whether a nurse may "
+         "practise. Medicare supervision rules decide whether a service is payable and "
+         "who must be available while it happens. Care management runs under general "
+         'supervision; the annual wellness visit requires direct supervision. '
+         '<a href="/services/medicare-annual-wellness-visits">That distinction is covered '
+         "on the wellness visit page</a>.</p>"),
+    ]
+    return _post(
+        slug="nurse-licensure-compact-states",
+        title="Nurse Licensure Compact States: What It Means for You",
+        description=(
+            "How the Nurse Licensure Compact works, why nursing licensure follows the "
+            "patient's state, and the question to ask any remote nursing vendor."
+        ),
+        eyebrow="Licensure",
+        h1="The compact, and why <em>licensure follows the patient.</em>",
+        deck=(
+            "A nurse who telephones a patient in another state is practising nursing in "
+            "that state. Here is what the Nurse Licensure Compact does about it, and what "
+            "it does not."
+        ),
+        body=body,
+        reviewed=True,
+        qa=qa,
+        sources=[
+            ("Nurse Licensure Compact, official site.", "https://www.nursecompact.com/"),
+            ("NCSBN, licensure compacts.", "https://www.ncsbn.org/compacts.page"),
+            ("42 CFR 410.15, annual wellness visit.", "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-410/subpart-B/section-410.15"),
+        ],
+        disclaimer=(
+            "Compact membership and implementation dates change; the counts here were "
+            "checked in August 2026 against the official NLC site and should be "
+            "re-checked against its current map. This is not legal advice on licensure "
+            "for your organization."
+        ),
+        cta_title="Ask us about your state.",
+        cta_body=(
+            "We confirm licensure coverage for the states your patients are in before we "
+            "quote you, and we will tell you plainly if we cannot cover one yet."
+        ),
+    )
+
+
+def post_cm_small_practices() -> Page:
+    body = """    <p>Care management is sold to large groups and bought by them. The independent
+    practice with 400 Medicare patients, three providers, and one medical assistant who
+    already does too much is the one leaving the most money on the table, and the one
+    every national vendor quotes badly.</p>
+
+    <h2>Why small practices stall</h2>
+
+    <p>Not because anyone disagrees the work is worth doing. Three specific things stop
+    it:</p>
+
+    <p><strong>The hours do not exist.</strong> Twenty tracked minutes per patient per
+    month is the arithmetic that kills it. At 200 enrolled patients that is roughly 67
+    hours a month of licensed clinical time. There is no version of a busy medical
+    assistant's week that absorbs 67 hours.</p>
+
+    <p><strong>The documentation standard is higher than people expect.</strong>
+    Insufficient time documentation is the most common denial in this benefit. Time
+    logged with a date, a staff member, and what was done, with no carryover between
+    months. A program run informally between patients will not survive review, and the
+    repayment risk lands on the practice, not on whoever suggested it.</p>
+
+    <p><strong>The quotes assume a panel you do not have.</strong> National vendors price
+    for scale. A monthly floor built for 2,000 enrolled patients is not a proposal for a
+    practice with 120.</p>
+
+    <h2>What good looks like at small scale</h2>
+
+    <p><strong>Start at fifty patients, not the whole panel.</strong> Ninety days, then
+    look at what actually got billed and what the documentation looks like. Any vendor
+    unwilling to start there is selling you a contract rather than a program.</p>
+
+    <p><strong>Enrol during a wellness visit.</strong> An annual wellness visit is a
+    qualifying visit, and it is the appointment where a nurse has twenty unhurried
+    minutes with a patient who is not sick. Enrollment during a wellness visit converts
+    at a materially different rate from cold outreach, which is why the two services
+    belong together.</p>
+
+    <p><strong>Pick the right instrument per patient.</strong> APCM has no time threshold
+    at all but requires quality reporting. CCM requires tracked time but adds no
+    reporting obligation. If you already report, APCM is usually the cleaner choice. You
+    cannot bill both for the same patient in the same month.</p>
+
+    <p><strong>Watch the fee structure, not just the fee.</strong> A vendor paid as a
+    share of your collections is paid more when more gets coded. That is the arrangement
+    auditors look at hardest, and a flat fee per enrolled patient avoids the question
+    entirely.</p>
+
+    <h2>Build or buy</h2>
+
+    <p>Hiring is the right answer for some practices, and it is worth costing honestly:
+    a care coordinator's loaded salary, the recruiting time, the training, the coverage
+    when they are on leave, and the program stopping when they resign. Against that, a
+    per-patient fee that scales down as easily as up.</p>
+
+    <p>The arithmetic usually turns on whether you can keep one person's whole role
+    filled. If you can, hire. If the honest answer is that this would be someone's fifth
+    priority, buy it, or do not run the program at all. A half-run program that fails an
+    audit is worse than no program.</p>
+
+    <p>The full model, including which of the thirteen requirements sit with you, is on
+    <a href="/services/care-management">the care management page</a>. If you are a health
+    centre, the billing changed in 2026:
+    <a href="/resources/g0511-sunset-rhc-fqhc-billing">G0511 is gone</a>.</p>
+"""
+    qa = [
+        ("Is our practice too small for care management?",
+         "<p>Rarely, but the vendor might be too large. The programme works down to "
+         "surprisingly small panels because the payment is per patient per month, so the "
+         "revenue scales with the enrollment rather than requiring a threshold. What does "
+         "not scale down is a vendor contract with a monthly floor. Ask for a per-patient "
+         "fee with no minimum and a fifty-patient pilot.</p>"),
+        ("How many patients do we need to make it worth doing?",
+         "<p>Run your own numbers rather than taking a benchmark. At 2026 national "
+         "averages, Advanced Primary Care Management pays about $54 per patient per month "
+         "at level two, where most enrolled patients sit. Multiply by a realistic "
+         "enrollment, subtract the fee, and compare the remainder against the staff time "
+         "you would otherwise spend. If the remainder is small, do not do it.</p>"),
+        ("Can our medical assistant just do this?",
+         "<p>They can do some of it, and the rules permit clinical staff to deliver the "
+         "service under general supervision. The question is whether they can hold twenty "
+         "tracked minutes per patient per month on top of their existing day, every "
+         "month, and document it to an auditable standard. At 200 patients that is 67 "
+         "hours. Most practices discover the answer six months in, when the program has "
+         "quietly stopped.</p>"),
+        ("What is the difference between CCM and APCM for a small practice?",
+         "<p>CCM pays for tracked time and adds no reporting obligation. APCM pays a flat "
+         "monthly amount by patient complexity with no time threshold, but requires "
+         "quality reporting. A small practice already reporting quality measures usually "
+         "prefers APCM because the stopwatch disappears. One that is not should look hard "
+         "at whether the reporting obligation is worth taking on.</p>"),
+    ]
+    return _post(
+        slug="care-management-outsourcing-small-practices",
+        title="Care Management Outsourcing for Small Practices",
+        description=(
+            "Why small practices stall on CCM and APCM, what good looks like at small "
+            "scale, and how to decide between hiring a coordinator and outsourcing."
+        ),
+        eyebrow="Care management",
+        h1="Care management <em>at a small practice.</em>",
+        deck=(
+            "The independent practice with 400 Medicare patients is leaving the most on "
+            "the table and getting quoted the worst. Here is the honest build-or-buy."
+        ),
+        body=body,
+        reviewed=True,
+        qa=qa,
+        sources=[
+            ("CMS, Chronic Care Management Services booklet, MLN909188.", "https://www.cms.gov/files/document/chroniccaremanagement.pdf"),
+            ("CMS, Advanced Primary Care Management services.", "https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services"),
+            ("CMS, Care Management, Physician Fee Schedule.", "https://www.cms.gov/medicare/payment/fee-schedules/physician/care-management"),
+            ("CMS, Physician Fee Schedule lookup.", "https://www.cms.gov/medicare/physician-fee-schedule/search"),
+        ],
+        disclaimer=(
+            "Payment amounts are 2026 national averages under the Medicare Physician Fee "
+            "Schedule, adjusted by locality and updated each January. Reviewed August "
+            "2026. This is not billing or compliance advice for your practice."
+        ),
+        cta_title="Start with fifty patients.",
+        cta_body=(
+            "Bring your Medicare patient count and we will model the program against your "
+            "own locality, then run ninety days on a small cohort before either of us "
+            "commits to anything larger."
+        ),
+    )
+
+
+def post_who_can_perform_awv() -> Page:
+    body = """    <p>The short answer: more people than most practices think can perform it, and
+    fewer than most vendors imply can bill it. Those are two different questions and
+    conflating them is how a wellness visit program becomes a repayment.</p>
+
+    <h2>Who may perform the visit</h2>
+
+    <p>Medicare covers the annual wellness visit when it is furnished by a physician, by
+    a qualified non-physician practitioner such as a physician assistant, nurse
+    practitioner, or clinical nurse specialist, or by a medical professional or a team of
+    medical professionals working under the <strong>direct supervision</strong> of a
+    physician.</p>
+
+    <p>That third route is the one that matters operationally. It is why a registered
+    nurse, a health educator, or a licensed practical nurse can deliver the visit itself.
+    Most of an annual wellness visit is a health risk assessment, history, a medication
+    and provider list, screenings, and a written screening schedule. It is structured
+    questioning rather than examination, which is exactly the work a nurse does well.</p>
+
+    <h2>What direct supervision means</h2>
+
+    <p>Direct supervision means the physician is present in the office suite and
+    immediately available to furnish assistance and direction throughout the performance
+    of the procedure. Not on the premises in a general sense, and not reachable by phone.
+    Present in the office suite.</p>
+
+    <p>This is a stricter standard than care management, which runs under general
+    supervision, where the billing practitioner directs the service without needing to be
+    physically present. The two are frequently sold together and they do not share a
+    supervision rule. If a vendor's pitch glosses that, press on it.</p>
+
+    <h2>Who bills it</h2>
+
+    <p>The billing practitioner, and the supervision obligation, sit with the practice.
+    An outsourced nurse can perform the visit and produce the documentation. An
+    outsourced nurse cannot make your practice's supervision requirement disappear, and
+    no vendor can bill a Medicare annual wellness visit on your behalf as though it were
+    theirs.</p>
+
+    <p>Any vendor implying otherwise is describing something other than the benefit. We
+    say this on <a href="/services/medicare-annual-wellness-visits">our own service
+    page</a> rather than in a contract appendix, because it is the thing most likely to
+    cause a practice trouble later.</p>
+
+    <h2>Can it be done by telephone</h2>
+
+    <p>For established patients, yes. The annual wellness visit sits on the Medicare
+    telehealth list and audio-only delivery is permitted under the telehealth
+    flexibilities, which the Consolidated Appropriations Act of 2026 extended through 31
+    December 2027. New patients generally still need to be seen in person. Because these
+    flexibilities have been extended repeatedly rather than made permanent, check the
+    current CMS telehealth list rather than assuming the position holds.</p>
+
+    <h2>Health centres</h2>
+
+    <p>Federally qualified health centres and rural health clinics bill the bundled
+    per-diem G0468 under their prospective payment system, with the standard G-codes
+    reported on the claim for tracking. The clinical work is identical; the revenue
+    arithmetic is not, and usually turns on visit volume rather than the per-visit rate.</p>
+"""
+    qa = [
+        ("Can a registered nurse perform a Medicare annual wellness visit?",
+         "<p>Yes, as part of a medical professional or team working under the direct "
+         "supervision of a physician. The visit is largely history, structured screening, "
+         "and a written prevention schedule rather than examination, which is why it is "
+         "well suited to a nurse. The billing practitioner and the supervision obligation "
+         "remain with the practice.</p>"),
+        ("What exactly is direct supervision?",
+         "<p>The physician is present in the office suite and immediately available to "
+         "furnish assistance and direction throughout the performance of the service. It "
+         "is a stricter standard than the general supervision that applies to care "
+         "management, where the billing practitioner directs the service without needing "
+         "to be physically present.</p>"),
+        ("Can an outsourced company bill the AWV for us?",
+         "<p>No. Your practice bills it, because the billing practitioner and the "
+         "supervision requirement sit with you. A vendor can perform the visit and hand "
+         "you finished documentation. If a vendor tells you it will bill Medicare for "
+         "your patients' wellness visits, ask exactly what it means, because that is not "
+         "how the benefit works.</p>"),
+        ("Is an AWV the same as a physical?",
+         "<p>No, and patients are often surprised. The annual wellness visit does not "
+         "include a head-to-toe examination. It is a health risk assessment, medical and "
+         "family history, a current provider and medication list, height, weight and "
+         "blood pressure, cognitive impairment detection, depression screening, "
+         "functional ability and safety review, a written screening schedule for the next "
+         "five to ten years, and personalised advice with referrals.</p>"),
+        ("What does it pay?",
+         "<p>As 2026 national averages, roughly $174 for an initial visit (G0438) and "
+         "roughly $138 for each subsequent one (G0439), both covered at 100 percent with "
+         "no patient cost sharing. Amounts are adjusted by locality, so check the fee "
+         'schedule lookup. You can model your own gap with our '
+         '<a href="/tools/awv-revenue-calculator">AWV revenue calculator</a>.</p>'),
+    ]
+    return _post(
+        slug="who-can-perform-annual-wellness-visit",
+        title="Who Can Perform a Medicare Annual Wellness Visit?",
+        description=(
+            "Who may perform an AWV versus who may bill it, what direct supervision "
+            "really requires, and whether a nurse can deliver the visit by telephone."
+        ),
+        eyebrow="Wellness visits",
+        h1="Who can perform <em>an annual wellness visit?</em>",
+        deck=(
+            "More people can perform it than most practices think, and fewer can bill it "
+            "than most vendors imply. Those are two different questions."
+        ),
+        body=body,
+        reviewed=True,
+        qa=qa,
+        sources=[
+            ("42 CFR 410.15, annual wellness visit.", "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-410/subpart-B/section-410.15"),
+            ("CMS, Medicare Wellness Visits, MLN6775421.", "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/mln-publications/mln6775421"),
+            ("Medicare.gov, yearly wellness visits.", "https://www.medicare.gov/coverage/yearly-wellness-visits"),
+            ("CMS, Medicare telehealth.", "https://www.cms.gov/medicare/coverage/telehealth"),
+            ("CMS, Physician Fee Schedule lookup.", "https://www.cms.gov/medicare/physician-fee-schedule/search"),
+        ],
+        disclaimer=(
+            "Reviewed August 2026. Telehealth flexibilities have been extended rather "
+            "than made permanent and coverage rules change; confirm the current position "
+            "with CMS and your MAC. This is not billing or compliance advice."
+        ),
+        cta_title="Nurses who do the visit properly.",
+        cta_body=(
+            "TULQ supplies compact-licensed registered nurses who complete the visit by "
+            "telephone and hand back finished documentation. Your practice supervises and "
+            "bills, which is how the benefit is designed."
+        ),
+    )
+
+
+def post_awv_completion() -> Page:
+    body = """    <p>Every practice knows the annual wellness visit is worth doing. Most complete
+    it for a minority of the eligible panel anyway. The gap is almost never a clinical
+    disagreement, and it is almost never fixed by trying harder.</p>
+
+    <h2>Why the visit loses</h2>
+
+    <p>It competes for an examination room with sick visits, and sick visits always win.
+    The wellness visit takes the better part of half an hour to do properly, generates no
+    urgent complaint to anchor it, produces no immediate patient demand, and is therefore
+    the easiest thing on the schedule to defer to a quarter that never arrives.</p>
+
+    <p>Notice that none of those are motivation problems. They are scheduling and
+    capacity problems, and they respond to structural fixes rather than to reminders.</p>
+
+    <h2>Six things that actually move the rate</h2>
+
+    <p><strong>Take it out of the examination room.</strong> The single largest lever.
+    For established patients the visit can be delivered by telephone under the telehealth
+    flexibilities extended through 31 December 2027. A visit that does not need a room is
+    no longer competing for one.</p>
+
+    <p><strong>Measure the real baseline first.</strong> Pull the actual count of G0438
+    and G0439 claims from last year rather than estimating. Practices consistently guess
+    high, and a programme that starts from a flattering baseline cannot show progress.</p>
+
+    <p><strong>Work an eligibility list, not the whole panel.</strong> Sort by last visit
+    date. Patients whose eligibility opens this month are a queue, not a mailing list,
+    and the queue refreshes every month.</p>
+
+    <p><strong>Say it costs nothing, early.</strong> The visit is covered at 100 percent
+    with no coinsurance and no deductible. Patients decline because they assume a bill.
+    Leading with the fact removes the most common objection before it is raised.</p>
+
+    <p><strong>Attach the add-ons that belong.</strong> Advance care planning on the same
+    day, and depression screening alongside a subsequent visit, are legitimately
+    reportable and routinely left unbilled. Both have their own documentation
+    requirements, so attach them when the work is genuinely done and not otherwise.</p>
+
+    <p><strong>Use the visit to enrol.</strong> An annual wellness visit is a qualifying
+    visit for care management. It is twenty unhurried minutes with a patient who is not
+    sick, which is when chronic conditions surface honestly and consent can be explained
+    properly. This is where the recurring revenue actually is.</p>
+
+    <h2>Do the arithmetic before the programme</h2>
+
+    <p>Multiply the number of additional completed visits by the blended rate, subtract
+    the cost of whoever does them, and look at the remainder before committing. Our
+    <a href="/tools/awv-revenue-calculator">AWV revenue calculator</a> will do it against
+    your own panel and completion rate in about thirty seconds, and our
+    <a href="/tools/annual-wellness-visit-worksheet">visit worksheet</a> is free if the
+    problem is that the documentation takes too long.</p>
+
+    <p>If the remainder is small, do not run the programme. That is a legitimate outcome
+    and it is better discovered now.</p>
+"""
+    qa = [
+        ("What is a realistic AWV completion rate?",
+         "<p>Set your own target rather than chasing a benchmark, because the achievable "
+         "rate depends far more on whether the visit has to occupy an examination room "
+         "than on anything clinical. What matters is measuring the real baseline first: "
+         "pull the actual count of G0438 and G0439 claims you billed last year, because "
+         "practices consistently overestimate it.</p>"),
+        ("Does moving the visit to the phone hurt quality?",
+         "<p>It should not, and the reason is what the visit is. There is no head-to-toe "
+         "examination in an annual wellness visit. It is a health risk assessment, "
+         "history, screenings, and a written prevention schedule, which is structured "
+         "questioning. What it does need is an unhurried twenty minutes, and a telephone "
+         "visit is more likely to get that than a squeezed in-person slot.</p>"),
+        ("Which add-on codes are legitimately billable on the same day?",
+         "<p>Advance care planning is reportable on the same day as the wellness visit "
+         "and the patient owes nothing for it when furnished that way. Depression "
+         "screening is separately reportable alongside a subsequent visit. Both carry "
+         "their own documentation requirements, and neither should be attached "
+         "reflexively; bill them when the work was actually done.</p>"),
+        ("How does the wellness visit connect to care management revenue?",
+         "<p>It is the on-ramp. An AWV is a qualifying visit for care management "
+         "enrollment, and it is the appointment where a nurse has time to discover the "
+         "chronic conditions and explain a monthly programme properly. Enrollment during "
+         "a wellness visit converts at a materially different rate from cold outreach, "
+         'which is why <a href="/services/care-management">the two services belong '
+         "together</a>.</p>"),
+    ]
+    return _post(
+        slug="increase-awv-completion-rates",
+        title="How to Increase Annual Wellness Visit Completion Rates",
+        description=(
+            "Six structural fixes that move AWV completion rates, why the visit loses to "
+            "sick visits, and how to do the arithmetic before starting a program."
+        ),
+        eyebrow="Wellness visits",
+        h1="Closing <em>the wellness visit gap.</em>",
+        deck=(
+            "The visit does not lose because anyone disagrees with it. It loses because "
+            "it competes for an examination room with sick visits, and sick visits win."
+        ),
+        body=body,
+        reviewed=True,
+        qa=qa,
+        sources=[
+            ("42 CFR 410.15, annual wellness visit.", "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-410/subpart-B/section-410.15"),
+            ("CMS, Medicare Wellness Visits, MLN6775421.", "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/mln-publications/mln6775421"),
+            ("Medicare.gov, yearly wellness visits.", "https://www.medicare.gov/coverage/yearly-wellness-visits"),
+            ("CMS, Medicare telehealth.", "https://www.cms.gov/medicare/coverage/telehealth"),
+            ("CMS, Physician Fee Schedule lookup.", "https://www.cms.gov/medicare/physician-fee-schedule/search"),
+        ],
+        disclaimer=(
+            "Reviewed August 2026. Payment amounts are 2026 national averages adjusted by "
+            "locality. Add-on codes carry their own coverage and documentation "
+            "requirements. This is not billing or coding advice for your practice."
+        ),
+        cta_title="Model it against your own panel.",
+        cta_body=(
+            "Run the calculator, then bring the number to a fifteen minute call and we "
+            "will redo it against your real locality rather than a national average."
+        ),
+    )
+
+
 def post_cah() -> Page:
     body = """    <p>Critical access hospitals operate under a designation designed to keep small
     rural facilities viable, and under conditions of participation that come with it.
@@ -1030,6 +1532,10 @@ def posts() -> list[Page]:
         post_hhvbp(),
         post_apcm(),
         post_g0511_sunset(),
+        post_compact_states(),
+        post_cm_small_practices(),
+        post_who_can_perform_awv(),
+        post_awv_completion(),
         post_cah(),
     ]
 
@@ -1038,18 +1544,17 @@ def resources_index() -> Page:
     page = Page(
         site=SITE,
         slug="resources/index",
-        title="Resources: After-Hours Nurse Triage | TULQ",
+        title="Nurse Triage, Care Management &amp; AWV Resources | TULQ",
         description=(
-            "Explainers on what on-call really costs, nurse triage vs answering "
-            "services, hospice CAHPS, HHVBP, APCM billing, and critical access hospital "
-            "coverage."
+            "Sourced explainers on after-hours coverage costs, CCM and APCM billing, the "
+            "G0511 sunset, wellness visit rules, and two free tools. No signup."
         ),
         eyebrow="Resources",
         h1="The operational stuff, <em>written down.</em>",
         deck=(
-            "What after-hours coverage costs, what it touches in your quality and "
-            "reimbursement programs, and how to evaluate a vendor. Sourced, and honest "
-            "about the limits."
+            "Three tracks, one per service line: what after-hours coverage costs, how "
+            "Medicare pays for managing chronic patients, and who may perform a wellness "
+            "visit. Sourced to CMS and the CFR, and honest about the limits."
         ),
         crumbs=[("Resources", "/resources/")],
         wide=True,
@@ -1061,7 +1566,26 @@ def resources_index() -> Page:
         ),
     )
 
-    page.body = f"""    <h2>Cost and evaluation</h2>
+    page.body = f"""    <p>Everything here is written from primary sources: CMS booklets, the Code of
+    Federal Regulations, and the fee schedule, rather than from other vendors' summaries
+    of them. Where a figure is a national average that your locality will change, it says
+    so.</p>
+
+    <h2>Free tools, no signup</h2>
+
+    {card_grid([
+        ("Calculator", "AWV revenue gap calculator",
+         "Enter your Medicare panel and what you billed last year, and see the wellness visit revenue you are not collecting. Runs in your browser.",
+         "/tools/awv-revenue-calculator"),
+        ("Worksheet", "Annual wellness visit worksheet",
+         "A charting worksheet built to the elements at 42 CFR 410.15, which generates a structured note. Nothing you type leaves the page.",
+         "/tools/annual-wellness-visit-worksheet"),
+        ("Compare", "Compare vendors",
+         "IntellaTriage, ChartSpan, Signallamp, ThoroughCare and more: what each is built for, and when to pick them over us.",
+         "/compare/"),
+    ])}
+
+    <h2>After-hours triage</h2>
 
     {card_grid([
         ("Cost &amp; ROI", "The true cost of after-hours on-call",
@@ -1070,49 +1594,57 @@ def resources_index() -> Page:
         ("Basics", "Nurse triage vs answering service",
          "They fill the same slot and do different work. The one question that exposes which you're being sold.",
          "/resources/nurse-triage-vs-answering-service"),
-        ("Compare", "Comparing triage vendors",
-         "IntellaTriage, Conduit, and AccessNurse: what each is built for, and when to pick them over us.",
-         "/compare/"),
-    ])}
-
-    <h2>Quality programs and reimbursement</h2>
-
-    {card_grid([
         ("CAHPS", "After-hours access and hospice CAHPS",
          "Which measures it moves, which it doesn't, and the operational proxies to track meanwhile.",
          "/resources/hospice-cahps-after-hours"),
         ("HHVBP", "HHVBP and ED use",
          "The CY2025 within-stay potentially preventable hospitalization measure, and the pathway triage interrupts.",
          "/resources/hhvbp-ed-use"),
+        ("Rural hospitals", "After-hours coverage for critical access hospitals",
+         "What the conditions of participation require, what they leave uncovered, and the staffing arithmetic.",
+         "/resources/critical-access-hospital-after-hours"),
+    ])}
+
+    <h2>Care management</h2>
+
+    {card_grid([
+        ("Reimbursement", "G0511 is gone: what health centers bill now",
+         "The bundled code is retired. The replacement codes, the coinsurance, the cost report, and the supervision rule that makes remote nursing possible.",
+         "/resources/g0511-sunset-rhc-fqhc-billing"),
         ("Reimbursement", "APCM billing at an FQHC or RHC",
          "G0556, G0557, G0558: what changed, who can bill, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
-        ("Reimbursement", "G0511 is gone: what health centers bill now",
-         "The bundled code is retired. The replacement codes, the coinsurance, the cost "
-         "report, and the supervision rule that makes remote nursing possible.",
-         "/resources/g0511-sunset-rhc-fqhc-billing"),
-        ("Free tool", "AWV revenue gap calculator",
-         "Enter your Medicare panel and completion rate, see the wellness visit revenue "
-         "you are not billing. No signup.",
-         "/tools/awv-revenue-calculator"),
-        ("Free tool", "Annual wellness visit worksheet",
-         "A charting worksheet built to the elements at 42 CFR 410.15. Nothing you type "
-         "leaves your browser.",
-         "/tools/annual-wellness-visit-worksheet"),
+        ("Small practices", "Care management outsourcing for small practices",
+         "Why small practices stall on CCM and APCM, what good looks like at small scale, and the honest build-or-buy.",
+         "/resources/care-management-outsourcing-small-practices"),
+    ])}
+
+    <h2>Annual wellness visits</h2>
+
+    {card_grid([
+        ("Rules", "Who can perform an annual wellness visit?",
+         "Who may perform it against who may bill it, what direct supervision actually requires, and whether a nurse can do it by phone.",
+         "/resources/who-can-perform-annual-wellness-visit"),
+        ("Playbook", "How to increase AWV completion rates",
+         "Six structural fixes, why the visit loses to sick visits, and how to do the arithmetic before starting a program.",
+         "/resources/increase-awv-completion-rates"),
+        ("Licensure", "Nurse licensure compact states",
+         "Licensure follows the patient, not the nurse. What the compact does, what it does not, and the question to ask a vendor.",
+         "/resources/nurse-licensure-compact-states"),
     ])}
 
     <h2>By setting</h2>
 
     {card_grid([
-        ("Rural hospitals", "After-hours coverage for critical access hospitals",
-         "What the conditions of participation require, what they leave uncovered, and the staffing arithmetic.",
-         "/resources/critical-access-hospital-after-hours"),
         ("Hospice &amp; home health", "After-hours triage for hospice and home health",
          "Why on-call rotations break, and what changes when a nurse takes first call.",
          "/for/home-health"),
         ("Safety net", "FQHC, RHC and CAH coverage",
          "The segment with the same obligation as everyone else and the least room to staff it.",
          "/for/health-centers"),
+        ("Services", "All three service lines",
+         "After-hours triage, Medicare care management, and annual wellness visits, and how they fit together.",
+         "/services/"),
     ])}"""
 
     return page
@@ -1141,10 +1673,36 @@ _PRELAUNCH = """    <div class="callout callout--amber">
     </div>"""
 
 
+TRIAGE_QUESTIONS = [
+    "Who answers the first call, and what licensure do they hold?",
+    "What protocol standard do your nurses work from?",
+    "What share of calls resolve without reaching our clinician?",
+    "What does encounter documentation look like when it reaches us, in what "
+    "format, and how quickly?",
+    "Who defines the escalation rules: us or you?",
+    "Is pricing per-call or flat, and what happens in a bad respiratory season?",
+]
+
+# Care management turns on different things entirely: who employs the nurse,
+# whose record the note lands in, and above all how the vendor is paid, since
+# a vendor paid as a share of your Medicare reimbursement is the arrangement
+# auditors look at hardest.
+CARE_QUESTIONS = [
+    "Who employs the people doing the clinical work, and what licensure do "
+    "they hold in our patients' states?",
+    "Does the documentation land in our record, or in yours?",
+    "Are you paid a flat fee, or a share of what we collect?",
+    "Are your staff compensated per enrollment?",
+    "Who verifies each month that no other practice is billing that patient?",
+    "What happens to our program, our data, and our patients if we leave you?",
+]
+
+
 def _compare(slug: str, competitor: str, title: str, description: str,
              h1: str, deck: str, profile: str, table_rows: str,
              when_them: list[str], when_us: list[str],
-             qa: list, sources: list[str]) -> Page:
+             qa: list, sources: list[str],
+             questions: list[str] | None = None) -> Page:
     page = Page(
         site=SITE,
         slug=f"compare/{slug}",
@@ -1166,6 +1724,7 @@ def _compare(slug: str, competitor: str, title: str, description: str,
 
     them = "\n".join(f"      <li>{x}</li>" for x in when_them)
     us = "\n".join(f"      <li>{x}</li>" for x in when_us)
+    decide = "\n".join(f"      <li>{x}</li>" for x in (questions or TRIAGE_QUESTIONS))
 
     page.body = f"""{profile}
 
@@ -1202,14 +1761,7 @@ def _compare(slug: str, competitor: str, title: str, description: str,
     side by side:</p>
 
     <ol>
-      <li>Who answers the first call, and what licensure do they hold?</li>
-      <li>What protocol standard do your nurses work from?</li>
-      <li>What share of calls resolve without reaching our clinician?</li>
-      <li>What does encounter documentation look like when it reaches us, in what
-      format, and how quickly?</li>
-      <li>Who defines the escalation rules: us or you?</li>
-      <li>Is pricing per-call or flat, and what happens in a bad respiratory
-      season?</li>
+{decide}
     </ol>
 
     {faq_block(qa)}
@@ -1487,21 +2039,357 @@ def compare_accessnurse() -> Page:
 
 
 def compare_pages() -> list[Page]:
-    return [compare_intellatriage(), compare_conduit(), compare_accessnurse()]
+    return [
+        compare_intellatriage(),
+        compare_conduit(),
+        compare_accessnurse(),
+        compare_chartspan(),
+        compare_signallamp(),
+        compare_thoroughcare(),
+    ]
+
+
+# ══════════════════════════════════════════════════════════════════════
+# Care management comparisons.
+#
+# These three are a different competitive set from the triage comparisons
+# above: ChartSpan and Signallamp sell nurse labour, ThoroughCare sells
+# software. The research is explicit that "ChartSpan alternatives" and
+# "chronic care management vendor comparison" are elite-intent, low-volume,
+# near-zero-competition terms, and that a new domain wins on tightly-scoped
+# intent match rather than on authority.
+#
+# House rule, and it matters most here: describe each competitor from its
+# own public materials, and say plainly when the reader should pick them
+# instead. Every one of these three is a better answer than TULQ for some
+# real buyer, and the pages say so.
+# ══════════════════════════════════════════════════════════════════════
+
+def compare_chartspan() -> Page:
+    profile = """    <p>ChartSpan describes itself as the largest full-service chronic care
+    management organization in the United States, and on the evidence of its own
+    published materials that is a fair claim. If you are shortlisting outsourced care
+    management, it belongs on the list.</p>
+
+    <h2>What ChartSpan is</h2>
+
+    <p>Per its own site, ChartSpan runs a "proactive, full-service Chronic Care
+    Management (CCM) program" in which it handles "patient enrollment, education, care
+    plans, prescription refills, and more." The operating model is explicit: ChartSpan
+    identifies eligible patients, the practice approves the eligibility list, and
+    ChartSpan enrols and then contacts them monthly. Its RapidBill technology is
+    described as letting a practice "review and bill under general supervision with
+    ease."</p>
+
+    <p>It publishes real proof: named client testimonials from billing managers, quality
+    directors, and care coordinators, a figure of more than $100,000 generated annually
+    at 300 enrolled patients, and average managed-program growth of 3 percent a month.
+    It also bundles MIPS and quality improvement services and ten years of record
+    archiving.</p>
+
+    <p>That is a mature, well-resourced operation with a decade of references. Nothing
+    on this page is an argument that it is not.</p>"""
+
+    rows = """          <tr><td>Model</td><td>Full-service outsourced CCM at national scale</td><td>Nurse staffing for care management, triage, and wellness visits</td></tr>
+          <tr><td>Operating history</td><td class="tick">Established, with named client references</td><td class="cross">Launching 2026, no references at scale</td></tr>
+          <tr><td>Enrollment</td><td class="tick">ChartSpan identifies and enrols; you approve the list</td><td>We enrol against the list you approve, same shape</td></tr>
+          <tr><td>Where the note lives</td><td>ChartSpan platform, with billing review tooling</td><td class="tick">Your own record, under a signed BAA</td></tr>
+          <tr><td>Programs covered</td><td class="tick">CCM, APCM, wellness visits, quality programs</td><td>CCM, APCM, PCM, TCM, wellness visits, plus after-hours triage</td></tr>
+          <tr><td>After-hours nurse triage</td><td>A 24/7 care team inside the CCM program</td><td class="tick">A standalone triage service on Schmitt-Thompson protocols</td></tr>
+          <tr><td>Quality and MIPS support</td><td class="tick">Included</td><td class="cross">Not offered</td></tr>
+          <tr><td>Typical customer</td><td>Practices and health systems of scale</td><td>Small, rural, and independent practices</td></tr>
+          <tr><td>Published pricing</td><td class="cross">Not published</td><td>Flat fee per enrolled patient, quoted on scope</td></tr>"""
+
+    qa = [
+        ("Is TULQ cheaper than ChartSpan?",
+         "<p>We do not know, and neither does anyone who has not seen both quotes. "
+         "Neither company publishes pricing. What we will tell you is the structure: our "
+         "fee is flat per enrolled patient per month, never a share of your collections, "
+         "and our nurses are never paid per enrollment. Get numbers from both and compare "
+         "the structure, not just the total.</p>"),
+        ("ChartSpan has a decade of references and you have none. Why would we risk it?",
+         "<p>Often you should not, and if a multi-year track record is a hard requirement "
+         "then ChartSpan is the better answer and we would rather you knew that now. The "
+         "risk is real and the mitigations are contractual: a fifty-patient pilot over "
+         "ninety days, service levels with teeth, and termination provisions you can live "
+         "with. Ask us for all three.</p>"),
+        ("What can a smaller vendor actually do better?",
+         "<p>Continuity, and scope. A full-service program at national scale means a "
+         "larger pool of coordinators; that is what makes the enrollment volume possible "
+         "and it is genuinely valuable. The trade is that a patient is less likely to "
+         "hear the same voice each month. We staff a designated team per practice, which "
+         "is one of the thirteen program requirements rather than a marketing "
+         "preference. Separately, we are one vendor for care management, wellness visits, "
+         "and the after-hours line, rather than a care management program plus a "
+         "separate answering service.</p>"),
+    ]
+
+    return _compare(
+        slug="chartspan-alternative",
+        competitor="ChartSpan",
+        title="ChartSpan Alternative: Nurse-Led Care Management | TULQ",
+        description=(
+            "An honest ChartSpan comparison for small and rural practices: full-service "
+            "scale against a designated nurse team working inside your own record."
+        ),
+        h1="A ChartSpan alternative, <em>for the small practice.</em>",
+        deck=(
+            "ChartSpan is the largest full-service chronic care management organization "
+            "in the country. Here is what it does well, where a smaller nurse-led model "
+            "differs, and when you should pick them instead."
+        ),
+        profile=profile,
+        table_rows=rows,
+        when_them=[
+            "You want a proven operator with a decade of named client references, and a "
+            "track record is a hard requirement.",
+            "You want MIPS and quality improvement services bundled with the care "
+            "management program.",
+            "You are large enough that enrollment volume matters more than a patient "
+            "hearing the same nurse each month.",
+            "You want one vendor to run enrollment at scale and are comfortable with the "
+            "documentation living on their platform.",
+        ],
+        when_us=[
+            "You are a small, rural, or independent practice and every national quote you "
+            "have had assumed a panel you do not have.",
+            "You want the note in your own record under a signed business associate "
+            "agreement, not exported from somewhere else.",
+            "You want the same nursing team covering care management, wellness visits, "
+            "and the after-hours line rather than three arrangements.",
+            "You want a flat fee per enrolled patient, never a percentage of your "
+            "collections.",
+        ],
+        qa=qa,
+        questions=CARE_QUESTIONS,
+        sources=[
+            ("ChartSpan, Chronic Care Management solution page.",
+             "https://www.chartspan.com/chronic-care-management/"),
+            ("ChartSpan homepage.", "https://www.chartspan.com/"),
+            ("CMS, Advanced Primary Care Management services.",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services"),
+            ("CMS, Chronic Care Management Services booklet, MLN909188.",
+             "https://www.cms.gov/files/document/chroniccaremanagement.pdf"),
+        ],
+    )
+
+
+def compare_signallamp() -> Page:
+    profile = """    <p>Signallamp Health is the closest thing to a direct analogue of the TULQ
+    care management model that we are aware of: real nurses, embedded remotely, working
+    inside the client's own electronic health record rather than selling a platform. If
+    you like our model, you should look at theirs.</p>
+
+    <h2>What Signallamp is</h2>
+
+    <p>Per its own published materials, Signallamp describes "remotely-embedded care
+    management" delivered by nurses who are "100% U.S.-based and licensed in the same
+    state as your patients," with the emphatic addition: "No call centers!" It
+    highlights nurses who "operate directly in your own EHR," with no additional
+    software, integrations, or workflow changes, and a four to six week launch.</p>
+
+    <p>Its published client list leans to health systems and large groups, including
+    UPMC, Temple Health, and Tampa General Hospital, and it publishes outcome figures
+    including a 63 percent reduction in emergency department utilization and better than
+    90 percent patient retention.</p>
+
+    <p>One thing a buyer should know before shortlisting: Signallamp Health has become
+    part of Tellihealth, and its chronic care management service now runs as signalCCM,
+    powered by Tellihealth. That is not a criticism, but continuity of team and contract
+    through a transition is a fair question to ask, and you should ask it.</p>"""
+
+    rows = """          <tr><td>Model</td><td>Remotely-embedded nurses, no software sold</td><td class="tick">The same model</td></tr>
+          <tr><td>Nurses work in your EHR</td><td class="tick">Yes</td><td class="tick">Yes</td></tr>
+          <tr><td>State-licensed to the patient</td><td class="tick">Yes</td><td class="tick">Yes, compact plus single-state where needed</td></tr>
+          <tr><td>How the vendor is paid</td><td>Described as a revenue-share against existing CPT codes</td><td class="tick">Flat fee per enrolled patient, never a percentage</td></tr>
+          <tr><td>Typical customer</td><td>Health systems and large groups</td><td class="tick">Small, rural, and independent practices</td></tr>
+          <tr><td>Operating history</td><td class="tick">Established, with published outcome data</td><td class="cross">Launching 2026</td></tr>
+          <tr><td>Corporate status</td><td>Now part of Tellihealth; CCM runs as signalCCM</td><td>Independent, nurse-led</td></tr>
+          <tr><td>After-hours nurse triage</td><td class="cross">Not the core offering</td><td class="tick">A standalone service on Schmitt-Thompson protocols</td></tr>
+          <tr><td>Annual wellness visits</td><td class="cross">Not published as a service line</td><td class="tick">Telephone AWVs, priced per completed visit</td></tr>"""
+
+    qa = [
+        ("What is actually different, if the model is the same?",
+         "<p>Two things. Size of customer, and how the vendor gets paid.</p>"
+         "<p>Signallamp's published references are health systems and large groups. We "
+         "are built for the practice with a few hundred Medicare patients that every "
+         "national quote has treated as too small to bother with.</p>"
+         "<p>The second is the one worth arguing about. A revenue-share ties the vendor's "
+         "pay to your Medicare reimbursement. We charge a flat fee per enrolled patient "
+         "instead, and our nurses are never paid per enrollment, because tying vendor "
+         "compensation to the volume or value of federal healthcare business is precisely "
+         "the arrangement that draws scrutiny. Reasonable people structure this "
+         "differently and a revenue-share is not unlawful, but you should understand "
+         "which one you are signing.</p>"),
+        ("Does a revenue-share not align our incentives better?",
+         "<p>It aligns them toward enrollment, which is not always the same as toward the "
+         "patient. Our answer is to be month to month after an initial term: if patients "
+         "are not actually enrolled and actually managed, you stop paying us. That gives "
+         "you the same alignment without tying our fee to your Medicare receipts.</p>"),
+        ("They publish a 63 percent reduction in ED utilization. What do you publish?",
+         "<p>Nothing, because we have nothing yet. TULQ is launching in 2026, and "
+         "borrowing an industry figure to imply it is ours would be the first dishonest "
+         "thing on this site. If published outcome data is what decides your evaluation, "
+         "that is a real point in their favour and you should weigh it.</p>"),
+    ]
+
+    return _compare(
+        slug="signallamp-alternative",
+        competitor="Signallamp",
+        title="Signallamp Alternative: Flat-Fee Care Management | TULQ",
+        description=(
+            "Signallamp and TULQ run the same embedded-nurse model. The differences are "
+            "customer size and how the vendor gets paid: revenue share against flat fee."
+        ),
+        h1="A Signallamp alternative, <em>on a flat fee.</em>",
+        deck=(
+            "Signallamp Health, now part of Tellihealth, runs the closest model to ours: "
+            "real nurses, embedded remotely, working in your own record. Two things "
+            "differ, and one of them is how the vendor gets paid."
+        ),
+        profile=profile,
+        table_rows=rows,
+        when_them=[
+            "You are a health system or a large group, which is where their published "
+            "references sit.",
+            "Published outcome data matters to your evaluation, and a vendor with none is "
+            "disqualifying.",
+            "A revenue-share suits your finance team better than a per-patient fee, and "
+            "you have taken your own view on the compliance posture.",
+            "You want remote patient monitoring devices alongside care management, which "
+            "the Tellihealth platform offers and we do not.",
+        ],
+        when_us=[
+            "You are small, rural, or independent, and national vendors have quoted you a "
+            "floor you will never reach.",
+            "You want a flat fee per enrolled patient rather than a share of your "
+            "Medicare collections.",
+            "You want after-hours triage and annual wellness visits from the same nursing "
+            "team, not just care management.",
+            "You would rather contract with an independent nurse-led company than with a "
+            "brand mid-transition.",
+        ],
+        qa=qa,
+        questions=CARE_QUESTIONS,
+        sources=[
+            ("Signallamp Health.", "https://www.signallamphealth.com/"),
+            ("Tellihealth.", "https://www.tellihealth.com/"),
+            ("CMS, Care Management, Physician Fee Schedule.",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician/care-management"),
+        ],
+    )
+
+
+def compare_thoroughcare() -> Page:
+    profile = """    <p>ThoroughCare is the comparison most likely to be a category error, and it
+    is worth resolving early: ThoroughCare principally sells software, and TULQ sells
+    nurses. If your problem is that your care coordinators lack a good tool, we are not
+    the answer. If your problem is that you have no care coordinators, a tool will not
+    fix it.</p>
+
+    <h2>What ThoroughCare is</h2>
+
+    <p>Per its own materials, ThoroughCare is "a platform built by clinicians, helping
+    providers engage patients," covering chronic care management, remote patient
+    monitoring, annual wellness visits, behavioral health integration, principal care
+    management, transitional care management, advanced primary care management, and
+    advance care planning. It states that its platform is "NCQA Prevalidated for
+    Population Health Management in Health Plan Accreditation."</p>
+
+    <p>It is not purely software: it offers a clinical advisory team for workflow design,
+    training, documentation review, and compliance support, and it has built AI features
+    and a patient education integration. Its content library on CPT and reimbursement is
+    among the deepest in the category and is genuinely useful reading, whoever you end up
+    buying from.</p>
+
+    <p>If you already employ the staff, ThoroughCare is a strong choice and this page is
+    not an argument otherwise.</p>"""
+
+    rows = """          <tr><td>What you are buying</td><td>A care coordination platform, plus advisory services</td><td class="tick">Licensed nurses who do the clinical work</td></tr>
+          <tr><td>Who makes the calls</td><td class="cross">Your staff</td><td class="tick">Our nurses</td></tr>
+          <tr><td>Who documents the time</td><td>Your staff, in the platform</td><td class="tick">Our nurses, in your record</td></tr>
+          <tr><td>Programs supported</td><td class="tick">CCM, RPM, AWV, BHI, PCM, TCM, APCM, ACP</td><td>CCM, APCM, PCM, TCM, AWV, plus after-hours triage</td></tr>
+          <tr><td>Remote patient monitoring</td><td class="tick">Supported</td><td class="cross">Not offered</td></tr>
+          <tr><td>NCQA prevalidation</td><td class="tick">Stated for population health management</td><td class="cross">Not applicable, we are not a platform</td></tr>
+          <tr><td>Software to buy</td><td>Yes, that is the product</td><td class="tick">None</td></tr>
+          <tr><td>Solves a staffing shortage</td><td class="cross">No</td><td class="tick">Yes, that is the product</td></tr>
+          <tr><td>Works alongside the other</td><td class="tick">Yes</td><td class="tick">Yes, our nurses will work in a platform you own</td></tr>"""
+
+    qa = [
+        ("Do we need both?",
+         "<p>Sometimes, and there is no conflict. If you have already bought "
+         "ThoroughCare and the problem is that nobody has time to use it, our nurses will "
+         "work inside it. We do not require you to abandon a platform you have paid for "
+         "and trained on, and we do not sell a competing one.</p>"),
+        ("Which one is cheaper?",
+         "<p>Software is almost always the cheaper line item, because it is not paying "
+         "anybody's salary. The comparison only becomes fair when you add the loaded cost "
+         "of the clinical staff time the platform assumes you have. At 200 enrolled "
+         "patients, twenty tracked minutes each is roughly 67 hours a month. Price the "
+         "software against the software, and the nurse against the nurse.</p>"),
+        ("Is a platform better for audit defence?",
+         "<p>A good platform makes time-logging consistent, which genuinely helps. But "
+         "insufficient time documentation is the most common denial in this benefit, and "
+         "the failure is nearly always that the work did not happen or was not recorded "
+         "at the time, not that the recording tool was inadequate. A tool cannot document "
+         "a call nobody made.</p>"),
+    ]
+
+    return _compare(
+        slug="thoroughcare-alternative",
+        competitor="ThoroughCare",
+        title="ThoroughCare Alternative: Nurses, Not Software | TULQ",
+        description=(
+            "ThoroughCare sells a care coordination platform. TULQ sells the nurses. "
+            "Which one you need depends on whether you have the staff or only the tool."
+        ),
+        h1="A ThoroughCare alternative, <em>if the gap is staff.</em>",
+        deck=(
+            "ThoroughCare sells a care coordination platform and TULQ sells licensed "
+            "nurses. They are not really substitutes, and knowing which problem you have "
+            "decides it in about a minute."
+        ),
+        profile=profile,
+        table_rows=rows,
+        when_them=[
+            "You already employ care coordinators and what they lack is a good tool.",
+            "You want remote patient monitoring in the same system as care management.",
+            "NCQA prevalidation for population health management matters to your "
+            "accreditation work.",
+            "You want to own the workflow and keep the clinical work in-house.",
+        ],
+        when_us=[
+            "Your care management program keeps stalling because nobody has the hours, "
+            "not because the software is bad.",
+            "You would rather buy the clinical time than hire, train, and cover for a "
+            "care coordinator.",
+            "You want the same nurses covering after-hours triage and wellness visits.",
+            "You already own a platform and simply need somebody to work inside it.",
+        ],
+        qa=qa,
+        questions=CARE_QUESTIONS,
+        sources=[
+            ("ThoroughCare.", "https://www.thoroughcare.net/"),
+            ("CMS, Chronic Care Management Services booklet, MLN909188.",
+             "https://www.cms.gov/files/document/chroniccaremanagement.pdf"),
+            ("CMS, Care Management, Physician Fee Schedule.",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician/care-management"),
+        ],
+    )
 
 
 def compare_index() -> Page:
     page = Page(
         site=SITE,
         slug="compare/index",
-        title="Compare Nurse Triage Companies | TULQ",
+        title="Compare Nurse Triage &amp; Care Management Vendors | TULQ",
         description=(
-            "Honest comparisons of the established nurse triage vendors ("
-            "IntellaTriage, Conduit Health Partners, AccessNurse), including when to "
-            "choose them over us."
+            "Honest comparisons of the nurse triage and care management vendors: "
+            "IntellaTriage, ChartSpan, Signallamp, ThoroughCare and more, including "
+            "when to choose them."
         ),
         eyebrow="Compare",
-        h1="Comparing <em>nurse triage vendors.</em>",
+        h1="Comparing <em>the vendors you are shortlisting.</em>",
         deck=(
             "Written by an interested party, which you should weigh accordingly. We "
             "have tried to make these useful by being specific about where the "
@@ -1517,9 +2405,11 @@ def compare_index() -> Page:
         ),
     )
 
-    page.body = f"""    <p>There are perhaps five serious operators in outsourced nurse triage, most of
-    them fifteen to thirty years old, plus a large field of medical answering services
-    that are not clinical and should not be evaluated in the same category.</p>
+    page.body = f"""    <p>Two different markets are compared below, because TULQ sells into both.
+    Outsourced nurse triage has perhaps five serious operators, most of them fifteen to
+    thirty years old, plus a large field of medical answering services that are not
+    clinical and should not be evaluated in the same category. Care management is a
+    more crowded field of well-funded software platforms and full-service vendors.</p>
 
     <p>We are new. That is a real disadvantage on any comparison that weights operating
     history, and we have said so on every page below rather than burying it. What
@@ -1536,6 +2426,20 @@ def compare_index() -> Page:
         ("Health centers", "AccessNurse alternative",
          "In business since 1996, 50-state licensure, explicit community health center vertical.",
          "/compare/accessnurse-alternative"),
+    ])}
+
+    <h2>Care management vendors</h2>
+
+    {card_grid([
+        ("Full-service scale", "ChartSpan alternative",
+         "The largest full-service CCM organization in the country. Scale and named references against a designated nurse team in your own record.",
+         "/compare/chartspan-alternative"),
+        ("The same model", "Signallamp alternative",
+         "The closest analogue to how we work: embedded nurses, no software. The differences are customer size and revenue share against flat fee.",
+         "/compare/signallamp-alternative"),
+        ("Software, not staff", "ThoroughCare alternative",
+         "A care coordination platform rather than a staffing company. Which you need depends on whether you have the people or only the tool.",
+         "/compare/thoroughcare-alternative"),
     ])}
 
     <h2>Before you compare anyone</h2>
