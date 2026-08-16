@@ -45,7 +45,10 @@ is a regression, not a preference.
 - **Nav is destinations only, never one link per homepage section.** Three
   links plus a Contact us CTA, on every page of a site:
   - tulq.health: IHS Areas, Resources, Our story
-  - tulqhealth.com: Compare, Resources, Our story
+  - tulqhealth.com: Services, Compare, Resources
+
+  "Our story" left the tulqhealth.com bar when Services arrived, to keep it at
+  three. It is still in the footer's Company column.
 
   Generated pages get this from the `nav=` tuple on each `Site` in
   `tools/pagekit.py`; the eight hand-written pages carry the same markup
@@ -97,9 +100,25 @@ finished `.html` that is committed to git and served directly.
   - `content_tribal_resources.py` — tribal `/resources/` + the tribal compare page
   - `content_care.py` — the two tulqhealth.com pillars
   - `content_care_resources.py` — mainstream `/resources/` + `/compare/`
+  - `content_care_services.py` — the `/services/` hub + three money pages
+  - `content_care_tools.py` — the two free tools under `/tools/`
 - `tools/pagekit.py` holds the shared shell: nav, footer, breadcrumbs, FAQ
   accordions, schema builders, and the two `Site` configs. Nav and footer links
   for generated pages live in the `Site` definitions there.
+- **There are two page shapes, and picking the wrong one is the usual mistake.**
+  - `pagekit.Page` renders the narrow article column on `pages.css`. Right for
+    resource posts, segment pages, and comparisons.
+  - `landing.LandingPage` renders the homepage look on `styles.css`: full-bleed
+    sections alternating cream and basalt, each with a Pexels scene photo, plus
+    the hero and the closing contact band with its two seams. Right for the
+    hub, the three service pages, and the tools. Its section vocabulary is
+    listed in the `tools/landing.py` docstring. Components it added are
+    namespaced `.lp-*` and live in the LANDING PAGES block at the bottom of
+    `care/styles.css`.
+
+  `landing.render()` fails the build on a house-style regression: an em dash in
+  visible copy, a `<title>` over 60 characters, or a meta description outside
+  120 to 165. Fix the copy rather than the guard.
 - **Hand-written pages** (not generated, edit directly): `index.html`,
   `story.html`, `contact.html`, `privacy.html` on both sites.
   - `contact.html` is **one panel on one screen** by design: a single card on a
@@ -123,8 +142,11 @@ Every stylesheet reference now carries a **content hash**, applied by
 `python3 tools/stamp-assets.py`. `build-pages.py` runs it automatically at
 the end of every build. So:
 
-- After editing `styles.css` or `pages.css`, run `tools/stamp-assets.py`
-  (or just `tools/build-pages.py`, which calls it).
+- After editing `styles.css`, `pages.css`, or any of the stamped scripts
+  (`rivers.js`, `landing.js`, `awv-worksheet.js`, `awv-worksheet.css`), run
+  `tools/stamp-assets.py` (or just `tools/build-pages.py`, which calls it).
+  `_headers` caches `/*.js` on the same immutable year as CSS, so scripts are
+  content-hashed too.
 - Never hand-write `?v=` numbers. The tool owns that query string and will
   overwrite them.
 - The same trap applies to `/assets/*`, which is also immutable. If you
@@ -177,6 +199,32 @@ scoped so none of them overlap:
 | Home health | `/for/home-health` | Generated |
 | RHC + critical access hospitals | `/nurse-triage-for-rural-health-clinics` | Hand-written (PR #88) |
 | FQHC / community health centers | `/for/health-centers` | Generated |
+
+### Three service lines, three money pages, one hub
+
+The same rule one level up. The Aug 2026 research is explicit that the three
+service lines need separate URLs, because the buyers, the SERPs, and the
+keyword sets barely overlap:
+
+| Service line | Page | Primary keyword |
+|---|---|---|
+| Hub | `/services/` | nurse-led clinical services |
+| After-hours triage | `/services/after-hours-nurse-triage` | after hours nurse triage service |
+| Care management | `/services/care-management` | care management outsourcing for small practices |
+| Annual wellness visits | `/services/medicare-annual-wellness-visits` | annual wellness visit outsourcing |
+
+The homepage is no longer the triage money page: its `hero-sub` covers all
+three lines and it routes to the hub. The four segment pages above are
+practice-type modifiers **on the triage service** and sit under it. Do not let
+`/services/after-hours-nurse-triage` start covering hospice or RHC specifics,
+or it will cannibalise them; it targets the unmodified head term and links
+down. Likewise `/services/care-management` links across to
+`/resources/apcm-billing-fqhc-rhc` rather than re-arguing health-center billing.
+
+Two free ungated tools feed the AWV and care management pages:
+`/tools/awv-revenue-calculator` and `/tools/annual-wellness-visit-worksheet`.
+They stay ungated on purpose: an email wall makes them uncrawlable and
+unlinkable, which is the whole value at DR 0.
 
 Note the RHC page covers **both** RHCs and CAHs, which is why `/for/health-centers`
 stops at FQHCs and links across rather than covering CAHs itself. Each page

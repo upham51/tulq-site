@@ -19,6 +19,10 @@ does not, so this runs over every page and rewrites
     styles.css?v=<anything>   ->  styles.css?v=<hash of styles.css>
     pages.css                 ->  pages.css?v=<hash of pages.css>
 
+_headers caches /*.js on the same immutable year, so scripts are stamped the
+same way. rivers.js used to carry a hand-written "?v=2", which is exactly the
+pattern that shipped the stale FAQ stylesheet; it is now hashed like the rest.
+
 Run from the repo root (build-pages.py calls it automatically):
 
     python3 tools/stamp-assets.py
@@ -34,9 +38,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITES = [ROOT, ROOT / "care"]
 SHEETS = ("styles.css", "pages.css")
+SCRIPTS = ("rivers.js", "landing.js", "awv-worksheet.js", "awv-worksheet.css")
+ASSETS = SHEETS + SCRIPTS
 
-# href="<prefix>styles.css" optionally followed by ?v=...
-REF = re.compile(r'(href=")((?:\.\./)*)(styles\.css|pages\.css)(\?v=[^"]*)?(")')
+# href="<prefix>styles.css" / src="<prefix>landing.js", optionally with ?v=...
+_NAMES = "|".join(a.replace(".", r"\.") for a in ASSETS)
+REF = re.compile(r'((?:href|src)=")((?:\.\./)*)(' + _NAMES + r')(\?v=[^"]*)?(")')
 
 
 def digest(path: Path) -> str:
@@ -48,7 +55,7 @@ def main() -> int:
     hashes: dict[Path, dict[str, str]] = {}
     for site in SITES:
         hashes[site] = {}
-        for sheet in SHEETS:
+        for sheet in ASSETS:
             f = site / sheet
             if f.exists():
                 hashes[site][sheet] = digest(f)
@@ -79,7 +86,7 @@ def main() -> int:
     for site in SITES:
         label = site.name or "root"
         for sheet, h in hashes[site].items():
-            print(f"  {label:>5}/{sheet:<11} v={h}")
+            print(f"  {label:>5}/{sheet:<18} v={h}")
     print(f"\n  {changed} of {scanned} pages restamped")
 
     # Guard: nothing should still carry a hand-numbered version.
