@@ -589,7 +589,8 @@ def page_care_management() -> LandingPage:
          "reporting one bundled line.</p>"
          "<p>That is a real operational change and it is the single most common reason a health "
          "center calls us. We have written it up in full: "
-         '<a href="/resources/apcm-billing-fqhc-rhc">APCM billing at an FQHC or RHC</a>.</p>'
+         '<a href="/resources/g0511-sunset-rhc-fqhc-billing">G0511 is gone, what health '
+         'centers bill now</a>.</p>'
          + source_link("CMS Information for Rural Health Clinics, January 2026", CMS_RHC_MLN)),
 
         ("Do we need to buy software?",
@@ -849,8 +850,13 @@ def page_care_management() -> LandingPage:
                 "coded ones, that is a genuine operational change rather than a paperwork "
                 "tweak, and it arrived alongside the APCM codes. It is the single most common "
                 "reason a health center calls us.</p>\n"
-                '      <p>We have written the whole thing up: <a href="/resources/apcm-billing-'
-                'fqhc-rhc">APCM billing at an FQHC or RHC, G0556 to G0558</a>.</p>',
+                '      <p>We have written the whole thing up. The transition itself, the '
+                'replacement codes, the coinsurance, and the supervision rule that makes '
+                'remote nursing possible: '
+                '<a href="/resources/g0511-sunset-rhc-fqhc-billing">G0511 is gone, what '
+                'health centers bill now</a>. The APCM code detail on its own: '
+                '<a href="/resources/apcm-billing-fqhc-rhc">APCM billing at an FQHC or '
+                'RHC</a>.</p>',
                 wide=True,
             ),
             eyebrow="RHCs and FQHCs in 2026",

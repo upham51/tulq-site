@@ -1128,11 +1128,21 @@ a { color: inherit; text-decoration: none; }
 }
 .serve-card-link:hover { border-bottom-color: var(--teal-deep); }
 
+/* The grid is a hairline lattice: the 1px gaps show the container's
+   background as rules between cards. That means an unfilled cell is not
+   empty space, it is a visible blank panel. So the column count has to
+   match the card count rather than always being four. */
+.serve-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.serve-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
 @media (max-width: 1000px) {
-  .serve-grid { grid-template-columns: 1fr 1fr; }
+  .serve-grid,
+  .serve-grid--3 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
-  .serve-grid { grid-template-columns: 1fr; }
+  .serve-grid,
+  .serve-grid--3,
+  .serve-grid--2 { grid-template-columns: 1fr; }
 }
 
 /* ─────────────────────────────────────────────────────────────

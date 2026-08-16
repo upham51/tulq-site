@@ -688,6 +688,227 @@ def post_apcm() -> Page:
     )
 
 
+def post_g0511_sunset() -> Page:
+    """The G0511 sunset.
+
+    The Aug 2026 research names this the highest-value authority topic TULQ
+    has: it is fresh, genuinely confusing, under-covered by incumbents, and
+    it lands squarely on the rural and health-center buyer. It is written
+    from the January 2026 CMS RHC and FQHC booklets rather than from a
+    vendor summary of them.
+
+    It stays scoped to the *transition*: what replaced the bundle, what the
+    coinsurance and cost-report treatment now are, and what the supervision
+    rules allow. /resources/apcm-billing-fqhc-rhc owns the APCM code detail
+    and this links across to it rather than restating it.
+    """
+    body = """    <p>For years a rural health clinic or federally qualified health center that
+    did care-management work reported one bundled code, G0511, and received one
+    bundled payment for it. That code was discontinued, and beginning in 2026 those
+    organizations bill the individual care management codes at national non-facility
+    Physician Fee Schedule rates, the same way a fee-for-service practice does.</p>
+
+    <p>This is not a paperwork change. It changes what you report, how much you are
+    paid, what the patient owes, where the cost lands on your cost report, and how much
+    documentation you have to hold. It arrived at the same time as Advanced Primary Care
+    Management, which is why so many health centers are working out two things at
+    once.</p>
+
+    <h2>What actually replaced the bundle</h2>
+
+    <p>The single code became a table. CMS now lists these as the care coordination
+    services an RHC or FQHC may bill, each with its own code set and its own
+    documentation:</p>
+
+    <div class="table-scroll">
+      <table class="data">
+        <thead>
+          <tr><th>Service</th><th>Base codes</th><th>Add-on codes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Chronic care management (CCM)</td><td>99487, 99490, 99491</td><td>99437, 99439, 99489</td></tr>
+          <tr><td>Transitional care management (TCM)</td><td>99495, 99496</td><td>None</td></tr>
+          <tr><td>Principal care management (PCM)</td><td>99424, 99426</td><td>99425, 99427</td></tr>
+          <tr><td>Advanced primary care management (APCM)</td><td>G0556, G0557, G0558</td><td>G0568, G0569, G0570</td></tr>
+          <tr><td>Chronic pain management (CPM)</td><td>G3002</td><td>G3003</td></tr>
+          <tr><td>General behavioral health integration</td><td>99484, G0323</td><td>None</td></tr>
+          <tr><td>Psychiatric collaborative care (CoCM)</td><td>99492, 99493, G2214</td><td>99494</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Remote physiologic and therapeutic monitoring, community health integration, and
+    principal illness navigation sit in the same list. The practical consequence is that
+    one line on a claim became a decision about which service a given patient is
+    actually receiving this month, and that decision now has to be defensible.</p>
+
+    <h2>Four things that changed with it</h2>
+
+    <p><strong>You are paid the fee schedule rate, not a bundled one.</strong> CMS pays
+    care coordination services and their add-on codes at the national, non-facility
+    Physician Fee Schedule rate. For a health center that had grown used to one amount
+    regardless of intensity, this cuts both ways: a complex patient managed properly is
+    now worth materially more than the old bundle, and a thin month is worth less.</p>
+
+    <p><strong>The patient owes coinsurance, calculated a specific way.</strong> The 20
+    percent coinsurance is based on the lesser of the submitted charges or the
+    individual code's national non-facility rate. That is a detail worth getting right
+    before enrollment calls start, because a patient who is surprised by a statement
+    disenrolls, and a disenrolled patient is a program that quietly stops.</p>
+
+    <p><strong>The cost moves on your cost report.</strong> Care coordination costs are
+    reported in the non-reimbursable section, and CMS does not consider them under the
+    RHC all-inclusive rate or the FQHC prospective payment system. Administrative
+    activities such as transcription and translation do not belong in there.</p>
+
+    <p><strong>Nobody else can be billing the same period.</strong> An RHC or FQHC
+    cannot bill care coordination services if another practitioner or facility bills
+    them for that patient during the same period. Verification stops being a courtesy
+    and becomes a monthly operational step.</p>
+
+    <h2>The rule that makes outsourcing viable</h2>
+
+    <p>Two lines in the 2026 booklets matter more than any of the payment detail, and
+    they are easy to miss:</p>
+
+    <p>CMS does not require face-to-face services to bill RHC or FQHC care coordination,
+    and <strong>auxiliary personnel may provide them under general supervision.</strong>
+    General supervision, not direct. The billing practitioner directs the service and
+    remains responsible for it, but does not have to be physically present in the suite
+    while the work happens.</p>
+
+    <p>That is the legal basis on which a remote nurse can do this work at all. It is
+    also the sharpest contrast with the annual wellness visit, which requires
+    <em>direct</em> supervision, meaning the physician is in the office suite and
+    immediately available. Care management and the wellness visit are frequently sold
+    together and they do not sit under the same supervision rule. Anyone who tells you
+    otherwise has not read both.</p>
+
+    <h2>What to do about it</h2>
+
+    <p>The honest sequence for a health center that has not moved yet:</p>
+
+    <p><strong>Work out which service each patient is actually getting.</strong> Not
+    which code pays best. APCM and CCM cannot both be billed for the same patient in the
+    same month, and the choice turns on whether you already report quality measures,
+    because APCM carries a reporting obligation and CCM does not.</p>
+
+    <p><strong>Decide who is going to hold the time.</strong> The time-based codes need
+    tracked minutes with a date, a staff member, and what was done, with no carryover
+    between months. Insufficient time documentation is the most common denial in this
+    benefit. If the answer is a medical assistant doing it between patients, the program
+    will not survive review.</p>
+
+    <p><strong>Price the coinsurance conversation.</strong> Screen for qualified Medicare
+    beneficiary status before enrolling. Those patients owe nothing, and G0558 exists
+    precisely for them.</p>
+
+    <p><strong>Then decide whether to staff it or buy it.</strong> The arithmetic is
+    usually a labour question rather than a software one. At 200 enrolled patients,
+    twenty tracked minutes each is roughly 67 hours a month of licensed clinical time.</p>
+
+    <p>The APCM code detail, including what each of the three tiers pays and where the
+    24/7 access requirement fits, is covered separately in
+    <a href="/resources/apcm-billing-fqhc-rhc">APCM billing at an FQHC or RHC</a>. If you
+    are weighing running it in-house against outsourcing the clinical hours, that is
+    <a href="/services/care-management">the care management service</a>.</p>
+"""
+
+    qa = [
+        ("When exactly did G0511 go away?",
+         "<p>The bundled general care management code was discontinued as part of the "
+         "transition to individual code reporting, and the January 2026 CMS booklets for "
+         "rural health clinics and federally qualified health centers no longer list it. "
+         "Those booklets now enumerate the individual care coordination services and "
+         "their codes instead. Check the current booklet for your organization type "
+         "before assuming a code is still reportable.</p>"),
+
+        ("What do RHCs and FQHCs bill now instead?",
+         "<p>The individual care management codes: CCM, TCM, PCM, APCM, chronic pain "
+         "management, general behavioral health integration, psychiatric collaborative "
+         "care, and the remote monitoring family, each with its own base and add-on "
+         "codes. CMS pays them at the national, non-facility Physician Fee Schedule "
+         "rate.</p>"),
+
+        ("Can our nurses do this remotely?",
+         "<p>Yes, and this is the part most summaries skip. CMS does not require "
+         "face-to-face services for RHC or FQHC care coordination, and auxiliary "
+         "personnel may provide them under general supervision. General supervision "
+         "means the billing practitioner directs the service without needing to be "
+         "physically present while it happens. Note this is a different standard from "
+         "the annual wellness visit, which requires direct supervision.</p>"),
+
+        ("Does the patient get a bill now?",
+         "<p>For the time-based codes, yes. The 20 percent coinsurance is based on the "
+         "lesser of the submitted charges or the individual code's national non-facility "
+         "rate. Patients with qualified Medicare beneficiary status owe nothing, which is "
+         "what G0558 exists for. Screen for that status before enrolling and say the cost "
+         "out loud during the consent call.</p>"),
+
+        ("Where do the costs go on our cost report?",
+         "<p>In the non-reimbursable section. CMS does not consider care coordination "
+         "costs under the RHC all-inclusive rate or the FQHC prospective payment system. "
+         "Administrative activities such as transcription and translation should not be "
+         "included.</p>"),
+
+        ("Can we bill APCM and CCM for the same patient?",
+         "<p>Not in the same month. You choose one per patient per month, and only one "
+         "practitioner or facility may bill care coordination for that patient in that "
+         "period. The choice usually turns on quality reporting: APCM requires it, CCM "
+         "does not, so a health center already reporting has a much easier time with "
+         "APCM.</p>"),
+    ]
+
+    return _post(
+        slug="g0511-sunset-rhc-fqhc-billing",
+        title="G0511 Is Gone: RHC &amp; FQHC Care Management in 2026",
+        description=(
+            "G0511 is retired. How rural health clinics and FQHCs bill care management "
+            "in 2026: the replacement codes, coinsurance, cost report, and supervision."
+        ),
+        eyebrow="Reimbursement",
+        h1="G0511 is gone. <em>What health centers bill now.</em>",
+        deck=(
+            "The bundled care management code that rural health clinics and federally "
+            "qualified health centers reported for years is retired. Here is what "
+            "replaced it, and the four things that changed with it."
+        ),
+        body=body,
+        reviewed=True,
+        qa=qa,
+        sources=[
+            ("CMS, Information for Rural Health Clinics, MLN006398, January 2026.",
+             "https://www.cms.gov/files/document/mln006398-information-rural-health-clinics.pdf"),
+            ("CMS, Federally Qualified Health Center, MLN006397.",
+             "https://www.cms.gov/files/document/mln006397-federally-qualified-health-center.pdf"),
+            ("CMS, Care Management, Physician Fee Schedule.",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician/care-management"),
+            ("CMS, Advanced Primary Care Management services.",
+             "https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services"),
+            ("CMS, Chronic Care Management Services booklet, MLN909188.",
+             "https://www.cms.gov/files/document/chroniccaremanagement.pdf"),
+            ("CMS, Physician Fee Schedule lookup.",
+             "https://www.cms.gov/medicare/physician-fee-schedule/search"),
+            ("National Association of Rural Health Clinics.",
+             "https://narhc.org/"),
+        ],
+        disclaimer=(
+            "Written against the January 2026 CMS booklets and reviewed August 2026. "
+            "Payment rates are national averages adjusted by locality and updated each "
+            "January. Code sets and program requirements change. This is not billing or "
+            "compliance advice for your organization: confirm current codes, rates, and "
+            "documentation requirements with your MAC before billing."
+        ),
+        cta_title="Thinking about who runs it?",
+        cta_body=(
+            "TULQ supplies the licensed nurses who do care management work inside your "
+            "own record, under your supervising provider, with the documentation the "
+            "individual codes now require. You keep the billing and the patient "
+            "relationship."
+        ),
+    )
+
+
 def post_cah() -> Page:
     body = """    <p>Critical access hospitals operate under a designation designed to keep small
     rural facilities viable, and under conditions of participation that come with it.
@@ -808,6 +1029,7 @@ def posts() -> list[Page]:
         post_cahps(),
         post_hhvbp(),
         post_apcm(),
+        post_g0511_sunset(),
         post_cah(),
     ]
 
@@ -865,6 +1087,18 @@ def resources_index() -> Page:
         ("Reimbursement", "APCM billing at an FQHC or RHC",
          "G0556, G0557, G0558: what changed, who can bill, and where 24/7 access fits.",
          "/resources/apcm-billing-fqhc-rhc"),
+        ("Reimbursement", "G0511 is gone: what health centers bill now",
+         "The bundled code is retired. The replacement codes, the coinsurance, the cost "
+         "report, and the supervision rule that makes remote nursing possible.",
+         "/resources/g0511-sunset-rhc-fqhc-billing"),
+        ("Free tool", "AWV revenue gap calculator",
+         "Enter your Medicare panel and completion rate, see the wellness visit revenue "
+         "you are not billing. No signup.",
+         "/tools/awv-revenue-calculator"),
+        ("Free tool", "Annual wellness visit worksheet",
+         "A charting worksheet built to the elements at 42 CFR 410.15. Nothing you type "
+         "leaves your browser.",
+         "/tools/annual-wellness-visit-worksheet"),
     ])}
 
     <h2>By setting</h2>

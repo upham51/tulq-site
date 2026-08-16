@@ -216,7 +216,12 @@ def crumbs(trail: list[tuple[str, str]]) -> str:
 
 
 def serve_cards(cards: list[dict]) -> str:
-    """cards: {title, body, tag, href?, link_label?}"""
+    """cards: {title, body, tag, href?, link_label?}
+
+    The grid draws its rules as 1px gaps showing the container background,
+    so a column count that exceeds the card count renders as a blank panel
+    rather than as whitespace. The count modifier keeps them in step.
+    """
     out = []
     for i, c in enumerate(cards, start=1):
         link = ""
@@ -229,7 +234,8 @@ def serve_cards(cards: list[dict]) -> str:
         <p>{c["body"]}</p>
         <div class="serve-card-tag">{c["tag"]}</div>{link}
       </div>""")
-    return '    <div class="serve-grid">\n' + "\n".join(out) + "\n    </div>"
+    mod = f" serve-grid--{len(cards)}" if len(cards) in (2, 3) else ""
+    return f'    <div class="serve-grid{mod}">\n' + "\n".join(out) + "\n    </div>"
 
 
 def pillars(items: list[dict]) -> str:
