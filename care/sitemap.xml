@@ -115,6 +115,36 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tulqhealth.com/resources/g0511-sunset-rhc-fqhc-billing</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/resources/nurse-licensure-compact-states</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/resources/care-management-outsourcing-small-practices</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/resources/who-can-perform-annual-wellness-visit</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/resources/increase-awv-completion-rates</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tulqhealth.com/resources/critical-access-hospital-after-hours</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -140,6 +170,24 @@
   </url>
   <url>
     <loc>https://tulqhealth.com/compare/accessnurse-alternative</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/compare/chartspan-alternative</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/compare/signallamp-alternative</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tulqhealth.com/compare/thoroughcare-alternative</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -34,6 +34,32 @@ SITE = CARE
 
 
 # ══════════════════════════════════════════════════════════════════════
+
+def _also(intro: str) -> str:
+    """Cross-sell footer for the four triage segment pages.
+
+    These pages rank for triage queries and must keep doing so, so this is
+    deliberately a footer rather than body copy: it routes a reader who has
+    already decided to the other two service lines without diluting the
+    page's topic. Do not promote it up into the argument.
+    """
+    return f"""    <h2>What else we run for you</h2>
+
+    <p>{intro}</p>
+
+    {card_grid([
+        ("Care management", "CCM, APCM, PCM and TCM",
+         "Medicare pays every month for managing chronic patients between visits. Our nurses do the work inside your record and log the time that makes it billable.",
+         "/services/care-management"),
+        ("Wellness visits", "Medicare annual wellness visits",
+         "Compact-licensed RNs complete the visit by telephone and hand back finished documentation. Priced per completed visit.",
+         "/services/medicare-annual-wellness-visits"),
+        ("All three", "How the three fit together",
+         "The wellness visit enrolls, care management retains, and the after-hours line covers the night. Same nurses across all three.",
+         "/services/"),
+    ])}"""
+
+# ══════════════════════════════════════════════════════════════════════
 # PILLAR - Home health
 # (hospice is covered by /nurse-triage-for-hospice)
 # ══════════════════════════════════════════════════════════════════════
@@ -260,6 +286,10 @@ def pillar_home_health() -> Page:
 
     {faq_block(qa)}
 
+    {_also(
+        "Triage is where most agencies start with us. It is rarely where they stop, because the same nurses who take the 2 a.m. call are the ones who can run post-discharge coordination and the Medicare programmes your clinicians never have time to document."
+    )}
+
     {sources_block([
         ("CMS, expanded Home Health Value-Based Purchasing (HHVBP) model.",
              "https://www.cms.gov/priorities/innovation/innovation-models/expanded-home-health-value-based-purchasing-model"),
@@ -454,6 +484,10 @@ def pillar_health_centers() -> Page:
 
     {faq_block(qa)}
 
+    {_also(
+        "Health centres carry the same obligations as everyone else on a thinner budget, and since G0511 retired they bill care management code by code. The same nursing team can cover both the after-hours line and the programmes that now need documenting properly."
+    )}
+
     {sources_block([
         ("HRSA Health Center Program Compliance Manual, Chapter 7: after-hours coverage.",
              "https://bphc.hrsa.gov/compliance/compliance-manual/chapter7"),
@@ -637,6 +671,10 @@ def page_hospice() -> Page:
 
     {faq_block(qa, heading="What hospice administrators ask us first")}
 
+    {_also(
+        "Hospices come to us for the Condition of Participation. Agencies that also run a home health or palliative line usually find the same nurses can carry the post-discharge and chronic-care work their staff absorbs unpaid."
+    )}
+
     {sources_block([
         ("42 CFR &sect; 418.100(c), Medicare hospice Conditions of Participation.",
              "https://www.ecfr.gov/current/title-42/section-418.100"),
@@ -814,6 +852,10 @@ def page_rhc_cah() -> Page:
     ])}
 
     {faq_block(qa, heading="What clinic administrators ask us first")}
+
+    {_also(
+        "Rural clinics and critical access hospitals rarely have a spare nurse for anything. Since G0511 retired, the care management work also has to be documented code by code, which is the same staffing problem in a different month."
+    )}
 
     {sources_block([
         ("HRSA, <em>Health Center Program Compliance Manual</em>, Chapter 7: after-hours coverage.",

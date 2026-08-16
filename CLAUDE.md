@@ -185,7 +185,17 @@ These came out of the Aug 2026 dual-track keyword research and should be held to
   implying otherwise — the comparison pages depend on that credibility.
 - **Comparison pages name competitors factually**, describe them from their own
   public materials, and explicitly say when the reader should choose them
-  instead. Do not remove those sections.
+  instead. Do not remove those sections. There are now two competitive sets
+  under `/compare/`, and they take different evaluation questions
+  (`TRIAGE_QUESTIONS` and `CARE_QUESTIONS` in `content_care_resources.py`):
+  - Triage: IntellaTriage, Conduit Health Partners, AccessNurse.
+  - Care management: ChartSpan (full-service scale), Signallamp (the closest
+    analogue to our model; now part of Tellihealth), ThoroughCare (software,
+    not staffing, so the page resolves the category error first).
+
+  The Signallamp page turns on flat fee against revenue share. Keep that
+  argument factual: a revenue share is not unlawful, it is a different
+  compliance posture, and the page says so.
 
 ### One buyer segment, one page (tulqhealth.com)
 
@@ -225,6 +235,12 @@ Two free ungated tools feed the AWV and care management pages:
 `/tools/awv-revenue-calculator` and `/tools/annual-wellness-visit-worksheet`.
 They stay ungated on purpose: an email wall makes them uncrawlable and
 unlinkable, which is the whole value at DR 0.
+
+`/resources/` is organised into the same three tracks, and the four triage
+segment pages carry a cross-sell footer (`_also()` in `content_care.py`) that
+routes to the other two lines. That block is deliberately a footer, not body
+copy: those pages rank for triage queries and promoting it into the argument
+would dilute them.
 
 Note the RHC page covers **both** RHCs and CAHs, which is why `/for/health-centers`
 stops at FQHCs and links across rather than covering CAHs itself. Each page
