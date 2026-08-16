@@ -1209,19 +1209,25 @@ a { color: inherit; text-decoration: none; }
    Numbers — data block, dark
    ───────────────────────────────────────────────────────────── */
 
+/* Four columns, not six. Six 1180px-wide columns left each label about
+   twenty characters of measure, so every one of them wrapped into a tall
+   ragged stack and the row bottoms never lined up. Four gives the labels
+   a readable measure and the figures room to breathe. */
 .numbers {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   border-top: 1px dashed var(--rule-dark);
   border-bottom: 1px dashed var(--rule-dark);
 }
 .number {
-  padding: 56px 24px 56px;
+  padding: 56px 32px 56px;
   border-right: 1px dashed var(--rule-dark);
   display: flex; flex-direction: column; gap: 10px;
   position: relative;
 }
+.number:first-child { padding-left: 0; }
+.number:last-child { padding-right: 0; }
 .number:last-child { border-right: 0; }
 .number-value {
   font-family: var(--serif);
@@ -1264,14 +1270,20 @@ a { color: inherit; text-decoration: none; }
   margin-top: 32px;
 }
 @media (max-width: 1000px) {
-  .numbers { grid-template-columns: repeat(3, 1fr); }
-  .number:nth-child(3) { border-right: 0; }
-  .number:nth-child(-n+3) { border-bottom: 1px dashed var(--rule-dark); }
+  .numbers { grid-template-columns: 1fr 1fr; }
+  .number { padding: 40px 26px; }
+  .number:nth-child(2n) { border-right: 0; }
+  .number:nth-child(2n+1) { padding-left: 0; }
+  .number:nth-child(2n) { padding-right: 0; }
+  .number:nth-child(-n+2) { border-bottom: 1px dashed var(--rule-dark); }
 }
 @media (max-width: 600px) {
-  .numbers { grid-template-columns: 1fr 1fr; }
-  .number { border-right: 1px dashed var(--rule-dark); border-bottom: 1px dashed var(--rule-dark); padding: 36px 20px; }
-  .number:nth-child(2n) { border-right: 0; }
+  .numbers { grid-template-columns: 1fr; }
+  .number {
+    border-right: 0; border-bottom: 1px dashed var(--rule-dark);
+    padding: 34px 0;
+  }
+  .number:last-child { border-bottom: 0; }
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2884,65 +2896,98 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
 
 /* ── Value strip.
    Sits directly under the hero, on the same basalt, so it reads as the
-   last line of the hero rather than as a section of its own. This is the
-   move both ChartSpan and Signallamp open with: state the economics
-   before explaining the mechanics. Ours carries reimbursement and
-   workload figures rather than outcome claims, because TULQ is pre-launch
-   and has no outcomes to quote yet. Every figure here is cited in full
-   further down the page. ── */
+   last line of the hero rather than as a section of its own. It states
+   what changes before the page explains the mechanics.
+
+   Two rules govern it, and the first version broke both:
+   - Nothing here is boxed. The columns are separated by hairlines that
+     fade out at both ends, never by filled tiles. An earlier build faked
+     the dividers with a 1px grid gap over a lighter background, which
+     turned the padded inner into a visible grey rectangle floating on
+     the basalt with its own hard edges. If you need a divider, taper it.
+   - Only one line per column is mono. A mono uppercase caption directly
+     above AND below a 50px serif figure reads as terminal output, not as
+     a display figure. The eyebrow is mono; the unit under the figure is
+     sans, at low contrast, under a short amber rule.
+
+   It carries workload and posture, not rates: reimbursement figures live
+   on the service pages, where the reader has asked for them. ── */
 .value-strip {
-  background: var(--basalt);
-  border-top: 1px solid var(--rule-dark);
+  background:
+    radial-gradient(ellipse 72% 130% at 50% -8%, rgba(58,90,74,.26), transparent 66%),
+    var(--basalt);
   color: var(--fog);
   position: relative;
-  overflow: hidden;
 }
+/* Tapered hairline rather than a hard border, so the hero photo above
+   settles into the basalt instead of being cut off by a rule. */
 .value-strip::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 60% 140% at 50% 0%, rgba(58,90,74,.30), transparent 70%);
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--rule-dark) 22%, var(--rule-dark) 78%, transparent);
 }
 .value-strip-inner {
   position: relative; z-index: 1;
-  max-width: var(--max); margin: 0 auto; padding: 46px 32px 50px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-  background: var(--rule-dark-soft);
+  max-width: var(--max); margin: 0 auto; padding: 72px 32px 44px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
 }
+/* The gutter is capped at 38px so the longest figure ("Covered work")
+   still lands on one line in the middle column at 1180px. All three
+   figures must be single-line: one that wraps drops its unit and body
+   half a line below its neighbours' and the row loses its baseline. */
 .value-item {
-  background: var(--basalt);
-  padding: 4px 34px;
+  position: relative;
+  padding: 0 clamp(20px, 3vw, 38px);
+  display: flex; flex-direction: column;
 }
 .value-item:first-child { padding-left: 0; }
-.value-item:last-child { padding-right: 0; }
-.value-eyebrow {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--river-tolt); margin-bottom: 14px;
+.value-item:last-child  { padding-right: 0; }
+.value-item + .value-item::before {
+  content: ""; position: absolute; left: 0; top: 2px; bottom: 2px; width: 1px;
+  background: linear-gradient(180deg, transparent, var(--rule-dark) 16%, var(--rule-dark) 84%, transparent);
 }
+.value-eyebrow {
+  display: flex; align-items: baseline; gap: 11px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--river-tolt); margin-bottom: 20px;
+}
+.value-eyebrow span { color: var(--amber); opacity: .8; }
 .value-figure {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(34px, 4vw, 46px); line-height: 1;
-  letter-spacing: -.02em; color: var(--fog); margin-bottom: 4px;
+  font-size: clamp(38px, 4.2vw, 52px); line-height: 1.02;
+  letter-spacing: -.02em; color: var(--fog);
 }
 .value-figure em { font-style: italic; color: var(--amber); }
-.value-unit {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(232,228,216,.5); margin-bottom: 12px;
+.value-figure::after {
+  content: ""; display: block; width: 30px; height: 1px;
+  background: var(--amber); opacity: .5; margin-top: 20px;
 }
-.value-body { font-size: 14.5px; line-height: 1.6; color: rgba(232,228,216,.72); margin: 0; }
+.value-unit {
+  font-size: 12.5px; letter-spacing: .03em; line-height: 1.5;
+  color: rgba(232,228,216,.55); margin: 13px 0 15px;
+}
+.value-body { font-size: 15px; line-height: 1.68; color: rgba(232,228,216,.76); margin: 0; }
 .value-strip-foot {
   position: relative; z-index: 1;
   max-width: var(--max); margin: 0 auto;
-  padding: 0 32px 40px;
+  padding: 24px 32px 58px;
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
-  color: rgba(232,228,216,.4); line-height: 1.7;
+  color: rgba(232,228,216,.36); line-height: 1.7;
+}
+.value-strip-foot::before {
+  content: ""; display: block; height: 1px; margin-bottom: 24px;
+  background: linear-gradient(90deg, transparent, var(--rule-dark-soft) 8%, var(--rule-dark-soft) 92%, transparent);
 }
 
 @media (max-width: 900px) {
-  .value-strip-inner { grid-template-columns: 1fr; gap: 0; background: none; }
-  .value-item {
-    padding: 26px 0; border-bottom: 1px solid var(--rule-dark-soft);
-  }
+  .value-strip-inner { grid-template-columns: 1fr; padding: 52px 24px 30px; }
+  .value-item { padding: 34px 0; }
   .value-item:first-child { padding-top: 0; }
-  .value-item:last-child { padding-bottom: 0; border-bottom: 0; }
+  .value-item + .value-item::before {
+    left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 1px;
+    background: linear-gradient(90deg, var(--rule-dark), transparent 72%);
+  }
+  .value-strip-foot { padding: 24px 24px 46px; }
 }
 
 /* ── Service routes: the three "how it works" links under the triage
