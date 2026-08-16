@@ -1,0 +1,129 @@
+<!-- Body markup for the AWV worksheet tool, extracted from the standalone
+     build. The tool's own <header> is removed: the landing page hero
+     supplies the H1. Behaviour is care/awv-worksheet.js; styles are
+     care/awv-worksheet.css, scoped under .awv-tool. -->
+<div class="shell">
+
+<div class="bar">
+  <div><strong>Session</strong> <span id="sessStatus">No patient information entered.</span> Nothing is sent anywhere. Only your own details are saved on this device.</div>
+  <button id="btnEndSession">End session and wipe</button>
+</div>
+
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="nurse">Worksheet</button>
+  <button role="tab" aria-selected="false" data-tab="review">Physician review</button>
+  <button role="tab" aria-selected="false" data-tab="why">Why it is built this way</button>
+</div>
+
+<div id="tab-nurse">
+<div class="grid">
+<div>
+
+<div class="card">
+  <h2>Setup</h2>
+  <p class="sub" style="margin:4px 0 10px">Saved on this device. Operator details only, never patient information.</p>
+  <div class="row">
+    <div><label class="fl" for="nurse">Nurse name and license</label><input type="text" id="nurse" data-profile placeholder="Dana Ruiz, RN, license 000000"></div>
+    <div><label class="fl" for="physician">Supervising physician, MD or DO</label><input type="text" id="physician" data-profile></div>
+  </div>
+  <div class="row">
+    <div><label class="fl" for="practice">Practice</label><input type="text" id="practice" data-profile></div>
+    <div><label class="fl" for="supMethod">Supervision method</label>
+      <select id="supMethod" data-profile><option value="">Select</option>
+        <option>Physician present in the office suite</option>
+        <option>Real time two way audio and video link, physician immediately available</option></select></div>
+  </div>
+  <div class="btns"><button id="btnSaveProfile">Save for next time</button><button id="btnForgetProfile">Forget</button></div>
+  <div class="saved" id="profileStatus"></div>
+</div>
+
+<div class="card">
+  <h2>Encounter</h2>
+  <div class="row3" style="margin-top:10px">
+    <div><label class="fl" for="ptName">Patient name</label><input type="text" id="ptName"></div>
+    <div><label class="fl" for="ptDob">Date of birth</label><input type="date" id="ptDob"></div>
+    <div><label class="fl" for="mrn">Chart number</label><input type="text" id="mrn"></div>
+  </div>
+  <div class="row3">
+    <div><label class="fl" for="dos">Date of service</label><div class="inline"><input type="date" id="dos"><button id="btnToday">Today</button></div></div>
+    <div><label class="fl" for="vtype">Visit type</label><select id="vtype"><option value="subsequent" selected>Subsequent, G0439</option><option value="initial">Initial, G0438</option></select></div>
+    <div><label class="fl" for="mod">Modality</label><select id="mod"><option selected>audio only</option><option>video</option><option>in person</option></select></div>
+  </div>
+  <div class="row3">
+    <div><label class="fl" for="ptLocation">Patient location</label><input type="text" id="ptLocation" placeholder="City, state"></div>
+    <div><label class="fl" for="others">Others present</label><input type="text" id="others" placeholder="None"></div>
+    <div><label class="fl" for="payer">Payer context</label><select id="payer"><option value="ffs">Traditional Medicare</option><option value="ma">Medicare Advantage</option><option value="vbc">ACO or value based</option></select></div>
+  </div>
+  <div><label class="fl" for="eligNote">Eligibility check</label><input type="text" id="eligNote" placeholder="Last G0439 12 May 2025, eligible 1 May 2026"></div>
+  <div id="grp-consent" style="margin-top:12px"></div>
+</div>
+
+<div class="card">
+  <h2>Prefill from the chart</h2>
+  <p class="sub" style="margin:4px 0 8px">Paste last year's plan, the problem list, the medication list, and the specialist list. The worksheet preselects everything it recognises so the call becomes a confirmation pass. Four of the nine required elements are defined in the regulation as updates to what already exists, so this is the intended workflow rather than a shortcut.</p>
+  <textarea id="prefill" style="min-height:90px" placeholder="Paste chart summary here"></textarea>
+  <div class="btns"><button class="primary" id="btnPrefill">Apply prefill</button><button id="btnClearPrefill">Clear</button><span class="saved" id="prefillStatus"></span></div>
+</div>
+
+<div id="formHost"></div>
+
+</div>
+
+<aside>
+  <div class="card">
+    <h2>Required elements</h2>
+    <p class="saved" id="setLabel"></p>
+    <div class="meter"><ol id="checklist"></ol></div>
+  </div>
+  <div class="card">
+    <h2>Note</h2>
+    <textarea id="noteOut" spellcheck="false" aria-label="Generated visit note"></textarea>
+    <div class="btns">
+      <button class="primary" id="btnCopy">Copy note</button>
+      <button id="btnWord">Word file</button>
+      <button id="btnPrint">Print</button>
+    </div>
+    <p class="notice">Nothing here is saved or transmitted. Paste into the chart, then route for physician attestation. Delete any downloaded file once it is pasted.</p>
+  </div>
+</aside>
+</div>
+</div>
+
+<div id="tab-review" hidden>
+  <div class="card">
+    <h2>Physician review sheet</h2>
+    <p class="sub">Produced by fixed rules from what was recorded, with the triggering entry shown. Nothing here is a diagnosis and nothing has been coded. Patient reported information never supports a diagnosis code on its own.</p>
+    <p class="sub">Fastest route: review it verbally with the physician on the supervision link at the end of the visit. Otherwise copy it into the practice's own secure message or task. Not by personal email, text, or consumer file sharing.</p>
+    <div class="btns" style="margin-bottom:12px">
+      <button class="primary" id="btnRunFlags">Generate review sheet</button>
+      <button id="btnCopyFlags">Copy review sheet</button>
+      <button id="btnCopyDecisions">Copy decisions only</button>
+    </div>
+    <div id="alertsOut"></div>
+    <div id="flagsOut"><p class="empty">Complete the worksheet, then generate.</p></div>
+  </div>
+  <div class="card">
+    <h2>Problem list corroboration</h2>
+    <p class="sub" style="margin:4px 0 8px">Conditions on the chart checked against what was recorded today, in both directions.</p>
+    <textarea id="problemList" placeholder="Paste the active problem list, one per line"></textarea>
+    <div id="corrobOut" style="margin-top:10px"><p class="empty">Enter the problem list, then generate.</p></div>
+  </div>
+  <div class="card">
+    <h2>Programs this patient may be a candidate for</h2>
+    <p class="sub" style="margin:4px 0 8px">Candidacy only. Requires clinical judgment, patient agreement, and in most cases documented consent and an initiating visit.</p>
+    <div id="programsOut"><p class="empty">Complete the worksheet, then generate.</p></div>
+  </div>
+</div>
+
+<div id="tab-why" hidden>
+  <div class="card rationale">
+    <h2>Why it is built this way</h2>
+    <p style="margin-top:10px">This worksheet follows 42 CFR 410.15 rather than a vendor checklist. The regulation defines the first wellness visit and the subsequent wellness visit as two separate services with two separate element lists, and the subsequent list is materially shorter: it requires an updated health risk assessment, an update of medical and family history, an update of the providers and suppliers list, measurement of weight or waist circumference and blood pressure, detection of cognitive impairment, an update to the written screening schedule and risk factor list, personalized health advice and referral, review of any current opioid prescriptions, and screening for potential substance use disorders. Advance care planning and the physical activity and nutrition risk assessment are discretionary. Height and body mass index, the depression screening instrument, and the separate functional ability and safety review belong to the first visit only.</p>
+    <p>The content of those first visit elements does not disappear, it moves. The regulation requires the health risk assessment itself to address psychosocial risks including depression and loneliness, behavioral risks including tobacco, alcohol, and home safety, and both activities of daily living and instrumental activities of daily living. The assessment may be completed by the patient before the encounter and takes no more than twenty minutes. Collecting that content on a form the patient fills in advance, then confirming and following up on what it flags, satisfies the element as fully as a cold interview and removes roughly fifteen minutes from the call.</p>
+    <p>Four required elements are defined as updates to something that already exists, which is why the default interaction is confirmation rather than interrogation. Detection of cognitive impairment is defined as assessment by direct observation with due consideration of patient report and concerns raised by family, friends, or caretakers, so a recorded observation satisfies it and a standardized instrument is optional. The opioid review applies only where the patient is determined to have a current prescription, which comes from the chart rather than the patient.</p>
+    <p>Blood pressure is named in both element lists and has no alternative offered, unlike weight, which may be substituted with waist circumference. This worksheet therefore treats it as a hard state with three outcomes rather than a text field, and it never lets a previously recorded value appear as though it were taken today. Where no value can be obtained, the visit is routed to the physician as incomplete rather than billed on a gap, because that decision belongs to the practice and not to a nurse at the end of a call.</p>
+    <p>The nurse gathers and documents. The nurse does not diagnose, does not interpret a screening result for the patient, and does not decide what a symptom means. Findings route to the supervising physician in a separate layer the nurse does not see during the visit, each carrying the entry that produced it, and that layer works in both directions so conditions on the chart that today's conversation did not corroborate are surfaced alongside new findings. Nothing in the clinical workflow references payment, and no nurse's compensation varies with what is recorded.</p>
+  </div>
+</div>
+
+</div>

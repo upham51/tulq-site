@@ -98,21 +98,35 @@ CARE = Site(
     domain="tulqhealth.com",
     out_dir=ROOT / "care",
     mission=(
-        "A 24/7 licensed-RN nurse triage line for the health centers, hospices, "
-        "home health agencies, and hospitals required to have one."
+        "Licensed registered nurses who run your after-hours triage line, your "
+        "Medicare care management program, and your annual wellness visits."
     ),
-    # Four buyer segments, four pages, no two competing for the same query.
-    # /nurse-triage-for-hospice and /nurse-triage-for-rural-health-clinics are
-    # hand-written (PR #88); the other two are generated here.
-    # Destinations only — see the note on TRIBAL.nav. The four segment
-    # pages are reached from the homepage "Who we serve" cards and the
-    # footer rather than from the bar.
+    # Three service lines, three money pages, one hub. The Aug 2026 keyword
+    # research is explicit that these need separate URLs: the buyers differ,
+    # the SERPs differ, and the keyword sets barely overlap. See the module
+    # docstring in content_care_services.py.
+    #
+    # Under the triage service sit four buyer-segment pages, no two competing
+    # for the same query. /nurse-triage-for-hospice and
+    # /nurse-triage-for-rural-health-clinics began hand-written in PR #88.
+    #
+    # Destinations only — see the note on TRIBAL.nav. Adding Services meant
+    # something had to leave the bar to keep it at three; "Our story" went,
+    # since it already sits in the footer's Company column and is the least
+    # commercial of the four.
     nav=(
+        ("Services", "/services/"),
         ("Compare", "/compare/"),
         ("Resources", "/resources/"),
-        ("Our story", "/story"),
     ),
     footer_cols=(
+        ("Services", (
+            ("After-hours nurse triage", "/services/after-hours-nurse-triage"),
+            ("Care management", "/services/care-management"),
+            ("Annual wellness visits", "/services/medicare-annual-wellness-visits"),
+            ("AWV revenue calculator", "/tools/awv-revenue-calculator"),
+            ("AWV worksheet", "/tools/annual-wellness-visit-worksheet"),
+        )),
         ("Who we serve", (
             ("Hospice", "/nurse-triage-for-hospice"),
             ("Home health", "/for/home-health"),
@@ -121,7 +135,7 @@ CARE = Site(
             ("Compare providers", "/compare/"),
         )),
         ("Company", (
-            ("The line", "/#how"),
+            ("All services", "/services/"),
             ("Leadership", "/#leadership"),
             ("Our story", "/story"),
             ("Resources", "/resources/"),
@@ -135,8 +149,8 @@ CARE = Site(
     ),
     legal=(
         "© 2026 TULQ LLC",
-        "24/7 Licensed-RN Nurse Triage",
-        "Schmitt-Thompson Protocols",
+        "Nurse Triage · Care Management · Wellness Visits",
+        "Licensed RNs · Schmitt-Thompson Protocols",
     ),
 )
 

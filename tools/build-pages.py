@@ -21,9 +21,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import content_care  # noqa: E402
 import content_care_resources  # noqa: E402
+import content_care_services  # noqa: E402
+import content_care_tools  # noqa: E402
 import content_tribal  # noqa: E402
 import content_tribal_areas  # noqa: E402
 import content_tribal_resources  # noqa: E402
+import landing  # noqa: E402
 from pagekit import CARE, ROOT, TRIBAL, Page, write  # noqa: E402
 
 TODAY = date.today().isoformat()
@@ -48,8 +51,18 @@ STATIC = {
 }
 
 
-def collect() -> list[Page]:
-    pages: list[Page] = []
+def collect() -> list:
+    """Every generated page on both sites.
+
+    Two shapes live in this list. pagekit.Page renders the narrow article
+    column on pages.css, which is right for resource posts and segment pages.
+    landing.LandingPage renders the homepage's full-bleed cream and basalt
+    sections on styles.css, which is what the service, hub, and tool pages
+    use. They share enough of an interface (site, slug, priority,
+    index_in_sitemap) that the sitemap treats them identically; only the
+    writer differs, dispatched in main().
+    """
+    pages: list = []
 
     # tulq.health - tribal / IHS track
     pages.append(content_tribal.pillar_tribal_ihs())
@@ -62,6 +75,10 @@ def collect() -> list[Page]:
     pages.append(content_tribal_resources.compare_tribal())
 
     # tulqhealth.com - mainstream track
+    # Services hub and the three money pages first: they are the top of the
+    # internal-link model and everything below routes up into them.
+    pages.extend(content_care_services.pages())
+    pages.extend(content_care_tools.pages())
     pages.append(content_care.page_hospice())
     pages.append(content_care.pillar_home_health())
     pages.append(content_care.page_rhc_cah())
@@ -122,7 +139,7 @@ def main() -> int:
 
     by_site: dict[str, int] = {}
     for page in pages:
-        out = write(page)
+        out = landing.write(page) if isinstance(page, landing.LandingPage) else write(page)
         by_site[page.site.key] = by_site.get(page.site.key, 0) + 1
         print(f"  {out.relative_to(ROOT)}")
 

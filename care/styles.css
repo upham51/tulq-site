@@ -1735,7 +1735,9 @@ a { color: inherit; text-decoration: none; }
 
 .site-footer-nav {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* auto-fit rather than a hard 3, so the footer absorbed a fourth column
+     when the services hub was added without needing a breakpoint rewrite */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 40px;
   padding-top: 8px;
 }
@@ -2581,3 +2583,290 @@ a.faq-source:hover::after { transform: translate(2px, -2px); }
 }
 .serve-routes-head h3 { margin-bottom: 14px; }
 .serve-routes-head p { max-width: 620px; }
+
+
+/* ═════════════════════════════════════════════════════════════
+   LANDING PAGES
+   Components used only by the homepage-styled service, hub, and
+   tool pages rendered from tools/landing.py. Everything above is
+   shared with index.html; everything below is additive, namespaced
+   .lp-*, and safe to read as "new since the care-management build".
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Skip link. index.html has no skip link of its own, so this arrived
+   with the landing pages; without it the anchor renders as visible text
+   in the top-left corner of every page on this stylesheet. ── */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--basalt); color: var(--fog);
+  padding: 12px 20px; border-radius: 0 0 10px 0;
+  font-size: 14px; font-weight: 500;
+}
+.skip-link:focus { left: 0; color: var(--fog); }
+
+/* ── Hero variant: a money page starts its argument sooner than
+   the homepage does, so the hero is 72vh rather than a full 100. ── */
+.hero--page { min-height: 72vh; }
+.hero--page .hero-inner { padding-top: 148px; padding-bottom: 88px; }
+.hero--page .hero-photo--forest { opacity: 0.18; }
+.hero--page h1 { font-size: clamp(38px, 5.6vw, 68px); }
+.hero-eyebrow { margin-bottom: 26px; }
+
+@media (max-width: 760px) {
+  .hero--page { min-height: 0; }
+  .hero--page .hero-inner { padding-top: 118px; padding-bottom: 64px; }
+}
+
+/* ── Breadcrumbs, sitting on the cream directly below the hero ── */
+.lp-crumbs {
+  background: var(--cream);
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+}
+.lp-crumbs .container { display: flex; flex-wrap: wrap; gap: 9px; padding-top: 16px; padding-bottom: 16px; }
+.lp-crumbs a { color: var(--ink-soft); border-bottom: 1px solid transparent; }
+.lp-crumbs a:hover { color: var(--teal-deep); border-bottom-color: var(--teal-wash); }
+.lp-crumbs .sep { color: var(--ink-mute); opacity: .55; }
+.lp-crumbs [aria-current="page"] { color: var(--ink); }
+
+/* ── Prose block, for the sections that are genuinely an argument
+   rather than a grid of cards. ── */
+.lp-prose { max-width: var(--max-prose); }
+.lp-prose--wide { max-width: 920px; }
+.lp-prose p { font-size: 17.5px; line-height: 1.72; color: var(--ink-soft); margin: 0 0 20px; }
+.lp-prose p:last-child { margin-bottom: 0; }
+.lp-prose strong { color: var(--ink); font-weight: 600; }
+.lp-prose em { font-style: italic; color: var(--teal-deep); }
+.lp-prose h3 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 27px; line-height: 1.2; color: var(--ink);
+  margin: 40px 0 14px; letter-spacing: -.01em;
+}
+.lp-prose a:not(.btn) { color: var(--teal-deep); border-bottom: 1px solid var(--teal-wash); }
+.lp-prose a:not(.btn):hover { border-bottom-color: var(--teal-deep); }
+.lp-prose ul { margin: 0 0 20px; padding-left: 22px; }
+.lp-prose li { font-size: 17px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 9px; }
+
+.section-dark .lp-prose p,
+.section-dark .lp-prose li { color: rgba(232, 228, 216, .72); }
+.section-dark .lp-prose strong { color: var(--fog); }
+.section-dark .lp-prose em { color: var(--amber); }
+.section-dark .lp-prose h3 { color: var(--fog); }
+.section-dark .lp-prose a:not(.btn) { color: var(--river-tolt); border-bottom-color: rgba(168,200,196,.4); }
+.section-dark .lp-prose a:not(.btn):hover { border-bottom-color: var(--river-tolt); }
+
+/* ── Two facing columns: what they sell / what we sell ── */
+.lp-split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.lp-col {
+  background: var(--cream-card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 32px 34px;
+  box-shadow: var(--shadow-sm);
+}
+.lp-col-label {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-mute);
+  padding-bottom: 12px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.lp-col p { font-size: 16px; line-height: 1.68; color: var(--ink-soft); margin: 0 0 15px; }
+.lp-col p:last-child { margin-bottom: 0; }
+.lp-col strong { color: var(--ink); font-weight: 600; }
+.lp-col--lit { border-color: rgba(15, 95, 83, .32); background: #fff; }
+.lp-col--lit .lp-col-label { color: var(--teal-deep); border-bottom-color: rgba(15,95,83,.22); }
+
+.section-dark .lp-col {
+  background: rgba(255,255,255,.035);
+  border-color: var(--rule-dark);
+  box-shadow: none;
+}
+.section-dark .lp-col p { color: rgba(232,228,216,.72); }
+.section-dark .lp-col strong { color: var(--fog); }
+.section-dark .lp-col-label { color: rgba(232,228,216,.5); border-bottom-color: var(--rule-dark); }
+.section-dark .lp-col--lit { border-color: rgba(168,200,196,.34); background: rgba(255,255,255,.06); }
+.section-dark .lp-col--lit .lp-col-label { color: var(--river-tolt); }
+
+@media (max-width: 860px) { .lp-split { grid-template-columns: 1fr; } }
+
+/* ── Comparison table. Collapses to stacked cards on a phone, with
+   the column header restored from data-l so a cell never loses
+   which option it belongs to. ── */
+.lp-table-wrap { max-width: 980px; }
+.lp-table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.lp-table-caption {
+  caption-side: top; text-align: left;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-mute); padding-bottom: 16px;
+}
+.lp-table th {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--ink-mute); font-weight: 500;
+  text-align: left; padding: 0 16px 13px; border-bottom: 1px solid var(--rule);
+}
+.lp-table td {
+  padding: 17px 16px; vertical-align: top;
+  border-bottom: 1px solid var(--rule-soft);
+  color: var(--ink-soft); line-height: 1.6;
+}
+.lp-table-key { color: var(--ink); font-weight: 600; width: 26%; }
+.lp-table-foot { font-size: 14px; color: var(--ink-mute); margin: 18px 0 0; line-height: 1.6; max-width: 70ch; }
+
+.section-dark .lp-table th { color: rgba(232,228,216,.5); border-bottom-color: var(--rule-dark); }
+.section-dark .lp-table td { color: rgba(232,228,216,.72); border-bottom-color: var(--rule-dark-soft); }
+.section-dark .lp-table-key { color: var(--fog); }
+.section-dark .lp-table-caption,
+.section-dark .lp-table-foot { color: rgba(232,228,216,.5); }
+
+@media (max-width: 700px) {
+  .lp-table, .lp-table tbody, .lp-table tr, .lp-table td { display: block; width: 100%; }
+  .lp-table thead { display: none; }
+  .lp-table tr {
+    border: 1px solid var(--rule); border-radius: 4px;
+    margin-bottom: 14px; padding: 6px 0; background: var(--cream-card);
+  }
+  .lp-table td { border: 0; padding: 10px 18px; }
+  .lp-table-key { width: auto; font-size: 17px; padding-top: 16px; }
+  .lp-table td[data-l]::before {
+    content: attr(data-l); display: block;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px;
+  }
+  .section-dark .lp-table tr { background: rgba(255,255,255,.035); border-color: var(--rule-dark); }
+  .section-dark .lp-table td[data-l]::before { color: rgba(232,228,216,.45); }
+}
+
+/* ── Requirement ledger: the list of program obligations with an
+   explicit owner on each row. The badge is the whole point of the
+   component, so it never wraps away from its row. ── */
+.lp-ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.lp-ledger-group {
+  background: var(--cream-card); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 30px 32px; box-shadow: var(--shadow-sm);
+}
+.lp-ledger-head {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-mute);
+  padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+}
+.lp-ledger-note { font-size: 14px; color: var(--ink-mute); margin: 12px 0 0; line-height: 1.55; }
+.lp-ledger-list { list-style: none; margin: 18px 0 0; padding: 0; }
+.lp-ledger-list li {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  gap: 10px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--rule-soft);
+  font-size: 15.5px; line-height: 1.55; color: var(--ink-soft);
+}
+.lp-ledger-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.lp-ledger-n { font-family: var(--mono); font-size: 11px; color: var(--ink-mute); letter-spacing: .06em; }
+.lp-ledger-t strong { color: var(--ink); font-weight: 600; }
+.lp-own {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .12em;
+  text-transform: uppercase; padding: 4px 9px; border-radius: 3px;
+  white-space: nowrap; align-self: center;
+}
+.lp-own--t { background: var(--teal-tint); color: var(--teal-deep); border: 1px solid rgba(15,95,83,.26); }
+.lp-own--y { background: var(--amber-soft); color: #9a5a22; border: 1px solid rgba(217,138,74,.32); }
+
+.section-dark .lp-ledger-group { background: rgba(255,255,255,.035); border-color: var(--rule-dark); box-shadow: none; }
+.section-dark .lp-ledger-head { color: rgba(232,228,216,.5); border-bottom-color: var(--rule-dark); }
+.section-dark .lp-ledger-list li { color: rgba(232,228,216,.72); border-bottom-color: var(--rule-dark-soft); }
+.section-dark .lp-ledger-t strong { color: var(--fog); }
+.section-dark .lp-ledger-n,
+.section-dark .lp-ledger-note { color: rgba(232,228,216,.45); }
+.section-dark .lp-own--t { background: rgba(168,200,196,.14); color: var(--river-tolt); border-color: rgba(168,200,196,.3); }
+.section-dark .lp-own--y { background: rgba(217,138,74,.16); color: var(--amber); border-color: rgba(217,138,74,.34); }
+
+@media (max-width: 860px) { .lp-ledger { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .lp-ledger-list li { grid-template-columns: 26px 1fr; }
+  .lp-own { grid-column: 2; justify-self: start; margin-top: 6px; }
+}
+
+/* ── Inset note: the caution that keeps a claim honest. ── */
+.lp-note {
+  display: flex; gap: 15px; align-items: flex-start;
+  max-width: 860px; margin-top: 26px;
+  padding: 20px 24px; border-radius: 4px;
+  font-size: 15.5px; line-height: 1.65;
+}
+.lp-note--caution { background: var(--amber-soft); border: 1px solid rgba(217,138,74,.3); color: #6d4118; }
+.lp-note--info    { background: var(--teal-tint);  border: 1px solid rgba(15,95,83,.24);  color: #14453d; }
+.lp-note strong { font-weight: 600; }
+.lp-note p { margin: 0 0 12px; }
+.lp-note p:last-child { margin-bottom: 0; }
+.lp-note a { border-bottom: 1px solid currentColor; }
+.lp-note-mark {
+  flex: 0 0 21px; height: 21px; border-radius: 50%;
+  display: grid; place-items: center; margin-top: 1px;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+}
+.lp-note--caution .lp-note-mark { background: var(--amber); color: #fff; }
+.lp-note--info .lp-note-mark { background: var(--teal-deep); color: #fff; }
+
+.section-dark .lp-note--caution { background: rgba(217,138,74,.14); border-color: rgba(217,138,74,.32); color: rgba(247,225,205,.9); }
+.section-dark .lp-note--info { background: rgba(168,200,196,.1); border-color: rgba(168,200,196,.26); color: rgba(232,228,216,.82); }
+
+/* ── Sources list. Every cited figure on these pages is a link. ── */
+.lp-sources { max-width: 860px; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--rule); }
+.lp-sources-head {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px;
+}
+.lp-sources ul { list-style: none; margin: 0; padding: 0; }
+.lp-sources li { margin-bottom: 9px; font-size: 14.5px; line-height: 1.55; }
+.lp-sources a { color: var(--teal-deep); border-bottom: 1px solid var(--teal-wash); }
+.lp-sources a:hover { border-bottom-color: var(--teal-deep); }
+.lp-sources-note { font-size: 13.5px; color: var(--ink-mute); margin: 16px 0 0; line-height: 1.6; }
+
+.section-dark .lp-sources { border-top-color: var(--rule-dark); }
+.section-dark .lp-sources-head,
+.section-dark .lp-sources-note { color: rgba(232,228,216,.5); }
+.section-dark .lp-sources a { color: var(--river-tolt); border-bottom-color: rgba(168,200,196,.4); }
+
+
+/* ── Legibility over the scene photographs.
+   The dark bands here run much taller than the homepage's, so a
+   cover-fitted scene photo scales up behind them and a card at 3.5%
+   white stops holding its text. These get a real ground plus a blur,
+   which keeps the photograph readable around the cards without letting
+   it through them. ── */
+.section-dark .lp-col,
+.section-dark .lp-ledger-group,
+.section-dark .calc-panel,
+.section-dark .calc-stat {
+  background: rgba(22, 31, 33, .74);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+.section-dark .lp-col--lit { background: rgba(28, 42, 41, .78); }
+.section-dark .calc-headline {
+  background:
+    linear-gradient(165deg, rgba(217,138,74,.2), rgba(22,31,33,.72) 68%),
+    rgba(22, 31, 33, .7);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+.section-dark .lp-table-wrap {
+  background: rgba(22, 31, 33, .74);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 1px solid var(--rule-dark);
+  border-radius: 4px;
+  padding: 28px 30px;
+}
+
+/* The closing group of a ledger is the one that matters most, and it is
+   usually the longest. Let it take the full width rather than being
+   squeezed into one column with dead space beside it. */
+.lp-ledger-group--wide { grid-column: 1 / -1; }
+.lp-ledger-group--wide .lp-ledger-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px;
+}
+@media (max-width: 860px) {
+  .lp-ledger-group--wide .lp-ledger-list { grid-template-columns: 1fr; }
+}
