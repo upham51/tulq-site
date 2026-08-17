@@ -124,6 +124,7 @@ CARE = Site(
             ("After-hours nurse triage", "/services/after-hours-nurse-triage"),
             ("Care management", "/services/care-management"),
             ("Annual wellness visits", "/services/medicare-annual-wellness-visits"),
+            ("How wellness visits get paid", "/awv"),
             ("AWV revenue calculator", "/tools/awv-revenue-calculator"),
             ("AWV worksheet", "/tools/annual-wellness-visit-worksheet"),
         )),

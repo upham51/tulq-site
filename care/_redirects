@@ -2,3 +2,7 @@
 # Pages already auto-serves /story for /story.html and 308-redirects /story.html → /story,
 # so /story → /story.html rewrites cause an infinite loop. Only add non-conflicting aliases here.
 /our-story  /story  301
+
+# The wellness-visit explainer lives at /awv, the correct acronym and the one
+# the rest of the repo already uses. /avw is the transposition people type.
+/avw        /awv    301

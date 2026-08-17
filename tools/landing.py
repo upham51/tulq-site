@@ -435,13 +435,21 @@ def section_links(items: list[tuple[str, str]]) -> str:
 
 
 def contact_close(title: str, deck: str, *, cap_title: str, cap_body: str,
-                  eyebrow: str = "Next step") -> str:
+                  eyebrow: str = "Next step", cap_note: str = "") -> str:
     """The closing band. Carries both seams, so it must be the last section.
 
     The two seams ramp cream to basalt to ink across ~200px each. See the
     house-style note in CLAUDE.md: the cream seam has to reach alpha 0 and
     be front-loaded, or it reads as a grey fog bank over the photograph.
+
+    cap_note is the line under the capability card. It defaults to the
+    reimbursement promise, which is right for a money page and wrong for a
+    page that deliberately does not quote rates.
     """
+    cap_note = cap_note or (
+        "Ask and we will send it the same day, with the reimbursement figures run "
+        "against your own locality rather than a national average."
+    )
     return f"""<section class="contact section-dark contact-dark" id="contact" data-screen-label="Contact">
 {_scene("contact")}
   <div class="sec-seam sec-seam--from-cream" aria-hidden="true"></div>
@@ -472,7 +480,7 @@ def contact_close(title: str, deck: str, *, cap_title: str, cap_body: str,
         <div class="cap-body">
           <div class="cap-eye">{cap_title}</div>
           <h4>{cap_body}</h4>
-          <p>Ask and we will send it the same day, with the reimbursement figures run against your own locality rather than a national average.</p>
+          <p>{cap_note}</p>
         </div>
         <a class="btn btn-amber" href="/contact" data-magnetic>
           Get in touch

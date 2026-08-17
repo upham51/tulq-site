@@ -961,6 +961,8 @@ def page_awv() -> LandingPage:
          "documentation; your practice supervises and bills. Any vendor that tells you an "
          "outsourced nurse can simply bill a Medicare AWV on your behalf is describing "
          "something other than the benefit.</p>"
+         '<p>The full chain, rule by rule, is written out on our <a href="/awv">plain '
+         "English guide to how the visit gets paid</a>.</p>"
          + source_link("42 CFR 410.15", ECFR_AWV)),
 
         ("What is the 2026 reimbursement for G0438 and G0439?",
@@ -1127,14 +1129,17 @@ def page_awv() -> LandingPage:
                 "<p><strong>The supervision nuance, stated plainly.</strong> Medicare covers "
                 "the AWV when it is furnished by a physician, a qualified non-physician "
                 "practitioner, or by a medical professional or team working under the direct "
-                "supervision of a physician. Direct supervision means the physician is present "
-                "in the office suite and immediately available.</p>"
+                "supervision of a physician. Direct supervision means the physician is "
+                "immediately available to furnish assistance and direction throughout, and "
+                "since 1 January 2026 that presence may be a virtual one, through real-time "
+                "audio and video rather than in the office suite.</p>"
                 "<p>TULQ's nurses perform the visit and produce the documentation. Your "
                 "practice holds the supervision obligation and submits the claim. We are "
                 "telling you this on the money page rather than in a contract appendix because "
                 "any vendor who implies an outsourced nurse can simply bill a Medicare AWV for "
                 'you is describing something other than the benefit. See '
-                f'<a href="{ECFR_AWV}" target="_blank" rel="noopener">42 CFR 410.15</a>.</p>',
+                f'<a href="{ECFR_AWV}" target="_blank" rel="noopener">42 CFR 410.15</a>, or '
+                '<a href="/awv">the whole chain of rules written out</a>.</p>',
                 kind="info",
             ),
             dark=True,

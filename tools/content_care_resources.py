@@ -779,10 +779,10 @@ def post_g0511_sunset() -> Page:
 
     <p>That is the legal basis on which a remote nurse can do this work at all. It is
     also the sharpest contrast with the annual wellness visit, which requires
-    <em>direct</em> supervision, meaning the physician is in the office suite and
-    immediately available. Care management and the wellness visit are frequently sold
-    together and they do not sit under the same supervision rule. Anyone who tells you
-    otherwise has not read both.</p>
+    <em>direct</em> supervision, meaning the physician is immediately available throughout,
+    whether in the office suite or virtually present on real-time audio and video. Care
+    management and the wellness visit are frequently sold together and they do not sit
+    under the same supervision rule. Anyone who tells you otherwise has not read both.</p>
 
     <h2>What to do about it</h2>
 
@@ -1183,14 +1183,22 @@ def post_who_can_perform_awv() -> Page:
 
     <h2>What direct supervision means</h2>
 
-    <p>Direct supervision means the physician is present in the office suite and
-    immediately available to furnish assistance and direction throughout the performance
-    of the procedure. Not on the premises in a general sense, and not reachable by phone.
-    Present in the office suite.</p>
+    <p>Direct supervision means the physician is immediately available to furnish
+    assistance and direction throughout the performance of the service. Historically that
+    meant present in the office suite, and not merely reachable by telephone.</p>
 
-    <p>This is a stricter standard than care management, which runs under general
+    <p>Since 1 January 2026 the presence it requires may be a virtual one, through
+    real-time audio and video interactive telecommunications. Audio-only does not satisfy
+    it, and it does not extend to services carrying a 010 or 090 global surgery indicator,
+    which the wellness visit does not. CMS adopted this permanently in the CY2026
+    Physician Fee Schedule final rule rather than extending it as a dated flexibility, and
+    it is the single change that makes a standing telephone wellness visit programme
+    practical to run. We have written the whole chain out in
+    <a href="/awv">plain English</a>.</p>
+
+    <p>It remains a stricter standard than care management, which runs under general
     supervision, where the billing practitioner directs the service without needing to be
-    physically present. The two are frequently sold together and they do not share a
+    present at all. The two are frequently sold together and they do not share a
     supervision rule. If a vendor's pitch glosses that, press on it.</p>
 
     <h2>Who bills it</h2>
@@ -1230,11 +1238,12 @@ def post_who_can_perform_awv() -> Page:
          "well suited to a nurse. The billing practitioner and the supervision obligation "
          "remain with the practice.</p>"),
         ("What exactly is direct supervision?",
-         "<p>The physician is present in the office suite and immediately available to "
-         "furnish assistance and direction throughout the performance of the service. It "
-         "is a stricter standard than the general supervision that applies to care "
-         "management, where the billing practitioner directs the service without needing "
-         "to be physically present.</p>"),
+         "<p>The physician must be immediately available to furnish assistance and "
+         "direction throughout the performance of the service. Since 1 January 2026 that "
+         "presence may be virtual, through real-time audio and video, rather than in the "
+         "office suite; audio-only does not satisfy it. It remains a stricter standard "
+         "than the general supervision that applies to care management, where the billing "
+         "practitioner directs the service without needing to be present at all.</p>"),
         ("Can an outsourced company bill the AWV for us?",
          "<p>No. Your practice bills it, because the billing practitioner and the "
          "supervision requirement sit with you. A vendor can perform the visit and hand "
@@ -1273,15 +1282,19 @@ def post_who_can_perform_awv() -> Page:
         qa=qa,
         sources=[
             ("42 CFR 410.15, annual wellness visit.", "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-410/subpart-B/section-410.15"),
+            ("42 CFR 410.32(b)(3)(ii), levels of supervision.", "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-410/subpart-B/section-410.32"),
+            ("CMS, CY2026 Physician Fee Schedule final rule fact sheet, CMS-1832-F.", "https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2026-medicare-physician-fee-schedule-final-rule-cms-1832-f"),
             ("CMS, Medicare Wellness Visits, MLN6775421.", "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/mln-publications/mln6775421"),
             ("Medicare.gov, yearly wellness visits.", "https://www.medicare.gov/coverage/yearly-wellness-visits"),
             ("CMS, Medicare telehealth.", "https://www.cms.gov/medicare/coverage/telehealth"),
             ("CMS, Physician Fee Schedule lookup.", "https://www.cms.gov/medicare/physician-fee-schedule/search"),
         ],
         disclaimer=(
-            "Reviewed August 2026. Telehealth flexibilities have been extended rather "
-            "than made permanent and coverage rules change; confirm the current position "
-            "with CMS and your MAC. This is not billing or compliance advice."
+            "Reviewed August 2026. The virtual direct supervision definition was adopted "
+            "permanently in the CY2026 Physician Fee Schedule final rule, but the "
+            "patient-facing audio-only telehealth allowance carries a date; confirm the "
+            "current position with CMS and your MAC. This is not billing or compliance "
+            "advice."
         ),
         cta_title="Nurses who do the visit properly.",
         cta_body=(
