@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import content_care  # noqa: E402
+import content_care_awv  # noqa: E402
 import content_care_resources  # noqa: E402
 import content_care_services  # noqa: E402
 import content_care_tools  # noqa: E402
@@ -78,6 +79,7 @@ def collect() -> list:
     # Services hub and the three money pages first: they are the top of the
     # internal-link model and everything below routes up into them.
     pages.extend(content_care_services.pages())
+    pages.extend(content_care_awv.pages())
     pages.extend(content_care_tools.pages())
     pages.append(content_care.page_hospice())
     pages.append(content_care.pillar_home_health())

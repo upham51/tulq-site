@@ -102,6 +102,8 @@ finished `.html` that is committed to git and served directly.
   - `content_care_resources.py` — mainstream `/resources/` + `/compare/`
   - `content_care_services.py` — the `/services/` hub + three money pages
   - `content_care_tools.py` — the two free tools under `/tools/`
+  - `content_care_awv.py` — the `/awv` plain-English guide to how a
+    nurse-run wellness visit gets paid
 - `tools/pagekit.py` holds the shared shell: nav, footer, breadcrumbs, FAQ
   accordions, schema builders, and the two `Site` configs. Nav and footer links
   for generated pages live in the `Site` definitions there.
@@ -235,6 +237,25 @@ Two free ungated tools feed the AWV and care management pages:
 `/tools/awv-revenue-calculator` and `/tools/annual-wellness-visit-worksheet`.
 They stay ungated on purpose: an email wall makes them uncrawlable and
 unlinkable, which is the whole value at DR 0.
+
+**The AWV line carries three pages and they must not converge.** The money
+page sells and quotes rates; `/resources/who-can-perform-annual-wellness-visit`
+answers the evaluative "who may perform versus who may bill" query; `/awv`
+answers the trust question that follows the sales call, walking the whole
+regulatory chain rule by rule and describing the workflow end to end. `/awv`
+therefore does not quote per-visit reimbursement and does not argue completion
+rates. `/avw`, the transposition people type, 301s to it in `care/_redirects`.
+
+That chain rests on three sections of 42 CFR, and the third one moved
+recently. Direct supervision (`410.32(b)(3)(ii)`, incorporated by
+`410.26(a)(2)`) still means immediately available throughout, but since
+1 January 2026 that presence **may be virtual, through real-time audio and
+video excluding audio-only**, adopted permanently in the CY2026 Physician Fee
+Schedule final rule. Pages written before that described it as office-suite
+only; if an edit reintroduces "not reachable by phone" as the whole of the
+definition, check the current eCFR text before restoring it. The
+patient-facing audio-only telehealth allowance is a separate rule and does
+carry a date, so keep the two apart.
 
 `/resources/` is organised into the same three tracks, and the four triage
 segment pages carry a cross-sell footer (`_also()` in `content_care.py`) that
