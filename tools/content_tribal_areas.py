@@ -449,11 +449,11 @@ def areas_index() -> Page:
                 else '<span class="cross">None surfaced</span>')
         rows.append(f"""          <tr>
             <td><a href="/areas/{a['slug']}">{a['name']} Area</a></td>
-            <td>{a['states'].capitalize() if a['states'][0].islower() else a['states']}</td>
+            <td>{a['states'][:1].upper() + a['states'][1:]}</td>
             <td>{flag}</td>
           </tr>""")
 
-    cards = [("", f"{a['name']} Area", a["states"].capitalize() if a["states"][0].islower()
+    cards = [("", f"{a['name']} Area", a["states"][:1].upper() + a["states"][1:] if a["states"][0].islower()
               else a["states"], f"/areas/{a['slug']}") for a in AREAS]
 
     page.body = f"""    <p>An IHS Area is an administrative region, not a clinical one. What it
