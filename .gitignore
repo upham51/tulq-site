@@ -12,3 +12,4 @@ screenshots/
 assets/jayson_raw
 __pycache__/
 *.pyc
+brag-output/
